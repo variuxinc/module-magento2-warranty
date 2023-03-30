@@ -1,0 +1,89 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Variux\Warranty\Api\WarrantyRepositoryInterface" type="Variux\Warranty\Model\WarrantyRepository"/>
+	<preference for="Variux\Warranty\Api\Data\WarrantyInterface" type="Variux\Warranty\Model\Warranty"/>
+	<preference for="Variux\Warranty\Api\Data\WarrantySearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Variux\Warranty\Model\ResourceModel\Warranty\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">variux_warranty_warranty</argument>
+			<argument name="resourceModel" xsi:type="string">Variux\Warranty\Model\ResourceModel\Warranty\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="variux_warranty_warranty_listing_data_source" xsi:type="string">Variux\Warranty\Model\ResourceModel\Warranty\Grid\Collection</item>
+				<item name="variux_warranty_sro_listing_data_source" xsi:type="string">Variux\Warranty\Model\ResourceModel\Sro\Grid\Collection</item>
+				<item name="variux_warranty_srolabor_listing_data_source" xsi:type="string">Variux\Warranty\Model\ResourceModel\SroLabor\Grid\Collection</item>
+				<item name="variux_warranty_srodocument_listing_data_source" xsi:type="string">Variux\Warranty\Model\ResourceModel\SroDocument\Grid\Collection</item>
+				<item name="variux_warranty_sromaterial_listing_data_source" xsi:type="string">Variux\Warranty\Model\ResourceModel\SroMaterial\Grid\Collection</item>
+				<item name="variux_warranty_sromisc_listing_data_source" xsi:type="string">Variux\Warranty\Model\ResourceModel\SroMisc\Grid\Collection</item>
+				<item name="variux_warranty_workcode_listing_data_source" xsi:type="string">Variux\Warranty\Model\ResourceModel\Workcode\Grid\Collection</item>
+				<item name="variux_warranty_unit_listing_data_source" xsi:type="string">Variux\Warranty\Model\ResourceModel\Unit\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<preference for="Variux\Warranty\Api\SroRepositoryInterface" type="Variux\Warranty\Model\SroRepository"/>
+	<preference for="Variux\Warranty\Api\Data\SroInterface" type="Variux\Warranty\Model\Sro"/>
+	<preference for="Variux\Warranty\Api\Data\SroSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Variux\Warranty\Model\ResourceModel\Sro\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">variux_warranty_sro</argument>
+			<argument name="resourceModel" xsi:type="string">Variux\Warranty\Model\ResourceModel\Sro\Collection</argument>
+		</arguments>
+	</virtualType>
+	<preference for="Variux\Warranty\Api\SroLaborRepositoryInterface" type="Variux\Warranty\Model\SroLaborRepository"/>
+	<preference for="Variux\Warranty\Api\Data\SroLaborInterface" type="Variux\Warranty\Model\SroLabor"/>
+	<preference for="Variux\Warranty\Api\Data\SroLaborSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Variux\Warranty\Model\ResourceModel\SroLabor\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">variux_warranty_srolabor</argument>
+			<argument name="resourceModel" xsi:type="string">Variux\Warranty\Model\ResourceModel\SroLabor\Collection</argument>
+		</arguments>
+	</virtualType>
+	<preference for="Variux\Warranty\Api\SroDocumentRepositoryInterface" type="Variux\Warranty\Model\SroDocumentRepository"/>
+	<preference for="Variux\Warranty\Api\Data\SroDocumentInterface" type="Variux\Warranty\Model\SroDocument"/>
+	<preference for="Variux\Warranty\Api\Data\SroDocumentSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Variux\Warranty\Model\ResourceModel\SroDocument\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">variux_warranty_srodocument</argument>
+			<argument name="resourceModel" xsi:type="string">Variux\Warranty\Model\ResourceModel\SroDocument\Collection</argument>
+		</arguments>
+	</virtualType>
+	<preference for="Variux\Warranty\Api\SroMaterialRepositoryInterface" type="Variux\Warranty\Model\SroMaterialRepository"/>
+	<preference for="Variux\Warranty\Api\Data\SroMaterialInterface" type="Variux\Warranty\Model\SroMaterial"/>
+	<preference for="Variux\Warranty\Api\Data\SroMaterialSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Variux\Warranty\Model\ResourceModel\SroMaterial\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">variux_warranty_sromaterial</argument>
+			<argument name="resourceModel" xsi:type="string">Variux\Warranty\Model\ResourceModel\SroMaterial\Collection</argument>
+		</arguments>
+	</virtualType>
+	<preference for="Variux\Warranty\Api\SroMiscRepositoryInterface" type="Variux\Warranty\Model\SroMiscRepository"/>
+	<preference for="Variux\Warranty\Api\Data\SroMiscInterface" type="Variux\Warranty\Model\SroMisc"/>
+	<preference for="Variux\Warranty\Api\Data\SroMiscSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Variux\Warranty\Model\ResourceModel\SroMisc\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">variux_warranty_sromisc</argument>
+			<argument name="resourceModel" xsi:type="string">Variux\Warranty\Model\ResourceModel\SroMisc\Collection</argument>
+		</arguments>
+	</virtualType>
+	<preference for="Variux\Warranty\Api\WorkcodeRepositoryInterface" type="Variux\Warranty\Model\WorkcodeRepository"/>
+	<preference for="Variux\Warranty\Api\Data\WorkcodeInterface" type="Variux\Warranty\Model\Workcode"/>
+	<preference for="Variux\Warranty\Api\Data\WorkcodeSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Variux\Warranty\Model\ResourceModel\Workcode\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">variux_warranty_workcode</argument>
+			<argument name="resourceModel" xsi:type="string">Variux\Warranty\Model\ResourceModel\Workcode\Collection</argument>
+		</arguments>
+	</virtualType>
+	<preference for="Variux\Warranty\Api\UnitRepositoryInterface" type="Variux\Warranty\Model\UnitRepository"/>
+	<preference for="Variux\Warranty\Api\Data\UnitInterface" type="Variux\Warranty\Model\Unit"/>
+	<preference for="Variux\Warranty\Api\Data\UnitSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Variux\Warranty\Model\ResourceModel\Unit\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">variux_warranty_unit</argument>
+			<argument name="resourceModel" xsi:type="string">Variux\Warranty\Model\ResourceModel\Unit\Collection</argument>
+		</arguments>
+	</virtualType>
+</config>

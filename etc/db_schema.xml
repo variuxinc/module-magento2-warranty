@@ -1,0 +1,151 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="variux_warranty_warranty" resource="default" engine="innodb" comment="variux_warranty_warranty Table">
+		<column xsi:type="int" name="warranty_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="warranty_id"/>
+		</constraint>
+		<column name="description" nullable="false" xsi:type="varchar" comment="Description" length="255"/>
+		<column name="customer_id" nullable="false" xsi:type="int" comment="Customer Id" identity="false" unsigned="true"/>
+		<column name="engine" nullable="true" xsi:type="varchar" comment="Engine" length="255"/>
+		<column name="engine_hour" nullable="true" xsi:type="varchar" comment="Engine Hour" length="255"/>
+		<column name="invoice_number" nullable="true" xsi:type="varchar" comment="Invoice Number" length="255"/>
+		<column name="order_number" nullable="true" xsi:type="varchar" comment="Order Number" length="255"/>
+		<column name="item_sku" nullable="true" xsi:type="varchar" comment="Item Sku" length="255"/>
+		<column name="boat_owner_name" nullable="true" xsi:type="varchar" comment="Boat Owner Name" length="255"/>
+		<column name="reference_number" nullable="true" xsi:type="varchar" comment="Reference Number" length="255"/>
+		<column name="date_of_failure" nullable="false" xsi:type="date" comment="Date of failure"/>
+		<column name="date_of_repair" nullable="false" xsi:type="date" comment="Date of repair"/>
+		<column name="claim_processor_email" nullable="true" xsi:type="varchar" comment="Claim processor email" length="255"/>
+		<column name="brief_description" nullable="true" xsi:type="varchar" comment="Brief Description" length="255"/>
+		<column name="reason_note" nullable="true" xsi:type="text" comment="Reason note"/>
+		<column name="resolution_note" nullable="true" xsi:type="text" comment="Resolution note"/>
+		<column name="status" nullable="false" xsi:type="varchar" comment="Status" length="255"/>
+		<column name="store_id" nullable="false" xsi:type="int" comment="Store id" identity="false"/>
+		<column name="incident_number" nullable="true" xsi:type="varchar" comment="Incident Number" length="255"/>
+		<column name="first_sro_number" nullable="true" xsi:type="varchar" comment="First Sro Number" length="255"/>
+		<column name="dealer_name" nullable="true" xsi:type="varchar" comment="Dealer name" length="255"/>
+		<column name="dealer_phone_number" nullable="true" xsi:type="varchar" comment="Dealer phone number" length="255"/>
+		<column name="is_sro_details_fully_synced" nullable="false" xsi:type="boolean" comment="Is Sro details fully synced" default="0"/>
+		<column name="has_error" nullable="false" xsi:type="boolean" comment="Has error" default="0"/>
+		<column name="error_reason" nullable="true" xsi:type="text" comment="Error reason"/>
+		<column name="first_sro_id" nullable="true" xsi:type="varchar" comment="First Sro Id" length="255"/>
+		<column name="warranty_registered" nullable="true" xsi:type="varchar" comment="Warranty_registered" length="255"/>
+		<column name="consumer_name" nullable="true" xsi:type="varchar" comment="Consumer name" length="255"/>
+		<column name="warranty_start_date" nullable="true" xsi:type="varchar" comment="Warranty Start Date" length="255"/>
+		<column name="warranty_end_date" nullable="true" xsi:type="varchar" comment="Warranty End Date" length="255"/>
+		<column name="company_id" nullable="false" xsi:type="int" comment="Company Id" identity="false"/>
+		<column name="admin_customer_id" nullable="true" xsi:type="int" comment="Admin customer id" identity="false"/>
+		<column name="created_at" nullable="false" xsi:type="timestamp" comment="Created at" default="CURRENT_TIMESTAMP"/>
+		<column name="updated_at" nullable="false" xsi:type="timestamp" comment="Updated at" default="CURRENT_TIMESTAMP" on_update="true"/>
+	</table>
+	<table name="variux_warranty_sro" resource="default" engine="innodb" comment="variux_warranty_sro Table">
+		<column xsi:type="int" name="sro_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="sro_id"/>
+		</constraint>
+		<column name="warranty_id" nullable="false" xsi:type="int" comment="Warranty id" identity="false" unsigned="true"/>
+		<column name="sro_number" nullable="true" xsi:type="varchar" comment="Sro number" length="255"/>
+		<column name="customer_id" nullable="false" xsi:type="int" comment="Customer Id" identity="false" unsigned="true"/>
+		<column name="company_id" nullable="false" xsi:type="int" comment="Company Id" identity="false" unsigned="true"/>
+		<column name="admin_customer_id" nullable="true" xsi:type="int" comment="Admin Customer Id" identity="false"/>
+		<column name="created_at" nullable="false" xsi:type="timestamp" comment="Created at" default="CURRENT_TIMESTAMP"/>
+		<column name="updated_at" nullable="true" xsi:type="timestamp" comment="Updated at" default="CURRENT_TIMESTAMP" on_update="true"/>
+	</table>
+	<table name="variux_warranty_srolabor" resource="default" engine="innodb" comment="variux_warranty_srolabor Table">
+		<column xsi:type="int" name="srolabor_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="srolabor_id"/>
+		</constraint>
+		<column name="sro_id" nullable="false" xsi:type="int" comment="Sro Id" identity="false" unsigned="true"/>
+		<column name="sro_line" nullable="true" xsi:type="int" comment="Sro Line" default="1" identity="false"/>
+		<column name="sro_oper" nullable="true" xsi:type="int" comment="Sro Oper" identity="false"/>
+		<column name="trans_date" nullable="true" xsi:type="date" comment="Transaction date"/>
+		<column name="company_id" nullable="false" xsi:type="int" comment="Company id" identity="false" unsigned="true"/>
+		<column name="company_name" nullable="true" xsi:type="varchar" comment="Company name" length="255"/>
+		<column name="customer_id" nullable="false" xsi:type="int" comment="Customer id" identity="false" unsigned="true"/>
+		<column name="work_code" nullable="true" xsi:type="varchar" comment="Work code" length="255"/>
+		<column name="hour_worked" nullable="true" xsi:type="decimal" comment="Hour worked" precision="12" scale="4"/>
+		<column name="validate" nullable="true" xsi:type="int" comment="Validate" default="0" identity="false"/>
+		<column name="cost_conv" nullable="true" xsi:type="decimal" comment="Cost Conv" default="0.0000" precision="12" scale="4"/>
+		<column name="note" nullable="true" xsi:type="text" comment="Note"/>
+		<column name="description" nullable="true" xsi:type="text" comment="Description"/>
+		<column name="labor_hourly_rate" nullable="true" xsi:type="decimal" comment="Labor hourly rate" precision="12" scale="4"/>
+		<column name="sro_number" nullable="true" xsi:type="varchar" comment="Sro number" length="255"/>
+		<column name="created_at" nullable="false" xsi:type="timestamp" comment="Created at" default="CURRENT_TIMESTAMP"/>
+		<column name="updated_at" nullable="true" xsi:type="timestamp" comment="updated_at" default="CURRENT_TIMESTAMP" on_update="true"/>
+	</table>
+	<table name="variux_warranty_srodocument" resource="default" engine="innodb" comment="variux_warranty_srodocument Table">
+		<column xsi:type="int" name="srodocument_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="srodocument_id"/>
+		</constraint>
+		<column name="sro_id" nullable="false" xsi:type="int" comment="Sro id" identity="false" unsigned="true"/>
+		<column name="name" nullable="true" xsi:type="varchar" comment="Name" length="255"/>
+		<column name="description" nullable="true" xsi:type="varchar" comment="Description" length="255"/>
+		<column name="file_path" nullable="true" xsi:type="text" comment="File path"/>
+		<column name="type" nullable="true" xsi:type="varchar" comment="type" length="255"/>
+		<column name="created_at" nullable="false" xsi:type="timestamp" comment="Created at" default="CURRENT_TIMESTAMP"/>
+		<column name="updated_at" nullable="false" xsi:type="timestamp" comment="Updated at" default="CURRENT_TIMESTAMP" on_update="true"/>
+	</table>
+	<table name="variux_warranty_sromaterial" resource="default" engine="innodb" comment="variux_warranty_sromaterial Table">
+		<column xsi:type="int" name="sromaterial_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="sromaterial_id"/>
+		</constraint>
+		<column name="sro_id" nullable="false" xsi:type="int" comment="Sro id" identity="false" unsigned="true"/>
+		<column name="sro_line" nullable="true" xsi:type="int" comment="Sro line" default="1" identity="false"/>
+		<column name="sro_oper" nullable="true" xsi:type="int" comment="Sro oper" default="10" identity="false"/>
+		<column name="company_id" nullable="false" xsi:type="int" comment="Company id" identity="false" unsigned="true"/>
+		<column name="customer_id" nullable="false" xsi:type="int" comment="Customer id" identity="false" unsigned="true"/>
+		<column name="item" nullable="true" xsi:type="varchar" comment="Item" length="255"/>
+		<column name="description" nullable="true" xsi:type="varchar" comment="Description" length="255"/>
+		<column name="um" nullable="true" xsi:type="varchar" comment="UM" length="255"/>
+		<column name="qty_conv" nullable="true" xsi:type="decimal" comment="Qty Conv" precision="12" scale="4"/>
+		<column name="cost" nullable="true" xsi:type="decimal" comment="NPN Cost" precision="12" scale="4"/>
+		<column name="price" nullable="true" xsi:type="decimal" comment="Item Price" default="0.000000" precision="12" scale="4"/>
+	</table>
+	<table name="variux_warranty_sromisc" resource="default" engine="innodb" comment="variux_warranty_sromisc Table">
+		<column xsi:type="int" name="sromisc_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="sromisc_id"/>
+		</constraint>
+		<column name="sro_id" nullable="false" xsi:type="int" comment="Sro id" identity="false" unsigned="true"/>
+		<column name="sro_line" nullable="true" xsi:type="int" comment="Sro line" default="1" identity="false"/>
+		<column name="sro_oper" nullable="true" xsi:type="int" comment="Sro oper" default="10" identity="false"/>
+		<column name="trans_date" nullable="true" xsi:type="date" comment="Transaction date"/>
+		<column name="company_id" nullable="false" xsi:type="int" comment="Company id" identity="false" unsigned="true"/>
+		<column name="customer_id" nullable="false" xsi:type="int" comment="Customer id" identity="false" unsigned="true"/>
+		<column name="misc_code" nullable="true" xsi:type="varchar" comment="Misc code" length="255"/>
+		<column name="description" nullable="true" xsi:type="varchar" comment="Desciprtion" length="255"/>
+		<column name="qty_conv" nullable="true" xsi:type="decimal" comment="Qty Conv" precision="12" scale="4"/>
+		<column name="amount" nullable="true" xsi:type="decimal" comment="Amount " precision="12" scale="4"/>
+		<column name="note" nullable="true" xsi:type="text" comment="Note"/>
+		<column name="created_at" nullable="true" xsi:type="timestamp" comment="Created at" default="CURRENT_TIMESTAMP"/>
+		<column name="updated_at" nullable="true" xsi:type="timestamp" comment="updated_at" default="CURRENT_TIMESTAMP" on_update="true"/>
+	</table>
+	<table name="variux_warranty_workcode" resource="default" engine="innodb" comment="variux_warranty_workcode Table">
+		<column xsi:type="int" name="workcode_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="workcode_id"/>
+		</constraint>
+		<column name="work_code" nullable="true" xsi:type="varchar" comment="Work code" length="255"/>
+		<column name="description" nullable="true" xsi:type="text" comment="Work description"/>
+		<column name="duration" nullable="true" xsi:type="decimal" comment="Duration" precision="12" scale="4"/>
+		<column name="created_at" nullable="true" xsi:type="timestamp" comment="Created at" default="CURRENT_TIMESTAMP"/>
+		<column name="updated_at" nullable="true" xsi:type="timestamp" comment="Updated at" default="CURRENT_TIMESTAMP" on_update="true"/>
+	</table>
+	<table name="variux_warranty_unit" resource="default" engine="innodb" comment="variux_warranty_unit Table">
+		<column xsi:type="int" name="unit_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="unit_id"/>
+		</constraint>
+		<column name="serial_no" nullable="false" xsi:type="varchar" comment="Serial No" length="255"/>
+		<column name="item" nullable="false" xsi:type="varchar" comment="Item" length="255"/>
+		<column name="desctiption" nullable="true" xsi:type="text" comment="Description"/>
+		<column name="order_no" nullable="true" xsi:type="varchar" comment="Order no" length="255"/>
+		<column name="ship_date" nullable="true" xsi:type="datetime" comment="Ship date"/>
+		<column name="install_date" nullable="true" xsi:type="datetime" comment="Install date"/>
+		<column name="warranty_start_date" nullable="true" xsi:type="date" comment="Warranty start date"/>
+	</table>
+</schema>

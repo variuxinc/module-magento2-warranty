@@ -1,0 +1,26 @@
+<?php
+/**
+ * Copyright ©  All rights reserved.
+ * See COPYING.txt for license details.
+ */
+declare(strict_types=1);
+
+namespace Variux\Warranty\Api\Data;
+
+interface SroDocumentSearchResultsInterface extends \Magento\Framework\Api\SearchResultsInterface
+{
+
+    /**
+     * Get SroDocument list.
+     * @return \Variux\Warranty\Api\Data\SroDocumentInterface[]
+     */
+    public function getItems();
+
+    /**
+     * Set sro_id list.
+     * @param \Variux\Warranty\Api\Data\SroDocumentInterface[] $items
+     * @return $this
+     */
+    public function setItems(array $items);
+}
+
