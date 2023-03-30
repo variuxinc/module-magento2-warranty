@@ -20,6 +20,8 @@
 				<item name="variux_warranty_sromisc_listing_data_source" xsi:type="string">Variux\Warranty\Model\ResourceModel\SroMisc\Grid\Collection</item>
 				<item name="variux_warranty_workcode_listing_data_source" xsi:type="string">Variux\Warranty\Model\ResourceModel\Workcode\Grid\Collection</item>
 				<item name="variux_warranty_unit_listing_data_source" xsi:type="string">Variux\Warranty\Model\ResourceModel\Unit\Grid\Collection</item>
+				<item name="variux_warranty_unitreg_listing_data_source" xsi:type="string">Variux\Warranty\Model\ResourceModel\UnitReg\Grid\Collection</item>
+				<item name="variux_warranty_warrantytransfer_listing_data_source" xsi:type="string">Variux\Warranty\Model\ResourceModel\WarrantyTransfer\Grid\Collection</item>
 			</argument>
 		</arguments>
 	</type>
@@ -84,6 +86,25 @@
 		<arguments>
 			<argument name="mainTable" xsi:type="string">variux_warranty_unit</argument>
 			<argument name="resourceModel" xsi:type="string">Variux\Warranty\Model\ResourceModel\Unit\Collection</argument>
+		</arguments>
+	</virtualType>
+	<preference for="Variux\Warranty\Api\UnitRegRepositoryInterface" type="Variux\Warranty\Model\UnitRegRepository"/>
+	<preference for="Variux\Warranty\Api\Data\UnitRegInterface" type="Variux\Warranty\Model\UnitReg"/>
+	<preference for="Variux\Warranty\Api\Data\UnitRegSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Variux\Warranty\Model\ResourceModel\UnitReg\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">variux_warranty_unitreg</argument>
+			<argument name="resourceModel" xsi:type="string">Variux\Warranty\Model\ResourceModel\UnitReg\Collection</argument>
+		</arguments>
+	</virtualType>
+
+	<preference for="Variux\Warranty\Api\WarrantyTransferRepositoryInterface" type="Variux\Warranty\Model\WarrantyTransferRepository"/>
+	<preference for="Variux\Warranty\Api\Data\WarrantyTransferInterface" type="Variux\Warranty\Model\WarrantyTransfer"/>
+	<preference for="Variux\Warranty\Api\Data\WarrantyTransferSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Variux\Warranty\Model\ResourceModel\WarrantyTransfer\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">variux_warranty_warrantytransfer</argument>
+			<argument name="resourceModel" xsi:type="string">Variux\Warranty\Model\ResourceModel\WarrantyTransfer\Collection</argument>
 		</arguments>
 	</virtualType>
 </config>

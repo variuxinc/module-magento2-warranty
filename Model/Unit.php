@@ -148,5 +148,149 @@ class Unit extends AbstractModel implements UnitInterface
     {
         return $this->setData(self::WARRANTY_START_DATE, $warrantyStartDate);
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function getWarrantyEndDate()
+    {
+        return $this->getData(self::WARRANTY_END_DATE);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setWarrantyEndDate($warrantyEndDate)
+    {
+        return $this->setData(self::WARRANTY_END_DATE, $warrantyEndDate);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getHullId()
+    {
+        return $this->getData(self::HULL_ID);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setHullId($hullId)
+    {
+        return $this->setData(self::HULL_ID, $hullId);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getEngineHours()
+    {
+        return $this->getData(self::ENGINE_HOURS);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setEngineHours($engineHours)
+    {
+        return $this->setData(self::ENGINE_HOURS, $engineHours);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getConsumerNum()
+    {
+        return $this->getData(self::CONSUMER_NUM);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setConsumerNum($consumerNum)
+    {
+        return $this->setData(self::CONSUMER_NUM, $consumerNum);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getConsumerSeq()
+    {
+        return $this->getData(self::CONSUMER_SEQ);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setConsumerSeq($consumerSeq)
+    {
+        return $this->setData(self::CONSUMER_SEQ, $consumerSeq);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getUnitRegistable()
+    {
+        return $this->getData(self::UNIT_REGISTABLE);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setUnitRegistable($unitRegistable)
+    {
+        return $this->setData(self::UNIT_REGISTABLE, $unitRegistable);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getCompanyId()
+    {
+        return $this->getData(self::COMPANY_ID);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setCompanyId($companyId)
+    {
+        return $this->setData(self::COMPANY_ID, $companyId);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getCreatedAt()
+    {
+        return $this->getData(self::CREATED_AT);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setCreatedAt($createdAt)
+    {
+        return $this->setData(self::CREATED_AT, $createdAt);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getUpdatedAt()
+    {
+        return $this->getData(self::UPDATED_AT);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        return $this->setData(self::UPDATED_AT, $updatedAt);
+    }
 }
 

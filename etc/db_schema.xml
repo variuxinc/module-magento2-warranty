@@ -147,5 +147,89 @@
 		<column name="ship_date" nullable="true" xsi:type="datetime" comment="Ship date"/>
 		<column name="install_date" nullable="true" xsi:type="datetime" comment="Install date"/>
 		<column name="warranty_start_date" nullable="true" xsi:type="date" comment="Warranty start date"/>
+		<column name="warranty_end_date" nullable="true" xsi:type="date" comment="Warranty end date"/>
+		<column name="hull_id" nullable="true" xsi:type="varchar" comment="Hull id" length="255"/>
+		<column name="engine_hours" nullable="true" xsi:type="varchar" comment="Engine hours" length="255"/>
+		<column name="consumer_num" nullable="true" xsi:type="varchar" comment="Consumer num" length="255"/>
+		<column name="consumer_seq" nullable="true" xsi:type="varchar" comment="Consumer sequence" length="255"/>
+		<column name="unit_registable" nullable="false" xsi:type="boolean" comment="Unit registable" default="1"/>
+		<column name="company_id" nullable="false" xsi:type="int" comment="Company id" identity="false" unsigned="true"/>
+		<column name="created_at" nullable="false" xsi:type="timestamp" comment="Created at" default="CURRENT_TIMESTAMP"/>
+		<column name="updated_at" nullable="false" xsi:type="timestamp" comment="Updated at" default="CURRENT_TIMESTAMP" on_update="true"/>
+	</table>
+	<table name="variux_warranty_unitreg" resource="default" engine="innodb" comment="variux_warranty_unitreg Table">
+		<column xsi:type="int" name="unitreg_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="unitreg_id"/>
+		</constraint>
+		<column name="hull_id" nullable="true" xsi:type="varchar" comment="Hull Id" length="255"/>
+		<column name="reg_notes" nullable="true" xsi:type="text" comment="Registration note"/>
+		<column name="engine_hour" nullable="true" xsi:type="int" comment="engine_hour" identity="false"/>
+		<column name="trans_num" nullable="true" xsi:type="int" comment="Trans num" identity="false"/>
+		<column name="serial_no" nullable="true" xsi:type="varchar" comment="Serial No" length="255"/>
+		<column name="item" nullable="true" xsi:type="varchar" comment="Item" length="255"/>
+		<column name="posted" nullable="false" xsi:type="boolean" comment="Posted" default="0"/>
+		<column name="rejected" nullable="false" xsi:type="boolean" comment="Rejected" default="0"/>
+		<column name="post_date" nullable="true" xsi:type="datetime" comment="Post Date"/>
+		<column name="err_msg" nullable="true" xsi:type="text" comment="Error message"/>
+		<column name="name" nullable="true" xsi:type="varchar" comment="Name" length="255"/>
+		<column name="address1" nullable="false" xsi:type="varchar" comment="Address 1" length="255"/>
+		<column name="address2" nullable="true" xsi:type="varchar" comment="Address 2" length="255"/>
+		<column name="address3" nullable="true" xsi:type="varchar" comment="Address 3" length="255"/>
+		<column name="address4" nullable="true" xsi:type="varchar" comment="Address 4" length="255"/>
+		<column name="city" nullable="false" xsi:type="varchar" comment="City" length="255"/>
+		<column name="state" nullable="false" xsi:type="varchar" comment="State" length="255"/>
+		<column name="zip" nullable="false" xsi:type="varchar" comment="Zip code" length="255"/>
+		<column name="country" nullable="false" xsi:type="varchar" comment="Country" length="255"/>
+		<column name="email" nullable="false" xsi:type="varchar" comment="Email" length="255"/>
+		<column name="phone" nullable="true" xsi:type="varchar" comment="Phone number" length="255"/>
+		<column name="is_commercial_use" nullable="false" xsi:type="boolean" comment="Is commercial use" default="0"/>
+		<column name="dealer_name" nullable="false" xsi:type="varchar" comment="Dealer name" length="255"/>
+		<column name="created_at" nullable="false" xsi:type="timestamp" comment="Created at" default="CURRENT_TIMESTAMP"/>
+		<column name="updated_at" nullable="true" xsi:type="timestamp" comment="Updated at" default="CURRENT_TIMESTAMP" on_update="true"/>
+	</table>
+	<table name="variux_warranty_warrantytransfer" resource="default" engine="innodb" comment="variux_warranty_warrantytransfer Table">
+		<column xsi:type="int" name="warrantytransfer_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="warrantytransfer_id"/>
+		</constraint>
+		<column name="engine_serial_num" nullable="true" xsi:type="varchar" comment="Engine Serial Number" length="255"/>
+		<column name="submitter_email" nullable="true" xsi:type="varchar" comment="Submitter Email" length="255"/>
+		<column name="submitter_name" nullable="true" xsi:type="varchar" comment="Submitter Name" length="255"/>
+		<column name="engine_hours" nullable="true" xsi:type="decimal" comment="Engine hours" precision="12" scale="4"/>
+		<column name="engine_model" nullable="true" xsi:type="varchar" comment="Engine model" length="255"/>
+		<column name="trans_sn" nullable="true" xsi:type="varchar" comment="Trans S/N" length="255"/>
+		<column name="make_of_boat" nullable="true" xsi:type="varchar" comment="Make of boat" length="255"/>
+		<column name="boat_use" nullable="true" xsi:type="varchar" comment="How's the boat use" length="255"/>
+		<column name="current_customer" nullable="true" xsi:type="varchar" comment="Current customer" length="255"/>
+		<column name="warranty_start_date" nullable="true" xsi:type="date" comment="Warranty start date"/>
+		<column name="warranty_end_date" nullable="true" xsi:type="date" comment="Warranty end date"/>
+		<column name="submit_date" nullable="true" xsi:type="timestamp" comment="Submit date" default="CURRENT_TIMESTAMP"/>
+		<column name="inspection_date" nullable="true" xsi:type="date" comment="Inspection date"/>
+		<column name="hull_id" nullable="true" xsi:type="varchar" comment="Hull Id" length="255"/>
+		<column name="eng_comp_1" nullable="true" xsi:type="varchar" comment="Engine Compression 1" length="255"/>
+		<column name="eng_comp_2" nullable="true" xsi:type="varchar" comment="Engine Compression 2" length="255"/>
+		<column name="eng_comp_3" nullable="true" xsi:type="varchar" comment="Engine compression 3" length="255"/>
+		<column name="eng_comp_4" nullable="true" xsi:type="varchar" comment="Engine compression 4" length="255"/>
+		<column name="name" nullable="false" xsi:type="varchar" comment="Name" length="255"/>
+		<column name="email" nullable="false" xsi:type="varchar" comment="Email" length="255"/>
+		<column name="phone" nullable="false" xsi:type="varchar" comment="Phone" length="255"/>
+		<column name="phone_ext" nullable="true" xsi:type="varchar" comment="Phone Ext" length="255"/>
+		<column name="sale_date" nullable="true" xsi:type="date" comment="Sale date"/>
+		<column name="address_1" nullable="false" xsi:type="varchar" comment="Address 1" length="255"/>
+		<column name="address_2" nullable="true" xsi:type="varchar" comment="Address 2" length="255"/>
+		<column name="city" nullable="false" xsi:type="varchar" comment="city" length="255"/>
+		<column name="state" nullable="false" xsi:type="varchar" comment="State" length="255"/>
+		<column name="zip" nullable="false" xsi:type="varchar" comment="Zip code" length="255"/>
+		<column name="country" nullable="false" xsi:type="varchar" comment="Country" length="255"/>
+		<column name="status" nullable="true" xsi:type="boolean" comment="Status"/>
+		<column name="row_pointer" nullable="true" xsi:type="varchar" comment="Row pointer" length="255"/>
+		<column name="file_path_json" nullable="true" xsi:type="text" comment="File path json"/>
+		<column name="company_id" nullable="false" xsi:type="int" comment="Company Id" identity="true"/>
+		<index referenceId="VARIUX_WARRANTY_WARRANTYTRANSFER_COMPANY_ID" indexType="btree">
+			<column name="company_id"/>
+		</index>
+		<column name="created_at" nullable="false" xsi:type="timestamp" comment="Created at" default="CURRENT_TIMESTAMP"/>
+		<column name="updated_at" nullable="false" xsi:type="timestamp" comment="Updated at" default="CURRENT_TIMESTAMP" on_update="true"/>
 	</table>
 </schema>

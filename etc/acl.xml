@@ -51,6 +51,18 @@
 					<resource id="Variux_Warranty::Unit_update" title="Update Unit" sortOrder="30"/>
 					<resource id="Variux_Warranty::Unit_view" title="View Unit" sortOrder="40"/>
 				</resource>
+				<resource id="Variux_Warranty::UnitReg" title="UnitReg" sortOrder="10">
+					<resource id="Variux_Warranty::UnitReg_save" title="Save UnitReg" sortOrder="10"/>
+					<resource id="Variux_Warranty::UnitReg_delete" title="Delete UnitReg" sortOrder="20"/>
+					<resource id="Variux_Warranty::UnitReg_update" title="Update UnitReg" sortOrder="30"/>
+					<resource id="Variux_Warranty::UnitReg_view" title="View UnitReg" sortOrder="40"/>
+				</resource>
+				<resource id="Variux_Warranty::WarrantyTransfer" title="WarrantyTransfer" sortOrder="10">
+					<resource id="Variux_Warranty::WarrantyTransfer_save" title="Save WarrantyTransfer" sortOrder="10"/>
+					<resource id="Variux_Warranty::WarrantyTransfer_delete" title="Delete WarrantyTransfer" sortOrder="20"/>
+					<resource id="Variux_Warranty::WarrantyTransfer_update" title="Update WarrantyTransfer" sortOrder="30"/>
+					<resource id="Variux_Warranty::WarrantyTransfer_view" title="View WarrantyTransfer" sortOrder="40"/>
+				</resource>
 			</resource>
 		</resources>
 	</acl>

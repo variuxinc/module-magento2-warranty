@@ -240,4 +240,64 @@
 			<resource ref="Variux_Warranty::Unit_delete"/>
 		</resources>
 	</route>
+	<route url="/V1/variux-warranty/unitreg" method="POST">
+		<service class="Variux\Warranty\Api\UnitRegRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Variux_Warranty::UnitReg_save"/>
+		</resources>
+	</route>
+	<route url="/V1/variux-warranty/unitreg/search" method="GET">
+		<service class="Variux\Warranty\Api\UnitRegRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="Variux_Warranty::UnitReg_view"/>
+		</resources>
+	</route>
+	<route url="/V1/variux-warranty/unitreg/:unitregId" method="GET">
+		<service class="Variux\Warranty\Api\UnitRegRepositoryInterface" method="get"/>
+		<resources>
+			<resource ref="Variux_Warranty::UnitReg_view"/>
+		</resources>
+	</route>
+	<route url="/V1/variux-warranty/unitreg/:unitregId" method="PUT">
+		<service class="Variux\Warranty\Api\UnitRegRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Variux_Warranty::UnitReg_update"/>
+		</resources>
+	</route>
+	<route url="/V1/variux-warranty/unitreg/:unitregId" method="DELETE">
+		<service class="Variux\Warranty\Api\UnitRegRepositoryInterface" method="deleteById"/>
+		<resources>
+			<resource ref="Variux_Warranty::UnitReg_delete"/>
+		</resources>
+	</route>
+	<route url="/V1/variux-warranty/warrantytransfer" method="POST">
+		<service class="Variux\Warranty\Api\WarrantyTransferRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Variux_Warranty::WarrantyTransfer_save"/>
+		</resources>
+	</route>
+	<route url="/V1/variux-warranty/warrantytransfer/search" method="GET">
+		<service class="Variux\Warranty\Api\WarrantyTransferRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="Variux_Warranty::WarrantyTransfer_view"/>
+		</resources>
+	</route>
+	<route url="/V1/variux-warranty/warrantytransfer/:warrantytransferId" method="GET">
+		<service class="Variux\Warranty\Api\WarrantyTransferRepositoryInterface" method="get"/>
+		<resources>
+			<resource ref="Variux_Warranty::WarrantyTransfer_view"/>
+		</resources>
+	</route>
+	<route url="/V1/variux-warranty/warrantytransfer/:warrantytransferId" method="PUT">
+		<service class="Variux\Warranty\Api\WarrantyTransferRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Variux_Warranty::WarrantyTransfer_update"/>
+		</resources>
+	</route>
+	<route url="/V1/variux-warranty/warrantytransfer/:warrantytransferId" method="DELETE">
+		<service class="Variux\Warranty\Api\WarrantyTransferRepositoryInterface" method="deleteById"/>
+		<resources>
+			<resource ref="Variux_Warranty::WarrantyTransfer_delete"/>
+		</resources>
+	</route>
 </routes>

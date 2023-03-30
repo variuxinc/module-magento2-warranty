@@ -10,5 +10,7 @@
 		<add id="Variux_Warranty::variux_warranty_sromisc" title="SroMisc" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux::top_level" action="variux_warranty/sromisc/index"/>
 		<add id="Variux_Warranty::variux_warranty_workcode" title="Workcode" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux::top_level" action="variux_warranty/workcode/index"/>
 		<add id="Variux_Warranty::variux_warranty_unit" title="Unit" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux::top_level" action="variux_warranty/unit/index"/>
+		<add id="Variux_Warranty::variux_warranty_unitreg" title="UnitReg" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux::top_level" action="variux_warranty/unitreg/index"/>
+		<add id="Variux_Warranty::variux_warranty_warrantytransfer" title="WarrantyTransfer" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux::top_level" action="variux_warranty/warrantytransfer/index"/>
 	</menu>
 </config>
