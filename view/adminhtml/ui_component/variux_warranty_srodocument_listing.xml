@@ -79,7 +79,7 @@
 		<column name="sro_id">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">sro_id</label>
+				<label translate="true">Sro Id</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -98,7 +98,7 @@
 		<column name="name">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">name</label>
+				<label translate="true">Name</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -110,7 +110,7 @@
 		<column name="description">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">description</label>
+				<label translate="true">Description</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -122,7 +122,7 @@
 		<column name="file_path">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">file_path</label>
+				<label translate="true">File Path</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -134,7 +134,7 @@
 		<column name="type">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">type</label>
+				<label translate="true">Type</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -146,7 +146,7 @@
 		<column name="created_at">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">created_at</label>
+				<label translate="true">Created At</label>
 				<editor>
 					<editorType>date</editorType>
 					<validation>
@@ -158,7 +158,7 @@
 		<column name="updated_at">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">updated_at</label>
+				<label translate="true">Updated At</label>
 				<editor>
 					<editorType>date</editorType>
 					<validation>

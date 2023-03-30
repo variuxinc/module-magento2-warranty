@@ -79,7 +79,7 @@
 		<column name="warranty_id">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">warranty_id</label>
+				<label translate="true">Warranty Id</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -98,7 +98,7 @@
 		<column name="sro_number">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">sro_number</label>
+				<label translate="true">Sro Number</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -110,7 +110,7 @@
 		<column name="customer_id">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">customer_id</label>
+				<label translate="true">Customer Id</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -122,7 +122,7 @@
 		<column name="company_id">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">company_id</label>
+				<label translate="true">Company Id</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -134,7 +134,7 @@
 		<column name="admin_customer_id">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">admin_customer_id</label>
+				<label translate="true">Admin customer Id</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -146,7 +146,7 @@
 		<column name="created_at">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">created_at</label>
+				<label translate="true">Created At</label>
 				<editor>
 					<editorType>date</editorType>
 					<validation>
@@ -158,7 +158,7 @@
 		<column name="updated_at">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">updated_at</label>
+				<label translate="true">Updated At</label>
 				<editor>
 					<editorType>date</editorType>
 					<validation>

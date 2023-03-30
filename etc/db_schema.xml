@@ -225,10 +225,7 @@
 		<column name="status" nullable="true" xsi:type="boolean" comment="Status"/>
 		<column name="row_pointer" nullable="true" xsi:type="varchar" comment="Row pointer" length="255"/>
 		<column name="file_path_json" nullable="true" xsi:type="text" comment="File path json"/>
-		<column name="company_id" nullable="false" xsi:type="int" comment="Company Id" identity="true"/>
-		<index referenceId="VARIUX_WARRANTY_WARRANTYTRANSFER_COMPANY_ID" indexType="btree">
-			<column name="company_id"/>
-		</index>
+		<column name="company_id" nullable="false" xsi:type="int" comment="Company Id"/>
 		<column name="created_at" nullable="false" xsi:type="timestamp" comment="Created at" default="CURRENT_TIMESTAMP"/>
 		<column name="updated_at" nullable="false" xsi:type="timestamp" comment="Updated at" default="CURRENT_TIMESTAMP" on_update="true"/>
 	</table>

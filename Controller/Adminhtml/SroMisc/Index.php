@@ -34,7 +34,7 @@ class Index extends \Magento\Backend\App\Action
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();
-            $resultPage->getConfig()->getTitle()->prepend(__("SroMisc"));
+            $resultPage->getConfig()->getTitle()->prepend(__("Sro Misc"));
             return $resultPage;
     }
 }

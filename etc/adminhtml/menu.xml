@@ -1,16 +1,16 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
 	<menu>
-		<add id="Variux::top_level" title="Variux" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content"/>
-		<add id="Variux_Warranty::variux_warranty_warranty" title="Warranty" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux::top_level" action="variux_warranty/warranty/index"/>
-		<add id="Variux_Warranty::variux_warranty_sro" title="Sro" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux::top_level" action="variux_warranty/sro/index"/>
-		<add id="Variux_Warranty::variux_warranty_srolabor" title="SroLabor" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux::top_level" action="variux_warranty/srolabor/index"/>
-		<add id="Variux_Warranty::variux_warranty_srodocument" title="SroDocument" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux::top_level" action="variux_warranty/srodocument/index"/>
-		<add id="Variux_Warranty::variux_warranty_sromaterial" title="SroMaterial" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux::top_level" action="variux_warranty/sromaterial/index"/>
-		<add id="Variux_Warranty::variux_warranty_sromisc" title="SroMisc" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux::top_level" action="variux_warranty/sromisc/index"/>
-		<add id="Variux_Warranty::variux_warranty_workcode" title="Workcode" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux::top_level" action="variux_warranty/workcode/index"/>
-		<add id="Variux_Warranty::variux_warranty_unit" title="Unit" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux::top_level" action="variux_warranty/unit/index"/>
-		<add id="Variux_Warranty::variux_warranty_unitreg" title="UnitReg" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux::top_level" action="variux_warranty/unitreg/index"/>
-		<add id="Variux_Warranty::variux_warranty_warrantytransfer" title="WarrantyTransfer" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux::top_level" action="variux_warranty/warrantytransfer/index"/>
+		<add id="Variux_Warranty::top_level" title="Variux Warranty" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux_Base::top_level"/>
+		<add id="Variux_Warranty::variux_warranty_warranty" title="Warranty" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux_Warranty::top_level" action="variux_warranty/warranty/index"/>
+		<add id="Variux_Warranty::variux_warranty_sro" title="Sro" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux_Warranty::top_level" action="variux_warranty/sro/index"/>
+		<add id="Variux_Warranty::variux_warranty_srolabor" title="Sro Labor" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux_Warranty::top_level" action="variux_warranty/srolabor/index"/>
+		<add id="Variux_Warranty::variux_warranty_srodocument" title="Sro Document" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux_Warranty::top_level" action="variux_warranty/srodocument/index"/>
+		<add id="Variux_Warranty::variux_warranty_sromaterial" title="Sro Material" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux_Warranty::top_level" action="variux_warranty/sromaterial/index"/>
+		<add id="Variux_Warranty::variux_warranty_sromisc" title="Sro Misc" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux_Warranty::top_level" action="variux_warranty/sromisc/index"/>
+		<add id="Variux_Warranty::variux_warranty_workcode" title="Work code" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux_Warranty::top_level" action="variux_warranty/workcode/index"/>
+		<add id="Variux_Warranty::variux_warranty_unit" title="Unit" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux_Warranty::top_level" action="variux_warranty/unit/index"/>
+		<add id="Variux_Warranty::variux_warranty_unitreg" title="Unit Registration" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux_Warranty::top_level" action="variux_warranty/unitreg/index"/>
+		<add id="Variux_Warranty::variux_warranty_warrantytransfer" title="Warranty Transfer" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux_Warranty::top_level" action="variux_warranty/warrantytransfer/index"/>
 	</menu>
 </config>
