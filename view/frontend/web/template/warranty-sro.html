@@ -1,0 +1,56 @@
+<div class="row">
+    <!-- ko foreach: getRegion('warranty-message') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+</div>
+<div class="row fieldset info">
+    <legend class="legend">
+        <span data-bind="i18n: 'Sro Detail'"></span>:
+        <!--ko if: sro().sro_id-->
+        <span data-bind="text: $t('Edit sro') + '(ID: '+sro().sro_id()+')'"></span>
+        <!--/ko-->
+        <!--ko ifnot: sro().sro_id-->
+        <span data-bind="text: $t('New sro')"></span>
+        <!--/ko-->
+    </legend>
+    <div class="field required" data-bind="visible: haveWarrantyTicketId">
+        <span style="padding-right: 10px; font-weight: 700" data-bind="i18n: 'Warranty Claim ID:'"></span>
+        <span data-bind="text: incNumber"></span>
+    </div>
+</div>
+<div class="material-list row" style="margin-bottom: 45px">
+    <!--ko template: materialList--> <!-- /ko -->
+</div>
+<div class="labor-list row" style="margin-bottom: 45px">
+    <!--ko template: laborList--> <!-- /ko -->
+</div>
+<div class="misc-list row" style="margin-bottom: 45px">
+    <!--ko template: miscList--> <!-- /ko -->
+</div>
+<div class="misc-list row" style="margin-bottom: 25px">
+    <!--ko template: documentList--> <!-- /ko -->
+</div>
+<div class="row">
+    <div class="col offset-lg-6 col-lg-6 text-right" data-bind="visible: window.warranty_sro.warranty().status() == 'INCOMP'">
+        <button class="action primary claim-btn"
+                data-bind="i18n: 'Save for later', event: {click: backWarranties}"></button>
+        <button class="action primary claim-btn" data-bind="i18n: 'Submit Claim', event: {click: submitClaim}"></button>
+    </div>
+</div>
+<div class="row">
+    <div id="add-document-popup" style="display: none">
+        <!--ko template: documentsForm--> <!-- /ko -->
+    </div>
+    <div id="add-fee-popup" style="display: none">
+        <!--ko template: feeForm--> <!-- /ko -->
+    </div>
+    <div id="add-freight-popup" style="display: none">
+        <!--ko template: freightForm--> <!-- /ko -->
+    </div>
+    <div id="add-material-popup" style="display: none">
+        <!--ko template: materialForm--> <!-- /ko -->
+    </div>
+    <div id="add-labor-popup" style="display: none">
+        <!--ko template: laborForm--> <!-- /ko -->
+    </div>
+</div>

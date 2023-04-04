@@ -1,0 +1,46 @@
+<script id="searchautosuggestLoading" type="text/x-custom-template">
+    <div class="searchautosuggest__autosuggest">
+        <div class="searchautosuggest__spinner">
+            <div class="spinner-item spinner-item-1"></div>
+            <div class="spinner-item spinner-item-2"></div>
+            <div class="spinner-item spinner-item-3"></div>
+            <div class="spinner-item spinner-item-4"></div>
+            <div class="spinner-item spinner-item-5"></div>
+            <div class="spinner-item spinner-item-6"></div>
+            <div class="spinner-item spinner-item-7"></div>
+            <div class="spinner-item spinner-item-8"></div>
+        </div>
+
+        <div class="searchautosuggest__close">
+            &times;
+        </div>
+    </div>
+</script>
+
+<script id="result_suggest_container" type="text/x-custom-template">
+    <div class="searchautosuggest__wrapper">
+        <div data-bind="visible: result">
+            <div class="searchautosuggest__index-title">
+                <span data-bind="i18n: result.title ? result.title : 'Result'"></span>
+                <span data-bind="visible: result.isShowTotals">
+                            (<span data-bind="text: result.totalItems"></span>)
+                        </span>
+            </div>
+
+            <div data-bind="visible: result.noResults === false">
+                <ul data-bind="foreach: result.items">
+                    <li data-bind="
+                            text: $data,
+                            event: { mouseover: $parent.onMouseOver, mouseout: $parent.onMouseOut, click: $parent.onClick },
+                            css: {_active: $data.isActive}">
+
+                    </li>
+                </ul>
+            </div>
+            <div class="searchautosuggest__empty-result" data-bind="visible: result.noResults == true && !loading">
+                <span data-bind="i18n: 'Sorry, nothing found', visible: !result.is_default"></span>
+                <span data-bind="i18n: 'Enter the text to search', visible: result.is_default"></span>
+            </div>
+        </div>
+    </div>
+</script>

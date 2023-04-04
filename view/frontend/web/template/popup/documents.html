@@ -1,0 +1,24 @@
+<form action="" enctype="multipart/form-data">
+    <fieldset class="fieldset">
+        <div class="field required">
+            <label class="label">
+                <span data-bind="i18n: 'Name'"></span>
+            </label>
+            <div class="control">
+                <input data-validate="{required: true}" data-bind="value: ''" name="name" type="text"
+                       class="input-text">
+            </div>
+        </div>
+
+        <div class="field required">
+            <label class="label">
+                <span data-bind="i18n: 'File'"></span>
+            </label>
+            <div class="control">
+                <input data-bind="value: ''" data-validate="{'required-file': true}" name="file" type="file"
+                       class="input-text">
+            </div>
+        </div>
+        <div class="row"><div class="col-md-9 offset-md-3">REC,PDF,PNG,JPG,MP4 and MOV up to <span data-bind="text: WarrantyModule.dataConfig.maxFileSize"></span>MB</div></div>
+    </fieldset>
+</form>

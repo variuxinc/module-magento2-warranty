@@ -1,0 +1,372 @@
+.searchautosuggest__autosuggest {
+    display: none !important;
+    border: 1px solid #C2C2C2;
+    position: absolute;
+    top: 3.1rem;
+    left: 0;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 0 0 1px 1px;
+    min-height: 3.5rem;
+    z-index: 1000;
+    text-align: left;
+    &._active {
+        display: block !important;
+    }
+    .searchautosuggest__close {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-weight: bold;
+        color: #999;
+        font-size: 1.6rem;
+        padding: 1rem;
+        line-height: 1rem;
+        cursor: pointer;
+    }
+    .searchautosuggest__index-title {
+        background: #efefef;
+        padding: 8px 10px;
+        text-align: left;
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+        color: #999999;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        max-height: 300px;
+        overflow: auto;
+        li {
+            padding: 1rem 1rem;
+            cursor: pointer;
+             &._active {
+                 background-color: #0a6c9f;
+                 color: white;
+             }
+        }
+    }
+    .searchautosuggest__empty-result {
+        text-align: center;
+        padding: 8px 10px;
+        color: #999;
+        font-size: 1.2rem;
+        display: block;
+    }
+    .searchautosuggest__spinner {
+        display: none;
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -90px;
+    }
+
+}
+.searchautosuggest__spinner {
+    position: relative;
+    width: 186px;
+    height: 20px;
+    margin: auto;
+}
+
+@keyframes bounce_fountainG {
+    0% {
+        transform: scale(1);
+        background-color: #D8D8D8;
+    }
+    100% {
+        transform: scale(.3);
+        background-color: #D8D8D8;
+    }
+}
+@-o-keyframes bounce_fountainG {
+    0% {
+        -o-transform: scale(1);
+        background-color: #D8D8D8;
+    }
+    100% {
+        -o-transform: scale(.3);
+        background-color: #D8D8D8;
+    }
+}
+@-ms-keyframes bounce_fountainG {
+    0% {
+        -ms-transform: scale(1);
+        background-color: #D8D8D8;
+    }
+    100% {
+        -ms-transform: scale(.3);
+        background-color: #D8D8D8;
+    }
+}
+@-webkit-keyframes bounce_fountainG {
+    0% {
+        -webkit-transform: scale(1);
+        background-color: #D8D8D8;
+    }
+    100% {
+        -webkit-transform: scale(.3);
+        background-color: #D8D8D8;
+    }
+}
+@-moz-keyframes bounce_fountainG {
+    0% {
+        -moz-transform: scale(1);
+        background-color: #D8D8D8;
+    }
+    100% {
+        -moz-transform: scale(.3);
+        background-color: #D8D8D8;
+    }
+}
+.searchautosuggest__spinner {
+    .spinner-item {
+        position: absolute;
+        top: 0;
+        background-color: #d8d8d8;
+        width: 20px;
+        height: 20px;
+        animation-name: bounce_fountainG;
+        animation-duration: 0.645s;
+        animation-iteration-count: infinite;
+        animation-direction: normal;
+        transform: scale(0.3);
+        border-radius: 15px;
+    }
+    .spinner-item.spinner-item-1 {
+        left: 0;
+        animation-delay: 0.256s;
+    }
+    .spinner-item.spinner-item-2 {
+        left: 20px;
+        animation-delay: 0.3225s;
+    }
+    .spinner-item.spinner-item-3 {
+        left: 40px;
+        animation-delay: 0.389s;
+    }
+    .spinner-item.spinner-item-4 {
+        left: 60px;
+        animation-delay: 0.4555s;
+    }
+    .spinner-item.spinner-item-5 {
+        left: 80px;
+        animation-delay: 0.522s;
+    }
+    .spinner-item.spinner-item-6 {
+        left: 100px;
+        animation-delay: 0.5885s;
+    }
+    .spinner-item.spinner-item-7 {
+        left: 120px;
+        animation-delay: 0.645s;
+    }
+    .spinner-item.spinner-item-8 {
+        left: 140px;
+        animation-delay: 0.7115s;
+    }
+}
+
+
+/*SRO form*/
+.modal-content {
+    padding: 25px !important;
+    border: none !important;
+}
+
+.modal-title {
+    border: none !important;
+}
+/*APPLICATION*/
+.warranty-container {
+    .head-actions {
+        float: right;
+        margin-bottom: 20px;
+    }
+    .ui-datepicker-trigger {
+        position: relative;
+        top: -25px;
+        right: 5px;
+        float: right;
+    }
+
+    fieldset {
+        .field {
+            .control {
+                height: fit-content;
+            }
+        }
+        input:read-only, textarea:read-only {
+            border: unset;
+        }
+    }
+    .engine-validate-btn {
+        vertical-align: top;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .warranty-container {
+        fieldset {
+            .field {
+                label {
+                    width: calc(~"25% - 15px");
+                    display: inline-block;
+                    text-align: right;
+                    vertical-align: middle;
+                }
+                .control {
+                    width: calc(~"55% - 15px");
+                    display: inline-block;
+                    margin-left: 10px;
+                }
+                &.smallbox .control {
+                    width: calc(~"40% - 15px");
+                }
+                &.full .control {
+                    width: calc(~"75% - 15px");
+                }
+            }
+        }
+    }
+}
+/*APPLICATION*/
+
+
+/*WARRANTY LIST*/
+.warranty-container {
+    .warranty-addition-filter {
+        div[data-role="title"] h4 {
+            cursor: pointer;
+            i {
+                font-size: 16px;
+                font-weight: bold;
+                margin-right: 5px;
+            }
+        }
+        div[aria-expanded="true"] h4 i::before {
+            content: "\f107";
+        }
+    }
+
+    fieldset {
+        .warranty-addition-filter {
+            .row .col-6 {
+                width: 48%;
+            }
+            .field {
+                margin-bottom: 10px;
+                label {
+                    width: calc(~"35% - 15px");
+                }
+            }
+        }
+    }
+}
+/*WARRANTY LIST*/
+
+
+/*TICKET*/
+.transaction-list, .document-list {
+    overflow-x: auto;
+}
+
+.warranty-container .actions.type-actions > div {
+    margin-bottom: 10px;
+}
+
+.warranty-container .actions button {
+    width: 95%;
+}
+
+.warranty-container .tickets-btn {
+    margin-right: 10px;
+}
+
+.warranty-container .claim-btn, .warranty-container .fee-btn, .warranty-container .labor-btn {
+    margin-left: 15px;
+}
+.warranty-container .freight-btn, .warranty-container .fee-btn, .warranty-container .labor-btn, .warranty-container .material-btn {
+    vertical-align: text-bottom;
+}
+
+.warranty-container .action a {
+    cursor: pointer;
+}
+.warranty-container .action a i {
+    font-size: 18px;
+}
+.warranty-container .action p:last-child {
+    margin-bottom: unset;
+}
+.warranty-modal input:read-only, .warranty-modal textarea:read-only {
+    border: unset;
+}
+@media screen and (max-width: 767px){
+    .modal-popup.warranty-container .modal-header,
+    .modal-popup.warranty-container .modal-content,
+    .modal-popup.warranty-container .modal-footer {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+/*TICKET*/
+
+
+/*LAYOUT*/
+@media screen and (min-width: 768px) {
+    .warranty-container {
+        .text-center {
+            text-align: center;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .text-left {
+            text-align: left;
+        }
+        .row {
+            .col{
+                display: inline-block;
+            }
+            .col-12 {
+                width: 100%;
+            }
+            .col-6 {
+                width: 50%;
+            }
+            .col-3 {
+                width: 25%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .warranty-container {
+        .row {
+            .col-xs-12 {
+                width: 100%;
+            }
+            .col-xs-6 {
+                width: 50%;
+            }
+        }
+    }
+}
+
+.warranty-container {
+    .warranty-wrapper {
+        fieldset.actions-toolbar {
+            border:none;
+        }
+    }
+}
+
+/*LAYOUT*/
+
+

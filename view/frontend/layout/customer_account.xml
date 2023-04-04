@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer_account_navigation">
+            <!-- Add menu to the end of the sidebar -->
+            <!-- <block class="Magento\Customer\Block\Account\Delimiter" name="customer-account-navigation-delimiter-warranty" template="Magento_Customer::account/navigation-delimiter.phtml">
+            </block> -->
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-warranty-link">
+                <arguments>
+                    <argument name="path" xsi:type="string">warranty/</argument>
+                    <argument name="resource" xsi:type="string">Magento_Company::users_view</argument>
+                    <argument name="label" xsi:type="string">Warranty Claim</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-engine-reg-info-link">
+                <arguments>
+                    <argument name="path" xsi:type="string">warranty/index/engineinfo</argument>
+                    <argument name="resource" xsi:type="string">Magento_Company::users_view</argument>
+                    <argument name="label" xsi:type="string">Engine Registration Information</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-warranty-transfer-link">
+                <arguments>
+                    <argument name="path" xsi:type="string">warranty/transfer/newtransfer</argument>
+                    <argument name="resource" xsi:type="string">Magento_Company::users_view</argument>
+                    <argument name="label" xsi:type="string">Engine Warranty Transfer</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-engine-reg-link">
+                <arguments>
+                    <argument name="path" xsi:type="string">warranty/engine/new</argument>
+                    <argument name="resource" xsi:type="string">Magento_Company::users_view</argument>
+                    <argument name="label" xsi:type="string">Engine Registration</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

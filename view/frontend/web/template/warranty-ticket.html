@@ -1,0 +1,65 @@
+<form id="warranty-ticket-form" action="#">
+    <!-- ko foreach: getRegion('warranty-message') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+    <div class="fieldset info">
+        <legend class="legend">
+            <span data-bind="i18n: 'Claim Detail'"></span>:
+            <!--ko if: ticket().ticket_id-->
+            <span data-bind="text: $t('Edit claim') + '(ID: '+ticket().ticket_id()+')'"></span>
+            <!--/ko-->
+            <!--ko ifnot: ticket().ticket_id-->
+            <span data-bind="text: $t('New ticket')"></span>
+            <!--/ko-->
+        </legend>
+
+        <div class="field required">
+            <label class="label" for="warranty_service">
+                <span data-bind="i18n: 'Warranty Claim'"></span>
+            </label>
+            <div class="control">
+                <input data-validate="{required: true}" data-bind="value: ticketNumber" type="text" id="warranty_service" class="input-text">
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="fieldset row actions">
+    <div class="col col-6 text-right">
+        <button class="action primary tickets-btn" data-bind="i18n: 'Warranty Tickets', event: {click: backWarranties}"></button>
+    </div>
+    <div class="col col-6 text-left">
+        <button class="action primary claim-btn" data-bind="i18n: 'Submit Claim', event: {click: submitClaim}"></button>
+    </div>
+</div>
+
+<div class="fieldset row actions type-actions">
+    <div class="col col-xs-6 col-3 text-center">
+        <button class="action primary material-btn" data-bind="i18n: 'Add Material', event: {click: openMaterialPopup}"></button>
+        <div id="add-material-popup" style="display: none">
+            <!--ko template: materialForm--> <!-- /ko -->
+        </div>
+    </div>
+    <div class="col col-xs-6 col-3 text-center">
+        <button class="action primary labor-btn" data-bind="i18n: 'Add Labor', event: {click: openLaborPopup}"></button>
+        <div id="add-labor-popup" style="display: none">
+            <!--ko template: laborForm--> <!-- /ko -->
+        </div>
+    </div>
+    <div class="col col-xs-6 col-3 text-center">
+        <button class="action primary freight-btn" data-bind="i18n: 'Add Freight', event: {click: openFreightPopup}"></button>
+        <div id="add-freight-popup" style="display: none">
+            <!--ko template: freightForm--> <!-- /ko -->
+        </div>
+    </div>
+    <div class="col col-xs-6 col-3 text-center">
+        <button class="action primary fee-btn" data-bind="i18n: 'Add Import Fee', event: {click: openFeePopup}"></button>
+        <div id="add-fee-popup" style="display: none">
+            <!--ko template: feeForm--> <!-- /ko -->
+        </div>
+    </div>
+</div>
+<!--ko template: documentsPopup--> <!-- /ko -->
+<div class="fieldset transaction-list">
+    <!--ko template: transactionList--> <!-- /ko -->
+</div>

@@ -1,0 +1,20 @@
+<?php
+$filterData = $this->getFilterData();
+?>
+
+<form action="<?= $block->escapeUrl($block->getUrl("*")) ?>" method="get" class="form filter-form">
+    <fieldset class="fieldset row">
+        <div class="col col-12 text-right">
+            <div class="field">
+                <label class="label" style="vertical-align: middle">
+                    <span><?= $block->escapeHtml(__("Serial Number")) ?></span>
+                </label>
+                <div class="control">
+                    <input type="text" id="filter_serial_number" name="filter[serial_number]" value="<?= isset($filterData["serial_number"]) ? $filterData["serial_number"] : "" ?>" class="input-text">
+                </div>
+                <button class="action primary filter-button">Filter</button>
+                <a style="display: inline-block" href="<?= $block->escapeUrl($block->getUrl("*")) ?>"><?= $block->escapeHtml(__("Clear")) ?></a>
+            </div>
+        </div>
+    </fieldset>
+</form>

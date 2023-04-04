@@ -107,10 +107,10 @@
 				</editor>
 			</settings>
 		</column>
-		<column name="desctiption">
+		<column name="description">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">desctiption</label>
+				<label translate="true">description</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>

@@ -1,0 +1,53 @@
+<div class="col-12">
+    <div class="row">
+        <div class="col-6"><h1 data-bind="i18n: 'Freight Items'" style="margin-bottom: 5px;text-align: left"></h1></div>
+        <div class="col-6 text-right" data-bind="visible: window.warranty_sro.warranty().status() == 'INCOMP'">
+            <button class="action primary freight-btn" style=""
+                    data-bind="i18n: 'Add Freight', event: {click: openFreightPopup}"></button>
+            <button class="action primary fee-btn"
+                    data-bind="i18n: 'Add Import Fee', event: {click: openFeePopup}"></button>
+        </div>
+    </div>
+    <table class="data table transaction-table">
+        <thead>
+        <tr class="row">
+            <th class="col-md-2" data-bind="i18n: 'Misc Code'"></th>
+            <th class="col-md-4" data-bind="i18n: 'Description'"></th>
+            <th class="col-md-1" data-bind="i18n: 'Amount'"></th>
+            <th class="col-md-4" data-bind="i18n: 'Note'"></th>
+            <th class="col-md-1 text-center" data-bind="i18n: 'Actions'"></th>
+        </tr>
+        </thead>
+        <!--ko if: miscs().length > 0-->
+        <tbody data-bind="foreach: {data: miscs(), as: 'trans'}">
+        <tr class="row">
+            <td class="col-md-2" data-bind="text: trans.misc_code"></td>
+            <td class="col-md-4" data-bind="text: trans.description"></td>
+            <td class="col-md-1" data-bind="text: trans.amount"></td>
+            <td class="col-md-4" data-bind="text: trans.note"></td>
+            <td class="col-md-1 text-center action">
+                <p data-bind="visible: window.warranty_sro.warranty().status() == 'INCOMP'">
+                    <a data-bind="attr: {title: $t('Edit')},event: {click: $parent.editMisc.bind($parent)}">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                    <a style="margin-left: 10px;"
+                       data-bind="attr: {title: $t('Remove')},event: {click: $parent.removeMisc.bind($parent)}">
+                        <i class="fa fa-close"></i>
+                    </a>
+                </p>
+                <p data-bind="visible: window.warranty_sro.warranty().status() != 'INCOMP'">
+                    Submitted
+                </p>
+            </td>
+        </tr>
+        </tbody>
+        <!--/ko-->
+        <!--ko ifnot: miscs().length > 0-->
+        <tbody>
+        <tr>
+            <td colspan="7" data-bind="i18n: 'No Records Found'"></td>
+        </tr>
+        </tbody>
+        <!--/ko-->
+    </table>
+</div>

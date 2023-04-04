@@ -72,17 +72,17 @@ class Unit extends AbstractModel implements UnitInterface
     /**
      * @inheritDoc
      */
-    public function getDesctiption()
+    public function getDescription()
     {
-        return $this->getData(self::DESCTIPTION);
+        return $this->getData(self::DESCRIPTION);
     }
 
     /**
      * @inheritDoc
      */
-    public function setDesctiption($desctiption)
+    public function setDescription($description)
     {
-        return $this->setData(self::DESCTIPTION, $desctiption);
+        return $this->setData(self::DESCRIPTION, $description);
     }
 
     /**

@@ -11,7 +11,7 @@ interface UnitInterface
 {
 
     const ITEM = 'item';
-    const DESCTIPTION = 'desctiption';
+    const DESCRIPTION = 'description';
     const INSTALL_DATE = 'install_date';
     const ORDER_NO = 'order_no';
     const WARRANTY_START_DATE = 'warranty_start_date';
@@ -68,17 +68,17 @@ interface UnitInterface
     public function setItem($item);
 
     /**
-     * Get desctiption
+     * Get description
      * @return string|null
      */
-    public function getDesctiption();
+    public function getDescription();
 
     /**
-     * Set desctiption
-     * @param string $desctiption
+     * Set description
+     * @param string $description
      * @return \Variux\Warranty\Unit\Api\Data\UnitInterface
      */
-    public function setDesctiption($desctiption);
+    public function setDescription($description);
 
     /**
      * Get order_no

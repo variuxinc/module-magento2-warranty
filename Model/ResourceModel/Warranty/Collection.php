@@ -27,5 +27,45 @@ class Collection extends AbstractCollection
             \Variux\Warranty\Model\ResourceModel\Warranty::class
         );
     }
+
+        /**
+     * @param $data
+     * @return $this
+     */
+    public function applyFilterData($data, $type = "like")
+    {
+        if ($data && is_array($data)) {
+            $tableFields = array_keys($this->getConnection()->describeTable($this->getMainTable()));
+            foreach ($data as $key => $value) {
+                if ($value == false) {
+                    continue;
+                }
+
+                if ($key == "warranty_ticket") {
+                    $warIds = $this->getFilterTicketIds($value);
+                    $this->addFieldToFilter("warranty_id", array("in" => $warIds));
+                    continue;
+                } elseif ($key == "serial_number") {
+                    $key = "engine";
+                }
+
+                if (in_array($key, $tableFields)) {
+                    $this->addFieldToFilter($key, array($type => "%".$value."%"));
+                }
+            }
+        }
+        return $this;
+    }
+
+    /**
+     * @param $number
+     * @return array
+     */
+    public function getFilterTicketIds($number)
+    {
+        $ids = [];
+
+        return $ids;
+    }
 }
 

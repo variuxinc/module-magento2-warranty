@@ -1,0 +1,53 @@
+<div class="col-12">
+    <table class="data table transaction-table">
+        <thead>
+        <tr>
+            <th class="col" data-bind="i18n: 'Status'"></th>
+            <th class="col" data-bind="i18n: 'Ticket Detail'"></th>
+            <th class="col" data-bind="i18n: 'Transaction'"></th>
+            <th class="col" data-bind="i18n: 'Item/Code'"></th>
+            <th class="col" data-bind="i18n: 'Qty/Hrs To Bill'"></th>
+            <th class="col" data-bind="i18n: 'Price/Rate'"></th>
+            <th class="col" data-bind="i18n: 'Actions'"></th>
+        </tr>
+        </thead>
+        <!--ko if: transactions().length > 0-->
+        <tbody data-bind="foreach: {data: transactions(), as: 'trans'}">
+            <tr>
+                <td class="col" data-bind="i18n: trans.transaction_id ? 'Submited' : 'New'"></td>
+                <td class="col" data-bind="text: trans.service_order"></td>
+                <td class="col" data-bind="text: trans.type_label"></td>
+                <td class="col" data-bind="text: trans.code"></td>
+                <td class="col" data-bind="text: trans.qty"></td>
+                <td class="col" data-bind="text: trans.amount"></td>
+                <td class="col text-center action">
+                    <p>
+                        <a data-bind="attr: {title: $t('Edit')},event: {click: $parent.editTransaction.bind($parent)}">
+                            <i class="fa fa-pencil"></i>
+                        </a>
+                        <!--ko if: !trans.transaction_id-->
+                        <a style="margin-left: 10px;" data-bind="attr: {title: $t('Remove')},event: {click: $parent.removeTransaction.bind($parent)}">
+                            <i class="fa fa-close"></i>
+                        </a>
+                        <!--/ko-->
+                    </p>
+                    <!--ko if: $parent.canUploadDocument(trans.type())-->
+                    <p>
+                        <a data-bind="attr: {title: $t('Document')},event: {click: $parent.openDocuments.bind($parent)}">
+                            <i class="fa fa-file"></i>
+                        </a>
+                    </p>
+                    <!--/ko-->
+                </td>
+            </tr>
+        </tbody>
+        <!--/ko-->
+        <!--ko ifnot: transactions().length > 0-->
+        <tbody>
+        <tr>
+            <td colspan="7" data-bind="i18n: 'No Records Found'"></td>
+        </tr>
+        </tbody>
+        <!--/ko-->
+    </table>
+</div>

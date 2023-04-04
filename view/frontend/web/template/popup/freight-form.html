@@ -1,0 +1,47 @@
+<form action="#" data-bind="afterRender: makeDatePicker">
+    <!--ko if: isMissSales()-->
+    <div role="alert" class="message message-error error">
+        <span data-bind="text: getFreightRequiredSaleMsg()"></span>
+    </div>
+    <!--/ko-->
+    <fieldset class="fieldset">
+        <div class="field required">
+            <label class="label">
+                <span data-bind="i18n: 'Service Order'"></span>
+            </label>
+            <div class="control">
+                <span data-bind="text: sroNumber()"></span>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="fieldset">
+        <div class="field">
+            <label class="label">
+                <span data-bind="i18n: 'Description'"></span>
+            </label>
+            <div class="control">
+                <input hidden data-bind="value: miscFormData().misc_code" name="misc_code" type="text" class="input-text">
+                <input data-bind="value: miscFormData().description" name="description" type="text" class="input-text">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">
+                <span data-bind="i18n: 'Amount'"></span>
+            </label>
+            <div class="control">
+                <input data-bind="value: miscFormData().amount" data-validate="{'required':true, 'pattern':/^((\d+)|\d{1,3}(\,?\d{3})*)(\.\d{1,2})?$/}" name="amount" type="text" class="input-text">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">
+                <span data-bind="i18n: 'Notes'"></span>
+            </label>
+            <div class="control">
+                <textarea data-bind="value: miscFormData().note" name="note" type="text" class="input-text"></textarea>
+                <span data-bind="i18n: 'If you are submitting a 2nd freight amount on this claim, please include the sales order number in the notes filed.'"></span>
+            </div>
+        </div>
+    </fieldset>
+</form>

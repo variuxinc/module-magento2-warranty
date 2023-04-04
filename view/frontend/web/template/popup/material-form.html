@@ -1,0 +1,82 @@
+<form action="#" data-bind="afterRender: makeDatePicker">
+    <fieldset class="fieldset">
+        <div class="field required">
+            <label class="label">
+                <span data-bind="i18n: 'Service Order'"></span>
+            </label>
+            <div class="control">
+                <span data-bind="text: sroNumber()"></span>
+                <input type="hidden" name="item_id" data-bind="value: materialFormData().item_id" class="input-text">
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="fieldset">
+        <div class="field">
+            <label class="label">
+                <span data-bind="i18n: 'Item'"></span>
+            </label>
+            <div class="control">
+                <input required data-bind="value: materialFormData().item, autosuggest: {config: window.WarrantyModule.itemSuggestConfig, callback: materialItemSelect}" name="item" type="text" autocomplete="off">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">
+                <span data-bind="i18n: 'Description'"></span>
+            </label>
+            <div class="control">
+                <input data-bind="{value: materialFormData().description, attr:{readonly:!itemIsNPNBind()}}" name="description" type="text" class="input-text validate-length maximum-length-100">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">
+                <span data-bind="i18n: 'UM'"></span>
+            </label>
+            <div class="control">
+                <!-- ko ifnot: itemIsNPNBind -->
+                <input data-bind="value: materialFormData().um" data-validate="{'required': true}" name="um" type="text" class="input-text" readonly>
+                <!-- /ko -->
+                <!-- ko if: itemIsNPNBind -->
+                <select data-bind="{options: umOptions,
+                       optionsText: 'label',
+                       optionsValue: 'value',
+                       value: materialFormData().um}" data-validate="{'required': true}" name="um"></select>
+                <!-- /ko -->
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">
+                <span data-bind="i18n: 'Price'"></span>
+            </label>
+            <div class="control" style="position: absolute;">
+                <span style="position: absolute;top: 50%;left: 10px;z-index: 999;transform: translate(0,-50%);">$</span>
+                <input style="padding-left: 20px;" data-bind="{value: materialFormData().price,attr:{readonly:!itemIsNPNBind()}}" data-validate="{'required': true, 'pattern':/^((\d+)|\d{1,3}(\,?\d{3})*)(\.\d{1,2})?$/ }" name="price" type="text" class="input-text">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">
+                <span data-bind="i18n: 'Quantity'"></span>
+            </label>
+            <div class="control">
+                <input data-bind="value: materialFormData().qty_conv" data-validate="{'required':true, 'integer': true, 'pattern':/^((\d+)|\d{1,3}(\,?\d{3})*)(\.\d{1,2})?$/}" name="qty_conv" type="text" class="input-text">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">
+                <span data-bind="i18n: 'Note'"></span>
+            </label>
+            <div class="control">
+                <textarea data-bind="value: materialFormData().note" data-validate="{'required': window.warranty_sro.itemIsNPN}" name="note" type="text" class="input-text"></textarea>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label"></label>
+            <div class="control">
+                <!-- ko foreach: getRegion('warranty-message') -->
+                <!-- ko template: getTemplate() -->
+                <!-- /ko -->
+                <!--/ko-->
+            </div>
+        </div>
+    </fieldset>
+</form>

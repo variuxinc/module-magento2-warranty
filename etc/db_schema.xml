@@ -142,7 +142,7 @@
 		</constraint>
 		<column name="serial_no" nullable="false" xsi:type="varchar" comment="Serial No" length="255"/>
 		<column name="item" nullable="false" xsi:type="varchar" comment="Item" length="255"/>
-		<column name="desctiption" nullable="true" xsi:type="text" comment="Description"/>
+		<column name="description" nullable="true" xsi:type="text" comment="Description"/>
 		<column name="order_no" nullable="true" xsi:type="varchar" comment="Order no" length="255"/>
 		<column name="ship_date" nullable="true" xsi:type="datetime" comment="Ship date"/>
 		<column name="install_date" nullable="true" xsi:type="datetime" comment="Install date"/>

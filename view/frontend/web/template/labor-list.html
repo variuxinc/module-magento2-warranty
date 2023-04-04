@@ -1,0 +1,59 @@
+<div class="col-12">
+    <div class="row">
+        <div class="col-6"><h1 data-bind="i18n: 'Labor Items'"
+                               style="margin-bottom: 5px;text-align: left; display:inline-block"></h1></div>
+        <div class="col-6 text-right">
+            <a
+                data-bind="i18n: 'Work Codes', attr: {href: window.WarrantyModule.workcodepdf}" target="_blank" class="action primary btn"
+                style="vertical-align: top;border-radius: 0;margin-left: 15px;">Work Codes</a>
+            <button class="action primary labor-btn"
+                    data-bind="i18n: 'Add Labor', event: {click: openLaborPopup}, visible: window.warranty_sro.warranty().status() == 'INCOMP'"></button>
+        </div>
+    </div>
+    <table class="data table transaction-table">
+        <thead>
+        <tr class="row">
+            <th class="col-md-2" data-bind="i18n: 'Work Code'"></th>
+            <th class="col-md-2" data-bind="i18n: 'Description'"></th>
+            <th class="col-md-1" data-bind="i18n: 'Hours'"></th>
+            <th class="col-md-1" data-bind="i18n: 'Labor Rate'"></th>
+            <th class="col-md-1" data-bind="i18n: 'Total'"></th>
+            <th class="col-md-4" data-bind="i18n: 'Note'"></th>
+            <th class="col-md-1 text-center" data-bind="i18n: 'Actions'"></th>
+        </tr>
+        </thead>
+        <!--ko if: labors().length > 0-->
+        <tbody data-bind="foreach: {data: labors(), as: 'trans'}">
+        <tr class="row">
+            <td class="col-md-2" data-bind="text: trans.work_code"></td>
+            <td class="col-md-2" data-bind="text: trans.description"></td>
+            <td class="col-md-1" data-bind="text: trans.hour_worked"></td>
+            <td class="col-md-1" data-bind="text: trans.labor_hourly_rate"></td>
+            <td class="col-md-1" data-bind="text: trans.total"></td>
+            <td class="col-md-4" data-bind="text: trans.note"></td>
+            <td class="col-md-1 text-center action">
+                <p data-bind="visible: window.warranty_sro.warranty().status() == 'INCOMP'">
+                    <a data-bind="attr: {title: $t('Edit')},event: {click: $parent.editLabor.bind($parent)}">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                    <a style="margin-left: 10px;"
+                       data-bind="attr: {title: $t('Remove')},event: {click: $parent.removeLabor.bind($parent)}">
+                        <i class="fa fa-close"></i>
+                    </a>
+                </p>
+                <p data-bind="visible: window.warranty_sro.warranty().status() != 'INCOMP'">
+                    Submitted
+                </p>
+            </td>
+        </tr>
+        </tbody>
+        <!--/ko-->
+        <!--ko ifnot: labors().length > 0-->
+        <tbody>
+        <tr>
+            <td colspan="7" data-bind="i18n: 'No Records Found'"></td>
+        </tr>
+        </tbody>
+        <!--/ko-->
+    </table>
+</div>

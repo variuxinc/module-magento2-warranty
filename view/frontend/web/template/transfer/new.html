@@ -1,0 +1,400 @@
+<form id="warranty-transfer-form" action="#" data-mage-init='{"validation": {}}'
+      data-bind="afterRender: makeDatePicker" enctype="multipart/form-data">
+    <div class="row">
+        <!-- ko foreach: getRegion('warranty-message') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+    </div>
+    <fieldset class="fieldset">
+        <legend class="legend"><span>General Information</span></legend>
+        <div class="field required">
+            <label class="label" for="engine_ser_num">
+                <span data-bind="i18n: 'Engine'"></span>
+            </label>
+            <div class="control">
+                <input
+                    data-bind="value: formData().engine_ser_num, autosuggest: {config: window.InitData.engineSuggestConfig, callback: engineSelect}"
+                    type="text" class="form-control-plaintext validate-length maximum-length-30" id="engine_ser_num"
+                    name="engine_ser_num"
+                    placeholder="Engine Serial Number" autocomplete="off"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="engine_model">
+                <span data-bind="i18n: 'Engine Model'"></span>
+            </label>
+            <div class="control">
+                <input readonly data-bind="value: formData().engine_model" type="text"
+                       class="form-control-plaintext validate-length maximum-length-40"
+                       id="engine_model" name="engine_model" data-validate="{required: true}"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="engine_desc">
+                <span data-bind="i18n: 'Engine Description'"></span>
+            </label>
+            <div class="control">
+                <input readonly data-bind="value: formData().engine_desc" type="text" class="form-control-plaintext"
+                       id="engine_desc" name="engine_desc" data-validate="{required: true}"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="cur_consumer">
+                <span data-bind="i18n: 'Current Consumer'"></span>
+            </label>
+            <div class="control">
+                <input readonly data-bind="value: formData().cur_consumer" type="text" class="form-control-plaintext"
+                       id="cur_consumer" name="cur_consumer"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="submitter_name">
+                <span data-bind="i18n: 'Submitter Name'"></span>
+            </label>
+            <div class="control">
+                <input readonly data-bind="value: formData().submitter_name" type="text"
+                       class="form-control-plaintext validate-length maximum-length-60"
+                       id="submitter_name" name="submitter_name" data-validate="{required: true}"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="submitter_email">
+                <span data-bind="i18n: 'Submitter Email'"></span>
+            </label>
+            <div class="control">
+                <input readonly data-bind="value: formData().submitter_email" type="text"
+                       class="form-control-plaintext validate-length maximum-length-60"
+                       id="submitter_email" name="submitter_email" data-validate="{required: true}"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="engine_hours">
+                <span data-bind="i18n: 'Engine Hours'"></span>
+            </label>
+            <div class="control">
+                <input placeholder="Mininum value is 1" data-bind="value: formData().engine_hours" type="text"
+                       class="form-control-plaintext validate-number-range number-range-1-9007199254740991"
+                       id="engine_hours" name="engine_hours"
+                       data-validate="{'required':true, 'pattern':/^((\d+)|\d{1,3}(\,?\d{3})*)(\.\d{1,2})?$/}"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="trans_sn">
+                <span data-bind="i18n: 'Trans S/N'"></span>
+            </label>
+            <div class="control">
+                <input data-bind="value: formData().trans_sn" type="text"
+                       class="form-control-plaintext validate-length maximum-length-40" id="trans_sn"
+                       name="trans_sn"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="make_of_boat">
+                <span data-bind="i18n: 'Make of Boat'"></span>
+            </label>
+            <div class="control">
+                <input data-bind="value: formData().make_of_boat" type="text"
+                       class="form-control-plaintext validate-length maximum-length-40"
+                       id="make_of_boat" name="make_of_boat" data-validate="{required: true}"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="boat_use">
+                <span data-bind="i18n: 'How\'s the boat used'"></span>
+            </label>
+            <div class="control">
+                <input data-bind="value: formData().boat_use" type="text"
+                       class="form-control-plaintext validate-length maximum-length-40" id="boat_use"
+                       name="boat_use" data-validate="{required: true}"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="warr_start_date">
+                <span data-bind="i18n: 'Warranty Start Date'"></span>
+            </label>
+            <div class="control">
+                <input readonly data-bind="value: formData().warr_start_date" type="text" class="form-control-plaintext"
+                       id="warr_start_date" name="warr_start_date"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="warr_end_date">
+                <span data-bind="i18n: 'Warranty End Date'"></span>
+            </label>
+            <div class="control">
+                <input readonly data-bind="value: formData().warr_end_date" type="text" class="form-control-plaintext"
+                       id="warr_end_date" name="warr_end_date"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="inspection_date">
+                <span data-bind="i18n: 'Date of Inspection'"></span>
+            </label>
+            <div class="control">
+                <input data-validate="{required: true}" data-bind="value: formData().inspection_date" type="text"
+                       class="form-control-plaintext"
+                       id="inspection_date" name="inspection_date" data-type="date"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="hull_id">
+                <span data-bind="i18n: 'Hull ID'"></span>
+            </label>
+            <div class="control">
+                <input data-validate="{required: true}" data-bind="value: formData().hull_id" type="text"
+                       class="form-control-plaintext validate-length maximum-length-40" id="hull_id" name="hull_id"/>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="fieldset">
+        <legend class="legend"><span>Engine compression</span></legend>
+        <div class="field required">
+            <label class="label" for="eng_comp_1">
+                <span data-bind="i18n: 'Engine Compression 1'"></span>
+            </label>
+            <div class="control">
+                <input data-validate="{'validate-number': true, 'required': true, 'validate-greater-than-zero':true}"
+                       data-bind="value: formData().eng_comp_1" type="text"
+                       class="form-control-plaintext validate-length maximum-length-3" id="eng_comp_1"
+                       name="eng_comp_1"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="eng_comp_2">
+                <span data-bind="i18n: 'Engine Compression 2'"></span>
+            </label>
+            <div class="control">
+                <input data-validate="{'validate-number': true, 'required': true, 'validate-greater-than-zero':true}"
+                       data-bind="value: formData().eng_comp_2" type="text"
+                       class="form-control-plaintext validate-length maximum-length-3"
+                       id="eng_comp_2" name="eng_comp_2"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="eng_comp_3">
+                <span data-bind="i18n: 'Engine Compression 3'"></span>
+            </label>
+            <div class="control">
+                <input data-validate="{'validate-number': true, 'required': true, 'validate-greater-than-zero':true}"
+                       data-bind="value: formData().eng_comp_3" type="text"
+                       class="form-control-plaintext validate-length maximum-length-3"
+                       id="eng_comp_3" name="eng_comp_3"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="eng_comp_4">
+                <span data-bind="i18n: 'Engine Compression 4'"></span>
+            </label>
+            <div class="control">
+                <input data-validate="{'validate-number': true, 'required': true, 'validate-greater-than-zero':true}"
+                       data-bind="value: formData().eng_comp_4" type="text"
+                       class="form-control-plaintext validate-length maximum-length-3"
+                       id="eng_comp_4" name="eng_comp_4"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="eng_comp_5">
+                <span data-bind="i18n: 'Engine Compression 5'"></span>
+            </label>
+            <div class="control">
+                <input data-validate="{'validate-number': true, 'required': true, 'validate-greater-than-zero':true}"
+                       data-bind="value: formData().eng_comp_5" type="text"
+                       class="form-control-plaintext validate-length maximum-length-3"
+                       id="eng_comp_5" name="eng_comp_5"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="eng_comp_6">
+                <span data-bind="i18n: 'Engine Compression 6'"></span>
+            </label>
+            <div class="control">
+                <input data-validate="{'validate-number': true, 'required': true, 'validate-greater-than-zero':true}"
+                       data-bind="value: formData().eng_comp_6" type="text"
+                       class="form-control-plaintext validate-length maximum-length-3"
+                       id="eng_comp_6" name="eng_comp_6"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="eng_comp_7">
+                <span data-bind="i18n: 'Engine Compression 7'"></span>
+            </label>
+            <div class="control">
+                <input data-validate="{'validate-number': true, 'required': true, 'validate-greater-than-zero':true}"
+                       data-bind="value: formData().eng_comp_7" type="text"
+                       class="form-control-plaintext validate-length maximum-length-3"
+                       id="eng_comp_7" name="eng_comp_7"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="eng_comp_8">
+                <span data-bind="i18n: 'Engine Compression 8'"></span>
+            </label>
+            <div class="control">
+                <input data-validate="{'validate-number': true, 'required': true, 'validate-greater-than-zero':true}"
+                       data-bind="value: formData().eng_comp_8" type="text"
+                       class="form-control-plaintext validate-length maximum-length-3"
+                       id="eng_comp_8" name="eng_comp_8"/>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="fieldset">
+        <legend class="legend"><span>Owner information</span></legend>
+        <div class="field required">
+            <label class="label" for="name">
+                <span data-bind="i18n: 'Name'"></span>
+            </label>
+            <div class="control">
+                <input data-validate="{required: true}" data-bind="value: formData().name" type="text"
+                       class="form-control-plaintext validate-length maximum-length-60" id="name" name="name"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="email">
+                <span data-bind="i18n: 'Email'"></span>
+            </label>
+            <div class="control">
+                <input data-validate="{required: true}" data-bind="value: formData().email" type="text"
+                       class="form-control-plaintext validate-length maximum-length-60" id="email" name="email"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="phone">
+                <span data-bind="i18n: 'Phone'"></span>
+            </label>
+            <div class="control">
+                <input data-validate="{required: true}" data-bind="value: formData().phone" type="text"
+                       class="form-control-plaintext validate-length maximum-length-25" id="phone" name="phone"/>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label" for="phone_ext">
+                <span data-bind="i18n: 'Phone Ext'"></span>
+            </label>
+            <div class="control">
+                <input data-bind="value: formData().phone_ext" type="text"
+                       class="form-control-plaintext validate-length maximum-length-25"
+                       id="phone_ext" name="phone_ext"/>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label" for="fax_num">
+                <span data-bind="i18n: 'Fax'"></span>
+            </label>
+            <div class="control">
+                <input data-bind="value: formData().fax_num" type="text"
+                       class="form-control-plaintext validate-length maximum-length-25" id="fax_num" name="fax_num"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="sale_date">
+                <span data-bind="i18n: 'Sale Date'"></span>
+            </label>
+            <div class="control">
+                <input data-validate="{required: true}" data-bind="value: formData().sale_date" type="text"
+                       class="form-control-plaintext" id="sale_date" name="sale_date"
+                       data-type="date"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="addr_1">
+                <span data-bind="i18n: 'Address 1'"></span>
+            </label>
+            <div class="control">
+                <input data-validate="{required: true}" data-bind="value: formData().addr_1" type="text"
+                       class="form-control-plaintext validate-length maximum-length-50" id="addr_1" name="addr_1"/>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label" for="addr_2">
+                <span data-bind="i18n: 'Address 2'"></span>
+            </label>
+            <div class="control">
+                <input data-bind="value: formData().addr_2" type="text"
+                       class="form-control-plaintext validate-length maximum-length-50" id="addr_2" name="addr_2"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="city">
+                <span data-bind="i18n: 'City'"></span>
+            </label>
+            <div class="control">
+                <input data-validate="{required: true}" data-bind="value: formData().city" type="text"
+                       class="form-control-plaintext validate-length maximum-length-30" id="city" name="city"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="state">
+                <span data-bind="i18n: 'State'"></span>
+            </label>
+            <div class="control">
+                <input data-validate="{required: true}" data-bind="value: formData().state" type="text"
+                       class="form-control-plaintext validate-length maximum-length-5" id="state" name="state"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="zip">
+                <span data-bind="i18n: 'Zip code'"></span>
+            </label>
+            <div class="control">
+                <input data-validate="{required: true}" data-bind="value: formData().zip" type="text"
+                       class="form-control-plaintext validate-length maximum-length-10" id="zip" name="zip"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="country">
+                <span data-bind="i18n: 'Country'"></span>
+            </label>
+            <div class="control">
+                <input data-validate="{required: true}" data-bind="value: formData().country" type="text"
+                       class="form-control-plaintext validate-length maximum-length-30" id="country" name="country"/>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="fieldset">
+        <legend class="legend"><span>Document Upload</span></legend>
+        <div class="field required">
+            <label class="label">
+                <span data-bind="i18n: 'Files'"></span>
+            </label>
+            <div class="control">
+                <input data-bind="value: ''" data-validate="{'required-file': true}" name="files[]"
+                       type="file"
+                       class="input-text" />
+                <input data-bind="value: ''" name="files[]" type="file" class="input-text">
+                <input data-bind="value: ''" name="files[]" type="file" class="input-text">
+                <input data-bind="value: ''" name="files[]" type="file" class="input-text">
+                <input data-bind="value: ''" name="files[]" type="file" class="input-text">
+                <input data-bind="value: ''" name="files[]" type="file" class="input-text">
+                <input data-bind="value: ''" name="files[]" type="file" class="input-text">
+                <p>Please upload the Bill of Sale, 5 photos (1 side for each side of engine and the top), and diacom
+                    recording<br/>REC,PDF,PNG,JPG,MP4
+                    and MOV up to 20MB, max 7 files</p>
+            </div>
+        </div>
+    </fieldset>
+    <div class="row">
+        <!-- ko foreach: getRegion('warranty-message') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+    </div>
+    <div style="font-size: 2rem" class="row display-4 text-center">
+        <p style="width:100%">Indmar reserves the rights to request any further form information if needed for proof of
+            boat condition</p>
+        <p style="width:100%; color:red">By clicking submit you are agreeing to the $600 warranty transfer application
+            fee if approved</p>
+        <p style="width:100%; color:red; font-weight: 600;">Transfer is not complete until bill of sale and payment is
+            received. Failure to upload all of the required documents can result in a rejected or delayed approval.</p>
+        <p style="width:100%; color:red; font-weight: 600;">For any questions, email warranty@indmar.com.</p>
+    </div>
+    <div class="row" style="padding: 10px;" data-bind="visible: showProgressBar">
+        <div class="progress" style="width: 100%; height:15px">
+            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" data-bind="text : progressBarValue()  + '%', style: { width: progressBarValue()  + '%', 'font-size': '15px' }"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col offset-lg-6 col-lg-6 text-right">
+            <button class="action primary claim-btn"
+                    data-bind="i18n: 'Submit', click:submitWarrantyTransferForm"></button>
+        </div>
+    </div>
+</form>
