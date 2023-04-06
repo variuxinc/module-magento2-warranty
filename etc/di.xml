@@ -22,6 +22,7 @@
 				<item name="variux_warranty_unit_listing_data_source" xsi:type="string">Variux\Warranty\Model\ResourceModel\Unit\Grid\Collection</item>
 				<item name="variux_warranty_unitreg_listing_data_source" xsi:type="string">Variux\Warranty\Model\ResourceModel\UnitReg\Grid\Collection</item>
 				<item name="variux_warranty_warrantytransfer_listing_data_source" xsi:type="string">Variux\Warranty\Model\ResourceModel\WarrantyTransfer\Grid\Collection</item>
+				<item name="variux_warranty_partner_listing_data_source" xsi:type="string">Variux\Warranty\Model\ResourceModel\Partner\Grid\Collection</item>
 			</argument>
 		</arguments>
 	</type>
@@ -105,6 +106,16 @@
 		<arguments>
 			<argument name="mainTable" xsi:type="string">variux_warranty_warrantytransfer</argument>
 			<argument name="resourceModel" xsi:type="string">Variux\Warranty\Model\ResourceModel\WarrantyTransfer\Collection</argument>
+		</arguments>
+	</virtualType>
+
+	<preference for="Variux\Warranty\Api\PartnerRepositoryInterface" type="Variux\Warranty\Model\PartnerRepository"/>
+	<preference for="Variux\Warranty\Api\Data\PartnerInterface" type="Variux\Warranty\Model\Partner"/>
+	<preference for="Variux\Warranty\Api\Data\PartnerSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Variux\Warranty\Model\ResourceModel\Partner\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">variux_warranty_partner</argument>
+			<argument name="resourceModel" xsi:type="string">Variux\Warranty\Model\ResourceModel\Partner\Collection</argument>
 		</arguments>
 	</virtualType>
 </config>

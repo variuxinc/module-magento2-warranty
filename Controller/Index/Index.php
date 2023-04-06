@@ -42,7 +42,6 @@ class Index extends \Variux\Warranty\Controller\AbstractAction implements HttpGe
         \Magento\Company\Api\CompanyManagementInterface $companyManagement
     ) {
         parent::__construct($context, $companyContext, $logger);
-        $this->companyContext = $companyContext;
         $this->companyManagement = $companyManagement;
     }
 

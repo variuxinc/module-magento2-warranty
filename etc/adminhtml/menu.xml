@@ -12,5 +12,6 @@
 		<add id="Variux_Warranty::variux_warranty_unit" title="Unit" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux_Warranty::top_level" action="variux_warranty/unit/index"/>
 		<add id="Variux_Warranty::variux_warranty_unitreg" title="Unit Registration" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux_Warranty::top_level" action="variux_warranty/unitreg/index"/>
 		<add id="Variux_Warranty::variux_warranty_warrantytransfer" title="Warranty Transfer" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux_Warranty::top_level" action="variux_warranty/warrantytransfer/index"/>
+		<add id="Variux_Warranty::variux_warranty_partner" title="Partner" module="Variux_Warranty" sortOrder="9999" resource="Magento_Backend::content" parent="Variux_Warranty::top_level" action="variux_warranty/partner/index"/>
 	</menu>
 </config>

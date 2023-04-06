@@ -17,6 +17,7 @@ use Variux\Warranty\Api\Data\WarrantySearchResultsInterfaceFactory;
 use Variux\Warranty\Api\WarrantyRepositoryInterface;
 use Variux\Warranty\Model\ResourceModel\Warranty as ResourceWarranty;
 use Variux\Warranty\Model\ResourceModel\Warranty\CollectionFactory as WarrantyCollectionFactory;
+use Magento\Store\Model\StoreManagerInterface;
 
 class WarrantyRepository implements WarrantyRepositoryInterface
 {
@@ -46,6 +47,16 @@ class WarrantyRepository implements WarrantyRepositoryInterface
      */
     protected $warrantyCollectionFactory;
 
+    /**
+     * @var \Magento\Customer\Model\Session
+     */
+    protected $customerSession;
+
+    /**
+     * @var StoreManagerInterface
+     */
+    private $storeManager;
+
 
     /**
      * @param ResourceWarranty $resource
@@ -53,19 +64,25 @@ class WarrantyRepository implements WarrantyRepositoryInterface
      * @param WarrantyCollectionFactory $warrantyCollectionFactory
      * @param WarrantySearchResultsInterfaceFactory $searchResultsFactory
      * @param CollectionProcessorInterface $collectionProcessor
+     * @param \Magento\Customer\Model\Session $customerSession
+     * @param StoreManagerInterface $storeManager
      */
     public function __construct(
         ResourceWarranty $resource,
         WarrantyInterfaceFactory $warrantyFactory,
         WarrantyCollectionFactory $warrantyCollectionFactory,
         WarrantySearchResultsInterfaceFactory $searchResultsFactory,
-        CollectionProcessorInterface $collectionProcessor
+        CollectionProcessorInterface $collectionProcessor,
+        \Magento\Customer\Model\Session $customerSession,
+        StoreManagerInterface $storeManager
     ) {
         $this->resource = $resource;
         $this->warrantyFactory = $warrantyFactory;
         $this->warrantyCollectionFactory = $warrantyCollectionFactory;
         $this->searchResultsFactory = $searchResultsFactory;
         $this->collectionProcessor = $collectionProcessor;
+        $this->customerSession = $customerSession;
+        $this->storeManager = $storeManager;
     }
 
     /**
@@ -74,6 +91,8 @@ class WarrantyRepository implements WarrantyRepositoryInterface
     public function save(WarrantyInterface $warranty)
     {
         try {
+            $this->processCustomerData($warranty);
+            $this->processStatus($warranty);
             $this->resource->save($warranty);
         } catch (\Exception $exception) {
             throw new CouldNotSaveException(__(
@@ -104,17 +123,17 @@ class WarrantyRepository implements WarrantyRepositoryInterface
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
     ) {
         $collection = $this->warrantyCollectionFactory->create();
-        
+
         $this->collectionProcessor->process($criteria, $collection);
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
-        
+
         $items = [];
         foreach ($collection as $model) {
             $items[] = $model;
         }
-        
+
         $searchResults->setItems($items);
         $searchResults->setTotalCount($collection->getSize());
         return $searchResults;
@@ -144,6 +163,42 @@ class WarrantyRepository implements WarrantyRepositoryInterface
     public function deleteById($warrantyId)
     {
         return $this->delete($this->get($warrantyId));
+    }
+
+    public function processStatus(\Variux\Warranty\Model\Warranty $warranty)
+    {
+        if (!$warranty->getId()) {
+            $warranty->setStatus(\Variux\Warranty\Model\Warranty::STATUS_ARRAY["INCOMP"]["key"]);
+        }
+    }
+
+    public function processCustomerData(\Variux\Warranty\Model\Warranty $warranty)
+    {
+        $customerId = $this->customerSession->getCustomerId();
+        if (!$warranty->getCustomerId()) {
+            $warranty->setCustomerId($customerId);
+        }
+
+        if (!$warranty->getStoreId()) {
+            $warranty->setStoreId($this->storeManager->getStore()->getId());
+        }
+    }
+
+    /**
+     * Load Warranty data by given Warranty Identity
+     *
+     * @param string $warrantyId
+     * @return Warranty
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
+    public function getById($warrantyId)
+    {
+        $model = $this->warrantyFactory->create();
+        $this->resource->load($model, $warrantyId);
+        if (!$model->getId()) {
+            throw new NoSuchEntityException(__('The warranty with the "%1" ID doesn\'t exist.', $warrantyId));
+        }
+        return $model;
     }
 }
 

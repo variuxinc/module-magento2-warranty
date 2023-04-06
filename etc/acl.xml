@@ -63,6 +63,12 @@
 					<resource id="Variux_Warranty::WarrantyTransfer_update" title="Update WarrantyTransfer" sortOrder="30"/>
 					<resource id="Variux_Warranty::WarrantyTransfer_view" title="View WarrantyTransfer" sortOrder="40"/>
 				</resource>
+				<resource id="Variux_Warranty::Partner" title="Partner" sortOrder="10">
+					<resource id="Variux_Warranty::Partner_save" title="Save Partner" sortOrder="10"/>
+					<resource id="Variux_Warranty::Partner_delete" title="Delete Partner" sortOrder="20"/>
+					<resource id="Variux_Warranty::Partner_update" title="Update Partner" sortOrder="30"/>
+					<resource id="Variux_Warranty::Partner_view" title="View Partner" sortOrder="40"/>
+				</resource>
 			</resource>
 		</resources>
 	</acl>

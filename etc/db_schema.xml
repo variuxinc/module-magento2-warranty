@@ -229,4 +229,17 @@
 		<column name="created_at" nullable="false" xsi:type="timestamp" comment="Created at" default="CURRENT_TIMESTAMP"/>
 		<column name="updated_at" nullable="false" xsi:type="timestamp" comment="Updated at" default="CURRENT_TIMESTAMP" on_update="true"/>
 	</table>
+
+	<table name="variux_warranty_partner" resource="default" engine="innodb" comment="variux_warranty_partner Table">
+		<column xsi:type="int" name="partner_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="partner_id"/>
+		</constraint>
+		<column name="partner_num" nullable="false" xsi:type="varchar" comment="Partner Number" length="255"/>
+		<column name="company_id" nullable="false" xsi:type="int" comment="Company Id" identity="false"/>
+		<column name="name" nullable="false" xsi:type="varchar" comment="Partner Name" length="255"/>
+		<column name="labor_rate" nullable="false" xsi:type="decimal" comment="Labor hourly rate" precision="12" scale="4"/>
+		<column name="created_at" nullable="false" xsi:type="timestamp" comment="Created at" default="CURRENT_TIMESTAMP"/>
+		<column name="updated_at" nullable="false" xsi:type="timestamp" comment="Updated at" default="CURRENT_TIMESTAMP" on_update="true"/>
+	</table>
 </schema>

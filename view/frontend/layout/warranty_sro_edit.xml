@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <update handle="warranty_layout"/>
+    <body>
+        <referenceContainer name="after.body.start">
+            <block class="Magento\Framework\View\Element\Template" name="autosuggest.item.template" as="autosuggest.item.template"
+                   template="Variux_Warranty::suggestion/item.phtml"/>
+            <block class="Magento\Framework\View\Element\Template" name="autosuggest.workcode.template" as="autosuggest.workcode.template"
+                   template="Variux_Warranty::suggestion/workcode.phtml"/>
+        </referenceContainer>
+
+        <referenceContainer name="content">
+            <block class="Variux\Warranty\Block\Sro\Edit"
+                   name="warranty_sro" template="Variux_Warranty::sro.phtml" cacheable="false" />
+        </referenceContainer>
+    </body>
+</page>

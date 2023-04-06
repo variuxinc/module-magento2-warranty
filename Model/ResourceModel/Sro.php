@@ -19,5 +19,63 @@ class Sro extends AbstractDb
     {
         $this->_init('variux_warranty_sro', 'sro_id');
     }
+
+     /**
+     * @param \Variux\Warranty\Model\Sro $model
+     * @param $number
+     * @return $this
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function loadByNumber(\Variux\Warranty\Model\Sro $model, $number, $conditionType = false)
+    {
+        $conditionString = "";
+        switch ($conditionType) {
+            case "like":
+                $conditionString = 'sro_num like "'.$number.'"';
+                break;
+            case "%like":
+                $conditionString = 'sro_num like "%'.$number.'%"';
+                break;
+            default :
+                $conditionString = 'sro_num = "'.$number.'"';
+                break;
+        }
+        $connection = $this->getConnection();
+        $select = $connection->select()->from(
+            $this->getMainTable()
+        )->where($conditionString);
+
+        $id = $connection->fetchOne($select);
+        if ($id) {
+            $this->load($model, $id);
+        } else {
+            $model->setData([]);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param \Variux\Warranty\Model\Sro $model
+     * @param $warId
+     * @return $this
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function loadByWarrantyId(\Variux\Warranty\Model\Sro $model, $warId)
+    {
+        $connection = $this->getConnection();
+        $select = $connection->select()->from(
+            $this->getMainTable()
+        )->where('warranty_id = "'.$warId.'"');
+
+        $id = $connection->fetchOne($select);
+        if ($id) {
+            $this->load($model, $id);
+        } else {
+            $model->setData([]);
+        }
+
+        return $this;
+    }
 }
 

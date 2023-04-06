@@ -1,0 +1,17 @@
+<div class="warranty-container">
+    <div class="warranty-sro-container" data-bind="scope: 'warranty-sro'">
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    </div>
+
+    <script type="text/javascript">
+        window.WarrantyModule = <?= /* @noEscape */ $block->getJsonData() ?>;
+    </script>
+
+    <script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+            }
+        }
+    </script>
+</div>

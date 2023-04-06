@@ -11,8 +11,7 @@ define(
         'mage/translate',
         'mage/calendar',
         'Variux_Warranty/js/lib/ko-autosuggest',
-        'mage/validation',
-        'ForaStudio_ToastMessage/js/fora-toast-message'
+        'mage/validation'
     ], function ($, ko, Component, Api, Confirmation, modal, helper, messageList) {
         'use strict';
 

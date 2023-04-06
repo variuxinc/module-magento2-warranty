@@ -12,13 +12,215 @@ use Variux\Warranty\Api\Data\WarrantyInterface;
 
 class Warranty extends AbstractModel implements WarrantyInterface
 {
+    protected $_eventPrefix = 'variux_warranty';
 
+    const STATUS_ARRAY = array(
+        'CD' =>
+            array(
+                'key' => 'CD',
+                'value' => 'Claim Denied',
+            ),
+        'CMIssued' =>
+            array(
+                'key' => 'CMIssued',
+                'value' => 'Credit Memo Issued',
+            ),
+        'CSAprv' =>
+            array(
+                'key' => 'CSAprv',
+                'value' => 'Customer Service Approval',
+            ),
+        'CSREVIEW' =>
+            array(
+                'key' => 'CSREVIEW',
+                'value' => 'CUSTOMER SERVICE REVIEW',
+            ),
+        'EngInpt' =>
+            array(
+                'key' => 'EngInpt',
+                'value' => 'Engineering  Input',
+            ),
+        'INCOMP' =>
+            array(
+                'key' => 'INCOMP',
+                'value' => 'Incomplete Claim',
+            ),
+        'Info' =>
+            array(
+                'key' => 'Info',
+                'value' => 'Memo Info Only',
+            ),
+        'InProc' =>
+            array(
+                'key' => 'InProc',
+                'value' => 'In Process',
+            ),
+        'JCRev' =>
+            array(
+                'key' => 'JCRev',
+                'value' => 'Joe Cutberth Review',
+            ),
+        'JTRev' =>
+            array(
+                'key' => 'JTRev',
+                'value' => 'John Todd Review',
+            ),
+        'LERev' =>
+            array(
+                'key' => 'LERev',
+                'value' => 'Larry Engelbert Review',
+            ),
+        'MgmtAprv' =>
+            array(
+                'key' => 'MgmtAprv',
+                'value' => 'Management Approval',
+            ),
+        'NewCont' =>
+            array(
+                'key' => 'NewCont',
+                'value' => 'Submitted',
+            ),
+        'PrtsInsptd' =>
+            array(
+                'key' => 'PrtsInsptd',
+                'value' => 'Parts Inspected',
+            ),
+        'PrtsRtnd' =>
+            array(
+                'key' => 'PrtsRtnd',
+                'value' => 'Parts Returned',
+            ),
+        'SOEntered' =>
+            array(
+                'key' => 'SOEntered',
+                'value' => 'Sales Order Entered',
+            ),
+        'TRBLRESOLV' =>
+            array(
+                'key' => 'TRBLRESOLV',
+                'value' => 'Trouble Resolved',
+            ),
+        'TRBLSHOOT' =>
+            array(
+                'key' => 'TRBLSHOOT',
+                'value' => 'Trouble Shooting',
+            ),
+        'VS-CMPLT' =>
+            array(
+                'key' => 'VS-CMPLT',
+                'value' => 'VENDOR SHIP COMPLETED',
+            ),
+        'VS-Denied' =>
+            array(
+                'key' => 'VS-Denied',
+                'value' => 'Vendor Ship Denied',
+            ),
+        'VS-INPROC' =>
+            array(
+                'key' => 'VS-INPROC',
+                'value' => 'VENDOR SHIP IN PROCESS',
+            ),
+        'VS-Ship' =>
+            array(
+                'key' => 'VS-Ship',
+                'value' => 'Vendor Return Shipped',
+            ),
+        'WtngPrts' =>
+            array(
+                'key' => 'WtngPrts',
+                'value' => 'Waiting for Parts',
+            ),
+    );
     /**
      * @inheritDoc
      */
     public function _construct()
     {
         $this->_init(\Variux\Warranty\Model\ResourceModel\Warranty::class);
+    }
+
+    /**
+     * @var \Magento\Store\Model\StoreManagerInterface
+     */
+    protected $storeManager;
+
+    protected $sroFactory;
+
+    public function __construct(
+        \Magento\Framework\Model\Context $context,
+        \Magento\Framework\Registry $registry,
+        \Variux\Warranty\Model\ResourceModel\Warranty $resource,
+        \Variux\Warranty\Model\ResourceModel\Warranty\Collection $resourceCollection,
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
+        \Variux\Warranty\Model\SroFactory $sroFactory,
+        array $data = []
+    )
+    {
+        parent::__construct($context, $registry, $resource, $resourceCollection, $data);
+        $this->storeManager = $storeManager;
+        $this->sroFactory = $sroFactory;
+    }
+
+    /**
+     * @return array
+     */
+    public function getStatusOptionArray()
+    {
+        return $this::STATUS_ARRAY;
+    }
+
+    public function getStatusString()
+    {
+        return $this->getStatusOptionArray()[$this->getStatus()]["value"];
+    }
+
+    public function isSubmitted()
+    {
+        return $this->getStatus() != \Variux\Warranty\Model\Warranty::STATUS_ARRAY["INCOMP"]["key"];
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function processSave()
+    {
+        if ($this->isCreateNew()) {
+            $this->setStatus(self::STATUS_ARRAY["INCOMP"]["key"]);
+
+            if (!$this->getStoreId()) {
+                $this->setStoreId($this->storeManager->getStore()->getId());
+            }
+        }
+
+        $this->save();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCreateNew()
+    {
+        return (bool)!$this->getId() && !$this->getWarrantyId();
+    }
+
+    /**
+     * @return Sro
+     */
+    public function getSro()
+    {
+        return $this->sroFactory->create()->loadByWarrantyId($this->getId());
+    }
+
+    /**
+     * @return bool|\Magento\Framework\DataObject
+     */
+    public function hasSro()
+    {
+        $sro = $this->getSro();
+        if ($sro->hasData()) {
+            return $sro;
+        }
+        return false;
     }
 
     /**

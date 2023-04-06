@@ -12,6 +12,10 @@ use Variux\Warranty\Api\Data\SroInterface;
 
 class Sro extends AbstractModel implements SroInterface
 {
+    protected $laborCollectionFactory;
+    protected $materialCollectionFactory;
+    protected $miscCollectionFactory;
+    protected $docsCollectionFactory;
 
     /**
      * @inheritDoc
@@ -19,6 +23,131 @@ class Sro extends AbstractModel implements SroInterface
     public function _construct()
     {
         $this->_init(\Variux\Warranty\Model\ResourceModel\Sro::class);
+    }
+
+    public function __construct(
+        \Magento\Framework\Model\Context $context,
+        \Magento\Framework\Registry $registry,
+        \Variux\Warranty\Model\ResourceModel\Sro $resource,
+        \Variux\Warranty\Model\ResourceModel\Sro\Collection $resourceCollection,
+        \Variux\Warranty\Model\ResourceModel\SroLabor\CollectionFactory $laborCollectionFactory,
+        \Variux\Warranty\Model\ResourceModel\SroMaterial\CollectionFactory $materialCollectionFactory,
+        \Variux\Warranty\Model\ResourceModel\SroMisc\CollectionFactory $miscCollectionFactory,
+        \Variux\Warranty\Model\ResourceModel\SroDocument\CollectionFactory $docsCollectionFactory,
+        array $data = []
+    ) {
+        parent::__construct($context, $registry, $resource, $resourceCollection, $data);
+        $this->laborCollectionFactory = $laborCollectionFactory;
+        $this->materialCollectionFactory = $materialCollectionFactory;
+        $this->miscCollectionFactory = $miscCollectionFactory;
+        $this->docsCollectionFactory = $docsCollectionFactory;
+    }
+
+        /**
+     * @param $number
+     * @param bool $conditionType
+     * @return $this
+     */
+    public function loadByNumber($number, $conditionType = false)
+    {
+        $this->getResource()->loadByNumber($this, $number, $conditionType = false);
+        return $this;
+    }
+
+    /**
+     * @param $warId
+     * @return $this
+     */
+    public function loadByWarrantyId($warId)
+    {
+        $this->getResource()->loadByWarrantyId($this, $warId);
+        return $this;
+    }
+
+    /**
+     * @return ResourceModel\Sro\Material\Collection
+     */
+    public function getMaterialCollection()
+    {
+        return $this->materialCollectionFactory->create()
+            ->addFieldToFilter("sro_id", array("eq" => $this->getId()));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLaborCollection()
+    {
+        return $this->laborCollectionFactory->create()
+            ->addFieldToFilter("sro_id", array("eq" => $this->getId()));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMiscCollection()
+    {
+        return $this->miscCollectionFactory->create()
+            ->addFieldToFilter("sro_id", array("eq" => $this->getId()));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDocumentCollection()
+    {
+        return $this->docsCollectionFactory->create()
+            ->addFieldToFilter("sro_id", array("eq" => $this->getId()));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLaborsData()
+    {
+        $data = [];
+        foreach ($this->getLaborCollection() as $labor) {
+            $data[] = $labor->getData();
+        }
+        return $data;
+    }
+
+    /**
+     * @return array
+     */
+    public function getMaterialsData()
+    {
+        $data = [];
+        foreach ($this->getMaterialCollection() as $material) {
+            $data[] = $material->getData();
+        }
+        return $data;
+    }
+
+    /**
+     * @return array
+     */
+    public function getMiscsData()
+    {
+        $data = [];
+        foreach ($this->getMiscCollection() as $misc) {
+            $miscData = $misc->getData();
+            $data[] = $miscData;
+        }
+        return $data;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDocsData()
+    {
+        $data = [];
+        foreach ($this->getDocumentCollection() as $misc) {
+            $miscData = $misc->getData();
+            $data[] = $miscData;
+        }
+        return $data;
     }
 
     /**

@@ -1,0 +1,225 @@
+<div class="warranty-container">
+    <div class="warranty-wrapper">
+        <form id="warranty-form" class="form" method="post" data-mage-init='{"validation": {}}' action="<?= $block->escapeUrl($block->getUrl("warranty/index/save")) ?>">
+            <?= $block->getBlockHtml('formkey') ?>
+            <input type="hidden" name="warranty_id">
+            <fieldset class="fieldset info">
+                <legend class="legend">
+                    <span><?= $block->escapeHtml(__("Warranty Information")) ?></span>
+                </legend>
+                <br>
+                <div class="field required">
+                    <label class="label" for="engine">
+                        <span><?= $block->escapeHtml(__("Engine")) ?></span>
+                    </label>
+                    <div class="control">
+                        <input <?php echo $block->isWarrantySubmitted() ? "readonly" : "" ?> type="text" id="engine" name="engine" value="" title="<?= $block->escapeHtml(__("Engine")) ?>" class="input-text validate-length maximum-length-30" autocomplete="off">
+                    </div>
+                </div>
+                <div class="field full required">
+                    <label class="label" for="description">
+                        <span><?= $block->escapeHtml(__("Description")) ?></span>
+                    </label>
+                    <div class="control">
+                        <input readonly type="text" id="description" name="description" value="" title="<?= $block->escapeHtml(__("Description")) ?>" class="input-text"  data-validate="{required: true}">
+                    </div>
+                </div>
+                <div class="field required">
+                    <label class="label" for="item_sku">
+                        <span><?= $block->escapeHtml(__("Item")) ?></span>
+                    </label>
+                    <div class="control">
+                        <input readonly autocomplete="off" type="text" id="item_sku" name="item_sku" value="" title="<?= $block->escapeHtml(__("Item")) ?>" class="input-text validate-length maximum-length-30"  data-validate="{required: true}">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label" for="boat_owner_name">
+                        <span><?= $block->escapeHtml(__("Boat Owner Name")) ?></span>
+                    </label>
+                    <div class="control">
+                        <input readonly type="text" id="boat_owner_name" name="boat_owner_name" value="" title="<?= $block->escapeHtml(__("Boat Owner Name")) ?>" class="input-text validate-length maximum-length-60" >
+                    </div>
+                </div>
+                <div class="field smallbox">
+                    <label class="label" for="reference">
+                        <span><?= $block->escapeHtml(__("Dealer Claim/Reference #")) ?></span>
+                    </label>
+                    <div class="control">
+                        <input <?php echo $block->isWarrantySubmitted() ? "readonly" : "" ?> type="text" id="reference_number" name="reference_number" value="" title="<?= $block->escapeHtml(__("Boat Owner Name")) ?>" class="input-text validate-length maximum-length-25" >
+                    </div>
+                </div>
+                <div class="field smallbox required">
+                    <label class="label" for="date_of_failure">
+                        <span><?= $block->escapeHtml(__("Date of Failure")) ?></span>
+                    </label>
+                    <div class="control">
+                        <?php if(!$block->isWarrantySubmitted()) {?>
+                            <?= $block->getDateHtml("date_of_failure"); ?>
+                        <?php } else { ?>
+                            <input readonly type="text" id="date_of_failure" name="date_of_failure" value="" title="<?= $block->escapeHtml(__("Date of Failure")) ?>" class="input-text" >
+                        <?php } ?>
+                    </div>
+                </div>
+                <div class="field smallbox required">
+                    <label class="label" for="date_of_repair">
+                        <span><?= $block->escapeHtml(__("Date of Repair")) ?></span>
+                    </label>
+                    <div class="control">
+                        <?php if(!$block->isWarrantySubmitted()) {?>
+                            <?= $block->getDateHtml("date_of_repair"); ?>
+                        <?php } else { ?>
+                            <input readonly type="text" id="date_of_repair" name="date_of_repair" value="" title="<?= $block->escapeHtml(__("Date of Repair")) ?>" class="input-text" >
+                        <?php } ?>
+                    </div>
+                </div>
+                <div class="field smallbox required">
+                    <label class="label" for="engine_hour">
+                        <span><?= $block->escapeHtml(__("Engine Hours")) ?></span>
+                    </label>
+                    <div class="control">
+                        <input placeholder="Mininum value is 1" <?php echo $block->isWarrantySubmitted() ? "readonly" : "" ?> type="text" id="engine_hour" name="engine_hour" value="" title="<?= $block->escapeHtml(__("Engine Hours")) ?>" class="input-text validate-number-range number-range-1-9007199254740991"  data-validate="{required: true, 'pattern':/^((\d+)|\d{1,3}(\,?\d{3})*)(\.\d{1,2})?$/}">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="fieldset sales">
+                <div class="field">
+                    <label class="label">
+
+                    </label>
+                    <div class="control">
+                        <span>*</span> <span><?= $block->escapeHtml(__("Invoice Number or Sales Order is required for Freight.")) ?></span>
+                    </div>
+                </div>
+                <div class="field smallbox">
+                    <label class="label" for="invoice_number">
+                        <span><?= $block->escapeHtml(__("Invoice Number")) ?></span>
+                    </label>
+                    <div class="control">
+                        <input <?php echo $block->isWarrantySubmitted() ? "readonly" : "" ?> type="text" id="invoice_number" name="invoice_number" value="" title="<?= $block->escapeHtml(__("Invoice Number")) ?>" class="input-text validate-length maximum-length-10" >
+                    </div>
+                </div>
+
+                <div class="field smallbox">
+                    <label class="label" for="order_number">
+                        <span><?= $block->escapeHtml(__("Order Number")) ?></span>
+                    </label>
+                    <div class="control">
+                        <input <?php echo $block->isWarrantySubmitted() ? "readonly" : "" ?> type="text" id="order_number" name="order_number" value="" title="<?= $block->escapeHtml(__("Order Number")) ?>" class="input-text validate-length maximum-length-10" >
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="fieldset dealer">
+                <div class="field required">
+                    <label class="label" for="dealer_id">
+                        <span><?= $block->escapeHtml(__("Dealer Contact Name")) ?></span>
+                    </label>
+                    <div class="control">
+                        <input readonly type="text" id="dealer_name" name="dealer_name" value="" title="<?= $block->escapeHtml(__("Dealer Contact Name")) ?>" class="input-text validate-length maximum-length-30"  data-validate="{required: true}" autocomplete="off">
+                    </div>
+                </div>
+                <div class="field smallbox required">
+                    <label class="label" for="dealer_phone_number">
+                        <span><?= $block->escapeHtml(__("Dealership Phone Number")) ?></span>
+                    </label>
+                    <div class="control">
+                        <input readonly type="text" id="dealer_phone_number" name="dealer_phone_number" value="" title="<?= $block->escapeHtml(__("Dealership Phone Number")) ?>" class="input-text validate-length maximum-length-25"  data-validate="{required: true}">
+                    </div>
+                </div>
+                <div class="field required">
+                    <label class="label" for="claim_processor_email">
+                        <span><?= $block->escapeHtml(__("Claim Processors Email")) ?></span>
+                    </label>
+                    <div class="control">
+                        <input readonly type="text" id="claim_processor_email" name="claim_processor_email" value="" title="<?= $block->escapeHtml(__("Claim Processors Email")) ?>" class="input-text validate-length maximum-length-60" data-validate="{required: true}">
+                    </div>
+                </div>
+                <div class="field full required">
+                    <label class="label" for="brief_description">
+                        <span><?= $block->escapeHtml(__("Brief Description")) ?></span>
+                    </label>
+                    <div class="control">
+                        <input readonly type="text" id="brief_description" name="brief_description" value="" title="<?= $block->escapeHtml(__("Brief Description")) ?>" class="input-text validate-length maximum-length-40" data-validate="{required: true}">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="fieldset note">
+                <div class="field full required">
+                    <label class="label" for="reason_note">
+                        <span><?= $block->escapeHtml(__("Reason Note")) ?></span>
+                    </label>
+                    <div class="control">
+                        <textarea <?php echo $block->isWarrantySubmitted() ? "readonly" : "" ?> type="text" id="reason_note" name="reason_note" value="" title="<?= $block->escapeHtml(__("Reason Note")) ?>" class="input-text" data-validate="{required: true}"></textarea>
+                    </div>
+                </div>
+
+                <div class="field full required">
+                    <label class="label" for="resolution_note">
+                        <span><?= $block->escapeHtml(__("Resolution Note")) ?></span>
+                    </label>
+                    <div class="control">
+                        <textarea <?php echo $block->isWarrantySubmitted() ? "readonly" : "" ?> type="text" id="resolution_note" name="resolution_note" value="" title="<?= $block->escapeHtml(__("Resolution Note")) ?>" class="input-text" data-validate="{required: true}"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button style="display:none" id="warranty-submit-btn" type="submit" class="action save primary" title="<?= $block->escapeHtml(__("Submit")) ?>">
+                        <?php if(!$block->isWarrantySubmitted()) {?>
+                            <span><?= $block->escapeHtml(__("Save & Continue")) ?></span>
+                        <?php } else { ?>
+                            <span><?= $block->escapeHtml(__("Continue")) ?></span>
+                        <?php } ?>
+                    </button>
+                </div>
+                <div class="secondary">
+                    <a class="action" href="<?= $block->escapeUrl($block->getUrl("warranty")) ?>">
+                        <span><?= $block->escapeHtml(__("Cancel")) ?></span>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<?php
+$engineConfig = $block->getEngineSuggestConfig();
+$invoiceConfig = $block->getInvoiceSuggestConfig();
+?>
+
+<script>
+    require([
+            'jquery',
+            'Magento_Ui/js/modal/alert',
+            'Variux_Warranty/js/lib/autosuggest'
+        ], function ($, alert, autosuggest) {
+            function passDataToForm(data) {
+                if (data) {
+                    $("form#warranty-form").find('input, select, textarea').each(function () {
+                        if (data[this.name]) {
+                            $(this).val(data[this.name]);
+                        }
+                    });
+                }
+            }
+            $(document).ready(function () {
+                passDataToForm(<?=\Zend_Json::encode($block->getFormData())?>);
+                $("#warranty-submit-btn").show();
+                <?php if(!$block->isWarrantySubmitted()) {?>
+                var itemSuggest = new autosuggest($('input#engine'), function (item, $input, event) {
+                    $input.val(item.serial_no).trigger("change");
+                    var $form = $input.closest("form");
+                    $form.find("input[name=description]").val(item.description).trigger("change");
+                    $form.find("input[name=item_sku]").val(item.item).trigger("change");
+                }).init(<?=\Zend_Json::encode($engineConfig)?>);
+
+                var invoiceSuggest = new autosuggest($('input#invoice_number'), function (item, $input, event) {
+                    $input.val(item.inv_num).trigger("change");
+                    var $form = $input.closest("form");
+                    $form.find("input[name=order_number]").val(item.co_num).trigger("change");
+                }).init(<?=\Zend_Json::encode($invoiceConfig)?>);
+                <?php } ?>
+            });
+        }
+    );
+</script>

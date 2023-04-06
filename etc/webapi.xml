@@ -300,4 +300,34 @@
 			<resource ref="Variux_Warranty::WarrantyTransfer_delete"/>
 		</resources>
 	</route>
+	<route url="/V1/variux-warranty/partner" method="POST">
+		<service class="Variux\Warranty\Api\PartnerRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Variux_Warranty::Partner_save"/>
+		</resources>
+	</route>
+	<route url="/V1/variux-warranty/partner/search" method="GET">
+		<service class="Variux\Warranty\Api\PartnerRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="Variux_Warranty::Partner_view"/>
+		</resources>
+	</route>
+	<route url="/V1/variux-warranty/partner/:partnerId" method="GET">
+		<service class="Variux\Warranty\Api\PartnerRepositoryInterface" method="get"/>
+		<resources>
+			<resource ref="Variux_Warranty::Partner_view"/>
+		</resources>
+	</route>
+	<route url="/V1/variux-warranty/partner/:partnerId" method="PUT">
+		<service class="Variux\Warranty\Api\PartnerRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Variux_Warranty::Partner_update"/>
+		</resources>
+	</route>
+	<route url="/V1/variux-warranty/partner/:partnerId" method="DELETE">
+		<service class="Variux\Warranty\Api\PartnerRepositoryInterface" method="deleteById"/>
+		<resources>
+			<resource ref="Variux_Warranty::Partner_delete"/>
+		</resources>
+	</route>
 </routes>
