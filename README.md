@@ -1,6 +1,6 @@
 # Mage2 Module Variux Warranty
 
-    ``variux/module-warranty``
+    variux/module-warranty
 
  - [Main Functionalities](#markdown-header-main-functionalities)
  - [Installation](#markdown-header-installation)
