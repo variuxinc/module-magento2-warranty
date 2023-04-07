@@ -1,0 +1,13 @@
+<!--@subject {{trans "%subject" subject=$subject}} @-->
+{{template config_path="design/email/header_template"}}
+
+<h3>This claim {{var warranty}} has an engine or transmission, manually reviewing the cost is required.</h3>
+<ul>
+    <li>Username: <span>{{var username}}</span> </li>
+    <li>Item: <span>{{var item}}</span> </li>
+    <li>Description: <span>{{var description}}</span> </li>
+    <li>Quantity: <span>{{var qty_conv}}</span> </li>
+</ul>
+<br><br>
+
+{{template config_path="design/email/footer_template"}}

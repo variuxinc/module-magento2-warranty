@@ -20,7 +20,7 @@ use Variux\Warranty\Helper\Data;
 
 /**
  * @Hidro-Le
- * @TODO - Review
+ * @TODO - Fixed
  * Những class con của class này không sử dụng những hàm jsonSuccess, jsonError...
  */
 
@@ -131,79 +131,5 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
     protected function isAllowed(): bool
     {
         return $this->companyContext->isResourceAllowed(static::COMPANY_RESOURCE);
-    }
-
-    /**
-     * Returns JSON error.
-     *
-     * @param string $message
-     * @param array $payload
-     * @return Json
-     * @throws \InvalidArgumentException
-     */
-    protected function jsonError(string $message, array $payload = []): Json
-    {
-        /** @var Json $resultJson */
-        $resultJson = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_JSON);
-        $resultJson->setData(
-            [
-                'status' => 'error',
-                'message' => $message,
-                'payload' => $payload
-            ]
-        );
-
-        return $resultJson;
-    }
-
-    /**
-     * Returns JSON success.
-     *
-     * @param array $payload
-     * @param string $message
-     * @return Json
-     * @throws \InvalidArgumentException
-     */
-    protected function jsonSuccess(array $payload, string $message = ''): Json
-    {
-        /** @var Json $resultJson */
-        $resultJson = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_JSON);
-        $resultJson->setData(
-            [
-                'status' => 'ok',
-                'message' => $message,
-                'data' => $payload
-            ]
-        );
-
-        return $resultJson;
-    }
-
-    /**
-     * Handle error message.
-     *
-     * @param string|null $errorMessage
-     * @return Json
-     */
-    protected function handleJsonError(string $errorMessage = null): Json
-    {
-        $errorMessage = $errorMessage ?: __('Something went wrong.');
-        $this->messageManager->addErrorMessage($errorMessage);
-
-        return $this->jsonError($errorMessage);
-    }
-
-    /**
-     * Handle success message.
-     *
-     * @param string $successMessage
-     * @param array $payload
-     * @return Json
-     */
-    protected function handleJsonSuccess(string $successMessage, array $payload = []): Json
-    {
-        $this->messageManager->addSuccessMessage($successMessage);
-
-        return $this->jsonSuccess($payload, $successMessage);
     }
 }

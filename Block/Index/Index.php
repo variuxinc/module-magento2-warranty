@@ -160,10 +160,10 @@ class Index extends \Magento\Framework\View\Element\Template
     {
         /**
          * @Hidro-Le
-         * @TODO - Review
+         * @TODO - fixed
          * Chỗ này tên hàm chưa phù hợp với nội dung của hàm.
          */
-        return $warranty->hasSro();
+        return $warranty->hasSroDetails();
     }
 
     /**
@@ -172,7 +172,7 @@ class Index extends \Magento\Framework\View\Element\Template
      */
     public function getSroDetailUrl($warranty)
     {
-        $sro = $warranty->hasSro();
+        $sro = $warranty->hasSroDetails();
         /**
          * @Hidro-Le
          * @TODO - Review

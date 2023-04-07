@@ -33,8 +33,6 @@ class Index extends \Variux\Warranty\Controller\AbstractAction implements HttpGe
     protected $companyManagement;
 
     /**
-     * Index constructor.
-     *
      * @param Context $context
      * @param CompanyContext $companyContext
      * @param LoggerInterface $logger
@@ -55,10 +53,7 @@ class Index extends \Variux\Warranty\Controller\AbstractAction implements HttpGe
     }
 
     /**
-     * Warranty dashboard.
-     *
-     * @return void
-     * @throws \RuntimeException
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface|Page
      */
     public function execute()
     {
@@ -71,7 +66,7 @@ class Index extends \Variux\Warranty\Controller\AbstractAction implements HttpGe
         }
     /**
      * @Hidro-Le
-     * @TODO - Review
+     * @TODO - fixed
      * Return không đúng với define ở Document
      */
         return $resultPage;

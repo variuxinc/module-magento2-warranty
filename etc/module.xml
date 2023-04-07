@@ -4,8 +4,9 @@
 		<sequence>
             <module name="Magento_Company"/>
         </sequence>
+    <module/>
 </config>
 <!--
-@TODO - review
+@TODO - fixed
 Khai báo module bị sai.
 -->

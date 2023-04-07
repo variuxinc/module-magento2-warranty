@@ -162,7 +162,7 @@ class Warranty extends AbstractModel implements WarrantyInterface
     }
 
     /**
-     * @return array
+     * @return array[]
      */
     public function getStatusOptionArray()
     {
@@ -174,13 +174,17 @@ class Warranty extends AbstractModel implements WarrantyInterface
         return $this->getStatusOptionArray()[$this->getStatus()]["value"];
     }
 
+    /**
+     * @return bool
+     */
     public function isSubmitted()
     {
         return $this->getStatus() != \Variux\Warranty\Model\Warranty::STATUS_ARRAY["INCOMP"]["key"];
     }
 
     /**
-     * @throws \Exception
+     * @return void
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function processSave()
     {
@@ -214,7 +218,7 @@ class Warranty extends AbstractModel implements WarrantyInterface
     /**
      * @return bool|\Magento\Framework\DataObject
      */
-    public function hasSro()
+    public function hasSroDetails()
     {
         $sro = $this->getSro();
         if ($sro->hasData()) {
@@ -222,6 +226,8 @@ class Warranty extends AbstractModel implements WarrantyInterface
         }
         return false;
     }
+
+
 
     /**
      * @inheritDoc

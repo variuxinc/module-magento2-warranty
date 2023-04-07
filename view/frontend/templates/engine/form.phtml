@@ -1,3 +1,6 @@
+<?php
+/** @var Variux\Warranty\Block\Engine\Edit $block */
+?>
 <div id="warranty-container" class="warranty-container" style="display: none">
     <div class="engine-wrapper">
         <form id="engine-validate-form" action="<?= $block->escapeUrl($block->getUrl("*/*/*")) ?>" method="get">
@@ -329,16 +332,16 @@
      * @TODO - Review
      * Cần define đúng <script type="text/css">
      */
-.messages .message {
-    font-size: 30px !important;
-    font-weight: bold !important;
-    text-align: center !important;
-}
+    .messages .message {
+        font-size: 30px !important;
+        font-weight: bold !important;
+        text-align: center !important;
+    }
 </style>
-<script>
+<script type="text/javascript">
     /**
      * @Hidro-Le
-     * @TODO - Review
+     * @TODO - fixed
      * Cần define đúng <script type="text/javascript">
      */
     require([
@@ -355,10 +358,10 @@
 
     });
 </script>
-<script>
+<script type="text/javascript">
     /**
      * @Hidro-Le
-     * @TODO - Review
+     * @TODO - fixed
      * Cần define đúng <script type="text/javascript">
      */
     require([
@@ -370,30 +373,29 @@
     });
 </script>
 <?php if ($block->isUnRegistered()): ?>
-    <script>
+    <script type="text/javascript">
         /**
          * @Hidro-Le
-         * @TODO - Review
+         * @TODO - fixed
          * Cần define đúng <script type="text/javascript">
          */
         require([
             'jquery',
             'mage/translate',
-            'mage/calendar'
-        ], function($){
+            'mage/calendar',
+            'domReady!'
+        ], function ($) {
             /**
              * @Hidro-Le
-             * @TODO - Review
-             * Remove docyment ready
+             * @TODO - fixed
+             * Remove document ready
              */
-            $(document).ready(function (){
-                $("#purchased_date").calendar({
-                    changeMonth: true,
-                    changeYear: true,
-                    buttonText: $.mage.__("Select Date"),
-                    showOn: "both",
-                    autoComplete: false
-                });
+            $("#purchased_date").calendar({
+                changeMonth: true,
+                changeYear: true,
+                buttonText: $.mage.__("Select Date"),
+                showOn: "both",
+                autoComplete: false
             });
         });
     </script>
@@ -403,8 +405,8 @@
             "#country": {
                 "regionUpdater": {
                     "optionalRegionAllowed": <?= $block->escapeHtml($block->getConfig('general/region/display_all')
-                                                            ? 'true'
-                                                            : 'false')?>,
+            ? 'true'
+            : 'false') ?>,
                     "regionListId": "#region_id",
                     "regionInputId": "#state",
                     "postcodeId": "#zip",

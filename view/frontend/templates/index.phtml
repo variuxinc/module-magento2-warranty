@@ -146,7 +146,7 @@ $needUpdateIncAndSro = false;
                         success: function (data) {
                             /**
                              * @Hidro-Le
-                             * @TODO - Review
+                             * @TODO - fixed
                              * Thiếu catch cho case ajax error
                              */
                             data = JSON.parse(data);
@@ -154,6 +154,9 @@ $needUpdateIncAndSro = false;
                             if (!data.needUpdateIncAndSro) {
                                 clearInterval(updateSroNum);
                             }
+                        },
+                        error: function (error) {
+                            console.log(error)
                         }
                     });
                 }, 5000);

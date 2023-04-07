@@ -2,18 +2,30 @@
 
 namespace Variux\Warranty\Block\Index;
 
+use Magento\Customer\Model\Customer;
+use Magento\Customer\Model\Session;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\View\Element\Html\Date;
+use Magento\Framework\View\Element\Template\Context;
+use Magento\Store\Model\StoreManagerInterface;
+use Variux\Warranty\Api\Data\WarrantyInterface;
+use Variux\Warranty\Helper\Data;
+use Variux\Warranty\Model\SroFactory;
+use Variux\Warranty\Model\SroRepository;
 use Variux\Warranty\Model\WarrantyFactory;
 use Variux\Warranty\Model\Warranty;
+use Variux\Warranty\Model\WarrantyRepository;
 
 /**
  * @Hidro-Le
- * @TODO - Review
+ * @TODO - Fixed
  * Class này PHPDOC của các function,properties chưa define đúng.
  */
 class Edit extends \Magento\Framework\View\Element\Template
 {
     /**
-     * @var \Magento\Store\Model\StoreManagerInterface
+     * @var StoreManagerInterface
      */
     protected $storeManager;
 
@@ -23,27 +35,27 @@ class Edit extends \Magento\Framework\View\Element\Template
     protected $warrantyFactory;
 
     /**
-     * @var \Magento\Framework\View\Element\Html\Date
+     * @var Date
      */
     protected $dateElement;
 
     /**
-     * @var \Magento\Customer\Model\Session
+     * @var Session
      */
     protected $customerSession;
 
     /**
-     * @var \Variux\Warranty\Model\WarrantyRepository
+     * @var WarrantyRepository
      */
     protected $warrantyRepository;
 
     /**
-     * @var \Variux\Warranty\Model\SroFactory
+     * @var SroFactory
      */
     protected $sroFactory;
 
     /**
-     * @var \Variux\Warranty\Model\SroRepository
+     * @var SroRepository
      */
     protected $sroRepository;
 
@@ -52,33 +64,28 @@ class Edit extends \Magento\Framework\View\Element\Template
     protected $isWarrantySubmitted = null;
 
     /**
-     * @var CompanyService
-     */
-    protected $companyService;
-
-    /**
      * Edit constructor.
-     * @param \Magento\Framework\View\Element\Template\Context $context
-     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param \Magento\Framework\View\Element\Html\Date $dateElement
-     * @param \Magento\Customer\Model\Session $customerSession
+     * @param Context $context
+     * @param StoreManagerInterface $storeManager
+     * @param Date $dateElement
+     * @param Session $customerSession
      * @param WarrantyFactory $warrantyFactory
-     * @param \Variux\Warranty\Model\WarrantyRepository $warrantyRepository
-     * @param \Variux\Warranty\Model\SroFactory $sroFactory
-     * @param \Variux\Warranty\Model\SroRepository $sroRepository
-     * @param \Variux\Warranty\Helper\Data $dataHelper
+     * @param WarrantyRepository $warrantyRepository
+     * @param SroFactory $sroFactory
+     * @param SroRepository $sroRepository
+     * @param Data $dataHelper
      * @param array $data
      */
     public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Framework\View\Element\Html\Date $dateElement,
-        \Magento\Customer\Model\Session $customerSession,
+        Context $context,
+        StoreManagerInterface $storeManager,
+        Date $dateElement,
+        Session $customerSession,
         WarrantyFactory $warrantyFactory,
-        \Variux\Warranty\Model\WarrantyRepository $warrantyRepository,
-        \Variux\Warranty\Model\SroFactory $sroFactory,
-        \Variux\Warranty\Model\SroRepository $sroRepository,
-        \Variux\Warranty\Helper\Data $dataHelper,
+        WarrantyRepository $warrantyRepository,
+        SroFactory $sroFactory,
+        SroRepository $sroRepository,
+        Data $dataHelper,
         array $data = []
     ) {
         parent::__construct($context, $data);
@@ -93,9 +100,9 @@ class Edit extends \Magento\Framework\View\Element\Template
     }
 
     /**
-     * Retrieve form data
-     *
-     * @return array
+     * @return array|mixed|null
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
      */
     public function getFormData()
     {
@@ -108,11 +115,19 @@ class Edit extends \Magento\Framework\View\Element\Template
         return $data;
     }
 
+    /**
+     * @return Customer
+     */
     public function getCustomer()
     {
         return $this->customerSession->getCustomer();
     }
 
+    /**
+     * @return bool
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
+     */
     public function isWarrantySubmitted()
     {
         if ($this->isWarrantySubmitted === null) {
@@ -122,15 +137,17 @@ class Edit extends \Magento\Framework\View\Element\Template
         return $this->isWarrantySubmitted;
     }
 
+    /**
+     * @return WarrantyInterface|Warranty
+     * @throws NoSuchEntityException
+     * @throws LocalizedException
+     */
     public function getWarranty()
     {
         $warrantyId = $this->getRequest()->getParam("id", false);
         if ($warrantyId) {
             $warranty = $this->warrantyRepository->getById($warrantyId);
         } else {
-            /**
-             * @var \Variux\Warranty\Api\Data\WarrantyInterface $warranty
-             */
             $warranty = $this->generateNewWarrantyTicket();
         }
 
@@ -138,23 +155,22 @@ class Edit extends \Magento\Framework\View\Element\Template
     }
 
     /**
-     * @return \Variux\Warranty\Api\Data\WarrantyInterface|\Variux\Warranty\Model\Warranty
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @return WarrantyInterface|\Variux\Warranty\Model\Warranty
+     * @throws LocalizedException
      */
     public function generateNewWarrantyTicket()
     {
         // generate warranty
         $warranty = $this->warrantyFactory->create();
         $customerId = $this->getCustomer()->getId();
-        $adminCustomerId = $this->companyService->getAdminCustomerId($customerId);
-        $warranty->setCustomerId($adminCustomerId);
+        $warranty->setCustomerId($customerId);
         $warranty->setPartnerId($this->dataHelper->isPartner()->getId());
         $warranty = $this->warrantyRepository->save($warranty);
 
         // generate sro
         $sro = $this->sroFactory->create();
         $sro->setWarrantyId($warranty->getId());
-        $sro->setCustomerId($adminCustomerId);
+        $sro->setCustomerId($customerId);
         $sro->setPartnerId($this->dataHelper->isPartner()->getId());
         $this->sroRepository->save($sro);
 
@@ -163,7 +179,6 @@ class Edit extends \Magento\Framework\View\Element\Template
 
     /**
      * Return data-validate rules
-     *
      * @return string
      */
     public function getDateHtml($name, $value = false)
@@ -191,7 +206,6 @@ class Edit extends \Magento\Framework\View\Element\Template
 
     /**
      * Return data-validate rules
-     *
      * @return string
      */
     public function getHtmlExtraParams()
@@ -207,7 +221,6 @@ class Edit extends \Magento\Framework\View\Element\Template
 
     /**
      * Returns format which will be applied for DOB in javascript
-     *
      * @return string
      */
     public function getDateFormat()
@@ -217,7 +230,6 @@ class Edit extends \Magento\Framework\View\Element\Template
 
     /**
      * Return first day of the week
-     *
      * @return int
      */
     public function getFirstDay()
@@ -230,6 +242,7 @@ class Edit extends \Magento\Framework\View\Element\Template
 
     /**
      * @return array
+     * @throws NoSuchEntityException
      */
     public function getInvoiceSuggestConfig()
     {
@@ -248,6 +261,7 @@ class Edit extends \Magento\Framework\View\Element\Template
 
     /**
      * @return array
+     * @throws NoSuchEntityException
      */
     public function getEngineSuggestConfig()
     {
@@ -266,6 +280,7 @@ class Edit extends \Magento\Framework\View\Element\Template
 
     /**
      * @return array
+     * @throws NoSuchEntityException
      */
     public function getDealerSuggestConfig()
     {

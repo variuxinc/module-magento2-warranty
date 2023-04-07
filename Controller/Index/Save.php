@@ -125,11 +125,10 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         $result = [];
         /**
          * @Hidro-Le
-         * @TODO - Review
+         * @TODO - fixed
          * Không nên format number trước khi lưu vào DB, lúc echo mới cần format number.
          *
          */
-        $fmt = new NumberFormatter('en_US', NumberFormatter::DECIMAL);
         foreach ($acceptedValue as $key => $value) {
             if (isset($value["required"]) && $value["required"]) {
                 if ($result[$key] == null && strlen($result[$key]) > 0) {
@@ -140,9 +139,6 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                 if (strlen($result[$key]) > $value["max-length"]) {
                     return ["error" => true, "msg" => $key . " max length is " . $value["max-length"]];
                 }
-            }
-            if (isset($value["decimal"]) && $value["decimal"]) {
-                $result[$key] = $fmt->parse($result[$key]);
             }
             if (isset($value["mysql-date"]) && $value["mysql-date"]) {
                 if (date("Y-m-d", strtotime($result[$key])) != $result[$key]) {

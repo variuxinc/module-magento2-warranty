@@ -21,7 +21,7 @@ use Magento\Customer\Model\Session as customerSession;
 
 /**
  * @Hidro-Le
- * @TODO - Review
+ * @TODO - fixed
  * Các hàm ở trong class này chưa được define document
  */
 class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
@@ -153,7 +153,7 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
 
     /**
      * @param $query
-     * @param bool $customerId
+     * @param $customerId
      * @return array
      * @throws NoSuchEntityException
      */
@@ -194,7 +194,7 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
 
     /**
      * @param $query
-     * @param bool $customerId
+     * @param $customerId
      * @return array
      */
     public function findDealer($query, $customerId = false)
@@ -215,6 +215,12 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
         return $response;
     }
 
+    /**
+     * @param $query
+     * @param $customerId
+     * @return array
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
     public function findWorkcode($query, $customerId = false)
     {
         $searchCriteria = $this->_searchCriteriaBuilder;
@@ -254,6 +260,11 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
         return $response;
     }
 
+    /**
+     * @param $query
+     * @return array
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
     public function findEngine($query)
     {
         $searchCriteria = $this->_searchCriteriaBuilder;
@@ -282,6 +293,11 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
         return $response;
     }
 
+    /**
+     * @param $query
+     * @return array
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
     public function findEngineForWarrantyTransfer($query)
     {
         $searchCriteria = $this->_searchCriteriaBuilder;
@@ -310,6 +326,10 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
         return $response;
     }
 
+    /**
+     * @param $warrantyId
+     * @return array|null[]
+     */
     public function getSroNumAndIncNumByWarrantyId($warrantyId)
     {
         $warranty = $this->warrantyFactory->create();

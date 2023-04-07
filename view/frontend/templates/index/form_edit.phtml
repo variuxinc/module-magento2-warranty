@@ -1,3 +1,6 @@
+<?php
+/** @var Variux\Warranty\Block\Engine\Edit $block */
+?>
 <div class="warranty-container">
     <div class="warranty-wrapper">
         <form id="warranty-form" class="form" method="post" data-mage-init='{"validation": {}}'
@@ -241,10 +244,10 @@ $engineConfig = $block->getEngineSuggestConfig();
 $invoiceConfig = $block->getInvoiceSuggestConfig();
 ?>
 
-<script>
+<script type="text/javascript">
     /**
      * @Hidro-Le
-     * @TODO - Review
+     * @TODO - fixed
      * Cần define đúng <script type="text/javascript">
      */
     require([
@@ -267,23 +270,23 @@ $invoiceConfig = $block->getInvoiceSuggestConfig();
             $("#warranty-submit-btn").show();
             /**
              * @Hidro-Le
-             * @TODO - Review
+             * @TODO - fixed
              * Sử dung if(...):  endif; thay vì if(...){...}
              */
-            <?php if (!$block->isWarrantySubmitted()) {?>
-            var itemSuggest = new autosuggest($('input#engine'), function (item, $input, event) {
-                $input.val(item.serial_no).trigger("change");
-                var $form = $input.closest("form");
-                $form.find("input[name=description]").val(item.description).trigger("change");
-                $form.find("input[name=item_sku]").val(item.item).trigger("change");
-            }).init(<?=\Zend_Json::encode($engineConfig)?>);
+            <?php if (!$block->isWarrantySubmitted()): ?>
+                var itemSuggest = new autosuggest($('input#engine'), function (item, $input, event) {
+                    $input.val(item.serial_no).trigger("change");
+                    var $form = $input.closest("form");
+                    $form.find("input[name=description]").val(item.description).trigger("change");
+                    $form.find("input[name=item_sku]").val(item.item).trigger("change");
+                }).init(<?=\Zend_Json::encode($engineConfig)?>);
 
-            var invoiceSuggest = new autosuggest($('input#invoice_number'), function (item, $input, event) {
-                $input.val(item.inv_num).trigger("change");
-                var $form = $input.closest("form");
-                $form.find("input[name=order_number]").val(item.co_num).trigger("change");
-            }).init(<?=\Zend_Json::encode($invoiceConfig)?>);
-            <?php } ?>
+                var invoiceSuggest = new autosuggest($('input#invoice_number'), function (item, $input, event) {
+                    $input.val(item.inv_num).trigger("change");
+                    var $form = $input.closest("form");
+                    $form.find("input[name=order_number]").val(item.co_num).trigger("change");
+                }).init(<?=\Zend_Json::encode($invoiceConfig)?>);
+            <?php endif; ?>
         }
     );
 </script>

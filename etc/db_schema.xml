@@ -244,7 +244,7 @@
 	</table>
 </schema>
 <!--
-    @TODO - Review
+    @TODO - fixed
     Chưa generate db_schema_whitelist.json
     https://magento.stackexchange.com/questions/258407/magento-2-3-use-of-db-schema-whitelist-json-file-in-etc-directory-of-each-modu
 -->

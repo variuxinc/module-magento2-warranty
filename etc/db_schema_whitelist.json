@@ -1,0 +1,265 @@
+{
+    "variux_warranty_warranty": {
+        "column": {
+            "warranty_id": true,
+            "description": true,
+            "customer_id": true,
+            "engine": true,
+            "engine_hour": true,
+            "invoice_number": true,
+            "order_number": true,
+            "item_sku": true,
+            "boat_owner_name": true,
+            "reference_number": true,
+            "date_of_failure": true,
+            "date_of_repair": true,
+            "claim_processor_email": true,
+            "brief_description": true,
+            "reason_note": true,
+            "resolution_note": true,
+            "status": true,
+            "store_id": true,
+            "incident_number": true,
+            "first_sro_number": true,
+            "dealer_name": true,
+            "dealer_phone_number": true,
+            "is_sro_details_fully_synced": true,
+            "has_error": true,
+            "error_reason": true,
+            "first_sro_id": true,
+            "warranty_registered": true,
+            "consumer_name": true,
+            "warranty_start_date": true,
+            "warranty_end_date": true,
+            "company_id": true,
+            "admin_customer_id": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "variux_warranty_sro": {
+        "column": {
+            "sro_id": true,
+            "warranty_id": true,
+            "sro_number": true,
+            "customer_id": true,
+            "company_id": true,
+            "admin_customer_id": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "variux_warranty_srolabor": {
+        "column": {
+            "srolabor_id": true,
+            "sro_id": true,
+            "sro_line": true,
+            "sro_oper": true,
+            "trans_date": true,
+            "company_id": true,
+            "company_name": true,
+            "customer_id": true,
+            "work_code": true,
+            "hour_worked": true,
+            "validate": true,
+            "cost_conv": true,
+            "note": true,
+            "description": true,
+            "labor_hourly_rate": true,
+            "sro_number": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "variux_warranty_srodocument": {
+        "column": {
+            "srodocument_id": true,
+            "sro_id": true,
+            "name": true,
+            "description": true,
+            "file_path": true,
+            "type": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "variux_warranty_sromaterial": {
+        "column": {
+            "sromaterial_id": true,
+            "sro_id": true,
+            "sro_line": true,
+            "sro_oper": true,
+            "company_id": true,
+            "customer_id": true,
+            "item": true,
+            "description": true,
+            "um": true,
+            "qty_conv": true,
+            "cost": true,
+            "price": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "variux_warranty_sromisc": {
+        "column": {
+            "sromisc_id": true,
+            "sro_id": true,
+            "sro_line": true,
+            "sro_oper": true,
+            "trans_date": true,
+            "company_id": true,
+            "customer_id": true,
+            "misc_code": true,
+            "description": true,
+            "qty_conv": true,
+            "amount": true,
+            "note": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "variux_warranty_workcode": {
+        "column": {
+            "workcode_id": true,
+            "work_code": true,
+            "description": true,
+            "duration": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "variux_warranty_unit": {
+        "column": {
+            "unit_id": true,
+            "serial_no": true,
+            "item": true,
+            "description": true,
+            "order_no": true,
+            "ship_date": true,
+            "install_date": true,
+            "warranty_start_date": true,
+            "warranty_end_date": true,
+            "hull_id": true,
+            "engine_hours": true,
+            "consumer_num": true,
+            "consumer_seq": true,
+            "unit_registable": true,
+            "company_id": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "variux_warranty_unitreg": {
+        "column": {
+            "unitreg_id": true,
+            "hull_id": true,
+            "reg_notes": true,
+            "engine_hour": true,
+            "trans_num": true,
+            "serial_no": true,
+            "item": true,
+            "posted": true,
+            "rejected": true,
+            "post_date": true,
+            "err_msg": true,
+            "name": true,
+            "address1": true,
+            "address2": true,
+            "address3": true,
+            "address4": true,
+            "city": true,
+            "state": true,
+            "zip": true,
+            "country": true,
+            "email": true,
+            "phone": true,
+            "is_commercial_use": true,
+            "dealer_name": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "variux_warranty_warrantytransfer": {
+        "column": {
+            "warrantytransfer_id": true,
+            "engine_serial_num": true,
+            "submitter_email": true,
+            "submitter_name": true,
+            "engine_hours": true,
+            "engine_model": true,
+            "trans_sn": true,
+            "make_of_boat": true,
+            "boat_use": true,
+            "current_customer": true,
+            "warranty_start_date": true,
+            "warranty_end_date": true,
+            "submit_date": true,
+            "inspection_date": true,
+            "hull_id": true,
+            "eng_comp_1": true,
+            "eng_comp_2": true,
+            "eng_comp_3": true,
+            "eng_comp_4": true,
+            "name": true,
+            "email": true,
+            "phone": true,
+            "phone_ext": true,
+            "sale_date": true,
+            "address_1": true,
+            "address_2": true,
+            "city": true,
+            "state": true,
+            "zip": true,
+            "country": true,
+            "status": true,
+            "row_pointer": true,
+            "file_path_json": true,
+            "company_id": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "variux_warranty_partner": {
+        "column": {
+            "partner_id": true,
+            "partner_num": true,
+            "company_id": true,
+            "name": true,
+            "labor_rate": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

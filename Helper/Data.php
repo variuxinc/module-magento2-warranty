@@ -2,6 +2,12 @@
 
 namespace Variux\Warranty\Helper;
 
+use Magento\Customer\Model\Session;
+use Magento\Framework\App\Helper\Context;
+use Magento\Framework\Serialize\Serializer\Json;
+use Variux\Warranty\Model\ResourceModel\Partner;
+use Variux\Warranty\Model\ResourceModel\UnitReg\CollectionFactory;
+
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
     const DENY_ACCESS_URL = 'warranty/index/accessdeny';
@@ -12,7 +18,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     protected $configHelper;
 
     /**
-     * @var \Magento\Customer\Model\Session
+     * @var Session
      */
     protected $customerSession;
 
@@ -22,29 +28,51 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     protected $partnerFactory;
 
     /**
-     * @var \Variux\Warranty\Model\ResourceModel\UnitReg\CollectionFactory
+     * @var CollectionFactory
      */
     protected $unitRegCollectionFactory;
 
     /**
-     * @var \Magento\Framework\Serialize\Serializer\Json
+     * @var Json
      */
     protected $serialize;
 
     protected $partnerCache = null;
+    /**
+     * @var Partner
+     */
+    protected $partnerResourceModel;
+    /**
+     * @var CompanyDetails
+     */
+    protected $companyDetails;
 
+
+    /**
+     * @param Context $context
+     * @param Session $customerSession
+     * @param CollectionFactory $unitRegCollectionFactory
+     * @param Config $configHelper
+     * @param Json $serialize
+     * @param Partner $partnerResourceModel
+     * @param CompanyDetails $companyDetails
+     */
     public function __construct(
-        \Magento\Framework\App\Helper\Context $context,
-        \Magento\Customer\Model\Session $customerSession,
-        \Variux\Warranty\Model\ResourceModel\UnitReg\CollectionFactory $unitRegCollectionFactory,
+        Context $context,
+        Session $customerSession,
+        CollectionFactory $unitRegCollectionFactory,
         Config $configHelper,
-        \Magento\Framework\Serialize\Serializer\Json $serialize
+        Json $serialize,
+        Partner $partnerResourceModel,
+        \Variux\Warranty\Helper\CompanyDetails $companyDetails
     ) {
         parent::__construct($context);
         $this->configHelper = $configHelper;
         $this->customerSession = $customerSession;
         $this->unitRegCollectionFactory = $unitRegCollectionFactory;
         $this->serialize = $serialize;
+        $this->partnerResourceModel = $partnerResourceModel;
+        $this->companyDetails = $companyDetails;
     }
 
     /**
@@ -135,5 +163,39 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     public function getMaxFileSize()
     {
         return (int)$this->configHelper->getMaxFileSize();
+    }
+
+    /**
+     * @return \Variux\Warranty\Model\Partner|bool
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function isPartner()
+    {
+        if ($this->customerSession->isLoggedIn()) {
+            if ($this->partnerCache !== null) {
+                return $this->partnerCache;
+            }
+            $customerId = $this->customerSession->getCustomer()->getId();
+            $companyId = $this->companyDetails->getInfo($customerId)->getId();
+            $partner = $this->partnerFactory->create();
+            $this->partnerResourceModel->loadByCompanyId($partner, $companyId);
+            if ($partner->hasData()) {
+                $this->partnerCache = $partner;
+                return $partner;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @return false|mixed|null
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function getCurrentPartner()
+    {
+        if ($this->isPartner() !== false) {
+            return $this->partnerCache;
+        }
+        return false;
     }
 }
