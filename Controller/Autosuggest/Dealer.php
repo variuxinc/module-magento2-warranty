@@ -5,35 +5,45 @@
  */
 namespace Variux\Warranty\Controller\Autosuggest;
 
+use Magento\Company\Model\CompanyContext;
+use Magento\Customer\Model\Session;
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\ResultInterface;
+use Psr\Log\LoggerInterface;
+use Variux\Warranty\Helper\Data;
+use Variux\Warranty\Helper\SuggestHelper;
 
 class Dealer extends \Variux\Warranty\Controller\AbstractAction
 {
     /**
-     * @var \Variux\Warranty\Helper\SuggestHelper
+     * @var SuggestHelper
      */
     protected $suggestHelper;
 
     /**
      * Engine constructor.
      * @param Context $context
-     * @param \Magento\Company\Model\CompanyContext $companyContext
-     * @param \Variux\Warranty\Helper\SuggestHelper $suggestHelper
-     * @param \Psr\Log\LoggerInterface $logger
+     * @param CompanyContext $companyContext
+     * @param LoggerInterface $logger
+     * @param Session $_customerSession
+     * @param Data $helperData
+     * @param SuggestHelper $suggestHelper
      */
     public function __construct(
         Context $context,
         \Magento\Company\Model\CompanyContext $companyContext,
         \Psr\Log\LoggerInterface $logger,
         \Magento\Customer\Model\Session       $_customerSession,
-        \Variux\Warranty\Helper\SuggestHelper $suggestHelper
+        \Variux\Warranty\Helper\Data          $helperData,
+        SuggestHelper $suggestHelper
     ) {
-        parent::__construct($context, $companyContext, $logger, $_customerSession);
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData);
         $this->suggestHelper = $suggestHelper;
     }
 
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
+     * @return ResponseInterface|ResultInterface
      */
     public function execute()
     {

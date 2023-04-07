@@ -13,6 +13,7 @@ use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\View\Result\PageFactory;
 use Psr\Log\LoggerInterface;
+use Variux\Warranty\Helper\Data;
 
 class NewAction extends \Variux\Warranty\Controller\AbstractAction
 {
@@ -32,6 +33,7 @@ class NewAction extends \Variux\Warranty\Controller\AbstractAction
      * @param CompanyContext $companyContext
      * @param LoggerInterface $logger
      * @param Session $_customerSession
+     * @param Data $helperData
      * @param PageFactory $resultPageFactory
      */
     public function __construct(
@@ -39,9 +41,10 @@ class NewAction extends \Variux\Warranty\Controller\AbstractAction
         CompanyContext                        $companyContext,
         \Psr\Log\LoggerInterface              $logger,
         Session                               $_customerSession,
+        \Variux\Warranty\Helper\Data          $helperData,
         PageFactory                           $resultPageFactory
     ) {
-        parent::__construct($context, $companyContext, $logger, $_customerSession);
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData);
         $this->resultPageFactory = $resultPageFactory;
     }
 

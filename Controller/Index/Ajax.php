@@ -12,6 +12,7 @@ use Magento\Customer\Model\Session;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\NotFoundException;
 use Psr\Log\LoggerInterface;
+use Variux\Warranty\Helper\Data;
 use Variux\Warranty\Model\Warranty;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
@@ -50,19 +51,21 @@ class Ajax extends \Variux\Warranty\Controller\AbstractAction
      * @param Context $context
      * @param CompanyContext $companyContext
      * @param LoggerInterface $logger
-     * @param CustomerSession $customerSession
+     * @param CustomerSession $_customerSession
+     * @param Data $helperData
      * @param WarrantyCollectionFactory $warrantyCollectionFactory
      * @param UrlInterface $urlBuilder
      */
     public function __construct(
-        Context                   $context,
-        CompanyContext            $companyContext,
-        \Psr\Log\LoggerInterface  $logger,
-        Session                   $_customerSession,
-        WarrantyCollectionFactory $warrantyCollectionFactory,
-        UrlInterface              $urlBuilder
+        Context                      $context,
+        CompanyContext               $companyContext,
+        \Psr\Log\LoggerInterface     $logger,
+        Session                      $_customerSession,
+        \Variux\Warranty\Helper\Data $helperData,
+        WarrantyCollectionFactory    $warrantyCollectionFactory,
+        UrlInterface                 $urlBuilder
     ) {
-        parent::__construct($context, $companyContext, $logger, $_customerSession);
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData);
         $this->warrantyCollectionFactory = $warrantyCollectionFactory;
         $this->urlBuilder = $urlBuilder;
     }
@@ -111,11 +114,11 @@ class Ajax extends \Variux\Warranty\Controller\AbstractAction
                 $html .= "<a href='" . $this->urlBuilder->getUrl(
                     "warranty/sro/edit",
                     ['id' => $warranty->getFirstSroId(),
-                    'war_id' => $warranty->getId()]
+                            'war_id' => $warranty->getId()]
                 )
-                        . "'>"
-                        . (empty($warranty->getFirstSroNum()) ? "Details" : $warranty->getFirstSroNum())
-                        . "</a>";
+                    . "'>"
+                    . (empty($warranty->getFirstSroNum()) ? "Details" : $warranty->getFirstSroNum())
+                    . "</a>";
                 $html .= "</td>";
                 $html .= "<td data-th='Date' class='col-md-2 date'>";
                 $html .= $warranty->getCreatedAt();
@@ -125,11 +128,11 @@ class Ajax extends \Variux\Warranty\Controller\AbstractAction
                 $html .= "</td>";
                 $html .= "<td data-th='Actions' class='col-md-1 text-center actions'>";
                 $html .= "<p><a href='"
-                      . $this->urlBuilder->getUrl(
-                          "warranty/index/edit",
-                          ["id" => $warranty->getId()]
-                      )
-                      . "'><i class=\"fa fa-pencil\"></i></a>
+                    . $this->urlBuilder->getUrl(
+                        "warranty/index/edit",
+                        ["id" => $warranty->getId()]
+                    )
+                    . "'><i class=\"fa fa-pencil\"></i></a>
                     <a href='"
                     . $this->urlBuilder->getUrl(
                         "warranty/index/report",
@@ -141,8 +144,8 @@ class Ajax extends \Variux\Warranty\Controller\AbstractAction
             }
         }
         return $this->getResponse()
-                    ->setBody(json_encode(
-                        ["html" => $html, "needUpdateIncAndSro" => $needUpdateIncAndSro]
-                    ));
+            ->setBody(json_encode(
+                ["html" => $html, "needUpdateIncAndSro" => $needUpdateIncAndSro]
+            ));
     }
 }

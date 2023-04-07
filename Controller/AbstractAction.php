@@ -16,6 +16,7 @@ use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\Result\Json;
 use Magento\Framework\Exception\NotFoundException;
 use Psr\Log\LoggerInterface;
+use Variux\Warranty\Helper\Data;
 
 /**
  * Class AbstractAction.
@@ -48,6 +49,10 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
      * @var Session
      */
     protected $_customerSession;
+    /**
+     * @var Data
+     */
+    protected $helperData;
 
     /**
      * AbstractAction constructor.
@@ -56,6 +61,7 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
      * @param CompanyContext $companyContext
      * @param LoggerInterface $logger
      * @param Session $_customerSession
+     * @param Data $helperData
      * @param Url|null $customerUrl
      */
     public function __construct(
@@ -63,12 +69,14 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
         CompanyContext                        $companyContext,
         \Psr\Log\LoggerInterface              $logger,
         Session                               $_customerSession,
+        \Variux\Warranty\Helper\Data          $helperData,
         ?Url                                  $customerUrl = null
     ) {
         parent::__construct($context);
         $this->logger = $logger;
         $this->companyContext = $companyContext;
         $this->_customerSession = $_customerSession;
+        $this->helperData = $helperData;
         $this->customerUrl = $customerUrl ?: ObjectManager::getInstance()->get(Url::class);
     }
 

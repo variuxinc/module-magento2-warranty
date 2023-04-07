@@ -29,6 +29,7 @@ class Invoicelisting extends AbstractAction
      * @param CompanyContext $companyContext
      * @param LoggerInterface $logger
      * @param Session $_customerSession
+     * @param Data $helperData
      * @param SuggestHelper $suggestHelper
      */
     public function __construct(
@@ -36,9 +37,10 @@ class Invoicelisting extends AbstractAction
         CompanyContext                  $companyContext,
         \Psr\Log\LoggerInterface        $logger,
         \Magento\Customer\Model\Session $_customerSession,
+        \Variux\Warranty\Helper\Data    $helperData,
         SuggestHelper                   $suggestHelper
     ) {
-        parent::__construct($context, $companyContext, $logger, $_customerSession);
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData);
         $this->suggestHelper = $suggestHelper;
     }
 

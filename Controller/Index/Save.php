@@ -74,19 +74,20 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
      * @param CompanyDetails $companyDetails
      */
     public function __construct(
-        Context            $context,
-        CompanyContext     $companyContext,
-        LoggerInterface    $logger,
-        Session            $_customerSession,
-        PageFactory        $resultPageFactory,
-        Validator          $formKeyValidator,
-        WarrantyFactory    $warrantyFactory,
-        WarrantyRepository $warrantyRepository,
-        SroFactory         $sroFactory,
-        SroRepository      $sroRepository,
-        CompanyDetails     $companyDetails
+        Context                      $context,
+        CompanyContext               $companyContext,
+        LoggerInterface              $logger,
+        Session                      $_customerSession,
+        \Variux\Warranty\Helper\Data $helperData,
+        PageFactory                  $resultPageFactory,
+        Validator                    $formKeyValidator,
+        WarrantyFactory              $warrantyFactory,
+        WarrantyRepository           $warrantyRepository,
+        SroFactory                   $sroFactory,
+        SroRepository                $sroRepository,
+        CompanyDetails               $companyDetails
     ) {
-        parent::__construct($context, $companyContext, $logger, $_customerSession);
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData);
         $this->resultPageFactory = $resultPageFactory;
         $this->formKeyValidator = $formKeyValidator;
         $this->warrantyFactory = $warrantyFactory;

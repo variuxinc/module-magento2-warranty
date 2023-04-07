@@ -12,6 +12,7 @@ use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultInterface;
 use Psr\Log\LoggerInterface;
+use Variux\Warranty\Helper\Data;
 use Variux\Warranty\Helper\SuggestHelper;
 
 class Workcode extends \Variux\Warranty\Controller\AbstractAction
@@ -27,16 +28,18 @@ class Workcode extends \Variux\Warranty\Controller\AbstractAction
      * @param CompanyContext $companyContext
      * @param LoggerInterface $logger
      * @param Session $_customerSession
+     * @param Data $helperData
      * @param SuggestHelper $suggestHelper
      */
     public function __construct(
-        Context $context,
-        CompanyContext $companyContext,
-        \Psr\Log\LoggerInterface $logger,
-        Session       $_customerSession,
-        SuggestHelper $suggestHelper
+        Context                      $context,
+        CompanyContext               $companyContext,
+        \Psr\Log\LoggerInterface     $logger,
+        Session                      $_customerSession,
+        \Variux\Warranty\Helper\Data $helperData,
+        SuggestHelper                $suggestHelper
     ) {
-        parent::__construct($context, $companyContext, $logger, $_customerSession);
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData);
         $this->suggestHelper = $suggestHelper;
     }
 

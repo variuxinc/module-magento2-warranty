@@ -11,16 +11,31 @@
                         <span><?= $block->escapeHtml(__("Engine")) ?></span>
                     </label>
                     <div class="control">
-                        <input type="text" id="engine" name="engine" value="<?= $block->escapeHtml($block->getEngineNumber()) ?>" title="<?= $block->escapeHtml(__("Engine")) ?>" class="input-text" data-validate="{'required': true}">
+                        <input type="text"
+                               id="engine"
+                               name="engine"
+                               value="<?= $block->escapeHtml($block->getEngineNumber()) ?>"
+                               title="<?= $block->escapeHtml(__("Engine")) ?>"
+                               class="input-text"
+                               data-validate="{'required': true}">
                     </div>
-                    <button type="submit" class="action primary engine-validate-btn"><?= $block->escapeHtml(__("Validate")) ?></button>
+                    <button type="submit" class="action primary engine-validate-btn">
+                        <?= $block->escapeHtml(__("Validate")) ?>
+                    </button>
                 </div>
                 <div class="field">
                     <label class="label">
                         <span><?= $block->escapeHtml(__("Item")) ?></span>
                     </label>
                     <div class="control">
-                        <input disabled readonly type="text" id="item" name="item" value="<?= $block->escapeHtml($block->getUnitItem()) ?>" title="<?= $block->escapeHtml(__("Item")) ?>" class="input-text" data-validate="">
+                        <input disabled readonly
+                               type="text"
+                               id="item"
+                               name="item"
+                               value="<?= $block->escapeHtml($block->getUnitItem()) ?>"
+                               title="<?= $block->escapeHtml(__("Item")) ?>"
+                               class="input-text"
+                               data-validate="">
                     </div>
                 </div>
                 <div class="field">
@@ -28,175 +43,276 @@
                         <span><?= $block->escapeHtml(__("Description")) ?></span>
                     </label>
                     <div class="control">
-                        <input disabled readonly type="text" id="description" name="description" value="<?= $block->escapeHtml($block->getUnitDescription()) ?>" title="<?= $block->escapeHtml(__("Description")) ?>" class="input-text" data-validate="">
+                        <input disabled readonly
+                               type="text"
+                               id="description"
+                               name="description"
+                               value="<?= $block->escapeHtml($block->getUnitDescription()) ?>"
+                               title="<?= $block->escapeHtml(__("Description")) ?>"
+                               class="input-text"
+                               data-validate="">
                     </div>
                 </div>
             </fieldset>
         </form>
-        <form id="engine-form" class="form" method="post" action="<?= $block->escapeUrl($block->getUrl("warranty/engine/save")) ?>">
+        <form id="engine-form"
+              class="form"
+              method="post"
+              action="<?= $block->escapeUrl($block->getUrl("warranty/engine/save")) ?>">
             <?= $block->getBlockHtml('formkey') ?>
             <input type="hidden" name="serial_no" value="<?= $block->escapeHtml($block->getSerialNo()) ?>">
             <input type="hidden" name="item" value="<?= $block->escapeHtml($block->getUnitItem()) ?>">
             <?php if ($block->isUnRegistered()): ?>
-            <fieldset class="fieldset info">
-                <legend class="legend">
-                    <span><?= $block->escapeHtml(__("Contact Information")) ?></span>
-                </legend>
+                <fieldset class="fieldset info">
+                    <legend class="legend">
+                        <span><?= $block->escapeHtml(__("Contact Information")) ?></span>
+                    </legend>
+                    <div class="field required">
+                        <label class="label" for="name">
+                            <span><?= $block->escapeHtml(__("Name")) ?></span>
+                        </label>
+                        <div class="control">
+                            <input type="text"
+                                   id="name"
+                                   name="name"
+                                   value=""
+                                   title="<?= $block->escapeHtml(__("Name")) ?>"
+                                   class="input-text validate-length maximum-length-60"
+                                   data-validate="{'required': true}">
+                        </div>
+                    </div>
 
-                <div class="field required">
-                    <label class="label" for="name">
-                        <span><?= $block->escapeHtml(__("Name")) ?></span>
-                    </label>
-                    <div class="control">
-                        <input type="text" id="name" name="name" value="" title="<?= $block->escapeHtml(__("Name")) ?>" class="input-text validate-length maximum-length-60" data-validate="{'required': true}">
+                    <div class="field required">
+                        <label class="label" for="address1">
+                            <span><?= $block->escapeHtml(__("Address[1]")) ?></span>
+                        </label>
+                        <div class="control">
+                            <input type="text"
+                                   id="address1"
+                                   name="address1"
+                                   value=""
+                                   title="<?= $block->escapeHtml(__("Address[1]")) ?>"
+                                   class="input-text validate-length maximum-length-50"
+                                   data-validate="{'required': true}">
+                        </div>
                     </div>
-                </div>
+                    <div class="field">
+                        <label class="label" for="address2">
+                            <span><?= $block->escapeHtml(__("Address[2]")) ?></span>
+                        </label>
+                        <div class="control">
+                            <input type="text"
+                                   id="address2"
+                                   name="address2"
+                                   value=""
+                                   title="<?= $block->escapeHtml(__("Address[2]")) ?>"
+                                   class="input-text validate-length maximum-length-50">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="address3">
+                            <span><?= $block->escapeHtml(__("Address[3]")) ?></span>
+                        </label>
+                        <div class="control">
+                            <input type="text"
+                                   id="address3"
+                                   name="address3"
+                                   value=""
+                                   title="<?= $block->escapeHtml(__("Address[3]")) ?>"
+                                   class="input-text validate-length maximum-length-50">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="address4">
+                            <span><?= $block->escapeHtml(__("Address[4]")) ?></span>
+                        </label>
+                        <div class="control">
+                            <input type="text"
+                                   id="address4"
+                                   name="address4"
+                                   value=""
+                                   title="<?= $block->escapeHtml(__("Address[4]")) ?>"
+                                   class="input-text validate-length maximum-length-50">
+                        </div>
+                    </div>
 
-                <div class="field required">
-                    <label class="label" for="address1">
-                        <span><?= $block->escapeHtml(__("Address[1]")) ?></span>
-                    </label>
-                    <div class="control">
-                        <input type="text" id="address1" name="address1" value="" title="<?= $block->escapeHtml(__("Address[1]")) ?>" class="input-text validate-length maximum-length-50" data-validate="{'required': true}">
+                    <div class="field required">
+                        <label for="city" class="label"><span><?= /* @noEscape */
+                                __('City') ?></span></label>
+                        <div class="control">
+                            <?php //phpcs:disable ?>
+                            <input type="text"
+                                   name="city"
+                                   value=""
+                                   title="<?= $block->escapeHtml(__('City')) ?>"
+                                   class="input-text <?= $block
+                                       ->escapeHtmlAttr($block->getAttributeValidationClass('city')) ?>"
+                                   id="city">
+                            <?php //phpcs:enable ?>
+                        </div>
                     </div>
-                </div>
-                <div class="field">
-                    <label class="label" for="address2">
-                        <span><?= $block->escapeHtml(__("Address[2]")) ?></span>
-                    </label>
-                    <div class="control">
-                        <input type="text" id="address2" name="address2" value="" title="<?= $block->escapeHtml(__("Address[2]")) ?>" class="input-text validate-length maximum-length-50">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label" for="address3">
-                        <span><?= $block->escapeHtml(__("Address[3]")) ?></span>
-                    </label>
-                    <div class="control">
-                        <input type="text" id="address3" name="address3" value="" title="<?= $block->escapeHtml(__("Address[3]")) ?>" class="input-text validate-length maximum-length-50">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label" for="address4">
-                        <span><?= $block->escapeHtml(__("Address[4]")) ?></span>
-                    </label>
-                    <div class="control">
-                        <input type="text" id="address4" name="address4" value="" title="<?= $block->escapeHtml(__("Address[4]")) ?>" class="input-text validate-length maximum-length-50">
-                    </div>
-                </div>
 
-                <div class="field required">
-                    <label for="city" class="label"><span><?= /* @noEscape */ __('City') ?></span></label>
-                    <div class="control">
-                        <?php //phpcs:disable ?>
-                        <input type="text" name="city" value="" title="<?= /* @noEscape */ __('City') ?>" class="input-text <?= $block->escapeHtmlAttr($this->helper(\Magento\Customer\Helper\Address::class)->getAttributeValidationClass('city')) ?>" id="city">
-                        <?php //phpcs:enable ?>
+                    <div class="field region required">
+                        <label for="state" class="label"><span><?= /* @noEscape */
+                                __('Prov/St') ?></span></label>
+                        <div class="control">
+                            <select id="region_id"
+                                    name="region_id"
+                                    title="<?= $block->escapreHtml(__('Prov/St')) ?>"
+                                    class="validate-select region_id">
+                                <option value="">
+                                    <?= $block->escapeHtml(__('Please select a region, state or province.')) ?>
+                                </option>
+                            </select>
+                            <?php //phpcs:disable ?>
+                            <input type="text"
+                                   id="state"
+                                   name="state"
+                                   value="" title="<?= $block->escapeHtml(__('Region')) ?>"
+                                   class="input-text <?= $block
+                                       ->escapeHtmlAttr($block->getAttributeValidationClass('region')) ?>"
+                                   style="display:none;">
+                            <?php //phpcs:enable ?>
+                        </div>
                     </div>
-                </div>
 
-                <div class="field region required">
-                    <label for="state" class="label"><span><?= /* @noEscape */ __('Prov/St') ?></span></label>
-                    <div class="control">
-                        <select id="region_id" name="region_id" title="<?= /* @noEscape */ __('Prov/St') ?>" class="validate-select region_id">
-                            <option value=""><?= $block->escapeHtml(__('Please select a region, state or province.')) ?></option>
-                        </select>
-                        <?php //phpcs:disable ?>
-                        <input type="text" id="state" name="state" value="" title="<?= /* @noEscape */ __('Region') ?>" class="input-text <?= $block->escapeHtmlAttr($this->helper(\Magento\Customer\Helper\Address::class)->getAttributeValidationClass('region')) ?>" style="display:none;">
-                        <?php //phpcs:enable ?>
+                    <div class="field zip required">
+                        <label for="zip" class="label"><span><?= $block->escapeHtml(__('Postal/ZIP')) ?></span></label>
+                        <div class="control">
+                            <?php //phpcs:disable ?>
+                            <input type="text"
+                                   name="zip"
+                                   id="zip"
+                                   value=""
+                                   title="<?= $block->escapeHtml(__('Postal/ZIP')) ?>"
+                                   id="zip"
+                                   class="input-text validate-zip-international <?= $block
+                                       ->escapeHtmlAttr($block->getAttributeValidationClass('postcode')) ?>">
+                            <?php //phpcs:enable ?>
+                        </div>
                     </div>
-                </div>
 
-                <div class="field zip required">
-                    <label for="zip" class="label"><span><?= /* @noEscape */ __('Postal/ZIP') ?></span></label>
-                    <div class="control">
-                        <?php //phpcs:disable ?>
-                        <input type="text" name="zip" id="zip" value="" title="<?= /* @noEscape */ __('Postal/ZIP') ?>" id="zip" class="input-text validate-zip-international <?= $block->escapeHtmlAttr($this->helper(\Magento\Customer\Helper\Address::class)->getAttributeValidationClass('postcode')) ?>">
-                        <?php //phpcs:enable ?>
+                    <div class="field country required">
+                        <label for="country" class="label">
+                            <span>
+                                <?= $block->escapeHtml(__('Country')) ?>
+                            </span>
+                        </label>
+                        <div class="control">
+                            <?= $block
+                                ->getCountryHtmlSelect(null, $name = 'country', $id = 'country', $title = 'Country') ?>
+                        </div>
                     </div>
-                </div>
 
-                <div class="field country required">
-                    <label for="country" class="label"><span><?= /* @noEscape */ __('Country') ?></span></label>
-                    <div class="control">
-                        <?= $block->getCountryHtmlSelect(null, $name = 'country', $id = 'country', $title = 'Country') ?>
+                    <div class="field required">
+                        <label class="label" for="phone">
+                            <span><?= $block->escapeHtml(__("Phone")) ?></span>
+                        </label>
+                        <div class="control">
+                            <input type="text"
+                                   id="phone"
+                                   name="phone"
+                                   value="" title="<?= $block->escapeHtml(__("Phone")) ?>"
+                                   class="input-text validate-length maximum-length-25"
+                                   data-validate="{'required': true}">
+                        </div>
                     </div>
-                </div>
 
-                <div class="field required">
-                    <label class="label" for="phone">
-                        <span><?= $block->escapeHtml(__("Phone")) ?></span>
-                    </label>
-                    <div class="control">
-                        <input type="text" id="phone" name="phone" value="" title="<?= $block->escapeHtml(__("Phone")) ?>" class="input-text validate-length maximum-length-25" data-validate="{'required': true}">
+                    <div class="field required">
+                        <label class="label" for="email">
+                            <span><?= $block->escapeHtml(__("Email")) ?></span>
+                        </label>
+                        <div class="control">
+                            <input type="text"
+                                   id="email"
+                                   name="email"
+                                   value=""
+                                   title="<?= $block->escapeHtml(__("Email")) ?>"
+                                   class="input-text validate-length maximum-length-60"
+                                   data-validate="{'required': true, 'validate-email': true}">
+                        </div>
                     </div>
-                </div>
 
-                <div class="field required">
-                    <label class="label" for="email">
-                        <span><?= $block->escapeHtml(__("Email")) ?></span>
-                    </label>
-                    <div class="control">
-                        <input type="text" id="email" name="email" value="" title="<?= $block->escapeHtml(__("Email")) ?>" class="input-text validate-length maximum-length-60" data-validate="{'required': true, 'validate-email': true}">
+                    <div class="field required">
+                        <label class="label" for="hull_id">
+                            <span><?= $block->escapeHtml(__("Hull ID")) ?></span>
+                        </label>
+                        <div class="control">
+                            <input type="text"
+                                   id="hull_id"
+                                   name="hull_id"
+                                   value="" title="<?= $block->escapeHtml(__("Hull ID")) ?>"
+                                   class="input-text validate-length maximum-length-40"
+                                   data-validate="{'required': true}">
+                        </div>
                     </div>
-                </div>
 
-                <div class="field required">
-                    <label class="label" for="hull_id">
-                        <span><?= $block->escapeHtml(__("Hull ID")) ?></span>
-                    </label>
-                    <div class="control">
-                        <input type="text" id="hull_id" name="hull_id" value="" title="<?= $block->escapeHtml(__("Hull ID")) ?>" class="input-text validate-length maximum-length-40" data-validate="{'required': true}">
+                    <div class="field required">
+                        <label class="label" for="engine_hours">
+                            <span><?= $block->escapeHtml(__("Engine Hours")) ?></span>
+                        </label>
+                        <div class="control">
+                            <input type="text"
+                                   id="engine_hours"
+                                   name="engine_hours"
+                                   value=""
+                                   title="<?= $block->escapeHtml(__("Engine Hours")) ?>"
+                                   class="input-text"
+                                   data-validate="{'required': true,
+                                   'pattern':/^((\d+)|\d{1,3}(\,?\d{3})*)(\.\d{1,2})?$/}">
+                        </div>
                     </div>
-                </div>
 
-                <div class="field required">
-                    <label class="label" for="engine_hours">
-                        <span><?= $block->escapeHtml(__("Engine Hours")) ?></span>
-                    </label>
-                    <div class="control">
-                        <input type="text" id="engine_hours" name="engine_hours" value="" title="<?= $block->escapeHtml(__("Engine Hours")) ?>" class="input-text" data-validate="{'required': true, 'pattern':/^((\d+)|\d{1,3}(\,?\d{3})*)(\.\d{1,2})?$/}">
+                    <div class="field required">
+                        <label class="label" for="is_commercial_use">
+                            <span><?= $block->escapeHtml(__("Is Commercial Use")) ?></span>
+                        </label>
+                        <div class="control">
+                            <select id="is_commercial_use"
+                                    name="is_commercial_use"
+                                    title="<?= $block->escapeHtml(__('Is Commercial Use')) ?>"
+                                    class="validate-select"
+                                    data-validate="{'required': true}">
+                                <option value=""><?= $block->escapeHtml(__('Please select an option')) ?></option>
+                                <option value="1"><?= $block->escapeHtml(__('Yes')) ?></option>
+                                <option value="0"><?= $block->escapeHtml(__('No')) ?></option>
+                            </select>
+                        </div>
                     </div>
-                </div>
 
-                <div class="field required">
-                    <label class="label" for="is_commercial_use">
-                        <span><?= $block->escapeHtml(__("Is Commercial Use")) ?></span>
-                    </label>
-                    <div class="control">
-                        <select id="is_commercial_use" name="is_commercial_use" title="<?= /* @noEscape */ __('Is Commercial Use') ?>" class="validate-select" data-validate="{'required': true}" >
-                            <option value=""><?= $block->escapeHtml(__('Please select an option')) ?></option>
-                            <option value="1"><?= $block->escapeHtml(__('Yes')) ?></option>
-                            <option value="0"><?= $block->escapeHtml(__('No')) ?></option>
-                        </select>
+                    <div class="field smallbox required">
+                        <label class="label" for="purchased_date">
+                            <span><?= $block->escapeHtml(__("Purchased Date")) ?></span>
+                        </label>
+                        <div class="control">
+                            <input type="text"
+                                   id="purchased_date"
+                                   name="purchased_date"
+                                   value=""
+                                   title="<?= $block->escapeHtml(__("Purchased Date")) ?>"
+                                   class="input-text"
+                                   data-validate="{'required': true}">
+                        </div>
                     </div>
-                </div>
 
-                <div class="field smallbox required">
-                    <label class="label" for="purchased_date">
-                        <span><?= $block->escapeHtml(__("Purchased Date")) ?></span>
-                    </label>
-                    <div class="control">
-                        <input type="text" id="purchased_date" name="purchased_date" value="" title="<?= $block->escapeHtml(__("Purchased Date")) ?>" class="input-text" data-validate="{'required': true}">
+                    <div class="field">
+                        <label class="label" for="notes">
+                            <span><?= $block->escapeHtml(__("Notes")) ?></span>
+                        </label>
+                        <div class="control">
+                            <textarea name="reg_notes" id="notes" class=""></textarea>
+                        </div>
                     </div>
-                </div>
-
-                <div class="field">
-                    <label class="label" for="notes">
-                        <span><?= $block->escapeHtml(__("Notes")) ?></span>
-                    </label>
-                    <div class="control">
-                        <textarea name="reg_notes" id="notes" class=""></textarea>
-                    </div>
-                </div>
-            </fieldset>
+                </fieldset>
             <?php endif; ?>
             <div class="actions-toolbar">
                 <?php if ($block->isUnRegistered()): ?>
-                <div class="primary">
-                    <button type="submit" class="action save primary" title="<?= $block->escapeHtml(__("Submit")) ?>">
-                        <span><?= $block->escapeHtml(__("Register")) ?></span>
-                    </button>
-                </div>
+                    <div class="primary">
+                        <button type="submit" class="action save primary"
+                                title="<?= $block->escapeHtml(__("Submit")) ?>">
+                            <span><?= $block->escapeHtml(__("Register")) ?></span>
+                        </button>
+                    </div>
                 <?php endif; ?>
                 <div class="secondary">
                     <a class="action" href="<?= $block->escapeUrl($block->getUrl("customer/account")) ?>">
@@ -208,17 +324,17 @@
     </div>
 </div>
 <style>
-.messages .message {
-    font-size: 30px !important;
-    font-weight: bold !important;
-    text-align: center !important;
-}
+    .messages .message {
+        font-size: 30px !important;
+        font-weight: bold !important;
+        text-align: center !important;
+    }
 </style>
 <script>
     require([
         'jquery',
         'mage/mage'
-    ], function($){
+    ], function ($) {
 
         var dataForm = $('#engine-form,#engine-validate-form');
         var ignore = <?= /* @noEscape */ 'null' ?>;
@@ -232,8 +348,8 @@
 <script>
     require([
         'jquery'
-    ], function($){
-        $(document).ready(function (){
+    ], function ($) {
+        $(document).ready(function () {
             $("#warranty-container").show();
         });
     });
@@ -244,8 +360,8 @@
             'jquery',
             'mage/translate',
             'mage/calendar'
-        ], function($){
-            $(document).ready(function (){
+        ], function ($) {
+            $(document).ready(function () {
                 $("#purchased_date").calendar({
                     changeMonth: true,
                     changeYear: true,
@@ -261,20 +377,24 @@
         {
             "#country": {
                 "regionUpdater": {
-                    "optionalRegionAllowed": <?= /* @noEscape */ $block->getConfig('general/region/display_all') ? 'true' : 'false' ?>,
+                    "optionalRegionAllowed": <?= $block->escapeHtml($block->getConfig('general/region/display_all')
+                                                            ? 'true'
+                                                            : 'false')?>,
                     "regionListId": "#region_id",
                     "regionInputId": "#state",
                     "postcodeId": "#zip",
                     "form": "#engine-form",
                     <?php //phpcs:disable ?>
-                    "regionJson": <?= /* @noEscape */ $this->helper(\Magento\Directory\Helper\Data::class)->getRegionJson() ?>,
+                    "regionJson": <?= $block->escapeHtml($block->getRegionJson()) ?>,
                     <?php //phpcs:enable ?>
                     "defaultRegion": "",
                     <?php //phpcs:disable ?>
-                    "countriesWithOptionalZip": <?= /* @noEscape */ $this->helper(\Magento\Directory\Helper\Data::class)->getCountriesWithOptionalZip(true) ?>
+                    "countriesWithOptionalZip": <?= $block->escapeHtml($block->getCountriesWithOptionalZip(true)) ?>
                     <?php //phpcs:enable ?>
                 }
             }
         }
+
+
     </script>
 <?php endif; ?>

@@ -16,6 +16,7 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 use Psr\Log\LoggerInterface;
+use Variux\Warranty\Helper\Data;
 use Variux\Warranty\Model\WarrantyRepository;
 
 class Edit extends \Variux\Warranty\Controller\AbstractAction
@@ -35,6 +36,7 @@ class Edit extends \Variux\Warranty\Controller\AbstractAction
      * @param CompanyContext $companyContext
      * @param LoggerInterface $logger
      * @param Session $_customerSession
+     * @param Data $helperData
      * @param PageFactory $resultPageFactory
      * @param WarrantyRepository $warrantyRepository
      */
@@ -43,10 +45,11 @@ class Edit extends \Variux\Warranty\Controller\AbstractAction
         \Magento\Company\Model\CompanyContext $companyContext,
         \Psr\Log\LoggerInterface              $logger,
         Session                               $_customerSession,
+        \Variux\Warranty\Helper\Data          $helperData,
         PageFactory                           $resultPageFactory,
         WarrantyRepository                    $warrantyRepository
     ) {
-        parent::__construct($context, $companyContext, $logger, $_customerSession);
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData);
 
         $this->resultPageFactory = $resultPageFactory;
         $this->warrantyRepository = $warrantyRepository;
