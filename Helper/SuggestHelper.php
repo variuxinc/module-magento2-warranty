@@ -19,6 +19,11 @@ use Magento\Sales\Model\OrderRepository;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Customer\Model\Session as customerSession;
 
+/**
+ * @Hidro-Le
+ * @TODO - Review
+ * Các hàm ở trong class này chưa được define document
+ */
 class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
 {
     /**

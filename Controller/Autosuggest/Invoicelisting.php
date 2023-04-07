@@ -54,8 +54,18 @@ class Invoicelisting extends AbstractAction
 
         $customerId = $this->_customerSession->getCustomer()->getId();
 
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * Ham findInvoiceListingByCustomer không tồn tại.
+         */
         $response = $this->suggestHelper->findInvoiceListingByCustomer($search, $customerId);
-
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * Chỗ này a cần tìm hiểu cách response JSON thay vì set response kiểu vầy.
+         *       Sample: $this->resultFactory->create(ResultFactory::TYPE_JSON);
+         */
         return $this->getResponse()->setBody($jsonHelper->jsonEncode($response));
     }
 }

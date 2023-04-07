@@ -51,7 +51,12 @@ class Engine extends \Variux\Warranty\Controller\AbstractAction
         $jsonHelper = $this->_objectManager->create(\Magento\Framework\Json\Helper\Data::class);
 
         $response = $this->suggestHelper->findEngine($search);
-
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * Chỗ này a cần tìm hiểu cách response JSON thay vì set response kiểu vầy.
+         *       Sample: $this->resultFactory->create(ResultFactory::TYPE_JSON);
+         */
         return $this->getResponse()->setBody($jsonHelper->jsonEncode($response));
     }
 }

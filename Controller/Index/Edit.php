@@ -62,6 +62,11 @@ class Edit extends \Variux\Warranty\Controller\AbstractAction
         $id = $this->getRequest()->getParam('id');
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($id) {
+            /**
+             * @Hidro-Le
+             * @TODO - Review
+             * Chỗ này hàm getById đã catch vụ không có ID, sử dụng try-catch thay vì if.
+             */
             $warranty = $this->warrantyRepository->getById($id);
             if (!$warranty->getId()) {
                 $this->messageManager->addError(__('This warranty claim no longer exists.'));

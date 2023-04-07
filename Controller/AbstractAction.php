@@ -19,6 +19,12 @@ use Psr\Log\LoggerInterface;
 use Variux\Warranty\Helper\Data;
 
 /**
+ * @Hidro-Le
+ * @TODO - Review
+ * Những class con của class này không sử dụng những hàm jsonSuccess, jsonError...
+ */
+
+/**
  * Class AbstractAction.
  *
  * @SuppressWarnings(PHPMD.NumberOfChildren)
@@ -35,6 +41,11 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
      */
     protected $logger;
 
+    /**
+     * @Hidro-Le
+     * @TODO - Review
+     * Biến này là protected không cần phải implement ở class con.
+     */
     /**
      * @var CompanyContext
      */

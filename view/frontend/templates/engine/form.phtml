@@ -324,13 +324,23 @@
     </div>
 </div>
 <style>
-    .messages .message {
-        font-size: 30px !important;
-        font-weight: bold !important;
-        text-align: center !important;
-    }
+    /**
+     * @Hidro-Le
+     * @TODO - Review
+     * Cần define đúng <script type="text/css">
+     */
+.messages .message {
+    font-size: 30px !important;
+    font-weight: bold !important;
+    text-align: center !important;
+}
 </style>
 <script>
+    /**
+     * @Hidro-Le
+     * @TODO - Review
+     * Cần define đúng <script type="text/javascript">
+     */
     require([
         'jquery',
         'mage/mage'
@@ -346,6 +356,11 @@
     });
 </script>
 <script>
+    /**
+     * @Hidro-Le
+     * @TODO - Review
+     * Cần define đúng <script type="text/javascript">
+     */
     require([
         'jquery'
     ], function ($) {
@@ -356,12 +371,22 @@
 </script>
 <?php if ($block->isUnRegistered()): ?>
     <script>
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * Cần define đúng <script type="text/javascript">
+         */
         require([
             'jquery',
             'mage/translate',
             'mage/calendar'
-        ], function ($) {
-            $(document).ready(function () {
+        ], function($){
+            /**
+             * @Hidro-Le
+             * @TODO - Review
+             * Remove docyment ready
+             */
+            $(document).ready(function (){
                 $("#purchased_date").calendar({
                     changeMonth: true,
                     changeYear: true,
@@ -394,7 +419,5 @@
                 }
             }
         }
-
-
     </script>
 <?php endif; ?>

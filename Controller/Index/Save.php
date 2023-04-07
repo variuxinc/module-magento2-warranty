@@ -123,6 +123,12 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
             "resolution_note" => ["required" => true]
         ];
         $result = [];
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * Không nên format number trước khi lưu vào DB, lúc echo mới cần format number.
+         *
+         */
         $fmt = new NumberFormatter('en_US', NumberFormatter::DECIMAL);
         foreach ($acceptedValue as $key => $value) {
             if (isset($value["required"]) && $value["required"]) {

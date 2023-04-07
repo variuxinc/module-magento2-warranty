@@ -258,11 +258,21 @@ $invoiceConfig = $block->getInvoiceSuggestConfig();
 ?>
 
 <script>
+    /**
+     * @Hidro-Le
+     * @TODO - Review
+     * Cần define đúng <script type="text/javascript">
+     */
     require([
             'jquery',
             'Magento_Ui/js/modal/alert',
             'Variux_Warranty/js/lib/autosuggest'
         ], function ($, alert, autosuggest) {
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * Remove doc ready.
+         */
             $(document).ready(function () {
                 $("#warranty-submit-btn").show();
                 var itemSuggest = new autosuggest($('input#engine'), function (item, $input, event) {

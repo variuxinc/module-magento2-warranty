@@ -69,7 +69,11 @@ class Index extends \Variux\Warranty\Controller\AbstractAction implements HttpGe
         } else {
             $resultPage = $this->resultRedirectFactory->create()->setRefererUrl();
         }
-
+    /**
+     * @Hidro-Le
+     * @TODO - Review
+     * Return không đúng với define ở Document
+     */
         return $resultPage;
     }
 }

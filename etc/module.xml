@@ -5,3 +5,7 @@
             <module name="Magento_Company"/>
         </sequence>
 </config>
+<!--
+@TODO - review
+Khai báo module bị sai.
+-->

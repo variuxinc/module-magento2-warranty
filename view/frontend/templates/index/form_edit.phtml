@@ -242,6 +242,11 @@ $invoiceConfig = $block->getInvoiceSuggestConfig();
 ?>
 
 <script>
+    /**
+     * @Hidro-Le
+     * @TODO - Review
+     * Cần define đúng <script type="text/javascript">
+     */
     require([
             'jquery',
             'Magento_Ui/js/modal/alert',
@@ -260,6 +265,11 @@ $invoiceConfig = $block->getInvoiceSuggestConfig();
 
             passDataToForm(<?=\Zend_Json::encode($block->getFormData())?>);
             $("#warranty-submit-btn").show();
+            /**
+             * @Hidro-Le
+             * @TODO - Review
+             * Sử dung if(...):  endif; thay vì if(...){...}
+             */
             <?php if (!$block->isWarrantySubmitted()) {?>
             var itemSuggest = new autosuggest($('input#engine'), function (item, $input, event) {
                 $input.val(item.serial_no).trigger("change");
