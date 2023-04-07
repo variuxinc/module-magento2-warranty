@@ -75,4 +75,3 @@ class UnitActions extends \Magento\Ui\Component\Listing\Columns\Column
         return $dataSource;
     }
 }
-

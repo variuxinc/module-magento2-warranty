@@ -38,20 +38,20 @@ class Save extends \Magento\Backend\App\Action
         $data = $this->getRequest()->getPostValue();
         if ($data) {
             $id = $this->getRequest()->getParam('sromaterial_id');
-        
+
             $model = $this->_objectManager->create(\Variux\Warranty\Model\SroMaterial::class)->load($id);
             if (!$model->getId() && $id) {
                 $this->messageManager->addErrorMessage(__('This Sromaterial no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
             }
-        
+
             $model->setData($data);
-        
+
             try {
                 $model->save();
                 $this->messageManager->addSuccessMessage(__('You saved the Sromaterial.'));
                 $this->dataPersistor->clear('variux_warranty_sromaterial');
-        
+
                 if ($this->getRequest()->getParam('back')) {
                     return $resultRedirect->setPath('*/*/edit', ['sromaterial_id' => $model->getId()]);
                 }
@@ -59,13 +59,14 @@ class Save extends \Magento\Backend\App\Action
             } catch (LocalizedException $e) {
                 $this->messageManager->addErrorMessage($e->getMessage());
             } catch (\Exception $e) {
-                $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the Sromaterial.'));
+                $this->messageManager
+                    ->addExceptionMessage($e, __('Something went wrong while saving the Sromaterial.'));
             }
-        
+
             $this->dataPersistor->set('variux_warranty_sromaterial', $data);
-            return $resultRedirect->setPath('*/*/edit', ['sromaterial_id' => $this->getRequest()->getParam('sromaterial_id')]);
+            return $resultRedirect
+                    ->setPath('*/*/edit', ['sromaterial_id' => $this->getRequest()->getParam('sromaterial_id')]);
         }
         return $resultRedirect->setPath('*/*/');
     }
 }
-

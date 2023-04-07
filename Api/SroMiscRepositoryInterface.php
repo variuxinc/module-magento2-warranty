@@ -59,4 +59,3 @@ interface SroMiscRepositoryInterface
      */
     public function deleteById($sromiscId);
 }
-

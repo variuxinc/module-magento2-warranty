@@ -59,4 +59,3 @@ interface SroMaterialRepositoryInterface
      */
     public function deleteById($sromaterialId);
 }
-

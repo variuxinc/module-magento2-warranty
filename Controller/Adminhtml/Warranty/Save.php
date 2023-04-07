@@ -38,20 +38,20 @@ class Save extends \Magento\Backend\App\Action
         $data = $this->getRequest()->getPostValue();
         if ($data) {
             $id = $this->getRequest()->getParam('warranty_id');
-        
+
             $model = $this->_objectManager->create(\Variux\Warranty\Model\Warranty::class)->load($id);
             if (!$model->getId() && $id) {
                 $this->messageManager->addErrorMessage(__('This Warranty no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
             }
-        
+
             $model->setData($data);
-        
+
             try {
                 $model->save();
                 $this->messageManager->addSuccessMessage(__('You saved the Warranty.'));
                 $this->dataPersistor->clear('variux_warranty_warranty');
-        
+
                 if ($this->getRequest()->getParam('back')) {
                     return $resultRedirect->setPath('*/*/edit', ['warranty_id' => $model->getId()]);
                 }
@@ -61,11 +61,11 @@ class Save extends \Magento\Backend\App\Action
             } catch (\Exception $e) {
                 $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the Warranty.'));
             }
-        
+
             $this->dataPersistor->set('variux_warranty_warranty', $data);
-            return $resultRedirect->setPath('*/*/edit', ['warranty_id' => $this->getRequest()->getParam('warranty_id')]);
+            return $resultRedirect
+                    ->setPath('*/*/edit', ['warranty_id' => $this->getRequest()->getParam('warranty_id')]);
         }
         return $resultRedirect->setPath('*/*/');
     }
 }
-

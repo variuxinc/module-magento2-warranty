@@ -46,7 +46,6 @@ class SroMiscRepository implements SroMiscRepositoryInterface
      */
     protected $resource;
 
-
     /**
      * @param ResourceSroMisc $resource
      * @param SroMiscInterfaceFactory $sroMiscFactory
@@ -104,17 +103,17 @@ class SroMiscRepository implements SroMiscRepositoryInterface
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
     ) {
         $collection = $this->sroMiscCollectionFactory->create();
-        
+
         $this->collectionProcessor->process($criteria, $collection);
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
-        
+
         $items = [];
         foreach ($collection as $model) {
             $items[] = $model;
         }
-        
+
         $searchResults->setItems($items);
         $searchResults->setTotalCount($collection->getSize());
         return $searchResults;
@@ -146,4 +145,3 @@ class SroMiscRepository implements SroMiscRepositoryInterface
         return $this->delete($this->get($sroMiscId));
     }
 }
-

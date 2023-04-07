@@ -29,9 +29,9 @@ class Collection extends AbstractCollection
     }
 
         /**
-     * @param $data
-     * @return $this
-     */
+         * @param $data
+         * @return $this
+         */
     public function applyFilterData($data, $type = "like")
     {
         if ($data && is_array($data)) {
@@ -43,14 +43,14 @@ class Collection extends AbstractCollection
 
                 if ($key == "warranty_ticket") {
                     $warIds = $this->getFilterTicketIds($value);
-                    $this->addFieldToFilter("warranty_id", array("in" => $warIds));
+                    $this->addFieldToFilter("warranty_id", ["in" => $warIds]);
                     continue;
                 } elseif ($key == "serial_number") {
                     $key = "engine";
                 }
 
                 if (in_array($key, $tableFields)) {
-                    $this->addFieldToFilter($key, array($type => "%".$value."%"));
+                    $this->addFieldToFilter($key, [$type => "%".$value."%"]);
                 }
             }
         }
@@ -68,4 +68,3 @@ class Collection extends AbstractCollection
         return $ids;
     }
 }
-

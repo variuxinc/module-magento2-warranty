@@ -46,7 +46,6 @@ class UnitRegRepository implements UnitRegRepositoryInterface
      */
     protected $resource;
 
-
     /**
      * @param ResourceUnitReg $resource
      * @param UnitRegInterfaceFactory $unitRegFactory
@@ -104,17 +103,17 @@ class UnitRegRepository implements UnitRegRepositoryInterface
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
     ) {
         $collection = $this->unitRegCollectionFactory->create();
-        
+
         $this->collectionProcessor->process($criteria, $collection);
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
-        
+
         $items = [];
         foreach ($collection as $model) {
             $items[] = $model;
         }
-        
+
         $searchResults->setItems($items);
         $searchResults->setTotalCount($collection->getSize());
         return $searchResults;

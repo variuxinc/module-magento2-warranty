@@ -59,4 +59,3 @@ interface SroDocumentRepositoryInterface
      */
     public function deleteById($srodocumentId);
 }
-

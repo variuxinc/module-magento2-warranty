@@ -8,129 +8,130 @@ declare(strict_types=1);
 namespace Variux\Warranty\Model;
 
 use Magento\Framework\Model\AbstractModel;
+use Magento\Store\Model\StoreManagerInterface;
 use Variux\Warranty\Api\Data\WarrantyInterface;
 
 class Warranty extends AbstractModel implements WarrantyInterface
 {
     protected $_eventPrefix = 'variux_warranty';
 
-    const STATUS_ARRAY = array(
+    const STATUS_ARRAY = [
         'CD' =>
-            array(
+            [
                 'key' => 'CD',
                 'value' => 'Claim Denied',
-            ),
+            ],
         'CMIssued' =>
-            array(
+            [
                 'key' => 'CMIssued',
                 'value' => 'Credit Memo Issued',
-            ),
+            ],
         'CSAprv' =>
-            array(
+            [
                 'key' => 'CSAprv',
                 'value' => 'Customer Service Approval',
-            ),
+            ],
         'CSREVIEW' =>
-            array(
+            [
                 'key' => 'CSREVIEW',
                 'value' => 'CUSTOMER SERVICE REVIEW',
-            ),
+            ],
         'EngInpt' =>
-            array(
+            [
                 'key' => 'EngInpt',
                 'value' => 'Engineering  Input',
-            ),
+            ],
         'INCOMP' =>
-            array(
+            [
                 'key' => 'INCOMP',
                 'value' => 'Incomplete Claim',
-            ),
+            ],
         'Info' =>
-            array(
+            [
                 'key' => 'Info',
                 'value' => 'Memo Info Only',
-            ),
+            ],
         'InProc' =>
-            array(
+            [
                 'key' => 'InProc',
                 'value' => 'In Process',
-            ),
+            ],
         'JCRev' =>
-            array(
+            [
                 'key' => 'JCRev',
                 'value' => 'Joe Cutberth Review',
-            ),
+            ],
         'JTRev' =>
-            array(
+            [
                 'key' => 'JTRev',
                 'value' => 'John Todd Review',
-            ),
+            ],
         'LERev' =>
-            array(
+            [
                 'key' => 'LERev',
                 'value' => 'Larry Engelbert Review',
-            ),
+            ],
         'MgmtAprv' =>
-            array(
+            [
                 'key' => 'MgmtAprv',
                 'value' => 'Management Approval',
-            ),
+            ],
         'NewCont' =>
-            array(
+            [
                 'key' => 'NewCont',
                 'value' => 'Submitted',
-            ),
+            ],
         'PrtsInsptd' =>
-            array(
+            [
                 'key' => 'PrtsInsptd',
                 'value' => 'Parts Inspected',
-            ),
+            ],
         'PrtsRtnd' =>
-            array(
+            [
                 'key' => 'PrtsRtnd',
                 'value' => 'Parts Returned',
-            ),
+            ],
         'SOEntered' =>
-            array(
+            [
                 'key' => 'SOEntered',
                 'value' => 'Sales Order Entered',
-            ),
+            ],
         'TRBLRESOLV' =>
-            array(
+            [
                 'key' => 'TRBLRESOLV',
                 'value' => 'Trouble Resolved',
-            ),
+            ],
         'TRBLSHOOT' =>
-            array(
+            [
                 'key' => 'TRBLSHOOT',
                 'value' => 'Trouble Shooting',
-            ),
+            ],
         'VS-CMPLT' =>
-            array(
+            [
                 'key' => 'VS-CMPLT',
                 'value' => 'VENDOR SHIP COMPLETED',
-            ),
+            ],
         'VS-Denied' =>
-            array(
+            [
                 'key' => 'VS-Denied',
                 'value' => 'Vendor Ship Denied',
-            ),
+            ],
         'VS-INPROC' =>
-            array(
+            [
                 'key' => 'VS-INPROC',
                 'value' => 'VENDOR SHIP IN PROCESS',
-            ),
+            ],
         'VS-Ship' =>
-            array(
+            [
                 'key' => 'VS-Ship',
                 'value' => 'Vendor Return Shipped',
-            ),
+            ],
         'WtngPrts' =>
-            array(
+            [
                 'key' => 'WtngPrts',
                 'value' => 'Waiting for Parts',
-            ),
-    );
+            ],
+    ];
     /**
      * @inheritDoc
      */
@@ -140,7 +141,7 @@ class Warranty extends AbstractModel implements WarrantyInterface
     }
 
     /**
-     * @var \Magento\Store\Model\StoreManagerInterface
+     * @var StoreManagerInterface
      */
     protected $storeManager;
 
@@ -151,11 +152,10 @@ class Warranty extends AbstractModel implements WarrantyInterface
         \Magento\Framework\Registry $registry,
         \Variux\Warranty\Model\ResourceModel\Warranty $resource,
         \Variux\Warranty\Model\ResourceModel\Warranty\Collection $resourceCollection,
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
+        StoreManagerInterface $storeManager,
         \Variux\Warranty\Model\SroFactory $sroFactory,
         array $data = []
-    )
-    {
+    ) {
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
         $this->storeManager = $storeManager;
         $this->sroFactory = $sroFactory;
@@ -767,4 +767,3 @@ class Warranty extends AbstractModel implements WarrantyInterface
         return $this->setData(self::UPDATED_AT, $updatedAt);
     }
 }
-

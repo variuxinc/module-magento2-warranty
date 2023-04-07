@@ -179,4 +179,3 @@ interface SroMaterialInterface
      */
     public function setPrice($price);
 }
-

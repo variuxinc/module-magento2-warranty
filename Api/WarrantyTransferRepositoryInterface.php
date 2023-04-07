@@ -8,25 +8,27 @@ declare(strict_types=1);
 namespace Variux\Warranty\Api;
 
 use Magento\Framework\Api\SearchCriteriaInterface;
+use Magento\Framework\Exception\LocalizedException;
+use Variux\Warranty\Api\Data\WarrantyTransferInterface;
 
 interface WarrantyTransferRepositoryInterface
 {
 
     /**
      * Save WarrantyTransfer
-     * @param \Variux\Warranty\Api\Data\WarrantyTransferInterface $warrantyTransfer
-     * @return \Variux\Warranty\Api\Data\WarrantyTransferInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @param WarrantyTransferInterface $warrantyTransfer
+     * @return WarrantyTransferInterface
+     * @throws LocalizedException
      */
     public function save(
-        \Variux\Warranty\Api\Data\WarrantyTransferInterface $warrantyTransfer
-    );
+        WarrantyTransferInterface $warrantyTransfer
+    ): WarrantyTransferInterface;
 
     /**
      * Retrieve WarrantyTransfer
      * @param string $warrantytransferId
-     * @return \Variux\Warranty\Api\Data\WarrantyTransferInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @return WarrantyTransferInterface
+     * @throws LocalizedException
      */
     public function get($warrantytransferId);
 
@@ -34,7 +36,7 @@ interface WarrantyTransferRepositoryInterface
      * Retrieve WarrantyTransfer matching the specified criteria.
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
      * @return \Variux\Warranty\Api\Data\WarrantyTransferSearchResultsInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
     public function getList(
         \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
@@ -42,12 +44,12 @@ interface WarrantyTransferRepositoryInterface
 
     /**
      * Delete WarrantyTransfer
-     * @param \Variux\Warranty\Api\Data\WarrantyTransferInterface $warrantyTransfer
+     * @param WarrantyTransferInterface $warrantyTransfer
      * @return bool true on success
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
     public function delete(
-        \Variux\Warranty\Api\Data\WarrantyTransferInterface $warrantyTransfer
+        WarrantyTransferInterface $warrantyTransfer
     );
 
     /**
@@ -55,7 +57,7 @@ interface WarrantyTransferRepositoryInterface
      * @param string $warrantytransferId
      * @return bool true on success
      * @throws \Magento\Framework\Exception\NoSuchEntityException
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
     public function deleteById($warrantytransferId);
 }

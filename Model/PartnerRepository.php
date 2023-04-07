@@ -46,7 +46,6 @@ class PartnerRepository implements PartnerRepositoryInterface
      */
     protected $partnerFactory;
 
-
     /**
      * @param ResourcePartner $resource
      * @param PartnerInterfaceFactory $partnerFactory
@@ -104,17 +103,17 @@ class PartnerRepository implements PartnerRepositoryInterface
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
     ) {
         $collection = $this->partnerCollectionFactory->create();
-        
+
         $this->collectionProcessor->process($criteria, $collection);
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
-        
+
         $items = [];
         foreach ($collection as $model) {
             $items[] = $model;
         }
-        
+
         $searchResults->setItems($items);
         $searchResults->setTotalCount($collection->getSize());
         return $searchResults;

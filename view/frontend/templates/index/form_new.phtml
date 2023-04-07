@@ -1,6 +1,10 @@
 <div class="warranty-container">
     <div class="warranty-wrapper">
-        <form id="warranty-form" class="form" method="post" data-mage-init='{"validation": {}}' action="<?= $block->escapeUrl($block->getUrl("warranty/index/save")) ?>">
+        <form id="warranty-form"
+              class="form"
+              method="post"
+              data-mage-init='{"validation": {}}'
+              action="<?= $block->escapeUrl($block->getUrl("warranty/index/save")) ?>">
             <?= $block->getBlockHtml('formkey') ?>
             <input type="hidden" name="warranty_id">
             <fieldset class="fieldset info">
@@ -14,7 +18,12 @@
                         <span><?= $block->escapeHtml(__("Engine")) ?></span>
                     </label>
                     <div class="control">
-                        <input type="text" id="engine" name="engine" value="" title="<?= $block->escapeHtml(__("Engine")) ?>" class="input-text validate-length maximum-length-30" autocomplete="off">
+                        <input type="text"
+                               id="engine"
+                               name="engine"
+                               value="" title="<?= $block->escapeHtml(__("Engine")) ?>"
+                               class="input-text validate-length maximum-length-30"
+                               autocomplete="off">
                     </div>
                 </div>
                 <div class="field full required">
@@ -22,7 +31,13 @@
                         <span><?= $block->escapeHtml(__("Description")) ?></span>
                     </label>
                     <div class="control">
-                        <input readonly type="text" id="description" name="description" value="" title="<?= $block->escapeHtml(__("Description")) ?>" class="input-text"  data-validate="{required: true}">
+                        <input readonly
+                               type="text"
+                               id="description"
+                               name="description"
+                               value="" title="<?= $block->escapeHtml(__("Description")) ?>"
+                               class="input-text"
+                               data-validate="{required: true}">
                     </div>
                 </div>
                 <div class="field required">
@@ -30,7 +45,14 @@
                         <span><?= $block->escapeHtml(__("Item")) ?></span>
                     </label>
                     <div class="control">
-                        <input readonly autocomplete="off" type="text" id="item_sku" name="item_sku" value="" title="<?= $block->escapeHtml(__("Item")) ?>" class="input-text validate-length maximum-length-30"  data-validate="{required: true}">
+                        <input readonly
+                               autocomplete="off"
+                               type="text"
+                               id="item_sku"
+                               name="item_sku"
+                               value="" title="<?= $block->escapeHtml(__("Item")) ?>"
+                               class="input-text validate-length maximum-length-30"
+                               data-validate="{required: true}">
                     </div>
                 </div>
 
@@ -39,7 +61,12 @@
                         <span><?= $block->escapeHtml(__("Boat Owner Name")) ?></span>
                     </label>
                     <div class="control">
-                        <input type="text" id="boat_owner_name" name="boat_owner_name" value="" title="<?= $block->escapeHtml(__("Boat Owner Name")) ?>" class="input-text validate-length maximum-length-60" >
+                        <input type="text"
+                               id="boat_owner_name"
+                               name="boat_owner_name"
+                               value=""
+                               title="<?= $block->escapeHtml(__("Boat Owner Name")) ?>"
+                               class="input-text validate-length maximum-length-60">
                     </div>
                 </div>
                 <div class="field smallbox">
@@ -47,7 +74,12 @@
                         <span><?= $block->escapeHtml(__("Dealer Claim/Reference #")) ?></span>
                     </label>
                     <div class="control">
-                        <input type="text" id="reference_number" name="reference_number" value="" title="<?= $block->escapeHtml(__("Boat Owner Name")) ?>" class="input-text validate-length maximum-length-25" >
+                        <input type="text"
+                               id="reference_number"
+                               name="reference_number"
+                               value=""
+                               title="<?= $block->escapeHtml(__("Boat Owner Name")) ?>"
+                               class="input-text validate-length maximum-length-25">
                     </div>
                 </div>
                 <div class="field smallbox required">
@@ -71,7 +103,13 @@
                         <span><?= $block->escapeHtml(__("Engine Hours")) ?></span>
                     </label>
                     <div class="control">
-                        <input type="text" id="engine_hour" name="engine_hour" value="" title="<?= $block->escapeHtml(__("Engine Hours")) ?>" class="input-text validate-number-range number-range-1-9007199254740991" data-validate="{required: true, 'pattern':/^((\d+)|\d{1,3}(\,?\d{3})*)(\.\d{1,2})?$/}">
+                        <input type="text"
+                               id="engine_hour"
+                               name="engine_hour"
+                               value=""
+                               title="<?= $block->escapeHtml(__("Engine Hours")) ?>"
+                               class="input-text validate-number-range number-range-1-9007199254740991"
+                               data-validate="{required: true, 'pattern':/^((\d+)|\d{1,3}(\,?\d{3})*)(\.\d{1,2})?$/}">
                     </div>
                 </div>
             </fieldset>
@@ -81,7 +119,10 @@
 
                     </label>
                     <div class="control">
-                        <span>*</span> <span><?= $block->escapeHtml(__("Invoice Number or Sales Order is required for Freight.")) ?></span>
+                        <span>*</span>
+                        <span>
+                            <?= $block->escapeHtml(__("Invoice Number or Sales Order is required for Freight.")) ?>
+                        </span>
                     </div>
                 </div>
                 <div class="field smallbox">
@@ -89,7 +130,12 @@
                         <span><?= $block->escapeHtml(__("Invoice Number")) ?></span>
                     </label>
                     <div class="control">
-                        <input type="text" id="invoice_number" name="invoice_number" value="" title="<?= $block->escapeHtml(__("Invoice Number")) ?>" class="input-text validate-length maximum-length-10" >
+                        <input type="text"
+                               id="invoice_number"
+                               name="invoice_number"
+                               value=""
+                               title="<?= $block->escapeHtml(__("Invoice Number")) ?>"
+                               class="input-text validate-length maximum-length-10">
                     </div>
                 </div>
 
@@ -98,7 +144,12 @@
                         <span><?= $block->escapeHtml(__("Order Number")) ?></span>
                     </label>
                     <div class="control">
-                        <input type="text" id="order_number" name="order_number" value="" title="<?= $block->escapeHtml(__("Order Number")) ?>" class="input-text validate-length maximum-length-10" >
+                        <input type="text"
+                               id="order_number"
+                               name="order_number"
+                               value=""
+                               title="<?= $block->escapeHtml(__("Order Number")) ?>"
+                               class="input-text validate-length maximum-length-10">
                     </div>
                 </div>
             </fieldset>
@@ -108,7 +159,14 @@
                         <span><?= $block->escapeHtml(__("Dealer Contact Name")) ?></span>
                     </label>
                     <div class="control">
-                        <input type="text" id="dealer_name" name="dealer_name" value="" title="<?= $block->escapeHtml(__("Dealer Contact Name")) ?>" class="input-text validate-length maximum-length-30"  data-validate="{required: true}" autocomplete="off">
+                        <input type="text"
+                               id="dealer_name"
+                               name="dealer_name"
+                               value=""
+                               title="<?= $block->escapeHtml(__("Dealer Contact Name")) ?>"
+                               class="input-text validate-length maximum-length-30"
+                               data-validate="{required: true}"
+                               autocomplete="off">
                     </div>
                 </div>
                 <div class="field smallbox required">
@@ -116,7 +174,13 @@
                         <span><?= $block->escapeHtml(__("Dealership Phone Number")) ?></span>
                     </label>
                     <div class="control">
-                        <input type="text" id="dealer_phone_number" name="dealer_phone_number" value="" title="<?= $block->escapeHtml(__("Dealership Phone Number")) ?>" class="input-text validate-length maximum-length-25"  data-validate="{required: true}">
+                        <input type="text"
+                               id="dealer_phone_number"
+                               name="dealer_phone_number"
+                               value=""
+                               title="<?= $block->escapeHtml(__("Dealership Phone Number")) ?>"
+                               class="input-text validate-length maximum-length-25"
+                               data-validate="{required: true}">
                     </div>
                 </div>
                 <div class="field required">
@@ -124,7 +188,13 @@
                         <span><?= $block->escapeHtml(__("Claim Processors Email")) ?></span>
                     </label>
                     <div class="control">
-                        <input type="text" id="claim_processor_email" name="claim_processor_email" value="" title="<?= $block->escapeHtml(__("Claim Processors Email")) ?>" class="input-text validate-length maximum-length-60"  data-validate="{required: true}">
+                        <input type="text"
+                               id="claim_processor_email"
+                               name="claim_processor_email"
+                               value=""
+                               title="<?= $block->escapeHtml(__("Claim Processors Email")) ?>"
+                               class="input-text validate-length maximum-length-60"
+                               data-validate="{required: true}">
                     </div>
                 </div>
                 <div class="field full required">
@@ -132,7 +202,13 @@
                         <span><?= $block->escapeHtml(__("Brief Description")) ?></span>
                     </label>
                     <div class="control">
-                        <input type="text" id="brief_description" name="brief_description" value="" title="<?= $block->escapeHtml(__("Brief Description")) ?>" class="input-text validate-length maximum-length-40"  data-validate="{required: true}">
+                        <input type="text"
+                               id="brief_description"
+                               name="brief_description"
+                               value=""
+                               title="<?= $block->escapeHtml(__("Brief Description")) ?>"
+                               class="input-text validate-length maximum-length-40"
+                               data-validate="{required: true}">
                     </div>
                 </div>
             </fieldset>
@@ -142,7 +218,9 @@
                         <span><?= $block->escapeHtml(__("Reason Note")) ?></span>
                     </label>
                     <div class="control">
-                        <textarea type="text" id="reason_note" name="reason_note" value="" title="<?= $block->escapeHtml(__("Reason Note")) ?>" class="input-text"  data-validate="{required: true}" ></textarea>
+                        <textarea type="text" id="reason_note" name="reason_note" value=""
+                                  title="<?= $block->escapeHtml(__("Reason Note")) ?>" class="input-text"
+                                  data-validate="{required: true}"></textarea>
                     </div>
                 </div>
 
@@ -151,13 +229,16 @@
                         <span><?= $block->escapeHtml(__("Resolution Note")) ?></span>
                     </label>
                     <div class="control">
-                        <textarea type="text" id="resolution_note" name="resolution_note" value="" title="<?= $block->escapeHtml(__("Resolution Note")) ?>" class="input-text"  data-validate="{required: true}" ></textarea>
+                        <textarea type="text" id="resolution_note" name="resolution_note" value=""
+                                  title="<?= $block->escapeHtml(__("Resolution Note")) ?>" class="input-text"
+                                  data-validate="{required: true}"></textarea>
                     </div>
                 </div>
             </fieldset>
             <fieldset class="actions-toolbar">
                 <div class="primary">
-                    <button style="display:none" id="warranty-submit-btn" type="submit" class="action save primary" title="<?= $block->escapeHtml(__("Submit")) ?>">
+                    <button style="display:none" id="warranty-submit-btn" type="submit" class="action save primary"
+                            title="<?= $block->escapeHtml(__("Submit")) ?>">
                         <span><?= $block->escapeHtml(__("Save & Continue")) ?></span>
                     </button>
                 </div>

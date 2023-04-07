@@ -8,46 +8,49 @@ declare(strict_types=1);
 namespace Variux\Warranty\Api;
 
 use Magento\Framework\Api\SearchCriteriaInterface;
+use Magento\Framework\Exception\LocalizedException;
+use Variux\Warranty\Api\Data\WorkcodeInterface;
+use Variux\Warranty\Api\Data\WorkcodeSearchResultsInterface;
 
 interface WorkcodeRepositoryInterface
 {
 
     /**
      * Save Workcode
-     * @param \Variux\Warranty\Api\Data\WorkcodeInterface $workcode
-     * @return \Variux\Warranty\Api\Data\WorkcodeInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @param WorkcodeInterface $workcode
+     * @return WorkcodeInterface
+     * @throws LocalizedException
      */
     public function save(
-        \Variux\Warranty\Api\Data\WorkcodeInterface $workcode
+        WorkcodeInterface $workcode
     );
 
     /**
      * Retrieve Workcode
-     * @param string $workcodeId
-     * @return \Variux\Warranty\Api\Data\WorkcodeInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @param $workcodeId
+     * @return WorkcodeInterface
+     * @throws LocalizedException
      */
-    public function get($workcodeId);
+    public function get($workcodeId): WorkcodeInterface;
 
     /**
      * Retrieve Workcode matching the specified criteria.
-     * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
-     * @return \Variux\Warranty\Api\Data\WorkcodeSearchResultsInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @param SearchCriteriaInterface $searchCriteria
+     * @return WorkcodeSearchResultsInterface
+     * @throws LocalizedException
      */
     public function getList(
-        \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
-    );
+        SearchCriteriaInterface $searchCriteria
+    ): WorkcodeSearchResultsInterface;
 
     /**
      * Delete Workcode
-     * @param \Variux\Warranty\Api\Data\WorkcodeInterface $workcode
+     * @param WorkcodeInterface $workcode
      * @return bool true on success
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
     public function delete(
-        \Variux\Warranty\Api\Data\WorkcodeInterface $workcode
+        WorkcodeInterface $workcode
     );
 
     /**
@@ -55,8 +58,7 @@ interface WorkcodeRepositoryInterface
      * @param string $workcodeId
      * @return bool true on success
      * @throws \Magento\Framework\Exception\NoSuchEntityException
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
     public function deleteById($workcodeId);
 }
-

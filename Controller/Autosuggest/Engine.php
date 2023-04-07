@@ -1,13 +1,16 @@
 <?php
-
+/**
+ * @author Variux Team
+ * @copyright Copyright (c) 2023 Variux (https://www.variux.com)
+ */
 namespace Variux\Warranty\Controller\Autosuggest;
 
+use Magento\Company\Model\CompanyContext;
+use Magento\Customer\Model\Session;
 use Magento\Framework\App\Action\Context;
+use Psr\Log\LoggerInterface;
+use Variux\Warranty\Helper\SuggestHelper;
 
-/**
- * Class Engine
- * @package Variux\Warranty\Controller\Autosuggest
- */
 class Engine extends \Variux\Warranty\Controller\AbstractAction
 {
     /**
@@ -18,17 +21,19 @@ class Engine extends \Variux\Warranty\Controller\AbstractAction
     /**
      * Engine constructor.
      * @param Context $context
-     * @param \Magento\Company\Model\CompanyContext $companyContext
-     * @param \Variux\Warranty\Helper\SuggestHelper $suggestHelper
-     * @param \Psr\Log\LoggerInterface $logger
+     * @param CompanyContext $companyContext
+     * @param LoggerInterface $logger
+     * @param Session $_customerSession
+     * @param SuggestHelper $suggestHelper
      */
     public function __construct(
         Context $context,
         \Magento\Company\Model\CompanyContext $companyContext,
-        \Psr\Log\LoggerInterface $logger,
+        \Psr\Log\LoggerInterface              $logger,
+        \Magento\Customer\Model\Session       $_customerSession,
         \Variux\Warranty\Helper\SuggestHelper $suggestHelper
     ) {
-        parent::__construct($context, $companyContext, $logger);
+        parent::__construct($context, $companyContext, $logger, $_customerSession);
         $this->suggestHelper = $suggestHelper;
     }
 
@@ -38,8 +43,7 @@ class Engine extends \Variux\Warranty\Controller\AbstractAction
     public function execute()
     {
         $search = $this->getRequest()->getParam("q");
-        $jsonHelper = $this->_objectManager->create("Magento\Framework\Json\Helper\Data");
-
+        $jsonHelper = $this->_objectManager->create(\Magento\Framework\Json\Helper\Data::class);
 
         $response = $this->suggestHelper->findEngine($search);
 

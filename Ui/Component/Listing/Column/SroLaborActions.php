@@ -75,4 +75,3 @@ class SroLaborActions extends \Magento\Ui\Component\Listing\Columns\Column
         return $dataSource;
     }
 }
-

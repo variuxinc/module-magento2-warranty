@@ -1,38 +1,47 @@
 <?php
+/**
+ * @author Variux Team
+ * @copyright Copyright (c) 2023 Variux (https://www.variux.com)
+ */
 
 namespace Variux\Warranty\Controller\Index;
 
+use Magento\Company\Model\CompanyContext;
+use Magento\Customer\Model\Session;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\View\Result\PageFactory;
+use Psr\Log\LoggerInterface;
 
-/**
- * Class NewAction
- * @package Variux\Warranty\Controller\Index
- */
 class NewAction extends \Variux\Warranty\Controller\AbstractAction
 {
     /**
-     * @var \Magento\Framework\View\Result\PageFactory
+     * @var PageFactory
      */
     protected $resultPageFactory;
-    
+
     /**
-     * @var \Magento\Company\Model\CompanyContext
+     * @var CompanyContext
      */
     protected $companyContext;
 
     /**
      * NewAction constructor.
      * @param Context $context
-     * @param \Variux\Warranty\Helper\Data $dataHelper
+     * @param CompanyContext $companyContext
+     * @param LoggerInterface $logger
+     * @param Session $_customerSession
+     * @param PageFactory $resultPageFactory
      */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
-        \Magento\Company\Model\CompanyContext $companyContext,
-        \Psr\Log\LoggerInterface $logger,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory
+        CompanyContext                        $companyContext,
+        \Psr\Log\LoggerInterface              $logger,
+        Session                               $_customerSession,
+        PageFactory                           $resultPageFactory
     ) {
-        parent::__construct($context, $companyContext, $logger);
+        parent::__construct($context, $companyContext, $logger, $_customerSession);
         $this->resultPageFactory = $resultPageFactory;
     }
 
@@ -41,8 +50,7 @@ class NewAction extends \Variux\Warranty\Controller\AbstractAction
      *
      * Note: Request will be added as operation argument in future
      *
-     * @return \Magento\Framework\Controller\ResultInterface|ResponseInterface
-     * @throws \Magento\Framework\Exception\NotFoundException
+     * @return ResultInterface|ResponseInterface
      */
     public function execute()
     {

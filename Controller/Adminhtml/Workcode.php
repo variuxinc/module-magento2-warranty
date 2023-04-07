@@ -39,4 +39,3 @@ abstract class Workcode extends \Magento\Backend\App\Action
         return $resultPage;
     }
 }
-

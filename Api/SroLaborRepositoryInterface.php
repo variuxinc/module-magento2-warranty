@@ -59,4 +59,3 @@ interface SroLaborRepositoryInterface
      */
     public function deleteById($srolaborId);
 }
-

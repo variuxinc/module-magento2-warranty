@@ -39,4 +39,3 @@ abstract class Unit extends \Magento\Backend\App\Action
         return $resultPage;
     }
 }
-

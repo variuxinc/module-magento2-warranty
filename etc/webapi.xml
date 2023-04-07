@@ -180,32 +180,32 @@
 			<resource ref="Variux_Warranty::SroMisc_delete"/>
 		</resources>
 	</route>
-	<route url="/V1/variux-warranty/workcode" method="POST">
-		<service class="Variux\Warranty\Api\WorkcodeRepositoryInterface" method="save"/>
+	<route url="/V1/variux-warranty/workCode" method="POST">
+		<service class="Variux\Warranty\Api\WorkCodeRepositoryInterface" method="save"/>
 		<resources>
 			<resource ref="Variux_Warranty::Workcode_save"/>
 		</resources>
 	</route>
-	<route url="/V1/variux-warranty/workcode/search" method="GET">
-		<service class="Variux\Warranty\Api\WorkcodeRepositoryInterface" method="getList"/>
+	<route url="/V1/variux-warranty/workCode/search" method="GET">
+		<service class="Variux\Warranty\Api\WorkCodeRepositoryInterface" method="getList"/>
 		<resources>
 			<resource ref="Variux_Warranty::Workcode_view"/>
 		</resources>
 	</route>
-	<route url="/V1/variux-warranty/workcode/:workcodeId" method="GET">
-		<service class="Variux\Warranty\Api\WorkcodeRepositoryInterface" method="get"/>
+	<route url="/V1/variux-warranty/workCode/:workcodeId" method="GET">
+		<service class="Variux\Warranty\Api\WorkCodeRepositoryInterface" method="get"/>
 		<resources>
 			<resource ref="Variux_Warranty::Workcode_view"/>
 		</resources>
 	</route>
-	<route url="/V1/variux-warranty/workcode/:workcodeId" method="PUT">
-		<service class="Variux\Warranty\Api\WorkcodeRepositoryInterface" method="save"/>
+	<route url="/V1/variux-warranty/workCode/:workcodeId" method="PUT">
+		<service class="Variux\Warranty\Api\WorkCodeRepositoryInterface" method="save"/>
 		<resources>
 			<resource ref="Variux_Warranty::Workcode_update"/>
 		</resources>
 	</route>
-	<route url="/V1/variux-warranty/workcode/:workcodeId" method="DELETE">
-		<service class="Variux\Warranty\Api\WorkcodeRepositoryInterface" method="deleteById"/>
+	<route url="/V1/variux-warranty/workCode/:workcodeId" method="DELETE">
+		<service class="Variux\Warranty\Api\WorkCodeRepositoryInterface" method="deleteById"/>
 		<resources>
 			<resource ref="Variux_Warranty::Workcode_delete"/>
 		</resources>

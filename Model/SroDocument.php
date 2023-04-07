@@ -149,4 +149,3 @@ class SroDocument extends AbstractModel implements SroDocumentInterface
         return $this->setData(self::UPDATED_AT, $updatedAt);
     }
 }
-

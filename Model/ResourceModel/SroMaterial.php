@@ -20,4 +20,3 @@ class SroMaterial extends AbstractDb
         $this->_init('variux_warranty_sromaterial', 'sromaterial_id');
     }
 }
-

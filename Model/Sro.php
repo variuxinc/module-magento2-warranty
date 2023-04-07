@@ -44,10 +44,10 @@ class Sro extends AbstractModel implements SroInterface
     }
 
         /**
-     * @param $number
-     * @param bool $conditionType
-     * @return $this
-     */
+         * @param $number
+         * @param bool $conditionType
+         * @return $this
+         */
     public function loadByNumber($number, $conditionType = false)
     {
         $this->getResource()->loadByNumber($this, $number, $conditionType = false);
@@ -70,7 +70,7 @@ class Sro extends AbstractModel implements SroInterface
     public function getMaterialCollection()
     {
         return $this->materialCollectionFactory->create()
-            ->addFieldToFilter("sro_id", array("eq" => $this->getId()));
+            ->addFieldToFilter("sro_id", ["eq" => $this->getId()]);
     }
 
     /**
@@ -79,7 +79,7 @@ class Sro extends AbstractModel implements SroInterface
     public function getLaborCollection()
     {
         return $this->laborCollectionFactory->create()
-            ->addFieldToFilter("sro_id", array("eq" => $this->getId()));
+            ->addFieldToFilter("sro_id", ["eq" => $this->getId()]);
     }
 
     /**
@@ -88,7 +88,7 @@ class Sro extends AbstractModel implements SroInterface
     public function getMiscCollection()
     {
         return $this->miscCollectionFactory->create()
-            ->addFieldToFilter("sro_id", array("eq" => $this->getId()));
+            ->addFieldToFilter("sro_id", ["eq" => $this->getId()]);
     }
 
     /**
@@ -97,7 +97,7 @@ class Sro extends AbstractModel implements SroInterface
     public function getDocumentCollection()
     {
         return $this->docsCollectionFactory->create()
-            ->addFieldToFilter("sro_id", array("eq" => $this->getId()));
+            ->addFieldToFilter("sro_id", ["eq" => $this->getId()]);
     }
 
     /**
@@ -278,4 +278,3 @@ class Sro extends AbstractModel implements SroInterface
         return $this->setData(self::UPDATED_AT, $updatedAt);
     }
 }
-

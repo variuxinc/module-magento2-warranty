@@ -46,7 +46,6 @@ class UnitRepository implements UnitRepositoryInterface
      */
     protected $resource;
 
-
     /**
      * @param ResourceUnit $resource
      * @param UnitInterfaceFactory $unitFactory
@@ -104,17 +103,17 @@ class UnitRepository implements UnitRepositoryInterface
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
     ) {
         $collection = $this->unitCollectionFactory->create();
-        
+
         $this->collectionProcessor->process($criteria, $collection);
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
-        
+
         $items = [];
         foreach ($collection as $model) {
             $items[] = $model;
         }
-        
+
         $searchResults->setItems($items);
         $searchResults->setTotalCount($collection->getSize());
         return $searchResults;
@@ -146,4 +145,3 @@ class UnitRepository implements UnitRepositoryInterface
         return $this->delete($this->get($unitId));
     }
 }
-

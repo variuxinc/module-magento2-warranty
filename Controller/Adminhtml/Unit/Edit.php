@@ -36,7 +36,7 @@ class Edit extends \Variux\Warranty\Controller\Adminhtml\Unit
         // 1. Get ID and create model
         $id = $this->getRequest()->getParam('unit_id');
         $model = $this->_objectManager->create(\Variux\Warranty\Model\Unit::class);
-        
+
         // 2. Initial checking
         if ($id) {
             $model->load($id);
@@ -48,7 +48,7 @@ class Edit extends \Variux\Warranty\Controller\Adminhtml\Unit
             }
         }
         $this->_coreRegistry->register('variux_warranty_unit', $model);
-        
+
         // 3. Build edit form
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
@@ -57,8 +57,9 @@ class Edit extends \Variux\Warranty\Controller\Adminhtml\Unit
             $id ? __('Edit Unit') : __('New Unit')
         );
         $resultPage->getConfig()->getTitle()->prepend(__('Units'));
-        $resultPage->getConfig()->getTitle()->prepend($model->getId() ? __('Edit Unit %1', $model->getId()) : __('New Unit'));
+        $resultPage->getConfig()
+                   ->getTitle()
+                   ->prepend($model->getId() ? __('Edit Unit %1', $model->getId()) : __('New Unit'));
         return $resultPage;
     }
 }
-

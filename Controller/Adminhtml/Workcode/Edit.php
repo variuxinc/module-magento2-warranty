@@ -36,7 +36,7 @@ class Edit extends \Variux\Warranty\Controller\Adminhtml\Workcode
         // 1. Get ID and create model
         $id = $this->getRequest()->getParam('workcode_id');
         $model = $this->_objectManager->create(\Variux\Warranty\Model\Workcode::class);
-        
+
         // 2. Initial checking
         if ($id) {
             $model->load($id);
@@ -48,7 +48,7 @@ class Edit extends \Variux\Warranty\Controller\Adminhtml\Workcode
             }
         }
         $this->_coreRegistry->register('variux_warranty_workcode', $model);
-        
+
         // 3. Build edit form
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
@@ -57,8 +57,9 @@ class Edit extends \Variux\Warranty\Controller\Adminhtml\Workcode
             $id ? __('Edit Workcode') : __('New Workcode')
         );
         $resultPage->getConfig()->getTitle()->prepend(__('Workcodes'));
-        $resultPage->getConfig()->getTitle()->prepend($model->getId() ? __('Edit Workcode %1', $model->getId()) : __('New Workcode'));
+        $resultPage->getConfig()
+                   ->getTitle()
+                   ->prepend($model->getId() ? __('Edit Workcode %1', $model->getId()) : __('New Workcode'));
         return $resultPage;
     }
 }
-

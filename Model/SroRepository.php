@@ -46,7 +46,6 @@ class SroRepository implements SroRepositoryInterface
      */
     protected $sroCollectionFactory;
 
-
     /**
      * @param ResourceSro $resource
      * @param SroInterfaceFactory $sroFactory
@@ -104,17 +103,17 @@ class SroRepository implements SroRepositoryInterface
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
     ) {
         $collection = $this->sroCollectionFactory->create();
-        
+
         $this->collectionProcessor->process($criteria, $collection);
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
-        
+
         $items = [];
         foreach ($collection as $model) {
             $items[] = $model;
         }
-        
+
         $searchResults->setItems($items);
         $searchResults->setTotalCount($collection->getSize());
         return $searchResults;
@@ -146,4 +145,3 @@ class SroRepository implements SroRepositoryInterface
         return $this->delete($this->get($sroId));
     }
 }
-

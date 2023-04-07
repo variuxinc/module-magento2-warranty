@@ -36,7 +36,7 @@ class Edit extends \Variux\Warranty\Controller\Adminhtml\Sro
         // 1. Get ID and create model
         $id = $this->getRequest()->getParam('sro_id');
         $model = $this->_objectManager->create(\Variux\Warranty\Model\Sro::class);
-        
+
         // 2. Initial checking
         if ($id) {
             $model->load($id);
@@ -48,7 +48,7 @@ class Edit extends \Variux\Warranty\Controller\Adminhtml\Sro
             }
         }
         $this->_coreRegistry->register('variux_warranty_sro', $model);
-        
+
         // 3. Build edit form
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
@@ -57,8 +57,9 @@ class Edit extends \Variux\Warranty\Controller\Adminhtml\Sro
             $id ? __('Edit Sro') : __('New Sro')
         );
         $resultPage->getConfig()->getTitle()->prepend(__('Sros'));
-        $resultPage->getConfig()->getTitle()->prepend($model->getId() ? __('Edit Sro %1', $model->getId()) : __('New Sro'));
+        $resultPage->getConfig()
+                   ->getTitle()
+                   ->prepend($model->getId() ? __('Edit Sro %1', $model->getId()) : __('New Sro'));
         return $resultPage;
     }
 }
-

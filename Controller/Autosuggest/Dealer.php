@@ -1,13 +1,12 @@
 <?php
-
+/**
+ * @author Variux Team
+ * @copyright Copyright (c) 2023 Variux (https://www.variux.com)
+ */
 namespace Variux\Warranty\Controller\Autosuggest;
 
 use Magento\Framework\App\Action\Context;
 
-/**
- * Class Dealer
- * @package Variux\Warranty\Controller\Autosuggest
- */
 class Dealer extends \Variux\Warranty\Controller\AbstractAction
 {
     /**
@@ -26,9 +25,10 @@ class Dealer extends \Variux\Warranty\Controller\AbstractAction
         Context $context,
         \Magento\Company\Model\CompanyContext $companyContext,
         \Psr\Log\LoggerInterface $logger,
+        \Magento\Customer\Model\Session       $_customerSession,
         \Variux\Warranty\Helper\SuggestHelper $suggestHelper
     ) {
-        parent::__construct($context, $companyContext, $logger);
+        parent::__construct($context, $companyContext, $logger, $_customerSession);
         $this->suggestHelper = $suggestHelper;
     }
 
@@ -38,7 +38,7 @@ class Dealer extends \Variux\Warranty\Controller\AbstractAction
     public function execute()
     {
         $search = $this->getRequest()->getParam("q");
-        $jsonHelper = $this->_objectManager->create("Magento\Framework\Json\Helper\Data");
+        $jsonHelper = $this->_objectManager->create(\Magento\Framework\Json\Helper\Data::class);
 
         $customerId = $this->_customerSession->getCustomer()->getId();
 

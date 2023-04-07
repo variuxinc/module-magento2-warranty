@@ -213,4 +213,3 @@ class SroMaterial extends AbstractModel implements SroMaterialInterface
         return $this->setData(self::PRICE, $price);
     }
 }
-

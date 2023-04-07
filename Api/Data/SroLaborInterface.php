@@ -263,4 +263,3 @@ interface SroLaborInterface
      */
     public function setUpdatedAt($updatedAt);
 }
-

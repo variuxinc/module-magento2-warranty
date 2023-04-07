@@ -71,7 +71,7 @@
 			<argument name="resourceModel" xsi:type="string">Variux\Warranty\Model\ResourceModel\SroMisc\Collection</argument>
 		</arguments>
 	</virtualType>
-	<preference for="Variux\Warranty\Api\WorkcodeRepositoryInterface" type="Variux\Warranty\Model\WorkcodeRepository"/>
+	<preference for="Variux\Warranty\Api\WorkCodeRepositoryInterface" type="Variux\Warranty\Model\WorkcodeRepository"/>
 	<preference for="Variux\Warranty\Api\Data\WorkcodeInterface" type="Variux\Warranty\Model\Workcode"/>
 	<preference for="Variux\Warranty\Api\Data\WorkcodeSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
 	<virtualType name="Variux\Warranty\Model\ResourceModel\Workcode\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">

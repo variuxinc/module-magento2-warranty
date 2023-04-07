@@ -3,6 +3,7 @@
 namespace Variux\Warranty\Block\Index;
 
 use Variux\Warranty\Model\WarrantyFactory;
+use Variux\Warranty\Model\Warranty;
 
 class Edit extends \Magento\Framework\View\Element\Template
 {
@@ -74,8 +75,7 @@ class Edit extends \Magento\Framework\View\Element\Template
         \Variux\Warranty\Model\SroRepository $sroRepository,
         \Variux\Warranty\Helper\Data $dataHelper,
         array $data = []
-    )
-    {
+    ) {
         parent::__construct($context, $data);
         $this->storeManager = $storeManager;
         $this->dateElement = $dateElement;
@@ -112,7 +112,7 @@ class Edit extends \Magento\Framework\View\Element\Template
     {
         if ($this->isWarrantySubmitted === null) {
             $warranty = $this->getWarranty();
-            $this->isWarrantySubmitted = $warranty->getStatus() != \Variux\Warranty\Model\Warranty::STATUS_ARRAY["INCOMP"]["key"];
+            $this->isWarrantySubmitted = $warranty->getStatus() != Warranty::STATUS_ARRAY["INCOMP"]["key"];
         }
         return $this->isWarrantySubmitted;
     }
@@ -172,8 +172,8 @@ class Edit extends \Magento\Framework\View\Element\Template
                 'value' => $value,
                 'date_format' => $this->getDateFormat(),
                 'image' => $this->getViewFileUrl('Magento_Theme::calendar.png'),
-//                'years_range' => '-120y:c+nn',
-//                'max_date' => '-1d',
+            //                'years_range' => '-120y:c+nn',
+            //                'max_date' => '-1d',
                 'change_month' => 'true',
                 'change_year' => 'true',
                 'show_on' => 'both',
@@ -228,7 +228,7 @@ class Edit extends \Magento\Framework\View\Element\Template
      */
     public function getInvoiceSuggestConfig()
     {
-        return array(
+        return [
             'url' => $this->getUrl(
                 'warranty/autosuggest/invoicelisting',
                 ['_secure' => $this->getRequest()->isSecure()]
@@ -238,7 +238,7 @@ class Edit extends \Magento\Framework\View\Element\Template
             'storeId' => $this->storeManager->getStore()->getId(),
             'delay' => 500,
             'minSearchLength' => 1
-        );
+        ];
     }
 
     /**
@@ -246,7 +246,7 @@ class Edit extends \Magento\Framework\View\Element\Template
      */
     public function getEngineSuggestConfig()
     {
-        return array(
+        return [
             'url' => $this->getUrl(
                 'warranty/autosuggest/engine',
                 ['_secure' => $this->getRequest()->isSecure()]
@@ -256,7 +256,7 @@ class Edit extends \Magento\Framework\View\Element\Template
             'storeId' => $this->storeManager->getStore()->getId(),
             'delay' => 500,
             'minSearchLength' => 1
-        );
+        ];
     }
 
     /**
@@ -264,7 +264,7 @@ class Edit extends \Magento\Framework\View\Element\Template
      */
     public function getDealerSuggestConfig()
     {
-        return array(
+        return [
             'url' => $this->getUrl(
                 'warranty/autosuggest/dealer',
                 ['_secure' => $this->getRequest()->isSecure()]
@@ -275,6 +275,6 @@ class Edit extends \Magento\Framework\View\Element\Template
             'delay' => 500,
             'minSearchLength' => 1,
             'findAll' => true
-        );
+        ];
     }
 }

@@ -20,4 +20,3 @@ class Unit extends AbstractDb
         $this->_init('variux_warranty_unit', 'unit_id');
     }
 }
-

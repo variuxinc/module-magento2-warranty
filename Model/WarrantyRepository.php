@@ -57,7 +57,6 @@ class WarrantyRepository implements WarrantyRepositoryInterface
      */
     private $storeManager;
 
-
     /**
      * @param ResourceWarranty $resource
      * @param WarrantyInterfaceFactory $warrantyFactory
@@ -201,4 +200,3 @@ class WarrantyRepository implements WarrantyRepositoryInterface
         return $model;
     }
 }
-

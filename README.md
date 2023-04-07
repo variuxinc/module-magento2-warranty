@@ -61,7 +61,7 @@ Variux Warranty allows creating, checking, and managing the Warranty information
 	- SroMisc
 
  - Model
-	- Workcode
+	- WorkCode
 
  - Model
 	- Unit

@@ -1,41 +1,57 @@
 <?php
+/**
+ * @author Variux Team
+ * @copyright Copyright (c) 2023 Variux (https://www.variux.com)
+ */
 
 namespace Variux\Warranty\Controller\Index;
 
+use Magento\Company\Model\CompanyContext;
+use Magento\Customer\Model\Session;
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\Redirect;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\Data\Form\FormKey\Validator;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\View\Result\PageFactory;
+use Psr\Log\LoggerInterface;
+use Variux\Warranty\Model\SroFactory;
+use Variux\Warranty\Model\SroRepository;
 use Variux\Warranty\Model\WarrantyFactory;
 use NumberFormatter;
 use Variux\Warranty\Helper\CompanyDetails;
+use Variux\Warranty\Model\WarrantyRepository;
 
 class Save extends \Variux\Warranty\Controller\AbstractAction
 {
     /**
-     * @var \Magento\Framework\View\Result\PageFactory
+     * @var PageFactory
      */
     protected $resultPageFactory;
 
     /**
-     * @var \Variux\Warranty\Model\WarrantyFactory
+     * @var WarrantyFactory
      */
     protected $warrantyFactory;
 
     /**
-     * @var \Variux\Warranty\Model\WarrantyRepository
+     * @var WarrantyRepository
      */
     protected $warrantyRepository;
 
     /**
-     * @var \Magento\Framework\Data\Form\FormKey\Validator
+     * @var Validator
      */
     protected $formKeyValidator;
 
     /**
-     * @var \Variux\Warranty\Model\SroFactory
+     * @var SroFactory
      */
     protected $sroFactory;
 
     /**
-     * @var \Variux\Warranty\Model\SroRepository
+     * @var SroRepository
      */
     protected $sroRepository;
 
@@ -44,34 +60,33 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
      */
     protected $companyDetails;
 
-
-
-
     /**
      * @param Context $context
-     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
-     * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
+     * @param CompanyContext $companyContext
+     * @param LoggerInterface $logger
+     * @param Session $_customerSession
+     * @param PageFactory $resultPageFactory
+     * @param Validator $formKeyValidator
      * @param WarrantyFactory $warrantyFactory
-     * @param \Variux\Warranty\Model\WarrantyRepository $warrantyRepository
-     * @param \Variux\Warranty\Model\SroFactory $sroFactory
-     * @param \Variux\Warranty\Model\SroRepository $sroRepository
+     * @param WarrantyRepository $warrantyRepository
+     * @param SroFactory $sroFactory
+     * @param SroRepository $sroRepository
      * @param CompanyDetails $companyDetails
      */
     public function __construct(
-        Context $context,
-        \Magento\Company\Model\CompanyContext $companyContext,
-        \Psr\Log\LoggerInterface $logger,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
-        \Variux\Warranty\Model\WarrantyFactory $warrantyFactory,
-        \Variux\Warranty\Model\WarrantyRepository $warrantyRepository,
-        \Variux\Warranty\Model\SroFactory $sroFactory,
-        \Variux\Warranty\Model\SroRepository $sroRepository,
-        CompanyDetails $companyDetails
-    )
-    {
-        parent::__construct($context, $companyContext, $logger);
-
+        Context            $context,
+        CompanyContext     $companyContext,
+        LoggerInterface    $logger,
+        Session            $_customerSession,
+        PageFactory        $resultPageFactory,
+        Validator          $formKeyValidator,
+        WarrantyFactory    $warrantyFactory,
+        WarrantyRepository $warrantyRepository,
+        SroFactory         $sroFactory,
+        SroRepository      $sroRepository,
+        CompanyDetails     $companyDetails
+    ) {
+        parent::__construct($context, $companyContext, $logger, $_customerSession);
         $this->resultPageFactory = $resultPageFactory;
         $this->formKeyValidator = $formKeyValidator;
         $this->warrantyFactory = $warrantyFactory;
@@ -84,7 +99,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
     /**
      * @return array
      */
-    private function validatedParams()
+    private function validatedParams(): array
     {
         $data = $this->getRequest()->getPostValue();
         $acceptedValue = [
@@ -109,11 +124,6 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         $result = [];
         $fmt = new NumberFormatter('en_US', NumberFormatter::DECIMAL);
         foreach ($acceptedValue as $key => $value) {
-            if (isset($acceptedValue[$key])) {
-                $result[$key] = $data[$key];
-            } else {
-                $result[$key] = null;
-            }
             if (isset($value["required"]) && $value["required"]) {
                 if ($result[$key] == null && strlen($result[$key]) > 0) {
                     return ["error" => true, "msg" => $key . "is required"];
@@ -136,10 +146,9 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         return ["error" => false, "data" => $result];
     }
 
-
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @return ResponseInterface|Redirect|ResultInterface
+     * @throws LocalizedException
      */
     public function execute()
     {
@@ -158,9 +167,12 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                     $isNewWarranty = true;
                 } else {
                     $warranty = $this->warrantyRepository->getById($data["warranty_id"]);
-                    $sroId=$warranty->getFirstSroId();
+                    $sroId = $warranty->getFirstSroId();
                     if ($warranty->isSubmitted()) {
-                        $resultRedirect->setPath("warranty/sro/edit", array("id" => $warranty->getFirstSroId(), "war_id" => $warranty->getId()));
+                        $resultRedirect->setPath(
+                            "warranty/sro/edit",
+                            ["id" => $warranty->getFirstSroId(), "war_id" => $warranty->getId()]
+                        );
                         return $resultRedirect;
                     }
                 }
@@ -169,8 +181,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
 
                 $customerId = $this->_customerSession->getCustomer()->getId();
                 $companyId = $this->companyDetails->getInfo($customerId)->getId();
-//                $adminCustomerId = $this->companyService->getAdminCustomerId($customerId);
-//                $warranty->setCustomerId($adminCustomerId);
+                $warranty->setCustomerId($customerId);
                 $warranty->setCompanyId($companyId);
                 try {
                     $warranty = $this->warrantyRepository->save($warranty);
@@ -179,14 +190,14 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                         // generate sro
                         $sro = $this->sroFactory->create();
                         $sro->setWarrantyId($warranty->getId());
-//                        $sro->setCustomerId($adminCustomerId);
+                        $sro->setCustomerId($customerId);
                         $sro->setCompanyId($companyId);
                         $sro = $this->sroRepository->save($sro);
                         $warranty->setFirstSroId($sro->getId());
                         $warranty = $this->warrantyRepository->save($warranty);
                         $sroId = $sro->getId();
                     }
-                    $resultRedirect->setPath("warranty/sro/edit", array("id" => $sroId, "war_id" => $warranty->getId()));
+                    $resultRedirect->setPath("warranty/sro/edit", ["id" => $sroId, "war_id" => $warranty->getId()]);
                     return $resultRedirect;
                 } catch (\Exception $e) {
                     $this->messageManager->addErrorMessage($e->getMessage());

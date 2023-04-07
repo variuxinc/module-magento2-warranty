@@ -66,7 +66,6 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
      */
     protected $unitRepository;
 
-
     /**
      * @var CustomerFactory
      */
@@ -107,29 +106,26 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
      */
     protected $warrantyResourceModel;
 
-
-
     public function __construct(
-        \Magento\Framework\App\Helper\Context $context,
-        CollectionFactory $productCollectionFactory,
-        CollectionProcessorInterface $collectionProcessor,
-        OrderRepository $orderRepository,
-        OrderFactory $orderFactory,
-        SearchCriteriaBuilder $searchCriteriaBuilder,
-        FilterBuilder $filterBuilder,
-        FilterGroupBuilder $filterGroupBuilder,
-        StoreManagerInterface $storeManager,
-        WorkcodeRepository $workcodeRepository,
-        UnitRepository $unitRepository,
-        \Magento\Customer\Model\CustomerFactory $customerFactory,
-        CustomerResourceModel $customerResourceModel,
-        customerSession $customerSession,
+        \Magento\Framework\App\Helper\Context           $context,
+        CollectionFactory                               $productCollectionFactory,
+        CollectionProcessorInterface                    $collectionProcessor,
+        OrderRepository                                 $orderRepository,
+        OrderFactory                                    $orderFactory,
+        SearchCriteriaBuilder                           $searchCriteriaBuilder,
+        FilterBuilder                                   $filterBuilder,
+        FilterGroupBuilder                              $filterGroupBuilder,
+        StoreManagerInterface                           $storeManager,
+        WorkcodeRepository                              $workcodeRepository,
+        UnitRepository                                  $unitRepository,
+        \Magento\Customer\Model\CustomerFactory         $customerFactory,
+        CustomerResourceModel                           $customerResourceModel,
+        customerSession                                 $customerSession,
         \Magento\Catalog\Api\ProductRepositoryInterface $productRepository,
-        \Magento\Framework\Pricing\Helper\Data $priceHelper,
-        WarrantyResourceModel $warrantyResourceModel,
-        WarrantyFactory $warrantyFactory
-    )
-    {
+        \Magento\Framework\Pricing\Helper\Data          $priceHelper,
+        WarrantyResourceModel                           $warrantyResourceModel,
+        WarrantyFactory                                 $warrantyFactory
+    ) {
         parent::__construct($context);
         $this->productCollectionFactory = $productCollectionFactory;
         $this->orderRepository = $orderRepository;
@@ -171,24 +167,24 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
         $collection->addFinalPrice();
         $collection->load();
 
-        $products = array();
-        $products[] = array(
+        $products = [];
+        $products[] = [
             'name' => "Custom material",
             'sku' => "NPN",
             'price' => 0
-        );
+        ];
         foreach ($collection->getItems() as $item) {
-            $products[] = array(
+            $products[] = [
                 'name' => $item->getName(),
                 'sku' => $item->getSku(),
                 'price' => $item->getFinalPrice()
-            );
+            ];
         }
-        return array(
+        return [
             'totalItems' => $collection->getSize() + 1,
             'items' => $products,
             'noResults' => false
-        );
+        ];
     }
 
     /**
@@ -198,18 +194,18 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function findDealer($query, $customerId = false)
     {
-        $dealers = array(
-            array(
+        $dealers = [
+            [
                 'id' => $customerId,
                 'name' => __("Test")
-            )
-        );
+            ]
+        ];
 
-        $response = array(
+        $response = [
             'totalItems' => 1,
             'items' => $dealers,
             'noResults' => false
-        );
+        ];
 
         return $response;
     }
@@ -236,19 +232,19 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
         $searchCriteria->setPageSize(50)->setCurrentPage(1);
         $searchCriteria = $searchCriteria->create();
         $searchResults = $this->workcodeRepository->getList($searchCriteria);
-        $works = array();
+        $works = [];
         foreach ($searchResults->getItems() as $item) {
-            $works[] = array(
+            $works[] = [
                 'code' => $item->getWorkCode(),
                 'description' => $item->getDescription(),
                 'duration' => $item->getDuration()
-            );
+            ];
         }
-        $response = array(
+        $response = [
             'totalItems' => $searchResults->getTotalCount(),
             'items' => $works,
             'noResults' => $searchResults->getTotalCount() > 0 ? false : true
-        );
+        ];
 
         return $response;
     }
@@ -262,21 +258,21 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
         $searchCriteria->setPageSize(50)->setCurrentPage(1);
         $searchCriteria = $searchCriteria->create();
         $searchResults = $this->unitRepository->getList($searchCriteria);
-        $units = array();
+        $units = [];
         foreach ($searchResults->getItems() as $item) {
-            $units[] = array(
+            $units[] = [
                 'serial_no' => $item->getSerialNo(),
                 'description' => $item->getDescription(),
                 'item' => $item->getItem(),
                 'warranty_start_date' => $item->getWarrantyStartDate(),
                 'warranty_end_date' => $item->getWarrantyEndDate()
-            );
+            ];
         }
-        $response = array(
+        $response = [
             'totalItems' => $searchResults->getTotalCount(),
             'items' => $units,
             'noResults' => $searchResults->getTotalCount() > 0 ? false : true
-        );
+        ];
 
         return $response;
     }
@@ -290,40 +286,39 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
         $searchCriteria->setPageSize(50)->setCurrentPage(1);
         $searchCriteria = $searchCriteria->create();
         $searchResults = $this->unitRepository->getList($searchCriteria);
-        $units = array();
+        $units = [];
         foreach ($searchResults->getItems() as $item) {
-            $units[] = array(
+            $units[] = [
                 'serial_no' => $item->getSerialNo(),
                 'description' => $item->getDescription(),
                 'item' => $item->getItem(),
                 'warranty_start_date' => $item->getWarrantyStartDate(),
                 'warranty_end_date' => $item->getWarrantyEndDate(),
-            );
+            ];
         }
-        $response = array(
+        $response = [
             'totalItems' => $searchResults->getTotalCount(),
             'items' => $units,
             'noResults' => $searchResults->getTotalCount() > 0 ? false : true
-        );
+        ];
 
         return $response;
     }
-
 
     public function getSroNumAndIncNumByWarrantyId($warrantyId)
     {
         $warranty = $this->warrantyFactory->create();
         $this->warrantyResourceModel->load($warranty, $warrantyId);
-        if($warranty->hasData()) {
-            return array(
+        if ($warranty->hasData()) {
+            return [
                 'inc_num' => $warranty->getIncNum(),
                 'sro_num' => $warranty->getFirstSroNum()
-            );
+            ];
         } else {
-            return array(
+            return [
                 'inc_num' => null,
                 'sro_num' => null
-            );
+            ];
         }
     }
 }

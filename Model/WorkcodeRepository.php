@@ -46,7 +46,6 @@ class WorkcodeRepository implements WorkcodeRepositoryInterface
      */
     protected $workcodeCollectionFactory;
 
-
     /**
      * @param ResourceWorkcode $resource
      * @param WorkcodeInterfaceFactory $workcodeFactory
@@ -87,7 +86,7 @@ class WorkcodeRepository implements WorkcodeRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function get($workcodeId)
+    public function get($workcodeId): WorkcodeInterface
     {
         $workcode = $this->workcodeFactory->create();
         $this->resource->load($workcode, $workcodeId);
@@ -102,19 +101,19 @@ class WorkcodeRepository implements WorkcodeRepositoryInterface
      */
     public function getList(
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
-    ) {
+    ): \Variux\Warranty\Api\Data\WorkcodeSearchResultsInterface {
         $collection = $this->workcodeCollectionFactory->create();
-        
+
         $this->collectionProcessor->process($criteria, $collection);
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
-        
+
         $items = [];
         foreach ($collection as $model) {
             $items[] = $model;
         }
-        
+
         $searchResults->setItems($items);
         $searchResults->setTotalCount($collection->getSize());
         return $searchResults;
@@ -123,11 +122,11 @@ class WorkcodeRepository implements WorkcodeRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function delete(WorkcodeInterface $workcode)
+    public function delete(WorkcodeInterface $workCode)
     {
         try {
             $workcodeModel = $this->workcodeFactory->create();
-            $this->resource->load($workcodeModel, $workcode->getWorkcodeId());
+            $this->resource->load($workcodeModel, $workCode->getWorkcodeId());
             $this->resource->delete($workcodeModel);
         } catch (\Exception $exception) {
             throw new CouldNotDeleteException(__(
@@ -146,4 +145,3 @@ class WorkcodeRepository implements WorkcodeRepositoryInterface
         return $this->delete($this->get($workcodeId));
     }
 }
-

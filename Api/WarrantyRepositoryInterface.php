@@ -59,4 +59,3 @@ interface WarrantyRepositoryInterface
      */
     public function deleteById($warrantyId);
 }
-

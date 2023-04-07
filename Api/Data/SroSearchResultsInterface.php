@@ -23,4 +23,3 @@ interface SroSearchResultsInterface extends \Magento\Framework\Api\SearchResults
      */
     public function setItems(array $items);
 }
-

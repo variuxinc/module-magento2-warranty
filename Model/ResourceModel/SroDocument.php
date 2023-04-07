@@ -20,4 +20,3 @@ class SroDocument extends AbstractDb
         $this->_init('variux_warranty_srodocument', 'srodocument_id');
     }
 }
-

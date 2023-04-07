@@ -487,4 +487,3 @@ interface WarrantyInterface
      */
     public function setUpdatedAt($updatedAt);
 }
-

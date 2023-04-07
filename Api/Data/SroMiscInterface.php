@@ -207,4 +207,3 @@ interface SroMiscInterface
      */
     public function setUpdatedAt($updatedAt);
 }
-

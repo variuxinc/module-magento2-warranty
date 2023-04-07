@@ -21,7 +21,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     protected $partnerFactory;
 
-
     /**
      * @var \Variux\Warranty\Model\ResourceModel\UnitReg\CollectionFactory
      */
@@ -40,8 +39,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         \Variux\Warranty\Model\ResourceModel\UnitReg\CollectionFactory $unitRegCollectionFactory,
         Config $configHelper,
         \Magento\Framework\Serialize\Serializer\Json $serialize
-    )
-    {
+    ) {
         parent::__construct($context);
         $this->configHelper = $configHelper;
         $this->customerSession = $customerSession;
@@ -58,9 +56,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $expiredMonths = $this->configHelper->getEngineExpired();
         $expiredMonths = $expiredMonths ?: 24;
 
-        if($unit->getIsRemovedFromSyteline()) {
-            return \Variux\Warranty\Model\Unit::STATUS_REMOVED_FROM_SYTELINE;
-        }
         if ($unit->getConsumerNum()) {
             return \Variux\Warranty\Model\Unit::STATUS_REGISTERED;
         }
@@ -76,7 +71,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         }
         return \Variux\Warranty\Model\Unit::STATUS_UNREGISTERED;
     }
-
 
     /**
      * @return array
@@ -132,7 +126,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * @return number
      */
-    public function getMaxFileSize(){
+    public function getMaxFileSize()
+    {
         return (int)$this->configHelper->getMaxFileSize();
     }
 }

@@ -133,9 +133,9 @@ interface UnitInterface
     public function setWarrantyStartDate($warrantyStartDate);
 
         /**
-     * Get warranty_end_date
-     * @return string|null
-     */
+         * Get warranty_end_date
+         * @return string|null
+         */
     public function getWarrantyEndDate();
 
     /**
@@ -249,4 +249,3 @@ interface UnitInterface
      */
     public function setUpdatedAt($updatedAt);
 }
-

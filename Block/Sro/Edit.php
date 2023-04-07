@@ -38,7 +38,6 @@ class Edit extends \Magento\Framework\View\Element\Template
      */
     protected $dataHelper;
 
-
     /**
      * @var SroFactory
      */
@@ -71,10 +70,7 @@ class Edit extends \Magento\Framework\View\Element\Template
 
     protected $_priceHelper;
 
-
-
-    public function __construct
-    (
+    public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\View\Element\Html\Date $dateElement,
@@ -86,8 +82,7 @@ class Edit extends \Magento\Framework\View\Element\Template
         WarrantyResourceModel $warrantyResourceModel,
         \Magento\Framework\Pricing\Helper\Data $priceHelper,
         array $data = []
-    )
-    {
+    ) {
         parent::__construct($context, $data);
         $this->storeManager = $storeManager;
         $this->dateElement = $dateElement;
@@ -127,7 +122,7 @@ class Edit extends \Magento\Framework\View\Element\Template
      */
     public function getJsonData()
     {
-        $data = array();
+        $data = [];
         $data['sro'] = $this->getSro()->getData();
         //temporarily comment out
         // $partner = $this->dataHelper->getCurrentPartner();
@@ -158,8 +153,16 @@ class Edit extends \Magento\Framework\View\Element\Template
         }
         $labors = $this->getSro()->getLaborsData();
         foreach ($labors as $labor) {
-            $labor["total"] = $this->_priceHelper->currency($labor["labor_hourly_rate"] * $labor["hour_worked"], true, false);
-            $labor["labor_hourly_rate"] = $this->_priceHelper->currency($labor["labor_hourly_rate"], true, false);
+            $labor["total"] = $this->_priceHelper->currency(
+                $labor["labor_hourly_rate"] * $labor["hour_worked"],
+                true,
+                false
+            );
+            $labor["labor_hourly_rate"] = $this->_priceHelper->currency(
+                $labor["labor_hourly_rate"],
+                true,
+                false
+            );
             $data['labors'][] = array_intersect_key($labor, [
                 "item_id" => "",
                 "sro_id" => "",
@@ -198,10 +201,14 @@ class Edit extends \Magento\Framework\View\Element\Template
 
         $data['itemSuggestConfig'] = $this->getItemSuggestConfig();
         $data['workcodeSuggestConfig'] = $this->getWorkcodeSuggestConfig();
-        $data['workcodepdf'] = $this->storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . "Flat_Rate_Guide.pdf";
+        $data['workcodepdf'] = $this->storeManager
+                                    ->getStore()
+                                    ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA)
+                                    . "Flat_Rate_Guide.pdf";
         $data['updateSroNumUrl'] = $this->getUrl(
             'warranty/autosuggest/getsronumandincnum',
-            ['_secure' => $this->getRequest()->isSecure()]);
+            ['_secure' => $this->getRequest()->isSecure()]
+        );
         return json_encode($data);
     }
 
@@ -211,7 +218,7 @@ class Edit extends \Magento\Framework\View\Element\Template
         //temporarily comment out
         // $config["options"] = [
         //     "um" => $this->dataHelper->getUmOptions()
-        // ]; 
+        // ];
         $config["maxFileSize"] = $this->getMaxFileSize();
         return $config;
     }
@@ -226,8 +233,9 @@ class Edit extends \Magento\Framework\View\Element\Template
      */
     public function getSro()
     {
-        if ($this->sro)
+        if ($this->sro) {
             return $this->sro;
+        }
         $sro = $this->sroFactory->create();
         $this->sroResourceModel->load($sro, $this->getSroId());
         $this->sro = $sro;
@@ -239,8 +247,9 @@ class Edit extends \Magento\Framework\View\Element\Template
      */
     public function getWarranty()
     {
-        if ($this->warranty)
+        if ($this->warranty) {
             return $this->warranty;
+        }
         $warranty = $this->warrantyFactory->create();
         $this->warrantyResourceModel->load($warranty, $this->getSro()->getWarrantyId());
         $this->warranty = $warranty;
@@ -253,7 +262,7 @@ class Edit extends \Magento\Framework\View\Element\Template
      */
     public function getItemSuggestConfig()
     {
-        return array(
+        return [
             'url' => $this->getUrl(
                 'warranty/autosuggest/item',
                 ['_secure' => $this->getRequest()->isSecure()]
@@ -263,7 +272,7 @@ class Edit extends \Magento\Framework\View\Element\Template
             'storeId' => $this->storeManager->getStore()->getId(),
             'delay' => 500,
             'minSearchLength' => 2
-        );
+        ];
     }
 
     /**
@@ -272,7 +281,7 @@ class Edit extends \Magento\Framework\View\Element\Template
      */
     public function getWorkcodeSuggestConfig()
     {
-        return array(
+        return [
             'url' => $this->getUrl(
                 'warranty/autosuggest/workcode',
                 ['_secure' => $this->getRequest()->isSecure()]
@@ -282,7 +291,7 @@ class Edit extends \Magento\Framework\View\Element\Template
             'storeId' => $this->storeManager->getStore()->getId(),
             'delay' => 500,
             'minSearchLength' => 2
-        );
+        ];
     }
 
     /**
@@ -290,7 +299,7 @@ class Edit extends \Magento\Framework\View\Element\Template
      */
     public function getUrlData()
     {
-        return array(
+        return [
             "backUrl" => $this->getUrl("warranty"),
             "saveSroUrl" => $this->getUrl("warranty/sro/save"),
             "submitClaimUrl" => $this->getUrl("warranty/sro/submit"),
@@ -305,7 +314,7 @@ class Edit extends \Magento\Framework\View\Element\Template
             "removeMiscUrl" => $this->getUrl("warranty/sro_misc/remove"),
 
             "saveDocumentUrl" => $this->getUrl("warranty/sro_document/save")
-        );
+        ];
     }
 
     /**
@@ -319,7 +328,8 @@ class Edit extends \Magento\Framework\View\Element\Template
     /**
      * @return number
      */
-    public function getMaxFileSize(){
+    public function getMaxFileSize()
+    {
         return $this->dataHelper->getMaxFileSize();
     }
 }

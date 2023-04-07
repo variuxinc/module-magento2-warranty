@@ -39,4 +39,3 @@ abstract class SroLabor extends \Magento\Backend\App\Action
         return $resultPage;
     }
 }
-

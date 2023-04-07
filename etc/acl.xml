@@ -39,11 +39,11 @@
 					<resource id="Variux_Warranty::SroMisc_update" title="Update SroMisc" sortOrder="30"/>
 					<resource id="Variux_Warranty::SroMisc_view" title="View SroMisc" sortOrder="40"/>
 				</resource>
-				<resource id="Variux_Warranty::Workcode" title="Workcode" sortOrder="10">
-					<resource id="Variux_Warranty::Workcode_save" title="Save Workcode" sortOrder="10"/>
-					<resource id="Variux_Warranty::Workcode_delete" title="Delete Workcode" sortOrder="20"/>
-					<resource id="Variux_Warranty::Workcode_update" title="Update Workcode" sortOrder="30"/>
-					<resource id="Variux_Warranty::Workcode_view" title="View Workcode" sortOrder="40"/>
+				<resource id="Variux_Warranty::WorkCode" title="WorkCode" sortOrder="10">
+					<resource id="Variux_Warranty::WorkCode_save" title="Save WorkCode" sortOrder="10"/>
+					<resource id="Variux_Warranty::WorkCode_delete" title="Delete WorkCode" sortOrder="20"/>
+					<resource id="Variux_Warranty::WorkCode_update" title="Update WorkCode" sortOrder="30"/>
+					<resource id="Variux_Warranty::WorkCode_view" title="View WorkCode" sortOrder="40"/>
 				</resource>
 				<resource id="Variux_Warranty::Unit" title="Unit" sortOrder="10">
 					<resource id="Variux_Warranty::Unit_save" title="Save Unit" sortOrder="10"/>

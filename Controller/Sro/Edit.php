@@ -1,63 +1,76 @@
 <?php
+/**
+ * @author Variux Team
+ * @copyright Copyright (c) 2023 Variux (https://www.variux.com)
+ */
 
 namespace Variux\Warranty\Controller\Sro;
 
+use Magento\Company\Model\CompanyContext;
+use Magento\Customer\Model\Session;
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\Redirect;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\View\Result\Page;
+use Magento\Framework\View\Result\PageFactory;
+use Psr\Log\LoggerInterface;
+use Variux\Warranty\Model\WarrantyRepository;
 
-/**
- * Class Edit
- * @package Variux\Warranty\Controller\Ticket
- */
 class Edit extends \Variux\Warranty\Controller\AbstractAction
 {
     /**
-     * @var \Magento\Framework\View\Result\PageFactory
+     * @var PageFactory
      */
     protected $resultPageFactory;
 
     /**
-     * @var \Variux\Warranty\Model\WarrantyFactory
+     * @var WarrantyRepository
      */
-    protected $warrantyFactory;
+    protected $warrantyRepository;
 
     /**
      * @param Context $context
+     * @param CompanyContext $companyContext
+     * @param LoggerInterface $logger
+     * @param Session $_customerSession
+     * @param PageFactory $resultPageFactory
+     * @param WarrantyRepository $warrantyRepository
      */
     public function __construct(
-        Context $context,
+        Context                               $context,
         \Magento\Company\Model\CompanyContext $companyContext,
-        \Psr\Log\LoggerInterface $logger,
-        \Magento\Framework\Controller\ResultFactory $resultFactory,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Variux\Warranty\Model\WarrantyFactory $warrantyFactory
+        \Psr\Log\LoggerInterface              $logger,
+        Session                               $_customerSession,
+        PageFactory                           $resultPageFactory,
+        WarrantyRepository                    $warrantyRepository
     ) {
-        parent::__construct($context, $companyContext, $logger);
+        parent::__construct($context, $companyContext, $logger, $_customerSession);
 
         $this->resultPageFactory = $resultPageFactory;
-        $this->warrantyFactory = $warrantyFactory;
+        $this->warrantyRepository = $warrantyRepository;
     }
 
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
+     * @return ResponseInterface|Redirect|ResultInterface|Page
+     * @throws NoSuchEntityException
      */
     public function execute()
     {
         $warrantyId = $this->getRequest()->getParam('war_id');
-        $model = $this->warrantyFactory->create();
         $resultRedirect = $this->resultRedirectFactory->create();
 
         if (!$warrantyId) {
             $this->messageManager->addErrorMessage(__('This warranty no longer exists.'));
             return $resultRedirect->setPath('warranty');
         }
-
-        $model->load($warrantyId);
-        if (!$model->getId()) {
+        $warranty = $this->warrantyRepository->getById($warrantyId);
+        if (!$warranty->getId()) {
             $this->messageManager->addErrorMessage(__('This warranty no longer exists.'));
             return $resultRedirect->setPath('*/*/');
         }
 
-        /** @var \Magento\Framework\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
 
         $resultPage->getConfig()->getTitle()->set(__('SRO Detail'));

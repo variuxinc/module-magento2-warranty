@@ -20,4 +20,3 @@ class SroMisc extends AbstractDb
         $this->_init('variux_warranty_sromisc', 'sromisc_id');
     }
 }
-

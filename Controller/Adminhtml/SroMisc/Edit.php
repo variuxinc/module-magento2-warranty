@@ -36,7 +36,7 @@ class Edit extends \Variux\Warranty\Controller\Adminhtml\SroMisc
         // 1. Get ID and create model
         $id = $this->getRequest()->getParam('sromisc_id');
         $model = $this->_objectManager->create(\Variux\Warranty\Model\SroMisc::class);
-        
+
         // 2. Initial checking
         if ($id) {
             $model->load($id);
@@ -48,7 +48,7 @@ class Edit extends \Variux\Warranty\Controller\Adminhtml\SroMisc
             }
         }
         $this->_coreRegistry->register('variux_warranty_sromisc', $model);
-        
+
         // 3. Build edit form
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
@@ -57,8 +57,9 @@ class Edit extends \Variux\Warranty\Controller\Adminhtml\SroMisc
             $id ? __('Edit Sromisc') : __('New Sromisc')
         );
         $resultPage->getConfig()->getTitle()->prepend(__('Sromiscs'));
-        $resultPage->getConfig()->getTitle()->prepend($model->getId() ? __('Edit Sromisc %1', $model->getId()) : __('New Sromisc'));
+        $resultPage->getConfig()
+                   ->getTitle()
+                   ->prepend($model->getId() ? __('Edit Sromisc %1', $model->getId()) : __('New Sromisc'));
         return $resultPage;
     }
 }
-

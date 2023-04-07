@@ -123,4 +123,3 @@ interface SroInterface
      */
     public function setUpdatedAt($updatedAt);
 }
-

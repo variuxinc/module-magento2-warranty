@@ -46,7 +46,6 @@ class SroDocumentRepository implements SroDocumentRepositoryInterface
      */
     protected $collectionProcessor;
 
-
     /**
      * @param ResourceSroDocument $resource
      * @param SroDocumentInterfaceFactory $sroDocumentFactory
@@ -104,17 +103,17 @@ class SroDocumentRepository implements SroDocumentRepositoryInterface
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
     ) {
         $collection = $this->sroDocumentCollectionFactory->create();
-        
+
         $this->collectionProcessor->process($criteria, $collection);
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
-        
+
         $items = [];
         foreach ($collection as $model) {
             $items[] = $model;
         }
-        
+
         $searchResults->setItems($items);
         $searchResults->setTotalCount($collection->getSize());
         return $searchResults;
@@ -146,4 +145,3 @@ class SroDocumentRepository implements SroDocumentRepositoryInterface
         return $this->delete($this->get($sroDocumentId));
     }
 }
-

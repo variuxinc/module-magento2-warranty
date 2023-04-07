@@ -95,4 +95,3 @@ interface WorkcodeInterface
      */
     public function setUpdatedAt($updatedAt);
 }
-

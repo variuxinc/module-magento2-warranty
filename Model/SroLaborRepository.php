@@ -46,7 +46,6 @@ class SroLaborRepository implements SroLaborRepositoryInterface
      */
     protected $searchResultsFactory;
 
-
     /**
      * @param ResourceSroLabor $resource
      * @param SroLaborInterfaceFactory $sroLaborFactory
@@ -104,17 +103,17 @@ class SroLaborRepository implements SroLaborRepositoryInterface
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
     ) {
         $collection = $this->sroLaborCollectionFactory->create();
-        
+
         $this->collectionProcessor->process($criteria, $collection);
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
-        
+
         $items = [];
         foreach ($collection as $model) {
             $items[] = $model;
         }
-        
+
         $searchResults->setItems($items);
         $searchResults->setTotalCount($collection->getSize());
         return $searchResults;
@@ -146,4 +145,3 @@ class SroLaborRepository implements SroLaborRepositoryInterface
         return $this->delete($this->get($sroLaborId));
     }
 }
-

@@ -44,4 +44,3 @@ class Delete extends \Variux\Warranty\Controller\Adminhtml\SroMisc
         return $resultRedirect->setPath('*/*/');
     }
 }
-

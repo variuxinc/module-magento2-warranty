@@ -245,4 +245,3 @@ class SroMisc extends AbstractModel implements SroMiscInterface
         return $this->setData(self::UPDATED_AT, $updatedAt);
     }
 }
-

@@ -3,12 +3,19 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+
 namespace Variux\Warranty\Controller;
 
+use Magento\Company\Model\CompanyContext;
+use Magento\Customer\Model\Session;
 use Magento\Customer\Model\Url;
+use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\RequestInterface;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\Json;
 use Magento\Framework\Exception\NotFoundException;
+use Psr\Log\LoggerInterface;
 
 /**
  * Class AbstractAction.
@@ -23,12 +30,12 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
     const COMPANY_RESOURCE = 'Magento_Company::index';
 
     /**
-     * @var \Psr\Log\LoggerInterface
+     * @var LoggerInterface
      */
     protected $logger;
 
     /**
-     * @var \Magento\Company\Model\CompanyContext
+     * @var CompanyContext
      */
     protected $companyContext;
 
@@ -38,28 +45,30 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
     private $customerUrl;
 
     /**
-     * @var \Magento\Customer\Model\Session
+     * @var Session
      */
     protected $_customerSession;
 
     /**
      * AbstractAction constructor.
      *
-     * @param \Magento\Framework\App\Action\Context $context
-     * @param \Magento\Company\Model\CompanyContext $companyContext
-     * @param \Psr\Log\LoggerInterface $logger
+     * @param Context $context
+     * @param CompanyContext $companyContext
+     * @param LoggerInterface $logger
+     * @param Session $_customerSession
      * @param Url|null $customerUrl
      */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
-        \Magento\Company\Model\CompanyContext $companyContext,
-        \Psr\Log\LoggerInterface $logger,
-        ?Url $customerUrl = null
+        CompanyContext                        $companyContext,
+        \Psr\Log\LoggerInterface              $logger,
+        Session                               $_customerSession,
+        ?Url                                  $customerUrl = null
     ) {
         parent::__construct($context);
         $this->logger = $logger;
         $this->companyContext = $companyContext;
-        $this->_customerSession = $context->getObjectManager()->create("Magento\Customer\Model\Session");
+        $this->_customerSession = $_customerSession;
         $this->customerUrl = $customerUrl ?: ObjectManager::getInstance()->get(Url::class);
     }
 
@@ -67,10 +76,10 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
      * Authenticate customer.
      *
      * @param RequestInterface $request
-     * @return \Magento\Framework\App\ResponseInterface
+     * @return ResponseInterface
      * @throws NotFoundException
      */
-    public function dispatch(RequestInterface $request)
+    public function dispatch(RequestInterface $request): ResponseInterface
     {
         if (!$this->companyContext->isModuleActive()) {
             throw new NotFoundException(__('Page not found.'));
@@ -100,7 +109,7 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
      *
      * @return bool
      */
-    protected function isAllowed()
+    protected function isAllowed(): bool
     {
         return $this->companyContext->isResourceAllowed(static::COMPANY_RESOURCE);
     }
@@ -110,12 +119,12 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
      *
      * @param string $message
      * @param array $payload
-     * @return \Magento\Framework\Controller\Result\Json
+     * @return Json
      * @throws \InvalidArgumentException
      */
-    protected function jsonError($message, array $payload = [])
+    protected function jsonError(string $message, array $payload = []): Json
     {
-        /** @var \Magento\Framework\Controller\Result\Json $resultJson */
+        /** @var Json $resultJson */
         $resultJson = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_JSON);
         $resultJson->setData(
             [
@@ -133,12 +142,12 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
      *
      * @param array $payload
      * @param string $message
-     * @return \Magento\Framework\Controller\Result\Json
+     * @return Json
      * @throws \InvalidArgumentException
      */
-    protected function jsonSuccess(array $payload, $message = '')
+    protected function jsonSuccess(array $payload, string $message = ''): Json
     {
-        /** @var \Magento\Framework\Controller\Result\Json $resultJson */
+        /** @var Json $resultJson */
         $resultJson = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_JSON);
         $resultJson->setData(
             [
@@ -155,9 +164,9 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
      * Handle error message.
      *
      * @param string|null $errorMessage
-     * @return \Magento\Framework\Controller\Result\Json
+     * @return Json
      */
-    protected function handleJsonError($errorMessage = null)
+    protected function handleJsonError(string $errorMessage = null): Json
     {
         $errorMessage = $errorMessage ?: __('Something went wrong.');
         $this->messageManager->addErrorMessage($errorMessage);
@@ -170,9 +179,9 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
      *
      * @param string $successMessage
      * @param array $payload
-     * @return \Magento\Framework\Controller\Result\Json
+     * @return Json
      */
-    protected function handleJsonSuccess(string $successMessage, array $payload = [])
+    protected function handleJsonSuccess(string $successMessage, array $payload = []): Json
     {
         $this->messageManager->addSuccessMessage($successMessage);
 

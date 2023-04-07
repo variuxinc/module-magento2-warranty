@@ -4,6 +4,7 @@
  */
 
 use Variux\Warranty\Block\Index\Index;
+
 $needUpdateIncAndSro = false;
 ?>
 <div class="warranty-container">
@@ -14,27 +15,28 @@ $needUpdateIncAndSro = false;
         <div class="row">
             <div class="col col-12">
                 <div class="head-actions">
-                    <a href="<?php echo $block->escapeUrl($block->getUrl("warranty/index/new")) ?>"
-                       class="action primary create-new-warranty-link"><span><?php echo $block->escapeHtml(__("Create New Warranty Claim")) ?></span>
+                    <a href="<?= $block->escapeUrl($block->getUrl("warranty/index/new")) ?>"
+                       class="action primary create-new-warranty-link">
+                        <span><?= $block->escapeHtml(__("Create New Warranty Claim")) ?></span>
                     </a>
                 </div>
             </div>
         </div>
         <div class="row">
             <table class="data table table-warranty">
-                <caption class="table-caption"><?php echo $block->escapeHtml(__('Warranty List')) ?></caption>
+                <caption class="table-caption"><?= $block->escapeHtml(__('Warranty List')) ?></caption>
                 <thead>
                 <tr class="row">
-                    <th scope="col" class="col-md-2 id"><?php echo $block->escapeHtml(__('Warranty Claim')) ?></th>
+                    <th scope="col" class="col-md-2 id"><?= $block->escapeHtml(__('Warranty Claim')) ?></th>
                     <th scope="col"
-                        class="col-md-2 description"><?php echo $block->escapeHtml(__('Description')) ?></th>
-                    <th scope="col" class="col-md-2 engine"><?php echo $block->escapeHtml(__('Engine Serial #')) ?></th>
+                        class="col-md-2 description"><?= $block->escapeHtml(__('Description')) ?></th>
+                    <th scope="col" class="col-md-2 engine"><?= $block->escapeHtml(__('Engine Serial #')) ?></th>
                     <th scope="col"
-                        class="col-md-2 text-center sro-detail"><?php echo $block->escapeHtml(__('SRO Detail')) ?></th>
-                    <th scope="col" class="col-md-2 date"><?php echo $block->escapeHtml(__('Date')) ?></th>
-                    <th scope="col" class="col-md-1 status"><?php echo $block->escapeHtml(__('Status')) ?></th>
+                        class="col-md-2 text-center sro-detail"><?= $block->escapeHtml(__('SRO Detail')) ?></th>
+                    <th scope="col" class="col-md-2 date"><?= $block->escapeHtml(__('Date')) ?></th>
+                    <th scope="col" class="col-md-1 status"><?= $block->escapeHtml(__('Status')) ?></th>
                     <th scope="col"
-                        class="col-md-1 text-center action"><?php echo $block->escapeHtml(__('Actions')) ?></th>
+                        class="col-md-1 text-center action"><?= $block->escapeHtml(__('Actions')) ?></th>
                 </tr>
                 </thead>
                 <?php if ($block->getWarranties() && count($block->getWarranties())): ?>
@@ -42,45 +44,63 @@ $needUpdateIncAndSro = false;
                     <?php
                     /** @var \Variux\Warranty\Model\Warranty $warranty */
                     foreach ($block->getWarranties() as $warranty):
-                        if (empty($warranty->getIncNum()) || empty($warranty->getFirstSroNum())) $needUpdateIncAndSro = true; ?>
+                        if (empty($warranty->getIncNum()) || empty($warranty->getFirstSroNum())) {
+                            $needUpdateIncAndSro = true;
+                        } ?>
                         <tr class="row">
-                            <td data-th="<?php echo $block->escapeHtml(__('Warranty Claim')) ?>" class="col-md-2 id">
-                                <?php echo $block->escapeHtml($warranty->getIncNum()); ?>
+                            <td data-th="<?= $block->escapeHtml(__('Warranty Claim')) ?>" class="col-md-2 id">
+                                <?= $block->escapeHtml($warranty->getIncNum()); ?>
                             </td>
-                            <td data-th="<?php echo $block->escapeHtml(__('Description')) ?>"
+                            <td data-th="<?= $block->escapeHtml(__('Description')) ?>"
                                 class="col-md-2 description">
-                                <?php echo $block->escapeHtml($warranty->getDescription()); ?>
+                                <?= $block->escapeHtml($warranty->getDescription()); ?>
                             </td>
-                            <td data-th="<?php echo $block->escapeHtml(__('Engine Serial #')) ?>"
+                            <td data-th="<?= $block->escapeHtml(__('Engine Serial #')) ?>"
                                 class="col-md-2 engine">
-                                <?php echo $block->escapeHtml($warranty->getEngine()); ?>
+                                <?= $block->escapeHtml($warranty->getEngine()); ?>
                             </td>
-                            <td data-th="<?php echo $block->escapeHtml(__('SRO Detail')) ?>"
+                            <td data-th="<?= $block->escapeHtml(__('SRO Detail')) ?>"
                                 class="col-md-2 text-center sro-detail">
                                 <?php if ($block->hasSroDetail($warranty)): ?>
-                                    <a href="<?php echo $block->escapeUrl($block->getSroDetailUrl($warranty)) ?>"><?php echo(($sroNum = $block->getSroDetailNumber($warranty)) ? $sroNum : "Details") ?></a>
+                                    <a href="<?= $block->escapeUrl($block->getSroDetailUrl($warranty)) ?>">
+                                        <?= (($sroNum = $block->getSroDetailNumber($warranty)) ?
+                                            $block->escapeHtml($sroNum) :
+                                            $block->escapeHtml("Details")) ?>
+                                    </a>
                                 <?php else: ?>
-                                    <a href="<?php echo $block->escapeUrl($block->getUrl("warranty/sro/new", array('war_id' => $warranty->getId()))) ?>"><?php echo __("Create"); ?> </a>
+                                    <a href="<?= $block->escapeUrl($block->getUrl(
+                                        "warranty/sro/new",
+                                        ['war_id' => $warranty->getId()]
+                                    )) ?>">
+                                        <?= $block->escapeHtml(__("Create")); ?>
+                                    </a>
                                 <?php endif; ?>
                             </td>
-                            <td data-th="<?php echo $block->escapeHtml(__('Date')) ?>" class="col-md-2 date">
-                                <?php /* @noEscape */
-                                echo $block->dateFormat($warranty->getCreatedAt()); ?>
+                            <td data-th="<?= $block->escapeHtml(__('Date')) ?>" class="col-md-2 date">
+                                <?= $block->escapeHtml($block->dateFormat($warranty->getCreatedAt())); ?>
                             </td>
-                            <td data-th="<?php echo $block->escapeHtml(__('Status')) ?>" class="col-md-1 status">
-                                <?php /* @noEscape */
-                                echo $warranty->getStatusString(); ?>
+                            <td data-th="<?= $block->escapeHtml(__('Status')) ?>" class="col-md-1 status">
+                                <?= $block->escapeHtml($warranty->getStatusString()); ?>
                             </td>
                             <td class="col-md-1 text-center actions">
                                 <p>
                                     <span>
-                                    <a href="<?= $block->escapeUrl($block->getUrl("warranty/index/edit", array("id" => $warranty->getId()))) ?>">
+                                    <a href="<?=$block->escapeUrl($block->getUrl(
+                                        "warranty/index/edit",
+                                        ["id" => $warranty->getId()]
+                                    ))?>">
                                         <i class="fa fa-pencil"></i>
-                                    </a></span>
+                                    </a>
+                                    </span>
                                     <span>
-                                    <a href="<?= $block->escapeUrl($block->getUrl("warranty/index/report", array("id" => $warranty->getId()))) ?> " target="_blank">
+                                    <a href="<?= $block->escapeUrl($block->getUrl(
+                                        "warranty/index/report",
+                                        ["id" => $warranty->getId()]
+                                    ))?>"
+                                       target="_blank">
                                         <i class="fa fa-print"></i>
-                                    </a></span>
+                                    </a>
+                                    </span>
                                 </p>
                             </td>
                         </tr>
@@ -91,7 +111,13 @@ $needUpdateIncAndSro = false;
                     <tr>
                         <td colspan="100">
                             <div class="message info empty">
-                                <span><?php echo $block->escapeHtml(__('You haven\'t submitted any warranty ticket yet.')) ?></span>
+                                <span>
+                                    <?=
+                                    $block->escapeHtml(
+                                        __('You haven\'t submitted any warranty ticket yet.')
+                                    )
+                                    ?>
+                                </span>
                             </div>
                         </td>
                     </tr>
@@ -103,31 +129,29 @@ $needUpdateIncAndSro = false;
 
     <?php if ($block->getToolbarHtml()): ?>
         <div class="toolbar warranty-toolbar bottom">
-            <?php echo $block->getToolbarHtml() ?>
+            <?= $block->getToolbarHtml() ?>
         </div>
     <?php endif; ?>
     <?php if ($needUpdateIncAndSro) { ?>
         <script type="text/javascript">
             require([
-                'jquery'
+                'jquery',
+                'domReady!'
             ], function ($) {
-                $(document).ready(function () {
-                    
-                    let updateSroNum = setInterval(function () {
-                        $.ajax({
-                            type: "GET",
-                            url: "<?php echo $block->getAjaxUrl() ?>",
-                            cache: false,
-                            success: function (data) {
-                                data = JSON.parse(data);
-                                $(".table-warranty tbody").html(data.html);
-                                if (!data.needUpdateIncAndSro) {
-                                    clearInterval(updateSroNum);
-                                }
+                let updateSroNum = setInterval(function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "<?= $block->escapeHtml($block->getAjaxUrl()) ?>",
+                        cache: false,
+                        success: function (data) {
+                            data = JSON.parse(data);
+                            $(".table-warranty tbody").html(data.html);
+                            if (!data.needUpdateIncAndSro) {
+                                clearInterval(updateSroNum);
                             }
-                        });
-                    }, 5000);
-                });
+                        }
+                    });
+                }, 5000);
             });
         </script>
     <?php } ?>

@@ -36,7 +36,7 @@ class Edit extends \Variux\Warranty\Controller\Adminhtml\SroMaterial
         // 1. Get ID and create model
         $id = $this->getRequest()->getParam('sromaterial_id');
         $model = $this->_objectManager->create(\Variux\Warranty\Model\SroMaterial::class);
-        
+
         // 2. Initial checking
         if ($id) {
             $model->load($id);
@@ -48,7 +48,7 @@ class Edit extends \Variux\Warranty\Controller\Adminhtml\SroMaterial
             }
         }
         $this->_coreRegistry->register('variux_warranty_sromaterial', $model);
-        
+
         // 3. Build edit form
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
@@ -57,8 +57,9 @@ class Edit extends \Variux\Warranty\Controller\Adminhtml\SroMaterial
             $id ? __('Edit Sromaterial') : __('New Sromaterial')
         );
         $resultPage->getConfig()->getTitle()->prepend(__('Sromaterials'));
-        $resultPage->getConfig()->getTitle()->prepend($model->getId() ? __('Edit Sromaterial %1', $model->getId()) : __('New Sromaterial'));
+        $resultPage->getConfig()
+                   ->getTitle()
+                   ->prepend($model->getId() ? __('Edit Sromaterial %1', $model->getId()) : __('New Sromaterial'));
         return $resultPage;
     }
 }
-

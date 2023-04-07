@@ -20,4 +20,3 @@ class Warranty extends AbstractDb
         $this->_init('variux_warranty_warranty', 'warranty_id');
     }
 }
-

@@ -38,4 +38,3 @@ class NewAction extends \Variux\Warranty\Controller\Adminhtml\Workcode
         return $resultForward->forward('edit');
     }
 }
-

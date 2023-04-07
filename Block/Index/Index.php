@@ -1,15 +1,15 @@
 <?php
-
+/**
+ * @author Variux Team
+ * @copyright Copyright (c) 2023 Variux (https://www.variux.com)
+ */
 namespace Variux\Warranty\Block\Index;
 
+use Magento\Framework\Exception\LocalizedException;
 use Variux\Warranty\Model\ResourceModel\Warranty\Collection;
 use Magento\Customer\Model\Session as CustomerSession;
 use Variux\Warranty\Model\ResourceModel\Warranty\CollectionFactory as WarrantyCollectionFactory;
 
-/**
- * Class Index
- * @package Variux\Warranty\Block\Index
- */
 class Index extends \Magento\Framework\View\Element\Template
 {
     /**
@@ -29,14 +29,12 @@ class Index extends \Magento\Framework\View\Element\Template
      * @param WarrantyCollectionFactory $warrantyCollectionFactory
      * @param array $data
      */
-    public function __construct
-    (
+    public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         CustomerSession $customerSession,
         WarrantyCollectionFactory $warrantyCollectionFactory,
         array $data = []
-    )
-    {
+    ) {
         parent::__construct($context, $data);
         $this->customerSession = $customerSession;
         $this->warrantyCollectionFactory = $warrantyCollectionFactory;
@@ -46,6 +44,7 @@ class Index extends \Magento\Framework\View\Element\Template
      * Initializes toolbar
      *
      * @return \Magento\Framework\View\Element\AbstractBlock
+     * @throws LocalizedException
      */
     protected function _prepareLayout()
     {
@@ -123,7 +122,7 @@ class Index extends \Magento\Framework\View\Element\Template
         $customer = $this->getCurrentCustomer();
         if ($customer) {
             $collection = $this->warrantyCollectionFactory->create()
-                ->addFieldToFilter("customer_id", array("eq" => $customer->getId()))->setOrder('created_at', 'DESC');
+                ->addFieldToFilter("customer_id", ["eq" => $customer->getId()])->setOrder('created_at', 'DESC');
             $collection->setPageSize($this->getPageSize());
             $collection->setCurPage($this->getPage());
             $collection->applyFilterData($this->getFilterData());
@@ -159,7 +158,7 @@ class Index extends \Magento\Framework\View\Element\Template
         $sro = $warranty->hasSro();
         return $this->getUrl(
             "warranty/sro/edit",
-            array("id" => $sro->getId(), "war_id" => $warranty->getId())
+            ["id" => $sro->getId(), "war_id" => $warranty->getId()]
         );
     }
 
@@ -170,14 +169,14 @@ class Index extends \Magento\Framework\View\Element\Template
     public function getAjaxUrl()
     {
         $filterData = $this->getFilterData();
-        if(!empty($filterData)) {
+        if (!empty($filterData)) {
             return $this->getUrl(
                 "warranty/index/ajax",
-                array(
-                    "p" => $this->getPage(), 
-                    "limit" => $this->getPageSize(), 
+                [
+                    "p" => $this->getPage(),
+                    "limit" => $this->getPageSize(),
                     "serial_number" => $filterData["serial_number"]
-                )
+                ]
             );
         }
     }

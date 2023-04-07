@@ -46,7 +46,6 @@ class SroMaterialRepository implements SroMaterialRepositoryInterface
      */
     protected $collectionProcessor;
 
-
     /**
      * @param ResourceSroMaterial $resource
      * @param SroMaterialInterfaceFactory $sroMaterialFactory
@@ -104,17 +103,17 @@ class SroMaterialRepository implements SroMaterialRepositoryInterface
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
     ) {
         $collection = $this->sroMaterialCollectionFactory->create();
-        
+
         $this->collectionProcessor->process($criteria, $collection);
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
-        
+
         $items = [];
         foreach ($collection as $model) {
             $items[] = $model;
         }
-        
+
         $searchResults->setItems($items);
         $searchResults->setTotalCount($collection->getSize());
         return $searchResults;
@@ -146,4 +145,3 @@ class SroMaterialRepository implements SroMaterialRepositoryInterface
         return $this->delete($this->get($sroMaterialId));
     }
 }
-

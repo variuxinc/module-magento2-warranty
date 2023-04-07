@@ -36,7 +36,7 @@ class Edit extends \Variux\Warranty\Controller\Adminhtml\WarrantyTransfer
         // 1. Get ID and create model
         $id = $this->getRequest()->getParam('warrantytransfer_id');
         $model = $this->_objectManager->create(\Variux\Warranty\Model\WarrantyTransfer::class);
-        
+
         // 2. Initial checking
         if ($id) {
             $model->load($id);
@@ -48,7 +48,7 @@ class Edit extends \Variux\Warranty\Controller\Adminhtml\WarrantyTransfer
             }
         }
         $this->_coreRegistry->register('variux_warranty_warrantytransfer', $model);
-        
+
         // 3. Build edit form
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
@@ -57,7 +57,13 @@ class Edit extends \Variux\Warranty\Controller\Adminhtml\WarrantyTransfer
             $id ? __('Edit Warrantytransfer') : __('New Warrantytransfer')
         );
         $resultPage->getConfig()->getTitle()->prepend(__('Warrantytransfers'));
-        $resultPage->getConfig()->getTitle()->prepend($model->getId() ? __('Edit Warrantytransfer %1', $model->getId()) : __('New Warrantytransfer'));
+        $resultPage->getConfig()
+                   ->getTitle()
+                   ->prepend(
+                       $model->getId() ?
+                       __('Edit Warrantytransfer %1', $model->getId()) :
+                       __('New Warrantytransfer')
+                   );
         return $resultPage;
     }
 }

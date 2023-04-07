@@ -20,4 +20,3 @@ class Workcode extends AbstractDb
         $this->_init('variux_warranty_workcode', 'workcode_id');
     }
 }
-

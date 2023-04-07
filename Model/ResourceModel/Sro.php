@@ -21,11 +21,11 @@ class Sro extends AbstractDb
     }
 
      /**
-     * @param \Variux\Warranty\Model\Sro $model
-     * @param $number
-     * @return $this
-     * @throws \Magento\Framework\Exception\LocalizedException
-     */
+      * @param \Variux\Warranty\Model\Sro $model
+      * @param $number
+      * @return $this
+      * @throws \Magento\Framework\Exception\LocalizedException
+      */
     public function loadByNumber(\Variux\Warranty\Model\Sro $model, $number, $conditionType = false)
     {
         $conditionString = "";
@@ -36,7 +36,7 @@ class Sro extends AbstractDb
             case "%like":
                 $conditionString = 'sro_num like "%'.$number.'%"';
                 break;
-            default :
+            default:
                 $conditionString = 'sro_num = "'.$number.'"';
                 break;
         }
@@ -78,4 +78,3 @@ class Sro extends AbstractDb
         return $this;
     }
 }
-

@@ -309,4 +309,3 @@ class SroLabor extends AbstractModel implements SroLaborInterface
         return $this->setData(self::UPDATED_AT, $updatedAt);
     }
 }
-

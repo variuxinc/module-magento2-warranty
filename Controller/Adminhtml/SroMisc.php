@@ -39,4 +39,3 @@ abstract class SroMisc extends \Magento\Backend\App\Action
         return $resultPage;
     }
 }
-

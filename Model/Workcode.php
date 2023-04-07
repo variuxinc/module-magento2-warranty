@@ -117,4 +117,3 @@ class Workcode extends AbstractModel implements WorkcodeInterface
         return $this->setData(self::UPDATED_AT, $updatedAt);
     }
 }
-

@@ -46,7 +46,6 @@ class WarrantyTransferRepository implements WarrantyTransferRepositoryInterface
      */
     protected $searchResultsFactory;
 
-
     /**
      * @param ResourceWarrantyTransfer $resource
      * @param WarrantyTransferInterfaceFactory $warrantyTransferFactory
@@ -73,7 +72,7 @@ class WarrantyTransferRepository implements WarrantyTransferRepositoryInterface
      */
     public function save(
         WarrantyTransferInterface $warrantyTransfer
-    ) {
+    ): WarrantyTransferInterface {
         try {
             $this->resource->save($warrantyTransfer);
         } catch (\Exception $exception) {
@@ -105,17 +104,17 @@ class WarrantyTransferRepository implements WarrantyTransferRepositoryInterface
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
     ) {
         $collection = $this->warrantyTransferCollectionFactory->create();
-        
+
         $this->collectionProcessor->process($criteria, $collection);
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
-        
+
         $items = [];
         foreach ($collection as $model) {
             $items[] = $model;
         }
-        
+
         $searchResults->setItems($items);
         $searchResults->setTotalCount($collection->getSize());
         return $searchResults;
