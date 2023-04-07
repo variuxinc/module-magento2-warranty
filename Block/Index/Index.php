@@ -48,6 +48,11 @@ class Index extends \Magento\Framework\View\Element\Template
      */
     protected function _prepareLayout()
     {
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * Chỗ này a cần kiểm tra lại, hàm getWarranties mỗi lần gọi lại tạo 1 collection.
+         */
         if ($this->getWarranties()) {
             $this->addFilterBlock();
             $this->addToolbarBlock();
@@ -119,6 +124,13 @@ class Index extends \Magento\Framework\View\Element\Template
      */
     public function getWarranties()
     {
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * Chỗ này nên sử dụng customer là một param thay vì get trong session với lại
+         *       collection chỗ này mỗi lần gọi thì lại tạo mới, nên tìm cách để không tạo mới mỗi lần gọi.
+         *
+         */
         $customer = $this->getCurrentCustomer();
         if ($customer) {
             $collection = $this->warrantyCollectionFactory->create()
@@ -146,6 +158,11 @@ class Index extends \Magento\Framework\View\Element\Template
      */
     public function hasSroDetail($warranty)
     {
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * Chỗ này tên hàm chưa phù hợp với nội dung của hàm.
+         */
         return $warranty->hasSro();
     }
 
@@ -156,6 +173,11 @@ class Index extends \Magento\Framework\View\Element\Template
     public function getSroDetailUrl($warranty)
     {
         $sro = $warranty->hasSro();
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * Chỗ này nếu $syro == null thì xử lý như thế nào, có trường hợp nào $sro == null ko?
+         */
         return $this->getUrl(
             "warranty/sro/edit",
             ["id" => $sro->getId(), "war_id" => $warranty->getId()]
@@ -168,6 +190,11 @@ class Index extends \Magento\Framework\View\Element\Template
      */
     public function getAjaxUrl()
     {
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * Chỗ này thiếu return chỉ return !empty còn nếu mà empty thì return gì?
+         */
         $filterData = $this->getFilterData();
         if (!empty($filterData)) {
             return $this->getUrl(
@@ -200,6 +227,11 @@ class Index extends \Magento\Framework\View\Element\Template
      */
     public function dateFormat($dateString)
     {
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * Cần sử dụng DateTime default của Magento a kiếm chỗ nào xử lý vụ datetime giống vầy trong vendor
+         */
         return date("d/m/Y H:i:s", strtotime($dateString));
     }
 

@@ -97,6 +97,11 @@ class Ajax extends \Variux\Warranty\Controller\AbstractAction
                 if (empty($warranty->getIncNum()) || empty($warranty->getFirstSroNum())) {
                     $needUpdateIncAndSro = true;
                 }
+                /**
+                 * @Hidro-Le
+                 * @TODO - Review
+                 * Sử dụng block để render html.
+                 */
                 $html .= "<tr class='row'>";
                 $html .= "<td data-th='Warranty Claim' class='col-md-2 id''>";
                 $html .= $warranty->getIncNum();
@@ -140,6 +145,12 @@ class Ajax extends \Variux\Warranty\Controller\AbstractAction
                 $html .= "</td>";
             }
         }
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * Chỗ này a cần tìm hiểu cách response JSON thay vì set response kiểu vầy.
+         *       Sample: $this->resultFactory->create(ResultFactory::TYPE_JSON);
+         */
         return $this->getResponse()
                     ->setBody(json_encode(
                         ["html" => $html, "needUpdateIncAndSro" => $needUpdateIncAndSro]

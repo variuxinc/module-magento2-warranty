@@ -5,6 +5,11 @@ namespace Variux\Warranty\Block\Index;
 use Variux\Warranty\Model\WarrantyFactory;
 use Variux\Warranty\Model\Warranty;
 
+/**
+ * @Hidro-Le
+ * @TODO - Review
+ * Class này PHPDOC của các function,properties chưa define đúng.
+ */
 class Edit extends \Magento\Framework\View\Element\Template
 {
     /**

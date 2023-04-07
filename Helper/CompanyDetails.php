@@ -48,6 +48,12 @@ class CompanyDetails
     {
         try {
             $companyId = $this->companyManagement->getByCustomerId($id)->getId();
+            /**
+             * @Hidro-Le
+             * @TODO - Review
+             * Chỗ này chưa đúng concept, return 2 type khác nhau hoàn toàn về interface.
+             *       Throw excetion hoặc return null instead.
+             */
             return $this->companyRepository->get($companyId);
         } catch (NoSuchEntityException $noSuchEntityException) {
             return $this->messageManager->addErrorMessage(__('Customer is associated with any company'));

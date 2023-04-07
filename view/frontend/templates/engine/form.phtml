@@ -208,6 +208,11 @@
     </div>
 </div>
 <style>
+    /**
+     * @Hidro-Le
+     * @TODO - Review
+     * Cần define đúng <script type="text/css">
+     */
 .messages .message {
     font-size: 30px !important;
     font-weight: bold !important;
@@ -215,6 +220,11 @@
 }
 </style>
 <script>
+    /**
+     * @Hidro-Le
+     * @TODO - Review
+     * Cần define đúng <script type="text/javascript">
+     */
     require([
         'jquery',
         'mage/mage'
@@ -230,6 +240,11 @@
     });
 </script>
 <script>
+    /**
+     * @Hidro-Le
+     * @TODO - Review
+     * Cần define đúng <script type="text/javascript">
+     */
     require([
         'jquery'
     ], function($){
@@ -240,11 +255,21 @@
 </script>
 <?php if ($block->isUnRegistered()): ?>
     <script>
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * Cần define đúng <script type="text/javascript">
+         */
         require([
             'jquery',
             'mage/translate',
             'mage/calendar'
         ], function($){
+            /**
+             * @Hidro-Le
+             * @TODO - Review
+             * Remove docyment ready
+             */
             $(document).ready(function (){
                 $("#purchased_date").calendar({
                     changeMonth: true,

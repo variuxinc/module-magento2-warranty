@@ -243,3 +243,8 @@
 		<column name="updated_at" nullable="false" xsi:type="timestamp" comment="Updated at" default="CURRENT_TIMESTAMP" on_update="true"/>
 	</table>
 </schema>
+<!--
+    @TODO - Review
+    Chưa generate db_schema_whitelist.json
+    https://magento.stackexchange.com/questions/258407/magento-2-3-use-of-db-schema-whitelist-json-file-in-etc-directory-of-each-modu
+-->

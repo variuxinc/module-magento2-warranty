@@ -144,6 +144,11 @@ $needUpdateIncAndSro = false;
                         url: "<?= $block->escapeHtml($block->getAjaxUrl()) ?>",
                         cache: false,
                         success: function (data) {
+                            /**
+                             * @Hidro-Le
+                             * @TODO - Review
+                             * Thiếu catch cho case ajax error
+                             */
                             data = JSON.parse(data);
                             $(".table-warranty tbody").html(data.html);
                             if (!data.needUpdateIncAndSro) {

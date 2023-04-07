@@ -6,6 +6,7 @@
 namespace Variux\Warranty\Controller\Autosuggest;
 
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\Controller\ResultFactory;
 
 class Dealer extends \Variux\Warranty\Controller\AbstractAction
 {
@@ -44,6 +45,12 @@ class Dealer extends \Variux\Warranty\Controller\AbstractAction
 
         $response = $this->suggestHelper->findDealer($search, $customerId);
 
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * Chỗ này a cần tìm hiểu cách response JSON thay vì set response kiểu vầy.
+         *       Sample: $this->resultFactory->create(ResultFactory::TYPE_JSON);
+         */
         return $this->getResponse()->setBody($jsonHelper->jsonEncode($response));
     }
 }

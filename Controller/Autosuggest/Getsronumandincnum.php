@@ -47,6 +47,12 @@ class Getsronumandincnum extends \Variux\Warranty\Controller\AbstractAction
     {
         $warrantyId = $this->getRequest()->getParam("warranty_id");
         $response = $this->suggestHelper->getSroNumAndIncNumByWarrantyId($warrantyId);
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * Chỗ này a cần tìm hiểu cách response JSON thay vì set response kiểu vầy.
+         *       Sample: $this->resultFactory->create(ResultFactory::TYPE_JSON);
+         */
         return $this->getResponse()->setBody(json_encode($response));
     }
 }

@@ -64,6 +64,12 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         if ($shipDate && strtotime($shipDate . " +" . $expiredMonths . " months") < strtotime($now)) {
             return \Variux\Warranty\Model\Unit::STATUS_EXPIRED;
         }
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * Đây là class helper không sử dụng resource field to filter ở
+         *       đây chuyển logic này xuống repository. getBySerialNo hoặc xài getList sử dụng $searchCriteria
+         */
         $collection = $this->unitRegCollectionFactory->create();
         $unitRegCount = $collection->addFieldToFilter("serial_no", ['eq' => $unit->getSerialNo()])->count();
         if ($unitRegCount > 0) {
