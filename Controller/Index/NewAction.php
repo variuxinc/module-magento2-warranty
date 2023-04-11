@@ -14,6 +14,8 @@ use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\View\Result\PageFactory;
 use Psr\Log\LoggerInterface;
 use Variux\Warranty\Helper\Data;
+use Magento\Framework\Controller\Result\JsonFactory;
+use Variux\Warranty\Helper\SuggestHelper;
 
 class NewAction extends \Variux\Warranty\Controller\AbstractAction
 {
@@ -23,17 +25,14 @@ class NewAction extends \Variux\Warranty\Controller\AbstractAction
     protected $resultPageFactory;
 
     /**
-     * @var CompanyContext
-     */
-    protected $companyContext;
-
-    /**
      * NewAction constructor.
      * @param Context $context
      * @param CompanyContext $companyContext
      * @param LoggerInterface $logger
      * @param Session $_customerSession
      * @param Data $helperData
+     * @param JsonFactory $resultJsonFactory
+     * @param SuggestHelper $suggestHelper
      * @param PageFactory $resultPageFactory
      */
     public function __construct(
@@ -42,9 +41,12 @@ class NewAction extends \Variux\Warranty\Controller\AbstractAction
         \Psr\Log\LoggerInterface              $logger,
         Session                               $_customerSession,
         \Variux\Warranty\Helper\Data          $helperData,
+        JsonFactory                           $resultJsonFactory,
+        SuggestHelper                         $suggestHelper,
         PageFactory                           $resultPageFactory
-    ) {
-        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData);
+    )
+    {
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $resultJsonFactory, $suggestHelper);
         $this->resultPageFactory = $resultPageFactory;
     }
 

@@ -13,15 +13,11 @@ use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultInterface;
 use Psr\Log\LoggerInterface;
 use Variux\Warranty\Helper\Data;
+use Magento\Framework\Controller\Result\JsonFactory;
 use Variux\Warranty\Helper\SuggestHelper;
 
 class Engineforwarrantytransfer extends \Variux\Warranty\Controller\AbstractAction
 {
-    /**
-     * @var SuggestHelper
-     */
-    protected $suggestHelper;
-
     /**
      * Engine constructor.
      * @param Context $context
@@ -29,6 +25,7 @@ class Engineforwarrantytransfer extends \Variux\Warranty\Controller\AbstractActi
      * @param LoggerInterface $logger
      * @param Session $_customerSession
      * @param Data $helperData
+     * @param JsonFactory $resultJsonFactory
      * @param SuggestHelper $suggestHelper
      */
     public function __construct(
@@ -37,26 +34,28 @@ class Engineforwarrantytransfer extends \Variux\Warranty\Controller\AbstractActi
         \Psr\Log\LoggerInterface        $logger,
         \Magento\Customer\Model\Session $_customerSession,
         \Variux\Warranty\Helper\Data          $helperData,
-        SuggestHelper                   $suggestHelper
+        JsonFactory                           $resultJsonFactory,
+        SuggestHelper                         $suggestHelper
     ) {
-        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData);
-        $this->suggestHelper = $suggestHelper;
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $resultJsonFactory, $suggestHelper);
     }
 
     /**
      * @return ResponseInterface|ResultInterface
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function execute()
     {
         $search = $this->getRequest()->getParam("q");
-        $jsonHelper = $this->_objectManager->create(\Magento\Framework\Json\Helper\Data::class);
         $response = $this->suggestHelper->findEngineForWarrantyTransfer($search);
         /**
          * @Hidro-Le
-         * @TODO - Review
+         * @TODO - Fixed
          * Chỗ này a cần tìm hiểu cách response JSON thay vì set response kiểu vầy.
          *       Sample: $this->resultFactory->create(ResultFactory::TYPE_JSON);
          */
-        return $this->getResponse()->setBody($jsonHelper->jsonEncode($response));
+        $resultJson = $this->resultJsonFactory->create();
+        $resultJson->setData($response);
+        return $resultJson;
     }
 }

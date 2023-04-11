@@ -22,6 +22,8 @@ use Variux\Warranty\Model\WarrantyFactory;
 use NumberFormatter;
 use Variux\Warranty\Helper\CompanyDetails;
 use Variux\Warranty\Model\WarrantyRepository;
+use Magento\Framework\Controller\Result\JsonFactory;
+use Variux\Warranty\Helper\SuggestHelper;
 
 class Save extends \Variux\Warranty\Controller\AbstractAction
 {
@@ -79,6 +81,8 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         LoggerInterface              $logger,
         Session                      $_customerSession,
         \Variux\Warranty\Helper\Data $helperData,
+        JsonFactory                  $resultJsonFactory,
+        SuggestHelper                $suggestHelper,
         PageFactory                  $resultPageFactory,
         Validator                    $formKeyValidator,
         WarrantyFactory              $warrantyFactory,
@@ -86,8 +90,9 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         SroFactory                   $sroFactory,
         SroRepository                $sroRepository,
         CompanyDetails               $companyDetails
-    ) {
-        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData);
+    )
+    {
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $resultJsonFactory, $suggestHelper);
         $this->resultPageFactory = $resultPageFactory;
         $this->formKeyValidator = $formKeyValidator;
         $this->warrantyFactory = $warrantyFactory;
@@ -215,6 +220,11 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         return $resultRedirect;
     }
 
+    /**
+     * @param $data
+     * @return mixed
+     * @throws \Exception
+     */
     private function convertDateStringToObject($data)
     {
         if (isset($data['date_of_failure']) && $data['date_of_failure'] != '') {

@@ -4,7 +4,6 @@ namespace Variux\Warranty\Controller\Transfer;
 
 use Magento\Company\Model\CompanyContext;
 use Magento\Customer\Model\Session;
-use Magento\Customer\Model\Url;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultInterface;
@@ -20,6 +19,8 @@ use Variux\Warranty\Helper\CompanyDetails;
 use Variux\Warranty\Model\File\FileProcessor;
 use Variux\Warranty\Model\ResourceModel\WarrantyTransfer as WarrantyTransferResourceModel;
 use Magento\Framework\Mail\Template\TransportBuilder;
+use Magento\Framework\Controller\Result\JsonFactory;
+use Variux\Warranty\Helper\SuggestHelper;
 
 class Save extends \Variux\Warranty\Controller\AbstractAction
 {
@@ -62,6 +63,8 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
      * @param LoggerInterface $logger
      * @param Session $_customerSession
      * @param Data $helperData
+     * @param JsonFactory $resultJsonFactory
+     * @param SuggestHelper $suggestHelper
      * @param JsonHelper $jsonHelper
      * @param UnitFactory $unitFactory
      * @param UnitResourceModel $unitResourceModel
@@ -72,25 +75,27 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
      * @param TransportBuilder $transportBuilder
      */
     public function __construct(
-        Context                  $context,
-        CompanyContext           $companyContext,
-        \Psr\Log\LoggerInterface $logger,
-        Session                  $_customerSession,
-        Data                     $helperData,
-        JsonHelper               $jsonHelper,
-        UnitFactory              $unitFactory,
-        UnitResourceModel        $unitResourceModel,
-        WarrantyTransferFactory  $warrantyTransferFactory,
-        CompanyDetails           $companyDetails,
-        FileProcessor $fileProcessor,
+        Context                       $context,
+        CompanyContext                $companyContext,
+        \Psr\Log\LoggerInterface      $logger,
+        Session                       $_customerSession,
+        Data                          $helperData,
+        JsonFactory                   $resultJsonFactory,
+        SuggestHelper                 $suggestHelper,
+        JsonHelper                    $jsonHelper,
+        UnitFactory                   $unitFactory,
+        UnitResourceModel             $unitResourceModel,
+        WarrantyTransferFactory       $warrantyTransferFactory,
+        CompanyDetails                $companyDetails,
+        FileProcessor                 $fileProcessor,
         WarrantyTransferResourceModel $warrantyTransferResourceModel,
-        TransportBuilder $transportBuilder
+        TransportBuilder              $transportBuilder
 
     )
     {
-        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData);
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $resultJsonFactory, $suggestHelper);
         $this->jsonHelper = $jsonHelper;
-        $this->uniFactory = $unitFactory;
+        $this->unitFactory = $unitFactory;
         $this->unitResourceModel = $unitResourceModel;
         $this->warrantyTransferFactory = $warrantyTransferFactory;
         $this->companyDetails = $companyDetails;

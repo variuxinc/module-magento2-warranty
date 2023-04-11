@@ -19,13 +19,11 @@ use Magento\Framework\App\ResponseInterface;
 use Magento\Customer\Model\Session as CustomerSession;
 use Variux\Warranty\Model\ResourceModel\Warranty\CollectionFactory as WarrantyCollectionFactory;
 use Magento\Framework\UrlInterface;
+use Magento\Framework\Controller\Result\JsonFactory;
+use Variux\Warranty\Helper\SuggestHelper;
 
 class Ajax extends \Variux\Warranty\Controller\AbstractAction
 {
-    /**
-     * @var CompanyContext
-     */
-    protected $companyContext;
 
     /**
      * @var CompanyManagementInterface
@@ -47,12 +45,13 @@ class Ajax extends \Variux\Warranty\Controller\AbstractAction
     protected $urlBuilder;
 
     /**
-     * Index constructor.
      * @param Context $context
      * @param CompanyContext $companyContext
      * @param LoggerInterface $logger
      * @param CustomerSession $_customerSession
      * @param Data $helperData
+     * @param JsonFactory $resultJsonFactory
+     * @param SuggestHelper $suggestHelper
      * @param WarrantyCollectionFactory $warrantyCollectionFactory
      * @param UrlInterface $urlBuilder
      */
@@ -62,10 +61,13 @@ class Ajax extends \Variux\Warranty\Controller\AbstractAction
         \Psr\Log\LoggerInterface     $logger,
         Session                      $_customerSession,
         \Variux\Warranty\Helper\Data $helperData,
+        JsonFactory                  $resultJsonFactory,
+        SuggestHelper                $suggestHelper,
         WarrantyCollectionFactory    $warrantyCollectionFactory,
         UrlInterface                 $urlBuilder
-    ) {
-        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData);
+    )
+    {
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $resultJsonFactory, $suggestHelper);
         $this->warrantyCollectionFactory = $warrantyCollectionFactory;
         $this->urlBuilder = $urlBuilder;
     }
@@ -117,10 +119,10 @@ class Ajax extends \Variux\Warranty\Controller\AbstractAction
                 $html .= "</td>";
                 $html .= "<td data-th='SRO Detail' class='col-md-2 text-center sro-detail'>";
                 $html .= "<a href='" . $this->urlBuilder->getUrl(
-                    "warranty/sro/edit",
-                    ['id' => $warranty->getFirstSroId(),
+                        "warranty/sro/edit",
+                        ['id' => $warranty->getFirstSroId(),
                             'war_id' => $warranty->getId()]
-                )
+                    )
                     . "'>"
                     . (empty($warranty->getFirstSroNum()) ? "Details" : $warranty->getFirstSroNum())
                     . "</a>";

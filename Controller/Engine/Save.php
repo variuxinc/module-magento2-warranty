@@ -16,6 +16,8 @@ use Magento\Directory\Model\ResourceModel\Region as RegionResourceModel;
 use Variux\Warranty\Model\UnitFactory;
 use Variux\Warranty\Model\UnitRegFactory;
 use Variux\Warranty\Model\ResourceModel\UnitReg as UnitRegResourceModel;
+use Magento\Framework\Controller\Result\JsonFactory;
+use Variux\Warranty\Helper\SuggestHelper;
 
 class Save extends \Variux\Warranty\Controller\AbstractAction
 {
@@ -62,6 +64,8 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
      * @param LoggerInterface $logger
      * @param Session $_customerSession
      * @param Data $helperData
+     * @param JsonFactory $resultJsonFactory
+     * @param SuggestHelper $suggestHelper
      * @param UserContextInterface $userContext
      * @param CompanyDetails $companyDetails
      * @param Validator $formKeyValidator
@@ -78,6 +82,8 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         \Psr\Log\LoggerInterface $logger,
         Session                  $_customerSession,
         Data                     $helperData,
+        JsonFactory              $resultJsonFactory,
+        SuggestHelper            $suggestHelper,
         UserContextInterface     $userContext,
         CompanyDetails           $companyDetails,
         Validator                $formKeyValidator,
@@ -87,8 +93,9 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         UnitFactory              $unitFactory,
         UnitRegFactory           $unitRegFactory,
         UnitRegResourceModel     $unitRegResourceModel
-    ) {
-        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData);
+    )
+    {
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $resultJsonFactory, $suggestHelper);
         $this->userContext = $userContext;
         $this->companyDetails = $companyDetails;
         $this->formKeyValidator = $formKeyValidator;
@@ -100,6 +107,10 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         $this->unitRegResourceModel = $unitRegResourceModel;
     }
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
     public function execute()
     {
         $userId = $this->userContext->getUserId();
@@ -152,7 +163,8 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
     }
 
     /**
-     * @return bool
+     * @return false|string
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     protected function isAbleRegisterEngine()
     {
@@ -166,6 +178,11 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         }
         return false;
     }
+
+    /**
+     * @param $data
+     * @return \Magento\Framework\Controller\Result\Redirect|void
+     */
     protected function resolveWhenStateIsset($data)
     {
         $resultRedirect = $this->resultRedirectFactory->create();

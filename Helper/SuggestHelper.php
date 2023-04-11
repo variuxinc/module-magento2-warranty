@@ -153,11 +153,11 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
 
     /**
      * @param $query
-     * @param $customerId
+     * @param bool $customerId
      * @return array
      * @throws NoSuchEntityException
      */
-    public function findItem($query, $customerId = false)
+    public function findItem($query, bool $customerId = false): array
     {
         $storeId = $this->_storeManager->getStore()->getId();
         $collection = $this->productCollectionFactory->create();
@@ -194,10 +194,10 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
 
     /**
      * @param $query
-     * @param $customerId
+     * @param bool $customerId
      * @return array
      */
-    public function findDealer($query, $customerId = false)
+    public function findDealer($query, bool $customerId = false): array
     {
         $dealers = [
             [
@@ -217,11 +217,11 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
 
     /**
      * @param $query
-     * @param $customerId
+     * @param bool $customerId
      * @return array
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function findWorkcode($query, $customerId = false)
+    public function findWorkcode($query, bool $customerId = false): array
     {
         $searchCriteria = $this->_searchCriteriaBuilder;
         if ($query) {
@@ -265,7 +265,7 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
      * @return array
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function findEngine($query)
+    public function findEngine($query): array
     {
         $searchCriteria = $this->_searchCriteriaBuilder;
         if ($query) {
@@ -298,7 +298,7 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
      * @return array
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function findEngineForWarrantyTransfer($query)
+    public function findEngineForWarrantyTransfer($query): array
     {
         $searchCriteria = $this->_searchCriteriaBuilder;
         if ($query) {
@@ -327,10 +327,16 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
+     * @param $query
+     * @param bool $customerId
+     * @return array
+     */
+
+    /**
      * @param $warrantyId
      * @return array|null[]
      */
-    public function getSroNumAndIncNumByWarrantyId($warrantyId)
+    public function getSroNumAndIncNumByWarrantyId($warrantyId): array
     {
         $warranty = $this->warrantyFactory->create();
         $this->warrantyResourceModel->load($warranty, $warrantyId);

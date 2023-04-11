@@ -13,10 +13,12 @@ use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\ResponseInterface;
-use Magento\Framework\Controller\Result\Json;
 use Magento\Framework\Exception\NotFoundException;
+use Magento\Framework\View\Result\Page\Interceptor;
 use Psr\Log\LoggerInterface;
 use Variux\Warranty\Helper\Data;
+use Magento\Framework\Controller\Result\JsonFactory;
+use Variux\Warranty\Helper\SuggestHelper;
 
 /**
  * @Hidro-Le
@@ -43,7 +45,7 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
 
     /**
      * @Hidro-Le
-     * @TODO - Review
+     * @TODO - Fixed
      * Biến này là protected không cần phải implement ở class con.
      */
     /**
@@ -64,15 +66,23 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
      * @var Data
      */
     protected $helperData;
+    /**
+     * @var JsonFactory
+     */
+    protected $resultJsonFactory;
+    /**
+     * @var SuggestHelper
+     */
+    protected $suggestHelper;
 
     /**
-     * AbstractAction constructor.
-     *
      * @param Context $context
      * @param CompanyContext $companyContext
      * @param LoggerInterface $logger
      * @param Session $_customerSession
      * @param Data $helperData
+     * @param JsonFactory $resultJsonFactory
+     * @param SuggestHelper $suggestHelper
      * @param Url|null $customerUrl
      */
     public function __construct(
@@ -81,24 +91,29 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
         \Psr\Log\LoggerInterface              $logger,
         Session                               $_customerSession,
         \Variux\Warranty\Helper\Data          $helperData,
+        JsonFactory                           $resultJsonFactory,
+        SuggestHelper                         $suggestHelper,
         ?Url                                  $customerUrl = null
-    ) {
+    )
+    {
         parent::__construct($context);
         $this->logger = $logger;
         $this->companyContext = $companyContext;
         $this->_customerSession = $_customerSession;
         $this->helperData = $helperData;
+        $this->resultJsonFactory = $resultJsonFactory;
+        $this->suggestHelper = $suggestHelper;
         $this->customerUrl = $customerUrl ?: ObjectManager::getInstance()->get(Url::class);
     }
 
     /**
-     * Authenticate customer.
-     *
      * @param RequestInterface $request
-     * @return ResponseInterface
+     * @return ResponseInterface|Interceptor
      * @throws NotFoundException
+     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function dispatch(RequestInterface $request): ResponseInterface
+    public function dispatch(RequestInterface $request)
     {
         if (!$this->companyContext->isModuleActive()) {
             throw new NotFoundException(__('Page not found.'));

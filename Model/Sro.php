@@ -65,7 +65,7 @@ class Sro extends AbstractModel implements SroInterface
     }
 
     /**
-     * @return ResourceModel\Sro\Material\Collection
+     * @return ResourceModel\SroMaterial\Collection
      */
     public function getMaterialCollection()
     {
@@ -74,7 +74,7 @@ class Sro extends AbstractModel implements SroInterface
     }
 
     /**
-     * @return mixed
+     * @return ResourceModel\SroLabor\Collection
      */
     public function getLaborCollection()
     {
@@ -83,7 +83,7 @@ class Sro extends AbstractModel implements SroInterface
     }
 
     /**
-     * @return mixed
+     * @return ResourceModel\SroMisc\Collection
      */
     public function getMiscCollection()
     {
@@ -92,7 +92,7 @@ class Sro extends AbstractModel implements SroInterface
     }
 
     /**
-     * @return mixed
+     * @return ResourceModel\SroDocument\Collection
      */
     public function getDocumentCollection()
     {
@@ -101,7 +101,7 @@ class Sro extends AbstractModel implements SroInterface
     }
 
     /**
-     * @return mixed
+     * @return array
      */
     public function getLaborsData()
     {

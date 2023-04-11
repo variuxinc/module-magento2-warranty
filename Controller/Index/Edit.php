@@ -12,12 +12,14 @@ use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 use Psr\Log\LoggerInterface;
 use Variux\Warranty\Helper\Data;
-use Variux\Warranty\Model\WarrantyFactory;
 use Variux\Warranty\Model\WarrantyRepository;
+use Magento\Framework\Controller\Result\JsonFactory;
+use Variux\Warranty\Helper\SuggestHelper;
 
 class Edit extends \Variux\Warranty\Controller\AbstractAction
 {
@@ -37,6 +39,8 @@ class Edit extends \Variux\Warranty\Controller\AbstractAction
      * @param LoggerInterface $logger
      * @param Session $_customerSession
      * @param Data $helperData
+     * @param JsonFactory $resultJsonFactory
+     * @param SuggestHelper $suggestHelper
      * @param PageFactory $resultPageFactory
      * @param WarrantyRepository $warrantyRepository
      */
@@ -46,10 +50,13 @@ class Edit extends \Variux\Warranty\Controller\AbstractAction
         \Psr\Log\LoggerInterface              $logger,
         Session                               $_customerSession,
         \Variux\Warranty\Helper\Data          $helperData,
+        JsonFactory                           $resultJsonFactory,
+        SuggestHelper                         $suggestHelper,
         PageFactory                           $resultPageFactory,
         WarrantyRepository                    $warrantyRepository
-    ) {
-        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData);
+    )
+    {
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $resultJsonFactory, $suggestHelper);
         $this->resultPageFactory = $resultPageFactory;
         $this->warrantyRepository = $warrantyRepository;
     }
@@ -64,11 +71,12 @@ class Edit extends \Variux\Warranty\Controller\AbstractAction
         if ($id) {
             /**
              * @Hidro-Le
-             * @TODO - Review
+             * @TODO - fixed
              * Chỗ này hàm getById đã catch vụ không có ID, sử dụng try-catch thay vì if.
              */
-            $warranty = $this->warrantyRepository->getById($id);
-            if (!$warranty->getId()) {
+            try {
+                $warranty = $this->warrantyRepository->getById($id);
+            } catch (NoSuchEntityException $e) {
                 $this->messageManager->addError(__('This warranty claim no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
             }

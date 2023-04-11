@@ -11,7 +11,8 @@ use Magento\Framework\View\Result\PageFactory;
 use Psr\Log\LoggerInterface;
 use Magento\Customer\Model\Session;
 use Variux\Warranty\Helper\Data;
-use Magento\Customer\Model\Url;
+use Magento\Framework\Controller\Result\JsonFactory;
+use Variux\Warranty\Helper\SuggestHelper;
 
 class Edit extends \Variux\Warranty\Controller\AbstractAction
 {
@@ -31,25 +32,31 @@ class Edit extends \Variux\Warranty\Controller\AbstractAction
      * @param LoggerInterface $logger
      * @param Session $_customerSession
      * @param Data $helperData
+     * @param JsonFactory $resultJsonFactory
+     * @param SuggestHelper $suggestHelper
      * @param UnitFactory $unitFactory
      * @param PageFactory $resultPageFactory
      */
     public function __construct(
-        Context         $context,
-        CompanyContext  $companyContext,
-        LoggerInterface $logger,
-        Session         $_customerSession,
-        Data            $helperData,
-        UnitFactory     $unitFactory,
+        Context                                    $context,
+        CompanyContext                             $companyContext,
+        LoggerInterface                            $logger,
+        Session                                    $_customerSession,
+        Data                                       $helperData,
+        JsonFactory                                $resultJsonFactory,
+        SuggestHelper                              $suggestHelper,
+        UnitFactory                                $unitFactory,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory
-    ) {
-        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData);
+    )
+    {
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $resultJsonFactory, $suggestHelper);
         $this->unitFactory = $unitFactory;
         $this->resultPageFactory = $resultPageFactory;
     }
 
     /**
-     * @return ResultInterface|Page
+     * @return \Magento\Framework\App\ResponseInterface|ResultInterface|Page
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function execute()
     {

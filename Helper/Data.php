@@ -4,9 +4,15 @@ namespace Variux\Warranty\Helper;
 
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\Helper\Context;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Serialize\Serializer\Json;
+use Variux\Warranty\Model\PartnerFactory;
 use Variux\Warranty\Model\ResourceModel\Partner;
 use Variux\Warranty\Model\ResourceModel\UnitReg\CollectionFactory;
+use Variux\Warranty\Api\UnitRegRepositoryInterface;
+use Magento\Framework\Api\SearchCriteriaBuilder;
+use Variux\Warranty\Model\Unit;
+use Variux\Warranty\Api\Data\UnitRegInterface;
 
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
@@ -23,7 +29,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     protected $customerSession;
 
     /**
-     * @var \Variux\Warranty\Model\PartnerFactory
+     * @var PartnerFactory
      */
     protected $partnerFactory;
 
@@ -46,7 +52,14 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @var CompanyDetails
      */
     protected $companyDetails;
-
+    /**
+     * @var UnitRegRepositoryInterface
+     */
+    protected $unitRegRepository;
+    /**
+     * @var SearchCriteriaBuilder
+     */
+    protected $searchCriteriaBuilder;
 
     /**
      * @param Context $context
@@ -56,6 +69,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @param Json $serialize
      * @param Partner $partnerResourceModel
      * @param CompanyDetails $companyDetails
+     * @param UnitRegRepositoryInterface $unitRegRepository
+     * @param SearchCriteriaBuilder $searchCriteriaBuilder
      */
     public function __construct(
         Context $context,
@@ -64,7 +79,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         Config $configHelper,
         Json $serialize,
         Partner $partnerResourceModel,
-        \Variux\Warranty\Helper\CompanyDetails $companyDetails
+        \Variux\Warranty\Helper\CompanyDetails $companyDetails,
+        UnitRegRepositoryInterface $unitRegRepository,
+        SearchCriteriaBuilder $searchCriteriaBuilder
     ) {
         parent::__construct($context);
         $this->configHelper = $configHelper;
@@ -73,41 +90,60 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $this->serialize = $serialize;
         $this->partnerResourceModel = $partnerResourceModel;
         $this->companyDetails = $companyDetails;
+        $this->unitRegRepository = $unitRegRepository;
+        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
     }
 
     /**
-     * @param \Variux\Warranty\Model\Unit $unit
+     * @param Unit $unit
      * @return string
+     * @throws LocalizedException
      */
-    public function getEngineStatus(\Variux\Warranty\Model\Unit $unit)
+    public function getEngineStatus(Unit $unit)
     {
         $expiredMonths = $this->configHelper->getEngineExpired();
         $expiredMonths = $expiredMonths ?: 24;
 
         if ($unit->getConsumerNum()) {
-            return \Variux\Warranty\Model\Unit::STATUS_REGISTERED;
+            return Unit::STATUS_REGISTERED;
         }
         $shipDate = $unit->getShipDate();
         $now = date(\Magento\Framework\Stdlib\DateTime::DATE_PHP_FORMAT, time());
         if ($shipDate && strtotime($shipDate . " +" . $expiredMonths . " months") < strtotime($now)) {
-            return \Variux\Warranty\Model\Unit::STATUS_EXPIRED;
+            return Unit::STATUS_EXPIRED;
         }
         /**
          * @Hidro-Le
-         * @TODO - Review
+         * @TODO - Fixed
          * Đây là class helper không sử dụng resource field to filter ở
          *       đây chuyển logic này xuống repository. getBySerialNo hoặc xài getList sử dụng $searchCriteria
          */
-        $collection = $this->unitRegCollectionFactory->create();
-        $unitRegCount = $collection->addFieldToFilter("serial_no", ['eq' => $unit->getSerialNo()])->count();
+        $unitRegs = $this->getUnitRegBySerialNo($unit->getSerialNo());
+        $unitRegCount = count($unitRegs);
         if ($unitRegCount > 0) {
-            return \Variux\Warranty\Model\Unit::STATUS_REGISTERED;
+            return Unit::STATUS_REGISTERED;
         }
-        return \Variux\Warranty\Model\Unit::STATUS_UNREGISTERED;
+        return Unit::STATUS_UNREGISTERED;
     }
 
     /**
-     * @return array
+     * @param $serialNo
+     * @return UnitRegInterface[]
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function getUnitRegBySerialNo($serialNo): array
+    {
+        $this->searchCriteriaBuilder->addFilter(
+            UnitRegInterface::SERIAL_NO,
+            $serialNo
+        );
+        $searchCriteria = $this->searchCriteriaBuilder->create();
+        $result = $this->unitRegRepository->getList($searchCriteria);
+        return $result->getItems();
+    }
+
+    /**
+     * @return array|array[]
      */
     public function getUmOptions()
     {
@@ -158,7 +194,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @return number
+     * @return int
      */
     public function getMaxFileSize()
     {
@@ -166,8 +202,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @return \Variux\Warranty\Model\Partner|bool
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @return false|mixed|null
+     * @throws LocalizedException
      */
     public function isPartner()
     {
@@ -189,7 +225,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
 
     /**
      * @return false|mixed|null
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
     public function getCurrentPartner()
     {

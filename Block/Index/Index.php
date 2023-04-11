@@ -5,10 +5,13 @@
  */
 namespace Variux\Warranty\Block\Index;
 
+use Magento\Framework\Controller\Result\RedirectFactory;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\View\Element\Template\Context;
 use Variux\Warranty\Model\ResourceModel\Warranty\Collection;
 use Magento\Customer\Model\Session as CustomerSession;
 use Variux\Warranty\Model\ResourceModel\Warranty\CollectionFactory as WarrantyCollectionFactory;
+use Magento\Framework\Message\ManagerInterface as MessageManagerInterface;
 
 class Index extends \Magento\Framework\View\Element\Template
 {
@@ -23,21 +26,36 @@ class Index extends \Magento\Framework\View\Element\Template
     protected $warrantyCollectionFactory;
 
     /**
+     * @var \Magento\Framework\Controller\Result\RedirectFactory
+     */
+    protected $resultRedirectFactory;
+    /**
+     * @var MessageManagerInterface
+     */
+    protected $messageManager;
+
+    /**
      * Index constructor.
-     * @param \Magento\Framework\View\Element\Template\Context $context
+     * @param Context $context
      * @param CustomerSession $customerSession
      * @param WarrantyCollectionFactory $warrantyCollectionFactory
+     * @param RedirectFactory $resultRedirectFactory
+     * @param MessageManagerInterface $messageManager
      * @param array $data
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         CustomerSession $customerSession,
         WarrantyCollectionFactory $warrantyCollectionFactory,
+        \Magento\Framework\Controller\Result\RedirectFactory $resultRedirectFactory,
+        MessageManagerInterface $messageManager,
         array $data = []
     ) {
         parent::__construct($context, $data);
         $this->customerSession = $customerSession;
         $this->warrantyCollectionFactory = $warrantyCollectionFactory;
+        $this->resultRedirectFactory = $resultRedirectFactory;
+        $this->messageManager = $messageManager;
     }
 
     /**
@@ -168,31 +186,34 @@ class Index extends \Magento\Framework\View\Element\Template
 
     /**
      * @param $warranty
-     * @return mixed
+     * @return string
      */
     public function getSroDetailUrl($warranty)
     {
         $sro = $warranty->hasSroDetails();
         /**
          * @Hidro-Le
-         * @TODO - Review
+         * @TODO - Fixed
          * Chỗ này nếu $syro == null thì xử lý như thế nào, có trường hợp nào $sro == null ko?
          */
-        return $this->getUrl(
-            "warranty/sro/edit",
-            ["id" => $sro->getId(), "war_id" => $warranty->getId()]
-        );
+        if($sro) {
+            return $this->getUrl(
+                "warranty/sro/edit",
+                ["id" => $sro->getId(), "war_id" => $warranty->getId()]
+            );
+        }
+        return '';
+
     }
 
     /**
-     * @param $warranty
-     * @return mixed
+     * @return string
      */
     public function getAjaxUrl()
     {
         /**
          * @Hidro-Le
-         * @TODO - Review
+         * @TODO - fixed
          * Chỗ này thiếu return chỉ return !empty còn nếu mà empty thì return gì?
          */
         $filterData = $this->getFilterData();
@@ -206,6 +227,7 @@ class Index extends \Magento\Framework\View\Element\Template
                 ]
             );
         }
+        return '';
     }
 
     /**
@@ -229,10 +251,10 @@ class Index extends \Magento\Framework\View\Element\Template
     {
         /**
          * @Hidro-Le
-         * @TODO - Review
+         * @TODO - fixed
          * Cần sử dụng DateTime default của Magento a kiếm chỗ nào xử lý vụ datetime giống vầy trong vendor
          */
-        return date("d/m/Y H:i:s", strtotime($dateString));
+        return date('Y-m-d H:i:s', strtotime($dateString));
     }
 
     /**

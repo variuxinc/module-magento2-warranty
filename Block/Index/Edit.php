@@ -244,25 +244,6 @@ class Edit extends \Magento\Framework\View\Element\Template
      * @return array
      * @throws NoSuchEntityException
      */
-    public function getInvoiceSuggestConfig()
-    {
-        return [
-            'url' => $this->getUrl(
-                'warranty/autosuggest/invoicelisting',
-                ['_secure' => $this->getRequest()->isSecure()]
-            ),
-            'resultContainerSelector' => '#invoicelisting_result_suggest_container',
-            'loadingSelector' => '#invoicelisting_searchautosuggestLoading',
-            'storeId' => $this->storeManager->getStore()->getId(),
-            'delay' => 500,
-            'minSearchLength' => 1
-        ];
-    }
-
-    /**
-     * @return array
-     * @throws NoSuchEntityException
-     */
     public function getEngineSuggestConfig()
     {
         return [
