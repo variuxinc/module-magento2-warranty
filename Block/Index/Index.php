@@ -213,30 +213,6 @@ class Index extends \Magento\Framework\View\Element\Template
     }
 
     /**
-     * @return string
-     */
-    public function getAjaxUrl()
-    {
-        /**
-         * @Hidro-Le
-         * @TODO - fixed
-         * Chỗ này thiếu return chỉ return !empty còn nếu mà empty thì return gì?
-         */
-        $filterData = $this->getFilterData();
-        if (!empty($filterData)) {
-            return $this->getUrl(
-                "warranty/index/ajax",
-                [
-                    "p" => $this->getPage(),
-                    "limit" => $this->getPageSize(),
-                    "serial_number" => $filterData["serial_number"]
-                ]
-            );
-        }
-        return '';
-    }
-
-    /**
      * @param $warranty
      * @return string
      */
