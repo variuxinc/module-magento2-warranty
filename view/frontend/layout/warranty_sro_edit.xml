@@ -7,8 +7,8 @@
         <referenceContainer name="after.body.start">
             <block class="Magento\Framework\View\Element\Template" name="autosuggest.item.template" as="autosuggest.item.template"
                    template="Variux_Warranty::suggestion/item.phtml"/>
-            <block class="Magento\Framework\View\Element\Template" name="autosuggest.workCode.template" as="autosuggest.workCode.template"
-                   template="Variux_Warranty::suggestion/workCode.phtml"/>
+            <block class="Magento\Framework\View\Element\Template" name="autosuggest.workcode.template" as="autosuggest.workcode.template"
+                   template="Variux_Warranty::suggestion/workcode.phtml"/>
         </referenceContainer>
 
         <referenceContainer name="content">

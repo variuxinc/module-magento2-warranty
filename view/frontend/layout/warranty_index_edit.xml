@@ -7,8 +7,6 @@
         <referenceContainer name="after.body.start">
             <block class="Magento\Framework\View\Element\Template" name="autosuggest.engine.template" as="autosuggest.engine.template"
                    template="Variux_Warranty::suggestion/engine.phtml"/>
-            <block class="Magento\Framework\View\Element\Template" name="autosuggest.invoice.template" as="autosuggest.invoice.template"
-                   template="Variux_Warranty::suggestion/invoicelisting.phtml"/>
         </referenceContainer>
 
         <referenceContainer name="content">

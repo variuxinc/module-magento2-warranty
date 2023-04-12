@@ -34,6 +34,9 @@ class Index extends \Magento\Framework\View\Element\Template
      */
     protected $messageManager;
 
+    private static $warranties = null;
+    private static $warrantiesLoaded = [];
+
     /**
      * Index constructor.
      * @param Context $context
@@ -151,15 +154,18 @@ class Index extends \Magento\Framework\View\Element\Template
          */
         $customer = $this->getCurrentCustomer();
         if ($customer) {
-            $collection = $this->warrantyCollectionFactory->create()
-                ->addFieldToFilter("customer_id", ["eq" => $customer->getId()])->setOrder('created_at', 'DESC');
-            $collection->setPageSize($this->getPageSize());
-            $collection->setCurPage($this->getPage());
-            $collection->applyFilterData($this->getFilterData());
-
+            $collection = self::$warranties;
+            if(is_null($collection) || !in_array(spl_object_hash($collection), self::$warrantiesLoaded)) {
+                $collection = $this->warrantyCollectionFactory->create()
+                    ->addFieldToFilter("customer_id", ["eq" => $customer->getId()])->setOrder('created_at', 'DESC');
+                $collection->setPageSize($this->getPageSize());
+                $collection->setCurPage($this->getPage());
+                $collection->applyFilterData($this->getFilterData());
+                self::$warranties = $collection;
+                self::$warrantiesLoaded[] = spl_object_hash($collection);
+            }
             return $collection;
         }
-        return false;
     }
 
     /**

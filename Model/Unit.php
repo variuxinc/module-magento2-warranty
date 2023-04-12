@@ -24,6 +24,12 @@ class Unit extends AbstractModel implements UnitInterface
         $this->_init(\Variux\Warranty\Model\ResourceModel\Unit::class);
     }
 
+    public function loadBySerial($number, $conditionType = false)
+    {
+        $this->getResource()->loadBySerial($this, $number, $conditionType = false);
+        return $this;
+    }
+
     /**
      * @inheritDoc
      */
