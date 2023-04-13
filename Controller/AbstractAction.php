@@ -101,6 +101,13 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
         $this->companyContext = $companyContext;
         $this->_customerSession = $_customerSession;
         $this->helperData = $helperData;
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * JsonFactory $resultJsonFactory ở đây không cần thiết
+         *       Controller đã có ResultFactory
+         *       Sử dụng $this->resultFactory->create(ResultFactory::TYPE_JSON); instead.
+         */
         $this->resultJsonFactory = $resultJsonFactory;
         $this->suggestHelper = $suggestHelper;
         $this->customerUrl = $customerUrl ?: ObjectManager::getInstance()->get(Url::class);

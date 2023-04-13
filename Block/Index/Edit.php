@@ -164,6 +164,12 @@ class Edit extends \Magento\Framework\View\Element\Template
         $warranty = $this->warrantyFactory->create();
         $customerId = $this->getCustomer()->getId();
         $warranty->setCustomerId($customerId);
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * isPartner có trường hợp return false. không phải object
+         * Sẽ xảy ra trường hợp call a function of boolean variable.
+         */
         $warranty->setPartnerId($this->dataHelper->isPartner()->getId());
         $warranty = $this->warrantyRepository->save($warranty);
 

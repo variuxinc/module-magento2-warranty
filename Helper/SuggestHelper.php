@@ -162,6 +162,11 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
         $storeId = $this->_storeManager->getStore()->getId();
         $collection = $this->productCollectionFactory->create();
         $collection->addAttributeToSelect(["sku", "name"]);
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * SQL injection, sử dụng thêm $query = $connection->quote($query)
+         */
         $collection->addAttributeToFilter(
             [
                 ['attribute' => 'name', 'like' => '%' . $query . '%'],
@@ -185,6 +190,12 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
                 'price' => $item->getFinalPrice()
             ];
         }
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * sử dụng ->count() thay cho ->getSize(). Thiếu trường hợp cho no result thật sự lúc nào cũng trả về
+         *       'noResults' => false
+         */
         return [
             'totalItems' => $collection->getSize() + 1,
             'items' => $products,

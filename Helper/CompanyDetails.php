@@ -32,12 +32,23 @@ class CompanyDetails
     }
 
     /**
+     * @Hidro-Le
+     * @TODO - Review
+     * paramater không rõ ngữ nghĩa.
+     *       $id này không thể hiện là ID gì.
+     */
+    /**
      * @param $id
      * @return \Magento\Company\Api\Data\CompanyInterface|ManagerInterface
      */
     public function getInfo($id)
     {
         try {
+            /**
+             * @Hidro-Le
+             * @TODO - Review
+             * $this->companyManagement->getByCustomerId($id) return Company, không cần thiết load lại bằng Repository
+             */
             $companyId = $this->companyManagement->getByCustomerId($id)->getId();
             /**
              * @Hidro-Le

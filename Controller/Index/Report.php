@@ -71,8 +71,21 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
                 $this->messageManager->addError(__('This warranty claim no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
             }
+
+            /**
+             * @Hidro-Le
+             * @TODO - Review
+             * Generate ở function này chưa có thông tin output ra đâu.
+             *       A cần phải return out put là gì xử lý out put của hàm này như thế nào sau khi generate xong.
+             */
             $this->generateClaim($model);
         }
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * Return result page cho 1 pdf file không có hợp lý. Controller này cũng không có layout nên sẽ return
+         *       empty page nếu reload lại page do output bị cache.
+         */
         $resultPage = $this->resultPageFactory->create();
         $resultPage->getConfig()->getTitle()->set($id ? __('Edit Warranty Claim') : __('New Warranty Claim'));
         return $resultPage;
@@ -80,6 +93,13 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
 
     public function generateClaim($claim)
     {
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * 1. Chỗ này nên sử dụng block sau đó get HTML ra.
+         * 2. Viêt generate PDF ở tần model truyền vào là HTML được generate từ Block ở #1.
+         *
+         */
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
         $storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
         $pdf = new \Variux\Warranty\Helper\MyPdfX(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);

@@ -207,6 +207,12 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function isPartner()
     {
+        /**
+         * @Hidro-Le
+         * @TODO - Review
+         * Nội dung hàm không đúng với tên hàm (Is partner nhưng lại return partner)
+         *   Return type không consistency
+         */
         if ($this->customerSession->isLoggedIn()) {
             if ($this->partnerCache !== null) {
                 return $this->partnerCache;
