@@ -10,11 +10,11 @@ use Magento\Company\Model\CompanyContext;
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Psr\Log\LoggerInterface;
 use Variux\Warranty\Helper\Data;
-use Magento\Framework\Controller\Result\JsonFactory;
 use Variux\Warranty\Helper\SuggestHelper;
 
 class Item extends \Variux\Warranty\Controller\AbstractAction
@@ -26,7 +26,6 @@ class Item extends \Variux\Warranty\Controller\AbstractAction
      * @param LoggerInterface $logger
      * @param Session $_customerSession
      * @param Data $helperData
-     * @param JsonFactory $resultJsonFactory
      * @param SuggestHelper $suggestHelper
      */
     public function __construct(
@@ -35,11 +34,10 @@ class Item extends \Variux\Warranty\Controller\AbstractAction
         \Psr\Log\LoggerInterface     $logger,
         Session                      $_customerSession,
         \Variux\Warranty\Helper\Data $helperData,
-        JsonFactory                  $resultJsonFactory,
         SuggestHelper                $suggestHelper
     )
     {
-        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $resultJsonFactory, $suggestHelper);
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
     }
 
     /**
@@ -57,7 +55,7 @@ class Item extends \Variux\Warranty\Controller\AbstractAction
          * Chỗ này a cần tìm hiểu cách response JSON thay vì set response kiểu vầy.
          *       Sample: $this->resultFactory->create(ResultFactory::TYPE_JSON);
          */
-        $resultJson = $this->resultJsonFactory->create();
+        $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
         $resultJson->setData($response);
         return $resultJson;
     }

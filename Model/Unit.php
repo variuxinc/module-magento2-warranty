@@ -26,8 +26,13 @@ class Unit extends AbstractModel implements UnitInterface
 
     /**
      * @Hidro-Le
-     * @TODO - Review
+     * @TODO - Fixed
      * Thiếu document
+     */
+    /**
+     * @param $number
+     * @param $conditionType
+     * @return $this
      */
     public function loadBySerial($number, $conditionType = false)
     {

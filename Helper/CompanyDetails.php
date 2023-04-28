@@ -33,30 +33,30 @@ class CompanyDetails
 
     /**
      * @Hidro-Le
-     * @TODO - Review
+     * @TODO - fixed
      * paramater không rõ ngữ nghĩa.
      *       $id này không thể hiện là ID gì.
      */
     /**
-     * @param $id
-     * @return \Magento\Company\Api\Data\CompanyInterface|ManagerInterface
+     * @param $customerId
+     * @return \Magento\Company\Api\Data\CompanyInterface|null
      */
-    public function getInfo($id)
+    public function getInfo($customerId)
     {
         try {
             /**
              * @Hidro-Le
-             * @TODO - Review
+             * @TODO - fixed
              * $this->companyManagement->getByCustomerId($id) return Company, không cần thiết load lại bằng Repository
              */
-            $companyId = $this->companyManagement->getByCustomerId($id)->getId();
+
             /**
              * @Hidro-Le
              * @TODO - Fixed
              * Chỗ này chưa đúng concept, return 2 type khác nhau hoàn toàn về interface.
              *       Throw excetion hoặc return null instead.
              */
-            return $this->companyRepository->get($companyId);
+            return $this->companyManagement->getByCustomerId($customerId);
         } catch (NoSuchEntityException $noSuchEntityException) {
             return null;
         }

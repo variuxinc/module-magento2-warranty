@@ -14,7 +14,6 @@ use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterfac
 use Magento\Framework\View\Result\Page;
 use Psr\Log\LoggerInterface;
 use Variux\Warranty\Helper\Data;
-use Magento\Framework\Controller\Result\JsonFactory;
 use Variux\Warranty\Helper\SuggestHelper;
 
 class Index extends \Variux\Warranty\Controller\AbstractAction implements HttpGetActionInterface
@@ -35,7 +34,6 @@ class Index extends \Variux\Warranty\Controller\AbstractAction implements HttpGe
      * @param LoggerInterface $logger
      * @param Session $_customerSession
      * @param Data $helperData
-     * @param JsonFactory $resultJsonFactory
      * @param SuggestHelper $suggestHelper
      * @param CompanyManagementInterface $companyManagement
      */
@@ -45,12 +43,11 @@ class Index extends \Variux\Warranty\Controller\AbstractAction implements HttpGe
         \Psr\Log\LoggerInterface     $logger,
         Session                      $_customerSession,
         \Variux\Warranty\Helper\Data $helperData,
-        JsonFactory                  $resultJsonFactory,
         SuggestHelper                $suggestHelper,
         CompanyManagementInterface   $companyManagement
     )
     {
-        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $resultJsonFactory, $suggestHelper);
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
         $this->companyManagement = $companyManagement;
     }
 

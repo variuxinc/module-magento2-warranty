@@ -132,6 +132,7 @@ class Warranty extends AbstractModel implements WarrantyInterface
                 'value' => 'Waiting for Parts',
             ],
     ];
+
     /**
      * @inheritDoc
      */
@@ -148,14 +149,15 @@ class Warranty extends AbstractModel implements WarrantyInterface
     protected $sroFactory;
 
     public function __construct(
-        \Magento\Framework\Model\Context $context,
-        \Magento\Framework\Registry $registry,
-        \Variux\Warranty\Model\ResourceModel\Warranty $resource,
+        \Magento\Framework\Model\Context                         $context,
+        \Magento\Framework\Registry                              $registry,
+        \Variux\Warranty\Model\ResourceModel\Warranty            $resource,
         \Variux\Warranty\Model\ResourceModel\Warranty\Collection $resourceCollection,
-        StoreManagerInterface $storeManager,
-        \Variux\Warranty\Model\SroFactory $sroFactory,
-        array $data = []
-    ) {
+        StoreManagerInterface                                    $storeManager,
+        \Variux\Warranty\Model\SroFactory                        $sroFactory,
+        array                                                    $data = []
+    )
+    {
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
         $this->storeManager = $storeManager;
         $this->sroFactory = $sroFactory;
@@ -226,8 +228,6 @@ class Warranty extends AbstractModel implements WarrantyInterface
         }
         return false;
     }
-
-
 
     /**
      * @inheritDoc

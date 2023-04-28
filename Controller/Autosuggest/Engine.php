@@ -10,11 +10,11 @@ use Magento\Company\Model\CompanyContext;
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Psr\Log\LoggerInterface;
 use Variux\Warranty\Helper\Data;
 use Variux\Warranty\Helper\SuggestHelper;
-use Magento\Framework\Controller\Result\JsonFactory;
 
 class Engine extends \Variux\Warranty\Controller\AbstractAction
 {
@@ -26,7 +26,6 @@ class Engine extends \Variux\Warranty\Controller\AbstractAction
      * @param Session $_customerSession
      * @param Data $helperData
      * @param SuggestHelper $suggestHelper
-     * @param JsonFactory $jsonFactory
      */
     public function __construct(
         Context                               $context,
@@ -34,11 +33,10 @@ class Engine extends \Variux\Warranty\Controller\AbstractAction
         \Psr\Log\LoggerInterface              $logger,
         \Magento\Customer\Model\Session       $_customerSession,
         \Variux\Warranty\Helper\Data          $helperData,
-        \Variux\Warranty\Helper\SuggestHelper $suggestHelper,
-        JsonFactory                           $resultJsonFactory
+        \Variux\Warranty\Helper\SuggestHelper $suggestHelper
     )
     {
-        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $resultJsonFactory, $suggestHelper);
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
     }
 
     /**
@@ -55,7 +53,7 @@ class Engine extends \Variux\Warranty\Controller\AbstractAction
          * Chỗ này a cần tìm hiểu cách response JSON thay vì set response kiểu vầy.
          *       Sample: $this->resultFactory->create(ResultFactory::TYPE_JSON);
          */
-        $resultJson = $this->resultJsonFactory->create();
+        $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
         $resultJson->setData($response);
         return $resultJson;
     }

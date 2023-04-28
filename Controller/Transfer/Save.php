@@ -19,7 +19,6 @@ use Variux\Warranty\Helper\CompanyDetails;
 use Variux\Warranty\Model\File\FileProcessor;
 use Variux\Warranty\Model\ResourceModel\WarrantyTransfer as WarrantyTransferResourceModel;
 use Magento\Framework\Mail\Template\TransportBuilder;
-use Magento\Framework\Controller\Result\JsonFactory;
 use Variux\Warranty\Helper\SuggestHelper;
 
 class Save extends \Variux\Warranty\Controller\AbstractAction
@@ -63,7 +62,6 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
      * @param LoggerInterface $logger
      * @param Session $_customerSession
      * @param Data $helperData
-     * @param JsonFactory $resultJsonFactory
      * @param SuggestHelper $suggestHelper
      * @param JsonHelper $jsonHelper
      * @param UnitFactory $unitFactory
@@ -80,7 +78,6 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         \Psr\Log\LoggerInterface      $logger,
         Session                       $_customerSession,
         Data                          $helperData,
-        JsonFactory                   $resultJsonFactory,
         SuggestHelper                 $suggestHelper,
         JsonHelper                    $jsonHelper,
         UnitFactory                   $unitFactory,
@@ -93,7 +90,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
 
     )
     {
-        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $resultJsonFactory, $suggestHelper);
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
         $this->jsonHelper = $jsonHelper;
         $this->unitFactory = $unitFactory;
         $this->unitResourceModel = $unitResourceModel;

@@ -192,14 +192,14 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
         }
         /**
          * @Hidro-Le
-         * @TODO - Review
+         * @TODO - Fixed
          * sử dụng ->count() thay cho ->getSize(). Thiếu trường hợp cho no result thật sự lúc nào cũng trả về
          *       'noResults' => false
          */
         return [
-            'totalItems' => $collection->getSize() + 1,
+            'totalItems' => $collection->count(),
             'items' => $products,
-            'noResults' => false
+            'noResults' => !($collection->count() > 0)
         ];
     }
 
@@ -265,7 +265,7 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
         $response = [
             'totalItems' => $searchResults->getTotalCount(),
             'items' => $works,
-            'noResults' => $searchResults->getTotalCount() > 0 ? false : true
+            'noResults' => !($searchResults->getTotalCount() > 0)
         ];
 
         return $response;
@@ -298,7 +298,7 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
         $response = [
             'totalItems' => $searchResults->getTotalCount(),
             'items' => $units,
-            'noResults' => $searchResults->getTotalCount() > 0 ? false : true
+            'noResults' => !($searchResults->getTotalCount() > 0)
         ];
 
         return $response;
@@ -331,7 +331,7 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
         $response = [
             'totalItems' => $searchResults->getTotalCount(),
             'items' => $units,
-            'noResults' => $searchResults->getTotalCount() > 0 ? false : true
+            'noResults' => !($searchResults->getTotalCount() > 0)
         ];
 
         return $response;

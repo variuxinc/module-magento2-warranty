@@ -11,7 +11,6 @@ use Magento\Framework\View\Result\PageFactory;
 use Psr\Log\LoggerInterface;
 use Magento\Customer\Model\Session;
 use Variux\Warranty\Helper\Data;
-use Magento\Framework\Controller\Result\JsonFactory;
 use Variux\Warranty\Helper\SuggestHelper;
 
 class Edit extends \Variux\Warranty\Controller\AbstractAction
@@ -32,7 +31,6 @@ class Edit extends \Variux\Warranty\Controller\AbstractAction
      * @param LoggerInterface $logger
      * @param Session $_customerSession
      * @param Data $helperData
-     * @param JsonFactory $resultJsonFactory
      * @param SuggestHelper $suggestHelper
      * @param UnitFactory $unitFactory
      * @param PageFactory $resultPageFactory
@@ -43,13 +41,12 @@ class Edit extends \Variux\Warranty\Controller\AbstractAction
         LoggerInterface                            $logger,
         Session                                    $_customerSession,
         Data                                       $helperData,
-        JsonFactory                                $resultJsonFactory,
         SuggestHelper                              $suggestHelper,
         UnitFactory                                $unitFactory,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory
     )
     {
-        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $resultJsonFactory, $suggestHelper);
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
         $this->unitFactory = $unitFactory;
         $this->resultPageFactory = $resultPageFactory;
     }

@@ -202,14 +202,14 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @return false|mixed|null
+     * @return mixed|null
      * @throws LocalizedException
      */
-    public function isPartner()
+    public function getPartner()
     {
         /**
          * @Hidro-Le
-         * @TODO - Review
+         * @TODO - fixed
          * Nội dung hàm không đúng với tên hàm (Is partner nhưng lại return partner)
          *   Return type không consistency
          */
@@ -226,18 +226,18 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
                 return $partner;
             }
         }
-        return false;
+        return null;
     }
 
     /**
-     * @return false|mixed|null
+     * @return mixed|null
      * @throws LocalizedException
      */
     public function getCurrentPartner()
     {
-        if ($this->isPartner() !== false) {
+        if (!is_null($this->getPartner())) {
             return $this->partnerCache;
         }
-        return false;
+        return null;
     }
 }

@@ -17,7 +17,6 @@ use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\View\Result\Page\Interceptor;
 use Psr\Log\LoggerInterface;
 use Variux\Warranty\Helper\Data;
-use Magento\Framework\Controller\Result\JsonFactory;
 use Variux\Warranty\Helper\SuggestHelper;
 
 /**
@@ -67,10 +66,6 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
      */
     protected $helperData;
     /**
-     * @var JsonFactory
-     */
-    protected $resultJsonFactory;
-    /**
      * @var SuggestHelper
      */
     protected $suggestHelper;
@@ -81,7 +76,6 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
      * @param LoggerInterface $logger
      * @param Session $_customerSession
      * @param Data $helperData
-     * @param JsonFactory $resultJsonFactory
      * @param SuggestHelper $suggestHelper
      * @param Url|null $customerUrl
      */
@@ -91,7 +85,6 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
         \Psr\Log\LoggerInterface              $logger,
         Session                               $_customerSession,
         \Variux\Warranty\Helper\Data          $helperData,
-        JsonFactory                           $resultJsonFactory,
         SuggestHelper                         $suggestHelper,
         ?Url                                  $customerUrl = null
     )
@@ -103,12 +96,11 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
         $this->helperData = $helperData;
         /**
          * @Hidro-Le
-         * @TODO - Review
+         * @TODO - Fixed
          * JsonFactory $resultJsonFactory ở đây không cần thiết
          *       Controller đã có ResultFactory
          *       Sử dụng $this->resultFactory->create(ResultFactory::TYPE_JSON); instead.
          */
-        $this->resultJsonFactory = $resultJsonFactory;
         $this->suggestHelper = $suggestHelper;
         $this->customerUrl = $customerUrl ?: ObjectManager::getInstance()->get(Url::class);
     }

@@ -10,10 +10,10 @@ use Magento\Company\Model\CompanyContext;
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Psr\Log\LoggerInterface;
 use Variux\Warranty\Helper\Data;
-use Magento\Framework\Controller\Result\JsonFactory;
 use Variux\Warranty\Helper\SuggestHelper;
 
 class Engineforwarrantytransfer extends \Variux\Warranty\Controller\AbstractAction
@@ -25,7 +25,6 @@ class Engineforwarrantytransfer extends \Variux\Warranty\Controller\AbstractActi
      * @param LoggerInterface $logger
      * @param Session $_customerSession
      * @param Data $helperData
-     * @param JsonFactory $resultJsonFactory
      * @param SuggestHelper $suggestHelper
      */
     public function __construct(
@@ -33,11 +32,11 @@ class Engineforwarrantytransfer extends \Variux\Warranty\Controller\AbstractActi
         CompanyContext                  $companyContext,
         \Psr\Log\LoggerInterface        $logger,
         \Magento\Customer\Model\Session $_customerSession,
-        \Variux\Warranty\Helper\Data          $helperData,
-        JsonFactory                           $resultJsonFactory,
-        SuggestHelper                         $suggestHelper
-    ) {
-        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $resultJsonFactory, $suggestHelper);
+        \Variux\Warranty\Helper\Data    $helperData,
+        SuggestHelper                   $suggestHelper
+    )
+    {
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
     }
 
     /**
@@ -54,7 +53,7 @@ class Engineforwarrantytransfer extends \Variux\Warranty\Controller\AbstractActi
          * Chỗ này a cần tìm hiểu cách response JSON thay vì set response kiểu vầy.
          *       Sample: $this->resultFactory->create(ResultFactory::TYPE_JSON);
          */
-        $resultJson = $this->resultJsonFactory->create();
+        $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
         $resultJson->setData($response);
         return $resultJson;
     }

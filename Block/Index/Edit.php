@@ -166,18 +166,18 @@ class Edit extends \Magento\Framework\View\Element\Template
         $warranty->setCustomerId($customerId);
         /**
          * @Hidro-Le
-         * @TODO - Review
+         * @TODO - Fixed
          * isPartner có trường hợp return false. không phải object
          * Sẽ xảy ra trường hợp call a function of boolean variable.
          */
-        $warranty->setPartnerId($this->dataHelper->isPartner()->getId());
+        $warranty->setPartnerId($this->dataHelper->getPartner()->getId());
         $warranty = $this->warrantyRepository->save($warranty);
 
         // generate sro
         $sro = $this->sroFactory->create();
         $sro->setWarrantyId($warranty->getId());
         $sro->setCustomerId($customerId);
-        $sro->setPartnerId($this->dataHelper->isPartner()->getId());
+        $sro->setPartnerId($this->dataHelper->getPartner()->getId());
         $this->sroRepository->save($sro);
 
         return $warranty;

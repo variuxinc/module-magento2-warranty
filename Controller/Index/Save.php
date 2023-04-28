@@ -22,7 +22,6 @@ use Variux\Warranty\Model\WarrantyFactory;
 use NumberFormatter;
 use Variux\Warranty\Helper\CompanyDetails;
 use Variux\Warranty\Model\WarrantyRepository;
-use Magento\Framework\Controller\Result\JsonFactory;
 use Variux\Warranty\Helper\SuggestHelper;
 
 class Save extends \Variux\Warranty\Controller\AbstractAction
@@ -81,7 +80,6 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         LoggerInterface              $logger,
         Session                      $_customerSession,
         \Variux\Warranty\Helper\Data $helperData,
-        JsonFactory                  $resultJsonFactory,
         SuggestHelper                $suggestHelper,
         PageFactory                  $resultPageFactory,
         Validator                    $formKeyValidator,
@@ -92,7 +90,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         CompanyDetails               $companyDetails
     )
     {
-        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $resultJsonFactory, $suggestHelper);
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
         $this->resultPageFactory = $resultPageFactory;
         $this->formKeyValidator = $formKeyValidator;
         $this->warrantyFactory = $warrantyFactory;

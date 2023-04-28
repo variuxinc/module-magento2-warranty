@@ -5,7 +5,6 @@ namespace Variux\Warranty\Controller\Transfer;
 use Magento\Company\Model\CompanyContext;
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\ResponseInterface;
-use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\View\Result\Page;
 use Variux\Warranty\Helper\SuggestHelper;
@@ -18,7 +17,6 @@ class Newtransfer extends \Variux\Warranty\Controller\AbstractAction
      * @param \Psr\Log\LoggerInterface $logger
      * @param Session $_customerSession
      * @param \Variux\Warranty\Helper\Data $helperData
-     * @param JsonFactory $resultJsonFactory
      * @param SuggestHelper $suggestHelper
      */
     public function __construct
@@ -28,11 +26,10 @@ class Newtransfer extends \Variux\Warranty\Controller\AbstractAction
         \Psr\Log\LoggerInterface              $logger,
         Session                               $_customerSession,
         \Variux\Warranty\Helper\Data          $helperData,
-        JsonFactory                           $resultJsonFactory,
         SuggestHelper                         $suggestHelper
     )
     {
-        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $resultJsonFactory, $suggestHelper);
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
     }
 
     /**

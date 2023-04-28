@@ -6,14 +6,15 @@
     "license": "GPL-3.0",
     "authors": [
         {
-            "name": "Beehexa",
+            "name": "Variux",
             "email": "info@mage2gen.com"
         }
     ],
     "minimum-stability": "dev",
     "require": {
         "php": "~7.3.0||~7.4.0",
-        "magento/framework": "103.0.*"
+        "magento/framework": "103.0.*",
+        "tecnickcom/tcpdf": "*"
     },
     "autoload": {
         "files": [

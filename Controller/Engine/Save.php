@@ -16,7 +16,6 @@ use Magento\Directory\Model\ResourceModel\Region as RegionResourceModel;
 use Variux\Warranty\Model\UnitFactory;
 use Variux\Warranty\Model\UnitRegFactory;
 use Variux\Warranty\Model\ResourceModel\UnitReg as UnitRegResourceModel;
-use Magento\Framework\Controller\Result\JsonFactory;
 use Variux\Warranty\Helper\SuggestHelper;
 
 class Save extends \Variux\Warranty\Controller\AbstractAction
@@ -64,7 +63,6 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
      * @param LoggerInterface $logger
      * @param Session $_customerSession
      * @param Data $helperData
-     * @param JsonFactory $resultJsonFactory
      * @param SuggestHelper $suggestHelper
      * @param UserContextInterface $userContext
      * @param CompanyDetails $companyDetails
@@ -82,7 +80,6 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         \Psr\Log\LoggerInterface $logger,
         Session                  $_customerSession,
         Data                     $helperData,
-        JsonFactory              $resultJsonFactory,
         SuggestHelper            $suggestHelper,
         UserContextInterface     $userContext,
         CompanyDetails           $companyDetails,
@@ -95,7 +92,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         UnitRegResourceModel     $unitRegResourceModel
     )
     {
-        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $resultJsonFactory, $suggestHelper);
+        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
         $this->userContext = $userContext;
         $this->companyDetails = $companyDetails;
         $this->formKeyValidator = $formKeyValidator;
