@@ -34,8 +34,7 @@ class Index extends \Magento\Framework\View\Element\Template
      */
     protected $messageManager;
 
-    private static $warranties = null;
-    private static $warrantiesLoaded = [];
+    protected $warranties;
 
     /**
      * Index constructor.
@@ -141,39 +140,30 @@ class Index extends \Magento\Framework\View\Element\Template
     }
 
     /**
-     * @return Collection||boolean
+     * @return false|Collection
      */
     public function getWarranties()
     {
+
+        if(!($customerId = $this->customerSession->getCustomerId())){
+            return false;
+        };
+        if(!$this->warranties) {
+            $collection = $this->warrantyCollectionFactory->create()
+                ->addFieldToFilter("customer_id", ["eq" => $customerId])->setOrder('created_at', 'DESC');
+            $collection->setPageSize($this->getPageSize());
+            $collection->setCurPage($this->getPage());
+            $collection->applyFilterData($this->getFilterData());
+            $this->warranties = $collection;
+        }
+        return $this->warranties;
         /**
          * @Hidro-Le
-         * @TODO - Review
+         * @TODO - Fixed
          * Chỗ này nên sử dụng customer là một param thay vì get trong session với lại
          *       collection chỗ này mỗi lần gọi thì lại tạo mới, nên tìm cách để không tạo mới mỗi lần gọi.
          *
          */
-        $customer = $this->getCurrentCustomer();
-        if ($customer) {
-            $collection = self::$warranties;
-            if(is_null($collection) || !in_array(spl_object_hash($collection), self::$warrantiesLoaded)) {
-                $collection = $this->warrantyCollectionFactory->create()
-                    ->addFieldToFilter("customer_id", ["eq" => $customer->getId()])->setOrder('created_at', 'DESC');
-                $collection->setPageSize($this->getPageSize());
-                $collection->setCurPage($this->getPage());
-                $collection->applyFilterData($this->getFilterData());
-                self::$warranties = $collection;
-                self::$warrantiesLoaded[] = spl_object_hash($collection);
-            }
-            return $collection;
-        }
-    }
-
-    /**
-     * @return \Magento\Customer\Model\Customer
-     */
-    public function getCurrentCustomer()
-    {
-        return $this->customerSession->getCustomer();
     }
 
     /**
