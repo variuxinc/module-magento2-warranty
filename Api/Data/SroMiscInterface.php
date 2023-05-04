@@ -18,6 +18,9 @@ interface SroMiscInterface
     const DESCRIPTION = 'description';
     const SRO_LINE = 'sro_line';
     const NOTE = 'note';
+    const TYPE = 'type';
+    const PARTNER_ID = 'partner_id';
+    const PARTNER_NUM = 'partner_num';
     const MISC_CODE = 'misc_code';
     const CREATED_AT = 'created_at';
     const SRO_OPER = 'sro_oper';
@@ -180,6 +183,40 @@ interface SroMiscInterface
      * @return \Variux\Warranty\SroMisc\Api\Data\SroMiscInterface
      */
     public function setNote($note);
+
+    /**
+     * Get note
+     * @return string|null
+     */
+    public function getType();
+
+    /**
+     * @param $type
+     * @return mixed
+     */
+    public function setType($type);
+
+    /**
+     * @return mixed
+     */
+    public function getPartnerId();
+
+    /**
+     * @param $partnerId
+     * @return mixed
+     */
+    public function setPartnerId($partnerId);
+
+    /**
+     * @return mixed
+     */
+    public function getPartnerNum();
+
+    /**
+     * @param $partnerNum
+     * @return mixed
+     */
+    public function setPartnerNum($partnerNum);
 
     /**
      * Get created_at

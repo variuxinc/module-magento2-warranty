@@ -11,7 +11,8 @@ define(
         'mage/translate',
         'mage/calendar',
         'Variux_Warranty/js/lib/ko-autosuggest',
-        'mage/validation'
+        'mage/validation',
+        'domReady!'
     ], function ($, ko, Component, Api, Confirmation, modal, helper, messageList) {
         'use strict';
 
@@ -185,30 +186,28 @@ define(
                     this.laborFormData().work_code.subscribe(function (value) {
                         window.warranty_sro.workCodeIsMCBind(value === "MC");
                     });
-                    $(document).ready(function () {
-                        if (window.warranty_sro.incNumber() == null || window.warranty_sro.incNumber() === "" || window.warranty_sro.sroNumber() == null || window.warranty_sro.sroNumber() === "") {
-                            let updateSroNum = setInterval(function () {
-                                $.ajax({
-                                    type: "POST",
-                                    url: window.WarrantyModule.updateSroNumUrl,
-                                    data: {warranty_id: window.WarrantyModule.warranty.warranty_id},
-                                    cache: false,
-                                    success: function (data) {
-                                        data = JSON.parse(data)
-                                        if (typeof data.inc_num != 'undefined' && data.inc_num != null) {
-                                            window.warranty_sro.incNumber(data.inc_num);
-                                        }
-                                        if (typeof data.sro_num != 'undefined' && data.sro_num != null) {
-                                            window.warranty_sro.sroNumber(data.sro_num);
-                                        }
-                                        if (window.warranty_sro.incNumber() != null && window.warranty_sro.incNumber() !== "" && window.warranty_sro.sroNumber() != null && window.warranty_sro.sroNumber() !== "") {
-                                            clearInterval(updateSroNum);
-                                        }
-                                    }
-                                });
-                            }, 5000);
-                        }
-                    });
+                        // if (window.warranty_sro.incNumber() == null || window.warranty_sro.incNumber() === "" || window.warranty_sro.sroNumber() == null || window.warranty_sro.sroNumber() === "") {
+                        //     let updateSroNum = setInterval(function () {
+                        //         $.ajax({
+                        //             type: "POST",
+                        //             url: window.WarrantyModule.updateSroNumUrl,
+                        //             data: {warranty_id: window.WarrantyModule.warranty.warranty_id},
+                        //             cache: false,
+                        //             success: function (data) {
+                        //                 data = JSON.parse(data)
+                        //                 if (typeof data.inc_num != 'undefined' && data.inc_num != null) {
+                        //                     window.warranty_sro.incNumber(data.inc_num);
+                        //                 }
+                        //                 if (typeof data.sro_num != 'undefined' && data.sro_num != null) {
+                        //                     window.warranty_sro.sroNumber(data.sro_num);
+                        //                 }
+                        //                 if (window.warranty_sro.incNumber() != null && window.warranty_sro.incNumber() !== "" && window.warranty_sro.sroNumber() != null && window.warranty_sro.sroNumber() !== "") {
+                        //                     clearInterval(updateSroNum);
+                        //                 }
+                        //             }
+                        //         });
+                        //     }, 5000);
+                        // }
                 }
             },
 
@@ -217,7 +216,7 @@ define(
                 switch(message.type)
                 {
                     case 'success':
-                        if (window.WarrantyModule.dataConfig.toast.success.icon == 1) {
+                        if (window.WarrantyModule.dataConfig.toast.success.icon === 1) {
                             $.toast({
                                 text: message.message,
                                 showHideTransition: 'slide',
@@ -242,7 +241,7 @@ define(
 
                         break;
                     case 'error':
-                        if (window.WarrantyModule.dataConfig.toast.error.icon == 1) {
+                        if (window.WarrantyModule.dataConfig.toast.error.icon === 1) {
                             $.toast({
                                 text: message.message,
                                 showHideTransition: 'slide',
@@ -267,7 +266,7 @@ define(
 
                         break;
                     case 'warning':
-                        if (window.WarrantyModule.dataConfig.toast.warning.icon == 1) {
+                        if (window.WarrantyModule.dataConfig.toast.warning.icon === 1) {
                             $.toast({
                                 text: message.message,
                                 showHideTransition: 'slide',
@@ -292,7 +291,7 @@ define(
 
                         break;
                     case 'info':
-                        if (window.WarrantyModule.dataConfig.toast.info.icon == 1) {
+                        if (window.WarrantyModule.dataConfig.toast.info.icon === 1) {
                             $.toast({
                                 text: message.message,
                                 showHideTransition: 'slide',
@@ -318,7 +317,7 @@ define(
 
                         break;
                     case 'notice':
-                        if (window.WarrantyModule.dataConfig.toast.warning.icon == 1) {
+                        if (window.WarrantyModule.dataConfig.toast.warning.icon === 1) {
                             $.toast({
                                 text: message.message,
                                 showHideTransition: 'slide',
@@ -343,7 +342,7 @@ define(
 
                         break;
                     default :
-                        if (window.WarrantyModule.dataConfig.toast.info.icon == 1) {
+                        if (window.WarrantyModule.dataConfig.toast.info.icon === 1) {
                             $.toast({
                                 text: message.message,
                                 showHideTransition: 'slide',
@@ -418,7 +417,7 @@ define(
             },
 
             canUploadDocument: function (type) {
-                return type == TYPE_IMPORT_FEE;
+                return type === TYPE_IMPORT_FEE;
             },
 
             openDocuments: function () {
@@ -693,10 +692,10 @@ define(
                 this.miscFormData().description(misc.description());
                 this.miscFormData().type(misc.type());
                 this.currentMisc = misc;
-                if (misc.type() == TYPE_IMPORT_FEE) {
+                if (misc.type() === TYPE_IMPORT_FEE) {
                     this.openFeePopup();
                 }
-                if (misc.type() == TYPE_FREIGHT) {
+                if (misc.type() === TYPE_FREIGHT) {
                     this.openFreightPopup();
                 }
             },

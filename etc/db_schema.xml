@@ -121,6 +121,9 @@
 		<column name="qty_conv" nullable="true" xsi:type="decimal" comment="Qty Conv" precision="12" scale="4"/>
 		<column name="amount" nullable="true" xsi:type="decimal" comment="Amount " precision="12" scale="4"/>
 		<column name="note" nullable="true" xsi:type="text" comment="Note"/>
+        <column name="type" nullable="true" xsi:type="varchar" length="255" comment="Type"/>
+        <column name="partner_id" nullable="false" xsi:type="int" comment="Partner Id"/>
+        <column name="partner_num" nullable="true" xsi:type="varchar" length="255" comment="Partner Number"/>
 		<column name="created_at" nullable="true" xsi:type="timestamp" comment="Created at" default="CURRENT_TIMESTAMP"/>
 		<column name="updated_at" nullable="true" xsi:type="timestamp" comment="updated_at" default="CURRENT_TIMESTAMP" on_update="true"/>
 	</table>

@@ -216,6 +216,54 @@ class SroMisc extends AbstractModel implements SroMiscInterface
     /**
      * @inheritDoc
      */
+    public function getType()
+    {
+        return $this->getData(self::TYPE);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setType($type)
+    {
+        return $this->setData(self::TYPE, $type);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getPartnerId()
+    {
+        return $this->getData(self::PARTNER_ID);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setPartnerId($partnerId)
+    {
+        return $this->setData(self::PARTNER_ID, $partnerId);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getPartnerNum()
+    {
+        return $this->getData(self::PARTNER_NUM);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setPartnerNum($partnerNum)
+    {
+        return $this->setData(self::PARTNER_NUM, $partnerNum);
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function getCreatedAt()
     {
         return $this->getData(self::CREATED_AT);
