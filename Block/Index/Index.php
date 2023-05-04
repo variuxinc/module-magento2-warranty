@@ -3,6 +3,7 @@
  * @author Variux Team
  * @copyright Copyright (c) 2023 Variux (https://www.variux.com)
  */
+
 namespace Variux\Warranty\Block\Index;
 
 use Magento\Framework\Controller\Result\RedirectFactory;
@@ -46,13 +47,14 @@ class Index extends \Magento\Framework\View\Element\Template
      * @param array $data
      */
     public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
-        CustomerSession $customerSession,
-        WarrantyCollectionFactory $warrantyCollectionFactory,
+        \Magento\Framework\View\Element\Template\Context     $context,
+        CustomerSession                                      $customerSession,
+        WarrantyCollectionFactory                            $warrantyCollectionFactory,
         \Magento\Framework\Controller\Result\RedirectFactory $resultRedirectFactory,
-        MessageManagerInterface $messageManager,
-        array $data = []
-    ) {
+        MessageManagerInterface                              $messageManager,
+        array                                                $data = []
+    )
+    {
         parent::__construct($context, $data);
         $this->customerSession = $customerSession;
         $this->warrantyCollectionFactory = $warrantyCollectionFactory;
@@ -145,10 +147,10 @@ class Index extends \Magento\Framework\View\Element\Template
     public function getWarranties()
     {
 
-        if(!($customerId = $this->customerSession->getCustomerId())){
+        if (!($customerId = $this->customerSession->getCustomerId())) {
             return false;
         };
-        if(!$this->warranties) {
+        if (!$this->warranties) {
             $collection = $this->warrantyCollectionFactory->create()
                 ->addFieldToFilter("customer_id", ["eq" => $customerId])->setOrder('created_at', 'DESC');
             $collection->setPageSize($this->getPageSize());
@@ -192,7 +194,7 @@ class Index extends \Magento\Framework\View\Element\Template
          * @TODO - Fixed
          * Chỗ này nếu $syro == null thì xử lý như thế nào, có trường hợp nào $sro == null ko?
          */
-        if($sro) {
+        if ($sro) {
             return $this->getUrl(
                 "warranty/sro/edit",
                 ["id" => $sro->getId(), "war_id" => $warranty->getId()]

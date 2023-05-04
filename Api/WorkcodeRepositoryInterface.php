@@ -41,7 +41,7 @@ interface WorkcodeRepositoryInterface
      */
     public function getList(
         SearchCriteriaInterface $searchCriteria
-    ): WorkcodeSearchResultsInterface;
+    );
 
     /**
      * Delete Workcode

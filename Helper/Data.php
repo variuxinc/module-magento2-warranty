@@ -71,6 +71,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @param CompanyDetails $companyDetails
      * @param UnitRegRepositoryInterface $unitRegRepository
      * @param SearchCriteriaBuilder $searchCriteriaBuilder
+     * @param PartnerFactory $partnerFactory
      */
     public function __construct(
         Context $context,
@@ -81,7 +82,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         Partner $partnerResourceModel,
         \Variux\Warranty\Helper\CompanyDetails $companyDetails,
         UnitRegRepositoryInterface $unitRegRepository,
-        SearchCriteriaBuilder $searchCriteriaBuilder
+        SearchCriteriaBuilder $searchCriteriaBuilder,
+        PartnerFactory $partnerFactory
     ) {
         parent::__construct($context);
         $this->configHelper = $configHelper;
@@ -92,6 +94,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $this->companyDetails = $companyDetails;
         $this->unitRegRepository = $unitRegRepository;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
+        $this->partnerFactory = $partnerFactory;
     }
 
     /**

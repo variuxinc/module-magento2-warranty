@@ -99,9 +99,8 @@ class WorkcodeRepository implements WorkcodeRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function getList(
-        \Magento\Framework\Api\SearchCriteriaInterface $criteria
-    ): \Variux\Warranty\Api\Data\WorkcodeSearchResultsInterface {
+    public function getList(\Magento\Framework\Api\SearchCriteriaInterface $criteria)
+    {
         $collection = $this->workcodeCollectionFactory->create();
 
         $this->collectionProcessor->process($criteria, $collection);

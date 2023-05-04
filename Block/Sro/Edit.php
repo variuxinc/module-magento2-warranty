@@ -125,11 +125,11 @@ class Edit extends \Magento\Framework\View\Element\Template
         $data = [];
         $data['sro'] = $this->getSro()->getData();
         //temporarily comment out
-        // $partner = $this->dataHelper->getCurrentPartner();
-        // $data['labor_rate'] = $partner->getLaborRate();
-        // if ($data['labor_rate'] == NULL) {
-        //     $data['labor_rate'] = '0';
-        // }
+         $partner = $this->dataHelper->getCurrentPartner();
+         $data['labor_rate'] = $partner->getLaborRate();
+         if ($data['labor_rate'] == NULL) {
+             $data['labor_rate'] = '0';
+         }
         $data['warranty'] = $this->getWarranty()->getData();
         $data['url'] = $this->getUrlData();
 
