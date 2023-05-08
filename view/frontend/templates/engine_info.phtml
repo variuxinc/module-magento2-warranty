@@ -46,14 +46,6 @@
                         <input readonly autocomplete="off" type="text" id="warranty_registered" name="warranty_registered" value="" title="<?= $block->escapeHtml(__("Engine Registered")) ?>" class="input-text">
                     </div>
                 </div>
-                <div class="field">
-                    <label class="label" for="consumer_name">
-                        <span><?= $block->escapeHtml(__("Consumer Name")) ?></span>
-                    </label>
-                    <div class="control">
-                        <input readonly autocomplete="off" type="text" id="consumer_name" name="consumer_name" value="" title="<?= $block->escapeHtml(__("Consumer Name")) ?>" class="input-text">
-                    </div>
-                </div>
 
                 <div class="field">
                     <label class="label" for="warranty_start_date">
@@ -91,26 +83,22 @@ $engineConfig = $block->getEngineSuggestConfig();
                 var itemSuggest = new autosuggest($('input#engine'), function (item, $input, event) {
                     var $form = $($input.closest("form"));
                     if(item.warranty_registered !== "Y") {
-                        $form.find("input[name=consumer_name]").closest('div.field').hide();
                         $form.find("input[name=warranty_start_date]").closest('div.field').hide();
                         $form.find("input[name=warranty_end_date]").closest('div.field').hide();
                         $form.find("input[name=item_sku]").closest('div.field').hide();
 
 
-                        $form.find("input[name=consumer_name]").val("").trigger("change");
                         $form.find("input[name=warranty_start_date]").val("").trigger("change");
                         $form.find("input[name=warranty_end_date]").val("").trigger("change");
                         $form.find("input[name=item_sku]").val("").trigger("change");
 
 
                     } else {
-                        $form.find("input[name=consumer_name]").closest('div.field').show();
                         $form.find("input[name=warranty_start_date]").closest('div.field').show();
                         $form.find("input[name=warranty_end_date]").closest('div.field').show();
                         $form.find("input[name=item_sku]").closest('div.field').show();
 
 
-                        $form.find("input[name=consumer_name]").val(item.consumer_name).trigger("change");
                         $form.find("input[name=warranty_start_date]").val(item.warranty_start_date).trigger("change");
                         $form.find("input[name=warranty_end_date]").val(item.warranty_end_date).trigger("change");
                         $form.find("input[name=item_sku]").val(item.item).trigger("change");
