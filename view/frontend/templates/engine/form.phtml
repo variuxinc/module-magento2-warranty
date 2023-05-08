@@ -412,11 +412,11 @@
                     "postcodeId": "#zip",
                     "form": "#engine-form",
                     <?php //phpcs:disable ?>
-                    "regionJson": <?= $block->escapeHtml($block->getRegionJson()) ?>,
+                    "regionJson": <?= /* @noEscape */ $block->getRegionJson() ?>,
                     <?php //phpcs:enable ?>
                     "defaultRegion": "",
                     <?php //phpcs:disable ?>
-                    "countriesWithOptionalZip": <?= $block->escapeHtml($block->getCountriesWithOptionalZip(true)) ?>
+                    "countriesWithOptionalZip": <?= /* @noEscape */ $block->getCountriesWithOptionalZip(true) ?>
                     <?php //phpcs:enable ?>
                 }
             }
