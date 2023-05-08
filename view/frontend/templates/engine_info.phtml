@@ -1,0 +1,127 @@
+<?php
+/**
+ * @var Variux\Warranty\Block\Index\Edit $block
+ */
+?>
+<div class="warranty-container">
+    <div class="warranty-wrapper">
+        <form id="warranty-form" class="form" method="post" action="<?= $block->escapeUrl($block->getUrl("warranty/index/save")) ?>">
+            <input type="hidden" name="warranty_id">
+            <fieldset class="fieldset info">
+                <legend class="legend">
+                    <span><?= $block->escapeHtml(__("Warranty Information")) ?></span>
+                </legend>
+                <br>
+
+                <div class="field required">
+                    <label class="label" for="engine">
+                        <span><?= $block->escapeHtml(__("Engine")) ?></span>
+                    </label>
+                    <div class="control">
+                        <input type="text" id="engine" name="engine" value="" title="<?= $block->escapeHtml(__("Engine")) ?>" class="input-text" autocomplete="off">
+                    </div>
+                </div>
+                <div class="field full required">
+                    <label class="label" for="description">
+                        <span><?= $block->escapeHtml(__("Description")) ?></span>
+                    </label>
+                    <div class="control">
+                        <input readonly type="text" id="description" name="description" value="" title="<?= $block->escapeHtml(__("Description")) ?>" class="input-text"  data-validate="{required: true}">
+                    </div>
+                </div>
+                <div class="field required">
+                    <label class="label" for="item_sku">
+                        <span><?= $block->escapeHtml(__("Item")) ?></span>
+                    </label>
+                    <div class="control">
+                        <input readonly autocomplete="off" type="text" id="item_sku" name="item_sku" value="" title="<?= $block->escapeHtml(__("Item")) ?>" class="input-text"  data-validate="{required: true}">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label" for="warranty_registered">
+                        <span><?= $block->escapeHtml(__("Engine Registered")) ?></span>
+                    </label>
+                    <div class="control">
+                        <input readonly autocomplete="off" type="text" id="warranty_registered" name="warranty_registered" value="" title="<?= $block->escapeHtml(__("Engine Registered")) ?>" class="input-text">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="consumer_name">
+                        <span><?= $block->escapeHtml(__("Consumer Name")) ?></span>
+                    </label>
+                    <div class="control">
+                        <input readonly autocomplete="off" type="text" id="consumer_name" name="consumer_name" value="" title="<?= $block->escapeHtml(__("Consumer Name")) ?>" class="input-text">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label" for="warranty_start_date">
+                        <span><?= $block->escapeHtml(__("Warranty Start Date")) ?></span>
+                    </label>
+                    <div class="control">
+                        <input readonly autocomplete="off" type="text" id="warranty_start_date" name="warranty_start_date" value="" title="<?= $block->escapeHtml(__("Warranty Start Date")) ?>" class="input-text">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label" for="warranty_end_date">
+                        <span><?= $block->escapeHtml(__("Warranty End Date")) ?></span>
+                    </label>
+                    <div class="control">
+                        <input readonly autocomplete="off" type="text" id="warranty_end_date" name="warranty_end_date" value="" title="<?= $block->escapeHtml(__("Warranty End Date")) ?>" class="input-text">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<?php
+$engineConfig = $block->getEngineSuggestConfig();
+?>
+
+<script>
+    require([
+            'jquery',
+            'Magento_Ui/js/modal/alert',
+            'Variux_Warranty/js/lib/autosuggest'
+        ], function ($, alert, autosuggest) {
+            $(document).ready(function () {
+                var itemSuggest = new autosuggest($('input#engine'), function (item, $input, event) {
+                    var $form = $($input.closest("form"));
+                    if(item.warranty_registered !== "Y") {
+                        $form.find("input[name=consumer_name]").closest('div.field').hide();
+                        $form.find("input[name=warranty_start_date]").closest('div.field').hide();
+                        $form.find("input[name=warranty_end_date]").closest('div.field').hide();
+                        $form.find("input[name=item_sku]").closest('div.field').hide();
+
+
+                        $form.find("input[name=consumer_name]").val("").trigger("change");
+                        $form.find("input[name=warranty_start_date]").val("").trigger("change");
+                        $form.find("input[name=warranty_end_date]").val("").trigger("change");
+                        $form.find("input[name=item_sku]").val("").trigger("change");
+
+
+                    } else {
+                        $form.find("input[name=consumer_name]").closest('div.field').show();
+                        $form.find("input[name=warranty_start_date]").closest('div.field').show();
+                        $form.find("input[name=warranty_end_date]").closest('div.field').show();
+                        $form.find("input[name=item_sku]").closest('div.field').show();
+
+
+                        $form.find("input[name=consumer_name]").val(item.consumer_name).trigger("change");
+                        $form.find("input[name=warranty_start_date]").val(item.warranty_start_date).trigger("change");
+                        $form.find("input[name=warranty_end_date]").val(item.warranty_end_date).trigger("change");
+                        $form.find("input[name=item_sku]").val(item.item).trigger("change");
+
+
+                    }
+                    $form.find("input[name=description]").val(item.description).trigger("change");
+                    $form.find("input[name=engine]").val(item.serial_no);
+                    $form.find("input[name=warranty_registered]").val(item.warranty_registered).trigger("change");
+                }).init(<?=\Zend_Json::encode($engineConfig)?>);
+            });
+        }
+    );
+</script>

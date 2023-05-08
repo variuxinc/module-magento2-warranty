@@ -291,6 +291,7 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
                 'serial_no' => $item->getSerialNo(),
                 'description' => $item->getDescription(),
                 'item' => $item->getItem(),
+                'warranty_registered' => ($item->getUnitRegistable() ? "N" : "Y"),
                 'warranty_start_date' => $item->getWarrantyStartDate(),
                 'warranty_end_date' => $item->getWarrantyEndDate()
             ];
