@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <update handle="warranty_layout"/>
+    <body>
+        <referenceContainer name="after.body.start">
+            <block class="Magento\Framework\View\Element\Template" name="autosuggest.engine.template" as="autosuggest.engine.template"
+                   template="Variux_Warranty::suggestion/engine.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Variux\Warranty\Block\Index\Edit" name="engine.info" template="Variux_Warranty::engine_info.phtml" cacheable="false" />
+        </referenceContainer>
+    </body>
+</page>
