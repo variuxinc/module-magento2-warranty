@@ -28,6 +28,7 @@ interface SroLaborInterface
     const SRO_OPER = 'sro_oper';
     const VALIDATE = 'validate';
     const COMPANY_ID = 'company_id';
+    const PARTNER_ID = 'partner_id';
 
     /**
      * Get srolabor_id
@@ -236,6 +237,17 @@ interface SroLaborInterface
      * @return \Variux\Warranty\SroLabor\Api\Data\SroLaborInterface
      */
     public function setSroNumber($sroNumber);
+
+    /**
+     * @return mixed
+     */
+    public function getPartnerId();
+
+    /**
+     * @param $partnerId
+     * @return mixed
+     */
+    public function setPartnerId($partnerId);
 
     /**
      * Get created_at

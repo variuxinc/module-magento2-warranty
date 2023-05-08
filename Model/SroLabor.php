@@ -308,4 +308,21 @@ class SroLabor extends AbstractModel implements SroLaborInterface
     {
         return $this->setData(self::UPDATED_AT, $updatedAt);
     }
+
+    /**
+     * @return array|mixed|null
+     */
+    public function getPartnerId()
+    {
+        return $this->getData(self::PARTNER_ID);
+    }
+
+    /**
+     * @param $partnerId
+     * @return mixed|SroLabor
+     */
+    public function setPartnerId($partnerId)
+    {
+        return $this->setData(self::PARTNER_ID, $partnerId);
+    }
 }

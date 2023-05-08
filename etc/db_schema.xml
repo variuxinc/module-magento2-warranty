@@ -72,6 +72,7 @@
 		<column name="description" nullable="true" xsi:type="text" comment="Description"/>
 		<column name="labor_hourly_rate" nullable="true" xsi:type="decimal" comment="Labor hourly rate" precision="12" scale="4"/>
 		<column name="sro_number" nullable="true" xsi:type="varchar" comment="Sro number" length="255"/>
+        <column name="partner_id" nullable="false" xsi:type="int" unsigned="true" />
 		<column name="created_at" nullable="false" xsi:type="timestamp" comment="Created at" default="CURRENT_TIMESTAMP"/>
 		<column name="updated_at" nullable="true" xsi:type="timestamp" comment="updated_at" default="CURRENT_TIMESTAMP" on_update="true"/>
 	</table>

@@ -19,4 +19,33 @@ class Workcode extends AbstractDb
     {
         $this->_init('variux_warranty_workcode', 'workcode_id');
     }
+
+    public function loadByCode(\Variux\Warranty\Model\Workcode $model, $number, $conditionType = false)
+    {
+        $conditionString = "";
+        switch ($conditionType) {
+            case "like":
+                $conditionString = 'work_code like "'.$number.'"';
+                break;
+            case "%like":
+                $conditionString = 'work_code like "%'.$number.'%"';
+                break;
+            default :
+                $conditionString = 'work_code = "'.$number.'"';
+                break;
+        }
+        $connection = $this->getConnection();
+        $select = $connection->select()->from(
+            $this->getMainTable()
+        )->where($conditionString);
+
+        $id = $connection->fetchOne($select);
+        if ($id) {
+            $this->load($model, $id);
+        } else {
+            $model->setData([]);
+        }
+
+        return $this;
+    }
 }
