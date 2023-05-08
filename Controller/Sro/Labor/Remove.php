@@ -54,7 +54,7 @@ class Remove extends \Variux\Warranty\Controller\AbstractAction
             ];
         }
         $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
-        $resultJson->setData($response);
+        $resultJson->setData(json_encode($response));
         return $resultJson;
     }
 }

@@ -119,7 +119,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                                     'error' => true,
                                     'msg' => __('Invoice and Order Number is required for freight')
                                 ];
-                                $resultJson->setData($response);
+                                $resultJson->setData(json_encode($response));
                                 return $resultJson;
                             }
                         } else {
@@ -179,7 +179,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
             ];
         }
 
-        $resultJson->setData($response);
+        $resultJson->setData(json_encode($response));
         return $resultJson;
     }
 }

@@ -133,6 +133,11 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
          *
          */
         foreach ($acceptedValue as $key => $value) {
+            if (isset($value)) {
+                $result[$key] = $data[$key];
+            } else {
+                $result[$key] = null;
+            }
             if (isset($value["required"]) && $value["required"]) {
                 if ($result[$key] == null && strlen($result[$key]) > 0) {
                     return ["error" => true, "msg" => $key . "is required"];

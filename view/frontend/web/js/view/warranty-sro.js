@@ -186,28 +186,28 @@ define(
                     this.laborFormData().work_code.subscribe(function (value) {
                         window.warranty_sro.workCodeIsMCBind(value === "MC");
                     });
-                        // if (window.warranty_sro.incNumber() == null || window.warranty_sro.incNumber() === "" || window.warranty_sro.sroNumber() == null || window.warranty_sro.sroNumber() === "") {
-                        //     let updateSroNum = setInterval(function () {
-                        //         $.ajax({
-                        //             type: "POST",
-                        //             url: window.WarrantyModule.updateSroNumUrl,
-                        //             data: {warranty_id: window.WarrantyModule.warranty.warranty_id},
-                        //             cache: false,
-                        //             success: function (data) {
-                        //                 data = JSON.parse(data)
-                        //                 if (typeof data.inc_num != 'undefined' && data.inc_num != null) {
-                        //                     window.warranty_sro.incNumber(data.inc_num);
-                        //                 }
-                        //                 if (typeof data.sro_num != 'undefined' && data.sro_num != null) {
-                        //                     window.warranty_sro.sroNumber(data.sro_num);
-                        //                 }
-                        //                 if (window.warranty_sro.incNumber() != null && window.warranty_sro.incNumber() !== "" && window.warranty_sro.sroNumber() != null && window.warranty_sro.sroNumber() !== "") {
-                        //                     clearInterval(updateSroNum);
-                        //                 }
-                        //             }
-                        //         });
-                        //     }, 5000);
-                        // }
+                        if (window.warranty_sro.incNumber() == null || window.warranty_sro.incNumber() === "" || window.warranty_sro.sroNumber() == null || window.warranty_sro.sroNumber() === "") {
+                            let updateSroNum = setInterval(function () {
+                                $.ajax({
+                                    type: "POST",
+                                    url: window.WarrantyModule.updateSroNumUrl,
+                                    data: {warranty_id: window.WarrantyModule.warranty.warranty_id},
+                                    cache: false,
+                                    success: function (data) {
+                                        data = JSON.parse(data)
+                                        if (typeof data.inc_num != 'undefined' && data.inc_num != null) {
+                                            window.warranty_sro.incNumber(data.inc_num);
+                                        }
+                                        if (typeof data.sro_num != 'undefined' && data.sro_num != null) {
+                                            window.warranty_sro.sroNumber(data.sro_num);
+                                        }
+                                        if (window.warranty_sro.incNumber() != null && window.warranty_sro.incNumber() !== "" && window.warranty_sro.sroNumber() != null && window.warranty_sro.sroNumber() !== "") {
+                                            clearInterval(updateSroNum);
+                                        }
+                                    }
+                                });
+                            }, 5000);
+                        }
                 }
             },
 
@@ -388,12 +388,12 @@ define(
                                     var res = JSON.parse(res);
                                     if (res.error) {
                                         if (res.msg) {
-                                            self.toast({type: "error", message: res.msg});
+                                            messageList.addErrorMessage({message: res.msg});
                                         }
                                         return;
                                     }
                                     if (res.msg) {
-                                        self.toast({type: "success", message: res.msg});
+                                        messageList.addSuccessMessage({message: res.msg});
                                         self.warranty().status("NewCont")
                                     }
                                 });
@@ -454,13 +454,13 @@ define(
                                 var res = JSON.parse(res);
                                 if (res.error) {
                                     if (res.msg) {
-                                        self.toast({type: "error", message: res.msg});
+                                        messageList.addErrorMessage({message: res.msg});
                                     }
                                     return;
                                 }
                                 self.materials.remove(material);
                                 if (res.msg) {
-                                    self.toast({type: "success", message: res.msg});
+                                    messageList.addSuccessMessage({message: res.msg});
                                 }
                             });
                         },
@@ -548,13 +548,13 @@ define(
                                 var res = JSON.parse(res);
                                 if (res.error) {
                                     if (res.msg) {
-                                        self.toast({type: "error", message: res.msg});
+                                        messageList.addErrorMessage({message: res.msg});
                                     }
                                     return;
                                 }
                                 self.labors.remove(labor);
                                 if (res.msg) {
-                                    self.toast({type: "success", message: res.msg});
+                                    messageList.addSuccessMessage({message: res.msg});
                                 }
                             });
                         },
@@ -630,12 +630,12 @@ define(
                 res = JSON.parse(res);
                 if (res.error) {
                     if (res.msg) {
-                        self.toast({type: "error", message: res.msg});
+                        messageList.addErrorMessage({message: res.msg});
                     }
                     return false;
                 }
                 if (res.msg) {
-                    self.toast({type: "success", message: res.msg});
+                    messageList.addSuccessMessage({message: res.msg});
                 }
                 return res.data;
             },
@@ -712,13 +712,13 @@ define(
                                 var res = JSON.parse(res);
                                 if (res.error) {
                                     if (res.msg) {
-                                        self.toast({type: "error", message: res.msg});
+                                        messageList.addErrorMessage({type: "error", message: res.msg});
                                     }
                                     return;
                                 }
                                 self.miscs.remove(misc);
                                 if (res.msg) {
-                                    self.toast({type: "success", message: res.msg});
+                                    messageList.addSuccessMessage({message: res.msg});
                                 }
                             });
                         },
@@ -863,7 +863,7 @@ define(
                             if($inputFile[0].files[0].size != undefined){
                                 var fileSize = $inputFile[0].files[0].size;
                                 if(fileSize > $maxSize){
-                                    self.toast({type: "error", message: 'File size must be less than ' + window.WarrantyModule.dataConfig.maxFileSize + 'Mb.'});
+                                    messageList.addErrorMessage({message: 'File size must be less than ' + window.WarrantyModule.dataConfig.maxFileSize + 'Mb.'});
                                     return;
                                 }
                             }
@@ -882,16 +882,16 @@ define(
                                     let res = JSON.parse(data);
                                     if (res.error) {
                                         if (res.msg) {
-                                            self.toast({type: "error", message: res.msg});
+                                            messageList.addErrorMessage({message: res.msg});
                                         }
                                     } else {
-                                        self.toast({type: "success", message: res.msg});
+                                        messageList.addSuccessMessage({message: res.msg});
                                         self.docs.unshift(helper.convertToObserver(res.data));
                                         modal.closeModal();
                                     }
                                 },
                                 error: function () {
-                                    self.toast({type: "error", message: "Cannot submit document, please contact administrator"});
+                                    messageList.addErrorMessage({message: "Cannot submit document, please contact administrator"});
                                 },
                                 cache: false,
                                 contentType: false,

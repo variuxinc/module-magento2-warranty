@@ -33,7 +33,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
     {
         $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
         $response = [];
-        $resultJson->setData($response);
+        $resultJson->setData(json_encode($response));
         return $resultJson;
     }
 }

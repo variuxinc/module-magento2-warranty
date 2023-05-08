@@ -55,7 +55,7 @@ class Workcode extends \Variux\Warranty\Controller\AbstractAction
          *       Sample: $this->resultFactory->create(ResultFactory::TYPE_JSON);
          */
         $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
-        $resultJson->setData($response);
+        $resultJson->setData(json_encode($response));
         return $resultJson;
     }
 }
