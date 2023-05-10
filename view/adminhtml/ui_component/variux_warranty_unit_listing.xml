@@ -79,7 +79,7 @@
 		<column name="serial_no">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">serial_no</label>
+				<label translate="true">Serial No</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -98,7 +98,7 @@
 		<column name="item">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">item</label>
+				<label translate="true">Item</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -110,7 +110,7 @@
 		<column name="description">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">description</label>
+				<label translate="true">Description</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -122,7 +122,7 @@
 		<column name="order_no">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">order_no</label>
+				<label translate="true">Order No</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -134,7 +134,7 @@
 		<column name="ship_date">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">ship_date</label>
+				<label translate="true">Ship Date</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -146,7 +146,7 @@
 		<column name="install_date">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">install_date</label>
+				<label translate="true">Install date</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -158,7 +158,7 @@
 		<column name="warranty_start_date">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">warranty_start_date</label>
+				<label translate="true">Warranty start date</label>
 				<editor>
 					<editorType>date</editorType>
 					<validation>
@@ -170,7 +170,7 @@
 		<column name="warranty_end_date">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">warranty_end_date</label>
+				<label translate="true">Warranty end date</label>
 				<editor>
 					<editorType>date</editorType>
 					<validation>
@@ -189,7 +189,7 @@
 		<column name="hull_id">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">hull_id</label>
+				<label translate="true">Hull Id</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -201,7 +201,7 @@
 		<column name="engine_hours">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">engine_hours</label>
+				<label translate="true">Engine hours</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -213,7 +213,7 @@
 		<column name="consumer_num">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">consumer_num</label>
+				<label translate="true">Consumer Number</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -225,7 +225,7 @@
 		<column name="consumer_seq">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">consumer_seq</label>
+				<label translate="true">Consumer Sequence</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -237,7 +237,7 @@
 		<column name="unit_registable">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">unit_registable</label>
+				<label translate="true">Unit registrable</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -249,7 +249,7 @@
 		<column name="company_id">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">company_id</label>
+				<label translate="true">Company</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -261,7 +261,7 @@
 		<column name="created_at">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">created_at</label>
+				<label translate="true">Created At</label>
 				<editor>
 					<editorType>date</editorType>
 					<validation>
@@ -273,7 +273,7 @@
 		<column name="updated_at">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">updated_at</label>
+				<label translate="true">Updated At</label>
 				<editor>
 					<editorType>date</editorType>
 					<validation>
