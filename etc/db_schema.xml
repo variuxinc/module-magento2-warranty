@@ -160,6 +160,9 @@
 		<column name="company_id" nullable="false" xsi:type="int" comment="Company id" identity="false" unsigned="true"/>
 		<column name="created_at" nullable="false" xsi:type="timestamp" comment="Created at" default="CURRENT_TIMESTAMP"/>
 		<column name="updated_at" nullable="false" xsi:type="timestamp" comment="Updated at" default="CURRENT_TIMESTAMP" on_update="true"/>
+        <constraint xsi:type="unique" referenceId="VARIUX_UNIT_SERIAL_NO">
+            <column name="serial_no"/>
+        </constraint>
 	</table>
 	<table name="variux_warranty_unitreg" resource="default" engine="innodb" comment="variux_warranty_unitreg Table">
 		<column xsi:type="int" name="unitreg_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
@@ -247,8 +250,3 @@
 		<column name="updated_at" nullable="false" xsi:type="timestamp" comment="Updated at" default="CURRENT_TIMESTAMP" on_update="true"/>
 	</table>
 </schema>
-<!--
-    @TODO - fixed
-    Chưa generate db_schema_whitelist.json
-    https://magento.stackexchange.com/questions/258407/magento-2-3-use-of-db-schema-whitelist-json-file-in-etc-directory-of-each-modu
--->

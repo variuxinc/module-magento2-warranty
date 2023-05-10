@@ -12,6 +12,7 @@ use Variux\Warranty\Api\Data\SroLaborInterface;
 
 class SroLabor extends AbstractModel implements SroLaborInterface
 {
+    protected $_eventPrefix = 'variux_sro_labor';
 
     /**
      * @inheritDoc

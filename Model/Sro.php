@@ -12,6 +12,7 @@ use Variux\Warranty\Api\Data\SroInterface;
 
 class Sro extends AbstractModel implements SroInterface
 {
+    protected $_eventPrefix = 'variux_sro';
     protected $laborCollectionFactory;
     protected $materialCollectionFactory;
     protected $miscCollectionFactory;

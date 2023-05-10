@@ -12,6 +12,7 @@ use Variux\Warranty\Api\Data\WarrantyTransferInterface;
 
 class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterface
 {
+    protected $_eventPrefix = 'variux_warranty_transfer';
 
     /**
      * @return void

@@ -13,6 +13,8 @@ use Variux\Warranty\Api\Data\UnitRegInterface;
 class UnitReg extends AbstractModel implements UnitRegInterface
 {
 
+    protected $_eventPrefix = 'variux_unit_reg';
+
     /**
      * @inheritDoc
      */

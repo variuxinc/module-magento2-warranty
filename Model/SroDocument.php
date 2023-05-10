@@ -12,6 +12,7 @@ use Variux\Warranty\Api\Data\SroDocumentInterface;
 
 class SroDocument extends AbstractModel implements SroDocumentInterface
 {
+    protected $_eventPrefix = 'variux_sro_document';
 
     /**
      * @inheritDoc
