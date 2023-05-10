@@ -48,14 +48,14 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">serial_no</label>
+				<label translate="true">Serial No</label>
 				<dataScope>serial_no</dataScope>
 				<validation>
-					<rule name="required-entry" xsi:type="boolean">false</rule>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
 				</validation>
 			</settings>
 		</field>
-		<field name="item" formElement="input" sortOrder="950">
+		<field name="item" formElement="select" sortOrder="950">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="source" xsi:type="string">Unit</item>
@@ -63,27 +63,19 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">item</label>
+				<label translate="true">Item</label>
 				<dataScope>item</dataScope>
 				<validation>
-					<rule name="required-entry" xsi:type="boolean">false</rule>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
 				</validation>
 			</settings>
-		</field>
-		<field name="description" formElement="textarea" sortOrder="960">
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="source" xsi:type="string">Unit</item>
-				</item>
-			</argument>
-			<settings>
-				<dataType>text</dataType>
-				<label translate="true">description</label>
-				<dataScope>description</dataScope>
-				<validation>
-					<rule name="required-entry" xsi:type="boolean">false</rule>
-				</validation>
-			</settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Variux\Warranty\Model\Source\Product"/>
+                    </settings>
+                </select>
+            </formElements>
 		</field>
 		<field name="order_no" formElement="input" sortOrder="970">
 			<argument name="data" xsi:type="array">
@@ -93,7 +85,7 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">order_no</label>
+				<label translate="true">Order number</label>
 				<dataScope>order_no</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
@@ -108,7 +100,7 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">ship_date</label>
+				<label translate="true">Shipped date</label>
 				<dataScope>ship_date</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
@@ -123,162 +115,34 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">install_date</label>
+				<label translate="true">Install date</label>
 				<dataScope>install_date</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
 				</validation>
 			</settings>
 		</field>
-		<field name="warranty_start_date" formElement="date" sortOrder="1000">
+		<field name="company_id" formElement="select" sortOrder="70">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="source" xsi:type="string">Unit</item>
 				</item>
 			</argument>
 			<settings>
-				<dataType>text</dataType>
-				<label translate="true">warranty_start_date</label>
-				<dataScope>warranty_start_date</dataScope>
-				<validation>
-					<rule name="required-entry" xsi:type="boolean">false</rule>
-				</validation>
-			</settings>
-		</field>
-		<field name="warranty_end_date" formElement="date" sortOrder="10">
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="source" xsi:type="string">Unit</item>
-				</item>
-			</argument>
-			<settings>
-				<dataType>text</dataType>
-				<label translate="true">warranty_end_date</label>
-				<dataScope>warranty_end_date</dataScope>
-				<validation>
-					<rule name="required-entry" xsi:type="boolean">false</rule>
-				</validation>
-			</settings>
-		</field>
-		<field name="hull_id" formElement="input" sortOrder="20">
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="source" xsi:type="string">Unit</item>
-				</item>
-			</argument>
-			<settings>
-				<dataType>text</dataType>
-				<label translate="true">hull_id</label>
-				<dataScope>hull_id</dataScope>
-				<validation>
-					<rule name="required-entry" xsi:type="boolean">false</rule>
-				</validation>
-			</settings>
-		</field>
-		<field name="engine_hours" formElement="input" sortOrder="30">
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="source" xsi:type="string">Unit</item>
-				</item>
-			</argument>
-			<settings>
-				<dataType>text</dataType>
-				<label translate="true">engine_hours</label>
-				<dataScope>engine_hours</dataScope>
-				<validation>
-					<rule name="required-entry" xsi:type="boolean">false</rule>
-				</validation>
-			</settings>
-		</field>
-		<field name="consumer_num" formElement="input" sortOrder="40">
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="source" xsi:type="string">Unit</item>
-				</item>
-			</argument>
-			<settings>
-				<dataType>text</dataType>
-				<label translate="true">consumer_num</label>
-				<dataScope>consumer_num</dataScope>
-				<validation>
-					<rule name="required-entry" xsi:type="boolean">false</rule>
-				</validation>
-			</settings>
-		</field>
-		<field name="consumer_seq" formElement="input" sortOrder="50">
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="source" xsi:type="string">Unit</item>
-				</item>
-			</argument>
-			<settings>
-				<dataType>text</dataType>
-				<label translate="true">consumer_seq</label>
-				<dataScope>consumer_seq</dataScope>
-				<validation>
-					<rule name="required-entry" xsi:type="boolean">false</rule>
-				</validation>
-			</settings>
-		</field>
-		<field name="unit_registable" formElement="checkbox" sortOrder="60">
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="source" xsi:type="string">Unit</item>
-				</item>
-			</argument>
-			<settings>
-				<dataType>text</dataType>
-				<label translate="true">unit_registable</label>
-				<dataScope>unit_registable</dataScope>
-				<validation>
-					<rule name="required-entry" xsi:type="boolean">false</rule>
-				</validation>
-			</settings>
-		</field>
-		<field name="company_id" formElement="input" sortOrder="70">
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="source" xsi:type="string">Unit</item>
-				</item>
-			</argument>
-			<settings>
-				<dataType>text</dataType>
-				<label translate="true">company_id</label>
+				<dataType>number</dataType>
+				<label translate="true">Company</label>
 				<dataScope>company_id</dataScope>
 				<validation>
-					<rule name="required-entry" xsi:type="boolean">false</rule>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
 				</validation>
 			</settings>
-		</field>
-		<field name="created_at" formElement="date" sortOrder="80">
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="source" xsi:type="string">Unit</item>
-				</item>
-			</argument>
-			<settings>
-				<dataType>text</dataType>
-				<label translate="true">created_at</label>
-				<dataScope>created_at</dataScope>
-				<validation>
-					<rule name="required-entry" xsi:type="boolean">false</rule>
-				</validation>
-			</settings>
-		</field>
-		<field name="updated_at" formElement="date" sortOrder="90">
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="source" xsi:type="string">Unit</item>
-				</item>
-			</argument>
-			<settings>
-				<dataType>text</dataType>
-				<label translate="true">updated_at</label>
-				<dataScope>updated_at</dataScope>
-				<validation>
-					<rule name="required-entry" xsi:type="boolean">false</rule>
-				</validation>
-			</settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Variux\Warranty\Model\Source\Company"/>
+                    </settings>
+                </select>
+            </formElements>
 		</field>
 	</fieldset>
 </form>

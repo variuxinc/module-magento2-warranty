@@ -15,6 +15,7 @@ class Unit extends AbstractModel implements UnitInterface
     const STATUS_EXPIRED = "expired";
     const STATUS_REGISTERED = "registered";
     const STATUS_UNREGISTERED = "unregistered";
+    protected $_eventPrefix = 'variux_unit';
 
     /**
      * @inheritDoc

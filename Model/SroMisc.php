@@ -12,6 +12,7 @@ use Variux\Warranty\Api\Data\SroMiscInterface;
 
 class SroMisc extends AbstractModel implements SroMiscInterface
 {
+    protected $_eventPrefix = 'variux_sro_misc';
 
     /**
      * @inheritDoc
