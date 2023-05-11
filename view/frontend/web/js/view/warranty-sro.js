@@ -432,8 +432,6 @@ define(
             editMaterial: function (material) {
                 this.materialFormData().item_id(material.item_id());
                 this.materialFormData().item(material.item());
-                console.log(material.price().replace("$", ""));
-                this.materialFormData().um(material.um());
                 this.materialFormData().qty_conv(material.qty_conv());
                 this.materialFormData().note(material.note());
                 this.materialFormData().description(material.description());
@@ -477,7 +475,6 @@ define(
             materialItemSelect: function (item, $input, event) {
                 $input.val(item.sku).trigger("change");
                 $input.closest("form").find("input[name='description']").val(item.name).trigger("change");
-                $input.closest("form").find("[name='um']").val(item.uom).trigger("change");
                 $input.closest("form").find("input[name='price']").val(item.price).trigger("change");
             },
 

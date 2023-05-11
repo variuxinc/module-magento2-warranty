@@ -101,7 +101,6 @@
 		<column name="customer_id" nullable="false" xsi:type="int" comment="Customer id" identity="false" unsigned="true"/>
 		<column name="item" nullable="true" xsi:type="varchar" comment="Item" length="255"/>
 		<column name="description" nullable="true" xsi:type="varchar" comment="Description" length="255"/>
-		<column name="um" nullable="true" xsi:type="varchar" comment="UM" length="255"/>
 		<column name="qty_conv" nullable="true" xsi:type="decimal" comment="Qty Conv" precision="12" scale="4"/>
 		<column name="cost" nullable="true" xsi:type="decimal" comment="NPN Cost" precision="12" scale="4"/>
 		<column name="price" nullable="true" xsi:type="decimal" comment="Item Price" default="0.000000" precision="12" scale="4"/>

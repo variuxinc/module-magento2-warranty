@@ -27,23 +27,6 @@
                 <input data-bind="{value: materialFormData().description, attr:{readonly:!itemIsNPNBind()}}" name="description" type="text" class="input-text validate-length maximum-length-100">
             </div>
         </div>
-
-        <div class="field">
-            <label class="label">
-                <span data-bind="i18n: 'UM'"></span>
-            </label>
-            <div class="control">
-                <!-- ko ifnot: itemIsNPNBind -->
-                <input data-bind="value: materialFormData().um" data-validate="{'required': true}" name="um" type="text" class="input-text" readonly>
-                <!-- /ko -->
-                <!-- ko if: itemIsNPNBind -->
-                <select data-bind="{options: umOptions,
-                       optionsText: 'label',
-                       optionsValue: 'value',
-                       value: materialFormData().um}" data-validate="{'required': true}" name="um"></select>
-                <!-- /ko -->
-            </div>
-        </div>
         <div class="field">
             <label class="label">
                 <span data-bind="i18n: 'Price'"></span>
