@@ -31,8 +31,8 @@
 		</settings>
 		<dataProvider name="sromisc_form_data_source" class="Variux\Warranty\Model\SroMisc\DataProvider">
 			<settings>
-				<requestFieldName>sromisc_id</requestFieldName>
-				<primaryFieldName>sromisc_id</primaryFieldName>
+				<requestFieldName>item_id</requestFieldName>
+				<primaryFieldName>item_id</primaryFieldName>
 			</settings>
 		</dataProvider>
 	</dataSource>

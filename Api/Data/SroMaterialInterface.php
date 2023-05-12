@@ -10,31 +10,19 @@ namespace Variux\Warranty\Api\Data;
 interface SroMaterialInterface
 {
 
+    const ITEM_ID = 'item_id';
     const CUSTOMER_ID = 'customer_id';
     const ITEM = 'item';
-    const UM = 'um';
     const COST = 'cost';
     const SRO_ID = 'sro_id';
     const DESCRIPTION = 'description';
     const SRO_LINE = 'sro_line';
     const PRICE = 'price';
-    const SROMATERIAL_ID = 'sromaterial_id';
     const SRO_OPER = 'sro_oper';
     const QTY_CONV = 'qty_conv';
     const COMPANY_ID = 'company_id';
-
-    /**
-     * Get sromaterial_id
-     * @return string|null
-     */
-    public function getSromaterialId();
-
-    /**
-     * Set sromaterial_id
-     * @param string $sromaterialId
-     * @return \Variux\Warranty\SroMaterial\Api\Data\SroMaterialInterface
-     */
-    public function setSromaterialId($sromaterialId);
+    const TRANS_DATE = 'trans_date';
+    const NOTE = 'note';
 
     /**
      * Get sro_id
@@ -128,19 +116,6 @@ interface SroMaterialInterface
     public function setDescription($description);
 
     /**
-     * Get um
-     * @return string|null
-     */
-    public function getUm();
-
-    /**
-     * Set um
-     * @param string $um
-     * @return \Variux\Warranty\SroMaterial\Api\Data\SroMaterialInterface
-     */
-    public function setUm($um);
-
-    /**
      * Get qty_conv
      * @return string|null
      */
@@ -178,4 +153,30 @@ interface SroMaterialInterface
      * @return \Variux\Warranty\SroMaterial\Api\Data\SroMaterialInterface
      */
     public function setPrice($price);
+
+    /**
+     * Get price
+     * @return string|null
+     */
+    public function getTransDate();
+
+    /**
+     * Set price
+     * @param string $transDate
+     * @return \Variux\Warranty\SroMaterial\Api\Data\SroMaterialInterface
+     */
+    public function setTransDate($transDate);
+
+    /**
+     * Get price
+     * @return string|null
+     */
+    public function getNote();
+
+    /**
+     * Set price
+     * @param string $transDate
+     * @return \Variux\Warranty\SroMaterial\Api\Data\SroMaterialInterface
+     */
+    public function setNote($note);
 }

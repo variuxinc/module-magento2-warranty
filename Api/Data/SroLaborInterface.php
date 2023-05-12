@@ -10,6 +10,7 @@ namespace Variux\Warranty\Api\Data;
 interface SroLaborInterface
 {
 
+    const ITEM_ID = 'item_id';
     const CUSTOMER_ID = 'customer_id';
     const HOUR_WORKED = 'hour_worked';
     const LABOR_HOURLY_RATE = 'labor_hourly_rate';
@@ -23,25 +24,12 @@ interface SroLaborInterface
     const TRANS_DATE = 'trans_date';
     const CREATED_AT = 'created_at';
     const COMPANY_NAME = 'company_name';
-    const SROLABOR_ID = 'srolabor_id';
     const SRO_NUMBER = 'sro_number';
     const SRO_OPER = 'sro_oper';
     const VALIDATE = 'validate';
     const COMPANY_ID = 'company_id';
     const PARTNER_ID = 'partner_id';
 
-    /**
-     * Get srolabor_id
-     * @return string|null
-     */
-    public function getSrolaborId();
-
-    /**
-     * Set srolabor_id
-     * @param string $srolaborId
-     * @return \Variux\Warranty\SroLabor\Api\Data\SroLaborInterface
-     */
-    public function setSrolaborId($srolaborId);
 
     /**
      * Get sro_id

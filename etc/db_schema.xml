@@ -53,9 +53,9 @@
 		<column name="updated_at" nullable="true" xsi:type="timestamp" comment="Updated at" default="CURRENT_TIMESTAMP" on_update="true"/>
 	</table>
 	<table name="variux_warranty_srolabor" resource="default" engine="innodb" comment="variux_warranty_srolabor Table">
-		<column xsi:type="int" name="srolabor_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<column xsi:type="int" name="item_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
 		<constraint xsi:type="primary" referenceId="PRIMARY">
-			<column name="srolabor_id"/>
+			<column name="item_id"/>
 		</constraint>
 		<column name="sro_id" nullable="false" xsi:type="int" comment="Sro Id" identity="false" unsigned="true"/>
 		<column name="sro_line" nullable="true" xsi:type="int" comment="Sro Line" default="1" identity="false"/>
@@ -90,9 +90,9 @@
 		<column name="updated_at" nullable="false" xsi:type="timestamp" comment="Updated at" default="CURRENT_TIMESTAMP" on_update="true"/>
 	</table>
 	<table name="variux_warranty_sromaterial" resource="default" engine="innodb" comment="variux_warranty_sromaterial Table">
-		<column xsi:type="int" name="sromaterial_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<column xsi:type="int" name="item_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
 		<constraint xsi:type="primary" referenceId="PRIMARY">
-			<column name="sromaterial_id"/>
+			<column name="item_id"/>
 		</constraint>
 		<column name="sro_id" nullable="false" xsi:type="int" comment="Sro id" identity="false" unsigned="true"/>
 		<column name="sro_line" nullable="true" xsi:type="int" comment="Sro line" default="1" identity="false"/>
@@ -104,11 +104,14 @@
 		<column name="qty_conv" nullable="true" xsi:type="decimal" comment="Qty Conv" precision="12" scale="4"/>
 		<column name="cost" nullable="true" xsi:type="decimal" comment="NPN Cost" precision="12" scale="4"/>
 		<column name="price" nullable="true" xsi:type="decimal" comment="Item Price" default="0.000000" precision="12" scale="4"/>
-	</table>
+        <column name="trans_date" nullable="true" xsi:type="date" comment="Transaction date"/>
+        <column name="note" nullable="true" xsi:type="varchar" comment="Note"/>
+
+    </table>
 	<table name="variux_warranty_sromisc" resource="default" engine="innodb" comment="variux_warranty_sromisc Table">
-		<column xsi:type="int" name="sromisc_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<column xsi:type="int" name="item_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
 		<constraint xsi:type="primary" referenceId="PRIMARY">
-			<column name="sromisc_id"/>
+			<column name="item_id"/>
 		</constraint>
 		<column name="sro_id" nullable="false" xsi:type="int" comment="Sro id" identity="false" unsigned="true"/>
 		<column name="sro_line" nullable="true" xsi:type="int" comment="Sro line" default="1" identity="false"/>

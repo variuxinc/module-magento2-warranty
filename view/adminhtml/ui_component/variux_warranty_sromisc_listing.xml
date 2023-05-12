@@ -21,7 +21,7 @@
 	<dataSource name="variux_warranty_sromisc_listing_data_source" component="Magento_Ui/js/grid/provider">
 		<settings>
 			<storageConfig>
-				<param name="indexField" xsi:type="string">sromisc_id</param>
+				<param name="indexField" xsi:type="string">item_id</param>
 			</storageConfig>
 			<updateUrl path="mui/index/render"/>
 		</settings>
@@ -29,7 +29,7 @@
 		<dataProvider name="variux_warranty_sromisc_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
 			<settings>
 				<requestFieldName>id</requestFieldName>
-				<primaryFieldName>sromisc_id</primaryFieldName>
+				<primaryFieldName>item_id</primaryFieldName>
 			</settings>
 		</dataProvider>
 	</dataSource>
@@ -47,7 +47,7 @@
 			<editorConfig>
 				<param name="selectProvider" xsi:type="string">variux_warranty_sromisc_listing.variux_warranty_sromisc_listing.variux_warranty_sromisc_columns.ids</param>
 				<param name="enabled" xsi:type="boolean">true</param>
-				<param name="indexField" xsi:type="string">sromisc_id</param>
+				<param name="indexField" xsi:type="string">item_id</param>
 				<param name="clientConfig" xsi:type="array">
 					<item name="saveUrl" xsi:type="url" path="variux_warranty/SroMisc/inlineEdit"/>
 					<item name="validateBeforeSave" xsi:type="boolean">false</item>
@@ -66,10 +66,10 @@
 		</settings>
 		<selectionsColumn name="ids">
 			<settings>
-				<indexField>sromisc_id</indexField>
+				<indexField>item_id</indexField>
 			</settings>
 		</selectionsColumn>
-		<column name="sromisc_id">
+		<column name="item_id">
 			<settings>
 				<filter>text</filter>
 				<sorting>asc</sorting>
@@ -90,7 +90,7 @@
 		</column>
 		<actionsColumn name="actions" class="Variux\Warranty\Ui\Component\Listing\Column\SroMiscActions">
 			<settings>
-				<indexField>sromisc_id</indexField>
+				<indexField>item_id</indexField>
 				<resizeEnabled>false</resizeEnabled>
 				<resizeDefaultWidth>107</resizeDefaultWidth>
 			</settings>

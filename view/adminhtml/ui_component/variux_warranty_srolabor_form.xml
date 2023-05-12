@@ -31,8 +31,8 @@
 		</settings>
 		<dataProvider name="srolabor_form_data_source" class="Variux\Warranty\Model\SroLabor\DataProvider">
 			<settings>
-				<requestFieldName>srolabor_id</requestFieldName>
-				<primaryFieldName>srolabor_id</primaryFieldName>
+				<requestFieldName>item_id</requestFieldName>
+				<primaryFieldName>item_id</primaryFieldName>
 			</settings>
 		</dataProvider>
 	</dataSource>

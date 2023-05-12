@@ -37,7 +37,7 @@ class Save extends \Magento\Backend\App\Action
         $resultRedirect = $this->resultRedirectFactory->create();
         $data = $this->getRequest()->getPostValue();
         if ($data) {
-            $id = $this->getRequest()->getParam('srolabor_id');
+            $id = $this->getRequest()->getParam('item_id');
 
             $model = $this->_objectManager->create(\Variux\Warranty\Model\SroLabor::class)->load($id);
             if (!$model->getId() && $id) {
@@ -53,7 +53,7 @@ class Save extends \Magento\Backend\App\Action
                 $this->dataPersistor->clear('variux_warranty_srolabor');
 
                 if ($this->getRequest()->getParam('back')) {
-                    return $resultRedirect->setPath('*/*/edit', ['srolabor_id' => $model->getId()]);
+                    return $resultRedirect->setPath('*/*/edit', ['item_id' => $model->getId()]);
                 }
                 return $resultRedirect->setPath('*/*/');
             } catch (LocalizedException $e) {
@@ -64,7 +64,7 @@ class Save extends \Magento\Backend\App\Action
 
             $this->dataPersistor->set('variux_warranty_srolabor', $data);
             return $resultRedirect
-                    ->setPath('*/*/edit', ['srolabor_id' => $this->getRequest()->getParam('srolabor_id')]);
+                    ->setPath('*/*/edit', ['item_id' => $this->getRequest()->getParam('item_id')]);
         }
         return $resultRedirect->setPath('*/*/');
     }

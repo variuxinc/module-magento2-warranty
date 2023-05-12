@@ -43,13 +43,13 @@ class SroLaborActions extends \Magento\Ui\Component\Listing\Columns\Column
     {
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as & $item) {
-                if (isset($item['srolabor_id'])) {
+                if (isset($item['item_id'])) {
                     $item[$this->getData('name')] = [
                         'edit' => [
                             'href' => $this->urlBuilder->getUrl(
                                 static::URL_PATH_EDIT,
                                 [
-                                    'srolabor_id' => $item['srolabor_id']
+                                    'item_id' => $item['item_id']
                                 ]
                             ),
                             'label' => __('Edit')
@@ -58,7 +58,7 @@ class SroLaborActions extends \Magento\Ui\Component\Listing\Columns\Column
                             'href' => $this->urlBuilder->getUrl(
                                 static::URL_PATH_DELETE,
                                 [
-                                    'srolabor_id' => $item['srolabor_id']
+                                    'item_id' => $item['item_id']
                                 ]
                             ),
                             'label' => __('Delete'),
@@ -71,7 +71,7 @@ class SroLaborActions extends \Magento\Ui\Component\Listing\Columns\Column
                 }
             }
         }
-        
+
         return $dataSource;
     }
 }

@@ -57,7 +57,7 @@
     },
     "variux_warranty_srolabor": {
         "column": {
-            "srolabor_id": true,
+            "item_id": true,
             "sro_id": true,
             "sro_line": true,
             "sro_oper": true,
@@ -97,7 +97,7 @@
     },
     "variux_warranty_sromaterial": {
         "column": {
-            "sromaterial_id": true,
+            "item_id": true,
             "sro_id": true,
             "sro_line": true,
             "sro_oper": true,
@@ -116,7 +116,7 @@
     },
     "variux_warranty_sromisc": {
         "column": {
-            "sromisc_id": true,
+            "item_id": true,
             "sro_id": true,
             "sro_line": true,
             "sro_oper": true,

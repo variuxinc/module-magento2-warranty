@@ -37,23 +37,23 @@ class Save extends \Magento\Backend\App\Action
         $resultRedirect = $this->resultRedirectFactory->create();
         $data = $this->getRequest()->getPostValue();
         if ($data) {
-            $id = $this->getRequest()->getParam('sromisc_id');
-        
+            $id = $this->getRequest()->getParam('item_id');
+
             $model = $this->_objectManager->create(\Variux\Warranty\Model\SroMisc::class)->load($id);
             if (!$model->getId() && $id) {
                 $this->messageManager->addErrorMessage(__('This Sromisc no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
             }
-        
+
             $model->setData($data);
-        
+
             try {
                 $model->save();
                 $this->messageManager->addSuccessMessage(__('You saved the Sromisc.'));
                 $this->dataPersistor->clear('variux_warranty_sromisc');
-        
+
                 if ($this->getRequest()->getParam('back')) {
-                    return $resultRedirect->setPath('*/*/edit', ['sromisc_id' => $model->getId()]);
+                    return $resultRedirect->setPath('*/*/edit', ['item_id' => $model->getId()]);
                 }
                 return $resultRedirect->setPath('*/*/');
             } catch (LocalizedException $e) {
@@ -61,9 +61,9 @@ class Save extends \Magento\Backend\App\Action
             } catch (\Exception $e) {
                 $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the Sromisc.'));
             }
-        
+
             $this->dataPersistor->set('variux_warranty_sromisc', $data);
-            return $resultRedirect->setPath('*/*/edit', ['sromisc_id' => $this->getRequest()->getParam('sromisc_id')]);
+            return $resultRedirect->setPath('*/*/edit', ['item_id' => $this->getRequest()->getParam('sromisc_id')]);
         }
         return $resultRedirect->setPath('*/*/');
     }

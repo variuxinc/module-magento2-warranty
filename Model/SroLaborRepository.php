@@ -126,7 +126,7 @@ class SroLaborRepository implements SroLaborRepositoryInterface
     {
         try {
             $sroLaborModel = $this->sroLaborFactory->create();
-            $this->resource->load($sroLaborModel, $sroLabor->getSrolaborId());
+            $this->resource->load($sroLaborModel, $sroLabor->getId());
             $this->resource->delete($sroLaborModel);
         } catch (\Exception $exception) {
             throw new CouldNotDeleteException(__(
@@ -140,8 +140,8 @@ class SroLaborRepository implements SroLaborRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function deleteById($sroLaborId)
+    public function deleteById($itemId)
     {
-        return $this->delete($this->get($sroLaborId));
+        return $this->delete($this->get($itemId));
     }
 }

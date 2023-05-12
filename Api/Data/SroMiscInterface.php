@@ -10,6 +10,7 @@ namespace Variux\Warranty\Api\Data;
 interface SroMiscInterface
 {
 
+    const ITEM_ID = 'item_id';
     const AMOUNT = 'amount';
     const CUSTOMER_ID = 'customer_id';
     const COMPANY_ID = 'company_id';
@@ -26,20 +27,7 @@ interface SroMiscInterface
     const SRO_OPER = 'sro_oper';
     const QTY_CONV = 'qty_conv';
     const TRANS_DATE = 'trans_date';
-    const SROMISC_ID = 'sromisc_id';
 
-    /**
-     * Get sromisc_id
-     * @return string|null
-     */
-    public function getSromiscId();
-
-    /**
-     * Set sromisc_id
-     * @param string $sromiscId
-     * @return \Variux\Warranty\SroMisc\Api\Data\SroMiscInterface
-     */
-    public function setSromiscId($sromiscId);
 
     /**
      * Get sro_id

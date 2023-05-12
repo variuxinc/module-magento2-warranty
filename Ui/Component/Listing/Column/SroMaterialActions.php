@@ -43,13 +43,13 @@ class SroMaterialActions extends \Magento\Ui\Component\Listing\Columns\Column
     {
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as & $item) {
-                if (isset($item['sromaterial_id'])) {
+                if (isset($item['item_id'])) {
                     $item[$this->getData('name')] = [
                         'edit' => [
                             'href' => $this->urlBuilder->getUrl(
                                 static::URL_PATH_EDIT,
                                 [
-                                    'sromaterial_id' => $item['sromaterial_id']
+                                    'item_id' => $item['item_id']
                                 ]
                             ),
                             'label' => __('Edit')
@@ -58,7 +58,7 @@ class SroMaterialActions extends \Magento\Ui\Component\Listing\Columns\Column
                             'href' => $this->urlBuilder->getUrl(
                                 static::URL_PATH_DELETE,
                                 [
-                                    'sromaterial_id' => $item['sromaterial_id']
+                                    'item_id' => $item['item_id']
                                 ]
                             ),
                             'label' => __('Delete'),
@@ -71,7 +71,7 @@ class SroMaterialActions extends \Magento\Ui\Component\Listing\Columns\Column
                 }
             }
         }
-        
+
         return $dataSource;
     }
 }

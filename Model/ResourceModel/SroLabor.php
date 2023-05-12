@@ -17,6 +17,6 @@ class SroLabor extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('variux_warranty_srolabor', 'srolabor_id');
+        $this->_init('variux_warranty_srolabor', 'item_id');
     }
 }
