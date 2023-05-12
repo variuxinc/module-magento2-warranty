@@ -20,7 +20,7 @@ class Delete extends \Variux\Warranty\Controller\Adminhtml\SroMisc
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         // check if we know what should be deleted
-        $id = $this->getRequest()->getParam('sromisc_id');
+        $id = $this->getRequest()->getParam('item_id');
         if ($id) {
             try {
                 // init model and delete
@@ -35,7 +35,7 @@ class Delete extends \Variux\Warranty\Controller\Adminhtml\SroMisc
                 // display error message
                 $this->messageManager->addErrorMessage($e->getMessage());
                 // go back to edit form
-                return $resultRedirect->setPath('*/*/edit', ['sromisc_id' => $id]);
+                return $resultRedirect->setPath('*/*/edit', ['item_id' => $id]);
             }
         }
         // display error message

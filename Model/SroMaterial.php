@@ -25,22 +25,6 @@ class SroMaterial extends AbstractModel implements SroMaterialInterface
     /**
      * @inheritDoc
      */
-    public function getSromaterialId()
-    {
-        return $this->getData(self::SROMATERIAL_ID);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function setSromaterialId($sromaterialId)
-    {
-        return $this->setData(self::SROMATERIAL_ID, $sromaterialId);
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function getSroId()
     {
         return $this->getData(self::SRO_ID);
@@ -212,5 +196,37 @@ class SroMaterial extends AbstractModel implements SroMaterialInterface
     public function setPrice($price)
     {
         return $this->setData(self::PRICE, $price);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getTransDate()
+    {
+        return $this->getData(self::TRANS_DATE);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setTransDate($transDate)
+    {
+        return $this->setData(self::TRANS_DATE, $transDate);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getNote()
+    {
+        return $this->getData(self::NOTE);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setNote($note)
+    {
+        return $this->setData(self::NOTE, $note);
     }
 }

@@ -48,14 +48,8 @@ class Workcode extends \Variux\Warranty\Controller\AbstractAction
     {
         $search = $this->getRequest()->getParam("q");
         $response = $this->suggestHelper->findWorkcode($search);
-        /**
-         * @Hidro-Le
-         * @TODO - Fixed
-         * Chỗ này a cần tìm hiểu cách response JSON thay vì set response kiểu vầy.
-         *       Sample: $this->resultFactory->create(ResultFactory::TYPE_JSON);
-         */
         $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
-        $resultJson->setData(json_encode($response));
+        $resultJson->setData($response);
         return $resultJson;
     }
 }

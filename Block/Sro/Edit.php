@@ -137,13 +137,11 @@ class Edit extends \Magento\Framework\View\Element\Template
         foreach ($materials as $material) {
             $material["total"] = $this->_priceHelper->currency($material["price"] * $material["qty_conv"], true, false);
             $material["price"] = $this->_priceHelper->currency($material["price"], true, false);
-            $material["um"] = $material["um"] ? $material["um"] : "EA";
             $material["qty_conv"] = (int)$material["qty_conv"];
             $data['materials'][] = array_intersect_key($material, [
                 "item_id" => "",
                 "sro_id" => "",
                 "item" => "",
-                "um" => "",
                 "qty_conv" => "",
                 "note" => "",
                 "description" => "",

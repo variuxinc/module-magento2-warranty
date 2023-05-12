@@ -29,7 +29,7 @@ abstract class GenericButton
      */
     public function getModelId()
     {
-        return $this->context->getRequest()->getParam('sromaterial_id');
+        return $this->context->getRequest()->getParam('item_id');
     }
 
     /**

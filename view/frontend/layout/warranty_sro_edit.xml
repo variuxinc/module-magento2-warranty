@@ -3,6 +3,9 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <update handle="customer_account"/>
     <update handle="warranty_layout"/>
+    <head>
+        <css src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" src_type="url"/>
+    </head>
     <body>
         <referenceContainer name="after.body.start">
             <block class="Magento\Framework\View\Element\Template" name="autosuggest.item.template" as="autosuggest.item.template"

@@ -34,7 +34,7 @@ class Edit extends \Variux\Warranty\Controller\Adminhtml\SroMisc
     public function execute()
     {
         // 1. Get ID and create model
-        $id = $this->getRequest()->getParam('sromisc_id');
+        $id = $this->getRequest()->getParam('item_id');
         $model = $this->_objectManager->create(\Variux\Warranty\Model\SroMisc::class);
 
         // 2. Initial checking

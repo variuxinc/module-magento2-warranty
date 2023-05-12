@@ -25,22 +25,6 @@ class SroMisc extends AbstractModel implements SroMiscInterface
     /**
      * @inheritDoc
      */
-    public function getSromiscId()
-    {
-        return $this->getData(self::SROMISC_ID);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function setSromiscId($sromiscId)
-    {
-        return $this->setData(self::SROMISC_ID, $sromiscId);
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function getSroId()
     {
         return $this->getData(self::SRO_ID);

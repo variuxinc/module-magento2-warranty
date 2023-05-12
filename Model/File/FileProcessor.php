@@ -2,7 +2,6 @@
 
 namespace Variux\Warranty\Model\File;
 
-use Variux\Warranty\Api\Data\FileContentInterface;
 use Exception;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Exception\InputException;

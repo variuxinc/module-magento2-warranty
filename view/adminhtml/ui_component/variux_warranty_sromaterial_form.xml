@@ -31,8 +31,8 @@
 		</settings>
 		<dataProvider name="sromaterial_form_data_source" class="Variux\Warranty\Model\SroMaterial\DataProvider">
 			<settings>
-				<requestFieldName>sromaterial_id</requestFieldName>
-				<primaryFieldName>sromaterial_id</primaryFieldName>
+				<requestFieldName>item_id</requestFieldName>
+				<primaryFieldName>item_id</primaryFieldName>
 			</settings>
 		</dataProvider>
 	</dataSource>

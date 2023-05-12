@@ -17,6 +17,6 @@ class SroMisc extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('variux_warranty_sromisc', 'sromisc_id');
+        $this->_init('variux_warranty_sromisc', 'item_id');
     }
 }

@@ -25,22 +25,6 @@ class SroLabor extends AbstractModel implements SroLaborInterface
     /**
      * @inheritDoc
      */
-    public function getSrolaborId()
-    {
-        return $this->getData(self::SROLABOR_ID);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function setSrolaborId($srolaborId)
-    {
-        return $this->setData(self::SROLABOR_ID, $srolaborId);
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function getSroId()
     {
         return $this->getData(self::SRO_ID);

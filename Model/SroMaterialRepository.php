@@ -126,7 +126,7 @@ class SroMaterialRepository implements SroMaterialRepositoryInterface
     {
         try {
             $sroMaterialModel = $this->sroMaterialFactory->create();
-            $this->resource->load($sroMaterialModel, $sroMaterial->getSromaterialId());
+            $this->resource->load($sroMaterialModel, $sroMaterial->getId());
             $this->resource->delete($sroMaterialModel);
         } catch (\Exception $exception) {
             throw new CouldNotDeleteException(__(

@@ -34,7 +34,7 @@ class Edit extends \Variux\Warranty\Controller\Adminhtml\SroLabor
     public function execute()
     {
         // 1. Get ID and create model
-        $id = $this->getRequest()->getParam('srolabor_id');
+        $id = $this->getRequest()->getParam('item_id');
         $model = $this->_objectManager->create(\Variux\Warranty\Model\SroLabor::class);
 
         // 2. Initial checking
