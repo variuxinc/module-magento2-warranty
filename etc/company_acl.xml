@@ -34,11 +34,11 @@
                         <resource id="Magento_Sales::view_orders_sub" title="View orders of subordinate users" translate="title" sortOrder="40"/>
                     </resource>
                 </resource>
-                <resource id="Variux_Warranty::warranty" title="Warranty" translate="title" sortOrder="10">
-                        <resource id="Variux_Warranty::warranty_view" title="Warranty View"/> 
-                        <resource id="Variux_Warranty::warranty_engine_reg_info" title="Engine Registration Info"/> 
-                        <resource id="Variux_Warranty::warranty_engine_reg" title="Engine Registration"/> 
-                        <resource id="Variux_Warranty::warranty_transfer" title="Engine Warranty Transfer"/>
+                <resource id="Variux_Warranty::warranty" title="Warranty" translate="title" sortOrder="300">
+                        <resource id="Variux_Warranty::warranty_view" title="Warranty View" translate="title" sortOrder="10"/>
+                        <resource id="Variux_Warranty::warranty_engine_reg_info" title="Engine Registration Info" translate="title" sortOrder="20"/>
+                        <resource id="Variux_Warranty::warranty_engine_reg" title="Engine Registration" translate="title" sortOrder="30"/>
+                        <resource id="Variux_Warranty::warranty_transfer" title="Engine Warranty Transfer" translate="title" sortOrder="40"/>
                 </resource>
             </resource>
         </resources>

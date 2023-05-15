@@ -54,7 +54,7 @@ class Engineforwarrantytransfer extends \Variux\Warranty\Controller\AbstractActi
          *       Sample: $this->resultFactory->create(ResultFactory::TYPE_JSON);
          */
         $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
-        $resultJson->setData(json_encode($response));
+        $resultJson->setData($response);
         return $resultJson;
     }
 }

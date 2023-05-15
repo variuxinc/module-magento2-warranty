@@ -151,7 +151,7 @@ class NewTransfer extends \Magento\Framework\View\Element\Template
             "country" => ""
         ];
         $data["engineSuggestConfig"] = $this->getEngineSuggestConfig();
-        $data["toast"] = $this->_toastHelper->getToastMessageOptions();
+        $data["toast"] = [];
         return json_encode($data);
     }
 }
