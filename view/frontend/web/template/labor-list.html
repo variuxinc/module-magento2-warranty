@@ -3,9 +3,11 @@
         <div class="col-6"><h1 data-bind="i18n: 'Labor Items'"
                                style="margin-bottom: 5px;text-align: left; display:inline-block; padding-left: 15px"></h1></div>
         <div class="col-6 text-right">
-            <a
-                data-bind="i18n: 'Work Codes', attr: {href: window.WarrantyModule.workcodepdf}" target="_blank" class="action primary btn"
-                style="vertical-align: top;border-radius: 0;margin-left: 15px;">Work Codes</a>
+<!--            <a-->
+<!--                data-bind="i18n: 'Work Codes', attr: {href: window.WarrantyModule.workcodepdf}" target="_blank" class="action primary btn"-->
+<!--                style="vertical-align: top;border-radius: 0;margin-left: 15px;">Work Codes</a>-->
+            <button class="action primary labor-btn"
+                    data-bind="i18n: 'Work Codes', event: {click: openWorkCodesPopup}, visible: window.warranty_sro.warranty().status() == 'INCOMP'"></button>
             <button class="action primary labor-btn"
                     data-bind="i18n: 'Add Labor', event: {click: openLaborPopup}, visible: window.warranty_sro.warranty().status() == 'INCOMP'"></button>
         </div>

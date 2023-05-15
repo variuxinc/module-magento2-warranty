@@ -27,7 +27,7 @@
              action="variux_warranty/sromisc/index"/>
         <!--Warranty-->
 
-        <add id="Variux_Warranty::variux_warranty_workcode" title="Work code" module="Variux_Warranty" sortOrder="9999"
+        <add id="Variux_Warranty::variux_warranty_workcode" title="Work Codes" module="Variux_Warranty" sortOrder="9999"
              resource="Magento_Backend::content" parent="Variux_Warranty::top_level"
              action="variux_warranty/workCode/index"/>
         <add id="Variux_Warranty::warranty_unit" title="Units" module="Variux_Warranty" sortOrder="30"

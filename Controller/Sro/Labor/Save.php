@@ -103,9 +103,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         PriceHelper $priceHelper,
         CompanyDetailsHelper $companyDetailsHelper,
         CustomerRepository $customerRepository
-
-    )
-    {
+    ) {
         parent::__construct(
             $context,
             $companyContext,
@@ -161,14 +159,14 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                     $this->workcodeResourceModel->loadByCode($workCode, $labor->getWorkCode());
                     if ($workCode->hasData() && $workCode->getId()) {
                         $labor->setSroLine(1);
-                        if ($workCode->getWorkCode() != "MC"){
+                        if ($workCode->getWorkCode() != "MC") {
                             $labor->setHourWorked($workCode->getDuration());
                         } else {
-                            $fmt = new NumberFormatter( 'en_US', NumberFormatter::DECIMAL );
+                            $fmt = new NumberFormatter('en_US', NumberFormatter::DECIMAL);
                             $tmp = $fmt->parse($labor->getHourWorked());
                             $labor->setHourWorked($tmp);
                         }
-                        if($labor->getHourWorked() > 0) {
+                        if ($labor->getHourWorked() > 0) {
                             $labor->setCompanyId($companyId);
                             $labor->setLaborHourlyRate($laborRate);
 //                            $labor->setSroNum($sro->getSroNum());
@@ -215,7 +213,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                 ];
             }
 
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             $response = [
                 'error' => true,
                 'msg' => $e->getMessage()

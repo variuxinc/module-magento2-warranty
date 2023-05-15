@@ -32,8 +32,7 @@ class Submit extends \Variux\Warranty\Controller\AbstractAction
         \Variux\Warranty\Helper\Data              $helperData,
         SuggestHelper                             $suggestHelper,
         \Variux\Warranty\Model\WarrantyRepository $warrantyRepository
-    )
-    {
+    ) {
         parent::__construct(
             $context,
             $companyContext,

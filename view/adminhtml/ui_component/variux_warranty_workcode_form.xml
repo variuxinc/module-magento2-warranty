@@ -48,7 +48,7 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">work_code</label>
+				<label translate="true">Work Code</label>
 				<dataScope>work_code</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
@@ -63,7 +63,7 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">description</label>
+				<label translate="true">Description</label>
 				<dataScope>description</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
@@ -78,38 +78,8 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">duration</label>
+				<label translate="true">Duration</label>
 				<dataScope>duration</dataScope>
-				<validation>
-					<rule name="required-entry" xsi:type="boolean">false</rule>
-				</validation>
-			</settings>
-		</field>
-		<field name="created_at" formElement="date" sortOrder="920">
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="source" xsi:type="string">Workcode</item>
-				</item>
-			</argument>
-			<settings>
-				<dataType>text</dataType>
-				<label translate="true">created_at</label>
-				<dataScope>created_at</dataScope>
-				<validation>
-					<rule name="required-entry" xsi:type="boolean">false</rule>
-				</validation>
-			</settings>
-		</field>
-		<field name="updated_at" formElement="date" sortOrder="930">
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="source" xsi:type="string">Workcode</item>
-				</item>
-			</argument>
-			<settings>
-				<dataType>text</dataType>
-				<label translate="true">updated_at</label>
-				<dataScope>updated_at</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
 				</validation>

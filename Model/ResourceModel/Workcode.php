@@ -30,7 +30,7 @@ class Workcode extends AbstractDb
             case "%like":
                 $conditionString = 'work_code like "%'.$number.'%"';
                 break;
-            default :
+            default:
                 $conditionString = 'work_code = "'.$number.'"';
                 break;
         }

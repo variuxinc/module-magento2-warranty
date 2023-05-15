@@ -87,9 +87,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         FileProcessor                 $fileProcessor,
         WarrantyTransferResourceModel $warrantyTransferResourceModel,
         TransportBuilder              $transportBuilder
-
-    )
-    {
+    ) {
         parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
         $this->jsonHelper = $jsonHelper;
         $this->unitFactory = $unitFactory;

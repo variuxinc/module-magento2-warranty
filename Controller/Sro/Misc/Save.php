@@ -59,12 +59,12 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         SroMiscRepository $sroMiscRepository,
         WarrantyFactory $warrantyFactory,
         WarrantyResourceModel $warrantyResourceModel,
-        SroResourceModel $sroResourceModel ,
+        SroResourceModel $sroResourceModel,
         SroFactory $sroFactory,
         CompanyDetails $companyDetails
-    )
-    {
-        parent::__construct($context,
+    ) {
+        parent::__construct(
+            $context,
             $companyContext,
             $logger,
             $_customerSession,
@@ -105,13 +105,13 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
             $companyId = $this->companyDetails->getInfo($customerId)->getId();
             $sro = $this->sroFactory->create();
             $this->sroResourceModel->load($sro, $sroMisc->getSroId());
-            if($sro->hasData() && $sro->getId() && $sro->getCustomerId() == $customerId){
-                if($sroMisc->getMiscCode() == "FRT" || $sroMisc->getMiscCode() == "IMP"){
+            if ($sro->hasData() && $sro->getId() && $sro->getCustomerId() == $customerId) {
+                if ($sroMisc->getMiscCode() == "FRT" || $sroMisc->getMiscCode() == "IMP") {
                     $warranty = $this->warrantyFactory->create();
                     $this->warrantyResourceModel->load($warranty, $sro->getWarrantyId());
-                    if ($warranty->getStatus() == \Variux\Warranty\Model\Warranty::STATUS_ARRAY["INCOMP"]["key"]){
+                    if ($warranty->getStatus() == \Variux\Warranty\Model\Warranty::STATUS_ARRAY["INCOMP"]["key"]) {
                         $sroMisc->setTransDate($warranty->getDateOfRepair());
-                        if($sroMisc->getMiscCode() == "FRT"){
+                        if ($sroMisc->getMiscCode() == "FRT") {
                             $sroMisc->setDescription("Freight");
                             $sroMisc->setType("freight");
                             if (!$warranty->getInvoiceNumber() && !$warranty->getOrderNumber()) {
@@ -171,8 +171,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                 ];
             }
 
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             $response = [
                 'error' => true,
                 'msg' => $e->getMessage()

@@ -75,9 +75,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         WarrantyResourceModel $warrantyResourceModel,
         PriceHelper $priceHelper,
         CompanyDetails $companyDetails
-
-    )
-    {
+    ) {
         parent::__construct(
             $context,
             $companyContext,
@@ -85,7 +83,6 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
             $_customerSession,
             $helperData,
             $suggestHelper
-
         );
         $this->sroMaterialInterfaceFactory = $sroMaterialInterfaceFactory;
         $this->sroMaterialRepository = $sroMaterialRepository;
@@ -163,7 +160,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                         $material->setSroOper(10);
                         $material->setSroLine(1);
                         $material->setTransDate($warranty->getDateOfRepair());
-                        if($material->getPrice() > 0) {
+                        if ($material->getPrice() > 0) {
                             $this->sroMaterialRepository->save($material);
                             $responseData = $material->getData();
                             $responseData["total"] = $this->priceHelper->currency($responseData["price"] * $responseData["qty_conv"], true, false);
@@ -197,8 +194,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                     'msg' => "Invalid SRO ID"
                 ];
             }
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             $response = [
                 'error' => true,
                 'msg' => $e->getMessage()
@@ -207,7 +203,8 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         $resultJson->setData(json_encode($response));
         return $resultJson;
     }
-    public function getProductPrice($product){
+    public function getProductPrice($product)
+    {
         return (float)$product->getFinalPrice();
     }
 }

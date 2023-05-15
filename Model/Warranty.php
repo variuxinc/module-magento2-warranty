@@ -156,8 +156,7 @@ class Warranty extends AbstractModel implements WarrantyInterface
         StoreManagerInterface                                    $storeManager,
         \Variux\Warranty\Model\SroFactory                        $sroFactory,
         array                                                    $data = []
-    )
-    {
+    ) {
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
         $this->storeManager = $storeManager;
         $this->sroFactory = $sroFactory;
