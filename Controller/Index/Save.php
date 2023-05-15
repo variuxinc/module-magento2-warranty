@@ -88,8 +88,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         SroFactory                   $sroFactory,
         SroRepository                $sroRepository,
         CompanyDetails               $companyDetails
-    )
-    {
+    ) {
         parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
         $this->resultPageFactory = $resultPageFactory;
         $this->formKeyValidator = $formKeyValidator;

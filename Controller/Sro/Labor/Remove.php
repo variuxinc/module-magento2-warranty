@@ -24,8 +24,7 @@ class Remove extends \Variux\Warranty\Controller\AbstractAction
         \Variux\Warranty\Helper\Data $helperData,
         SuggestHelper $suggestHelper,
         SroLaborRepository $sroLaborRepository
-    )
-    {
+    ) {
         parent::__construct(
             $context,
             $companyContext,

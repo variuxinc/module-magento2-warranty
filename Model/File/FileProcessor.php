@@ -95,6 +95,5 @@ class FileProcessor
         } else {
             throw new InputException(new Phrase($validateResult["error"]));
         }
-
     }
 }

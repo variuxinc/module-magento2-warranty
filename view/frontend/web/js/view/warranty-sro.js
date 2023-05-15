@@ -19,9 +19,9 @@ define(
         const WarrantySroFormSelector = "#warranty-sro-form";
         const AddMaterialPopupSelector = "#add-material-popup";
         const AddLaborPopupSelector = "#add-labor-popup";
+        const OpenWorkCodesPopupSelector = "#open-workCodes-popup";
         const AddFreightPopupSelector = "#add-freight-popup";
         const AddFeePopupSelector = "#add-fee-popup";
-        const DocumentsPopupSelector = "#warranty-documents-popup";
         const AddDocumentsPopupSelector = "#add-document-popup";
 
         const TYPE_FREIGHT = "freight";
@@ -32,6 +32,7 @@ define(
                 template: 'Variux_Warranty/warranty-sro',
                 materialForm: 'Variux_Warranty/popup/material-form',
                 laborForm: 'Variux_Warranty/popup/labor-form',
+                workCodesForm: 'Variux_Warranty/popup/workCodes-form',
                 freightForm: 'Variux_Warranty/popup/freight-form',
                 feeForm: 'Variux_Warranty/popup/fee-form',
                 documentsForm: 'Variux_Warranty/popup/documents',
@@ -45,6 +46,7 @@ define(
             warranty: ko.observable({}),
             sro: ko.observable({}),
             labors: ko.observableArray([]),
+            workCodes:ko.observableArray([]),
             materials: ko.observableArray([]),
             miscs: ko.observableArray([]),
             docs: ko.observableArray([]),
@@ -159,6 +161,9 @@ define(
                     if (window.WarrantyModule.labors) {
                         this.labors(helper.convertToObserverList(window.WarrantyModule.labors));
                     }
+                    if (window.WarrantyModule.workCodes) {
+                        this.workCodes(helper.convertToObserverList(window.WarrantyModule.workCodes));
+                    }
                     if (window.WarrantyModule.materials) {
                         this.materials(helper.convertToObserverList(window.WarrantyModule.materials));
                     }
@@ -210,163 +215,6 @@ define(
                         }
                 }
             },
-
-            // toast: function(message){
-            //
-            //     switch(message.type)
-            //     {
-            //         case 'success':
-            //             if (window.WarrantyModule.dataConfig.toast.success.icon === 1) {
-            //                 $.toast({
-            //                     text: message.message,
-            //                     showHideTransition: 'slide',
-            //                     icon: 'success',
-            //                     position: window.WarrantyModule.dataConfig.toast.success.position,
-            //                     hideAfter: 20000,
-            //                     bgColor: window.WarrantyModule.dataConfig.toast.success.background,
-            //                     textColor: window.WarrantyModule.dataConfig.toast.success.font,
-            //                     loader: false
-            //                 });
-            //             }else {
-            //                 $.toast({
-            //                     text: message.message,
-            //                     showHideTransition: 'slide',
-            //                     position: window.WarrantyModule.dataConfig.toast.success.position,
-            //                     hideAfter: 20000,
-            //                     bgColor: window.WarrantyModule.dataConfig.toast.success.background,
-            //                     textColor: window.WarrantyModule.dataConfig.toast.success.font,
-            //                     loader: false
-            //                 });
-            //             }
-            //
-            //             break;
-            //         case 'error':
-            //             if (window.WarrantyModule.dataConfig.toast.error.icon === 1) {
-            //                 $.toast({
-            //                     text: message.message,
-            //                     showHideTransition: 'slide',
-            //                     icon: 'error',
-            //                     position: window.WarrantyModule.dataConfig.toast.error.position,
-            //                     hideAfter: 20000,
-            //                     bgColor: window.WarrantyModule.dataConfig.toast.error.background,
-            //                     textColor: window.WarrantyModule.dataConfig.toast.error.font,
-            //                     loader: false
-            //                 });
-            //             }else {
-            //                 $.toast({
-            //                     text: message.message,
-            //                     showHideTransition: 'slide',
-            //                     position: window.WarrantyModule.dataConfig.toast.error.position,
-            //                     hideAfter: 20000,
-            //                     bgColor: window.WarrantyModule.dataConfig.toast.error.background,
-            //                     textColor: window.WarrantyModule.dataConfig.toast.error.font,
-            //                     loader: false
-            //                 });
-            //             }
-            //
-            //             break;
-            //         case 'warning':
-            //             if (window.WarrantyModule.dataConfig.toast.warning.icon === 1) {
-            //                 $.toast({
-            //                     text: message.message,
-            //                     showHideTransition: 'slide',
-            //                     icon: 'warning',
-            //                     position: window.WarrantyModule.dataConfig.toast.warning.position,
-            //                     hideAfter: 20000,
-            //                     bgColor: window.WarrantyModule.dataConfig.toast.warning.background,
-            //                     textColor: window.WarrantyModule.dataConfig.toast.warning.font,
-            //                     loader: false
-            //                 });
-            //             }else {
-            //                 $.toast({
-            //                     text: message.message,
-            //                     showHideTransition: 'slide',
-            //                     position: window.WarrantyModule.dataConfig.toast.warning.position,
-            //                     hideAfter: 20000,
-            //                     bgColor: window.WarrantyModule.dataConfig.toast.warning.background,
-            //                     textColor: window.WarrantyModule.dataConfig.toast.warning.font,
-            //                     loader: false
-            //                 });
-            //             }
-            //
-            //             break;
-            //         case 'info':
-            //             if (window.WarrantyModule.dataConfig.toast.info.icon === 1) {
-            //                 $.toast({
-            //                     text: message.message,
-            //                     showHideTransition: 'slide',
-            //                     icon: 'info',
-            //                     position: window.WarrantyModule.dataConfig.toast.info.position,
-            //                     hideAfter: 20000,
-            //                     bgColor: window.WarrantyModule.dataConfig.toast.info.background,
-            //                     textColor: window.WarrantyModule.dataConfig.toast.info.font,
-            //                     loader: false
-            //                 });
-            //             }else {
-            //                 $.toast({
-            //                     text: message.message,
-            //                     showHideTransition: 'slide',
-            //                     position: window.WarrantyModule.dataConfig.toast.info.position,
-            //                     hideAfter: 20000,
-            //                     bgColor: window.WarrantyModule.dataConfig.toast.info.background,
-            //                     textColor: window.WarrantyModule.dataConfig.toast.info.font,
-            //                     loader: false
-            //                 });
-            //
-            //             }
-            //
-            //             break;
-            //         case 'notice':
-            //             if (window.WarrantyModule.dataConfig.toast.warning.icon === 1) {
-            //                 $.toast({
-            //                     text: message.message,
-            //                     showHideTransition: 'slide',
-            //                     icon: 'warning',
-            //                     position: window.WarrantyModule.dataConfig.toast.notice.position,
-            //                     hideAfter: 20000,
-            //                     bgColor: window.WarrantyModule.dataConfig.toast.notice.background,
-            //                     textColor: window.WarrantyModule.dataConfig.toast.notice.font,
-            //                     loader: false
-            //                 });
-            //             }else {
-            //                 $.toast({
-            //                     text: message.message,
-            //                     showHideTransition: 'slide',
-            //                     position: window.WarrantyModule.dataConfig.toast.notice.position,
-            //                     hideAfter: 20000,
-            //                     bgColor: window.WarrantyModule.dataConfig.toast.notice.background,
-            //                     textColor: window.WarrantyModule.dataConfig.toast.notice.font,
-            //                     loader: false
-            //                 });
-            //             }
-            //
-            //             break;
-            //         default :
-            //             if (window.WarrantyModule.dataConfig.toast.info.icon === 1) {
-            //                 $.toast({
-            //                     text: message.message,
-            //                     showHideTransition: 'slide',
-            //                     icon: 'info',
-            //                     position: window.WarrantyModule.dataConfig.toast.info.position,
-            //                     hideAfter: 20000,
-            //                     bgColor: window.WarrantyModule.dataConfig.toast.info.background,
-            //                     textColor: window.WarrantyModule.dataConfig.toast.info.font,
-            //                     loader: false
-            //                 })
-            //             }else {
-            //                 $.toast({
-            //                     text: message.message,
-            //                     showHideTransition: 'slide',
-            //                     position: window.WarrantyModule.dataConfig.toast.info.position,
-            //                     hideAfter: 20000,
-            //                     bgColor: window.WarrantyModule.dataConfig.toast.info.background,
-            //                     textColor: window.WarrantyModule.dataConfig.toast.info.font,
-            //                     loader: false
-            //                 })
-            //             }
-            //             break;
-            //     }
-            // },
 
             backWarranties: function () {
                 if (window.WarrantyModule.url.backUrl) {
@@ -669,6 +517,21 @@ define(
                     closed: function () {
                         self.resetLaborForm();
                     }
+                };
+                let popup = modal(options, $elm);
+                $elm.modal('openModal');
+            },
+
+            openWorkCodesPopup: function () {
+                var self = this;
+                let $elm = $(OpenWorkCodesPopupSelector);
+                var options = {
+                    type: 'popup',
+                    responsive: true,
+                    innerScroll: true,
+                    title: $.mage.__('Work Codes'),
+                    modalClass:'warranty-container warranty-modal open-workCodes-modal',
+                    closeText: ""
                 };
                 let popup = modal(options, $elm);
                 $elm.modal('openModal');

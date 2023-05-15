@@ -10,6 +10,7 @@ use Variux\Warranty\Model\SroFactory;
 use Variux\Warranty\Model\WarrantyFactory;
 use Magento\Customer\Model\Session;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Variux\Warranty\Model\ResourceModel\Workcode\CollectionFactory as WorkcodeCollectionFactory;
 
 class Edit extends \Magento\Framework\View\Element\Template
 {
@@ -69,6 +70,10 @@ class Edit extends \Magento\Framework\View\Element\Template
     protected $warranty = false;
 
     protected $_priceHelper;
+    /**
+     * @var WorkcodeCollectionFactory
+     */
+    protected $workcodeCollectionFactory;
 
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
@@ -81,6 +86,7 @@ class Edit extends \Magento\Framework\View\Element\Template
         SroResourceModel $sroResourceModel,
         WarrantyResourceModel $warrantyResourceModel,
         \Magento\Framework\Pricing\Helper\Data $priceHelper,
+        WorkcodeCollectionFactory $workcodeCollectionFactory,
         array $data = []
     ) {
         parent::__construct($context, $data);
@@ -93,6 +99,7 @@ class Edit extends \Magento\Framework\View\Element\Template
         $this->sroResourceModel = $sroResourceModel;
         $this->warrantyResourceModel = $warrantyResourceModel;
         $this->_priceHelper = $priceHelper;
+        $this->workcodeCollectionFactory = $workcodeCollectionFactory;
     }
 
     /**
@@ -127,9 +134,9 @@ class Edit extends \Magento\Framework\View\Element\Template
         //temporarily comment out
          $partner = $this->dataHelper->getCurrentPartner();
          $data['labor_rate'] = $partner->getLaborRate();
-         if ($data['labor_rate'] == NULL) {
-             $data['labor_rate'] = '0';
-         }
+        if ($data['labor_rate'] == null) {
+            $data['labor_rate'] = '0';
+        }
         $data['warranty'] = $this->getWarranty()->getData();
         $data['url'] = $this->getUrlData();
 
@@ -172,6 +179,17 @@ class Edit extends \Magento\Framework\View\Element\Template
                 "total" => ""
             ]);
         }
+
+        $workCodes = $this->getWorkCodeCollection();
+        foreach ($workCodes as $workCode) {
+            $data['workCodes'][] = array_intersect_key($workCode, [
+                "item_id" => "",
+                "work_code" => "",
+                "description" => "",
+                "duration" => ""
+            ]);
+        }
+
         $miscs = $this->getSro()->getMiscsData();
         foreach ($miscs as $misc) {
             $data['miscs'][] = array_intersect_key($misc, [
@@ -252,6 +270,17 @@ class Edit extends \Magento\Framework\View\Element\Template
         $this->warrantyResourceModel->load($warranty, $this->getSro()->getWarrantyId());
         $this->warranty = $warranty;
         return $this->warranty;
+    }
+
+    public function getWorkCodeCollection()
+    {
+        $data = [];
+        $workCodeCollection = $this->workcodeCollectionFactory->create();
+        foreach ($workCodeCollection as $workCode) {
+            $workCodeData = $workCode->getData();
+            $data[] = $workCodeData;
+        }
+        return $data;
     }
 
     /**

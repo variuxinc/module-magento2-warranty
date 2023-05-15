@@ -53,8 +53,7 @@ class Index extends \Magento\Framework\View\Element\Template
         \Magento\Framework\Controller\Result\RedirectFactory $resultRedirectFactory,
         MessageManagerInterface                              $messageManager,
         array                                                $data = []
-    )
-    {
+    ) {
         parent::__construct($context, $data);
         $this->customerSession = $customerSession;
         $this->warrantyCollectionFactory = $warrantyCollectionFactory;
@@ -201,7 +200,6 @@ class Index extends \Magento\Framework\View\Element\Template
             );
         }
         return '';
-
     }
 
     /**

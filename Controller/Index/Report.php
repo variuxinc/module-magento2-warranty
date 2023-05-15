@@ -49,8 +49,7 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
         \Variux\Warranty\Block\Index\Index $indexBlock,
         PageFactory                        $resultPageFactory,
         WarrantyFactory                    $warrantyFactory
-    )
-    {
+    ) {
         parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
         $this->indexBlock = $indexBlock;
         $this->resultPageFactory = $resultPageFactory;
@@ -111,12 +110,12 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
 
         $comPa = "www.indmar.variux.com";
         // set default header data
-        $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, "INDMAR", $comPa, array(0, 64, 255), array(0, 64, 128));
-        $pdf->setFooterData(array(0, 64, 0), array(0, 64, 128));
+        $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, "INDMAR", $comPa, [0, 64, 255], [0, 64, 128]);
+        $pdf->setFooterData([0, 64, 0], [0, 64, 128]);
 
         // set header and footer fonts
-        $pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-        $pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+        $pdf->setHeaderFont([PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN]);
+        $pdf->setFooterFont([PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA]);
 
         // set default monospaced font
         $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
@@ -127,7 +126,7 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
         $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
         // set auto page breaks
-        $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+        $pdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);
 
         // set image scale factor
         $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
@@ -283,7 +282,7 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
         $pdf->AddPage();
 
         // set text shadow effect
-        $pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => array(196, 196, 196), 'opacity' => 1, 'blend_mode' => 'Normal'));
+        $pdf->setTextShadow(['enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => [196, 196, 196], 'opacity' => 1, 'blend_mode' => 'Normal']);
 
         // Set some content to print
 

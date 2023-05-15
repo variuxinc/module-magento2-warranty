@@ -1,0 +1,27 @@
+<div class="col-12">
+    <table class="data table workCodes-table">
+        <thead>
+        <tr class="row">
+            <th class="col-4" data-bind="i18n: 'WorkCodes'"></th>
+            <th class="col-4" data-bind="i18n: 'Description'"></th>
+            <th class="col-4" data-bind="i18n: 'Duration'"></th>
+        </tr>
+        </thead>
+        <!--ko if: workCodes().length > 0-->
+        <tbody data-bind="foreach: {data: workCodes(), as: 'workCode'}">
+        <tr class="row">
+            <td class="col-4" data-bind="text: workCode.work_code"></td>
+            <td class="col-4" data-bind="text: workCode.description"></td>
+            <td class="col-4" data-bind="text: workCode.duration"></td>
+        </tr>
+        </tbody>
+        <!--/ko-->
+        <!--ko ifnot: workCodes().length > 0-->
+        <tbody>
+        <tr>
+            <td colspan="7" data-bind="i18n: 'No Records Found'"></td>
+        </tr>
+        </tbody>
+        <!--/ko-->
+    </table>
+</div>

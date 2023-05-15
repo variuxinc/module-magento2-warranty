@@ -4,7 +4,8 @@ namespace Variux\Warranty\Helper;
 
 class MyPdfX extends MyPdf
 {
-    public function Header() {
+    public function Header()
+    {
         // Logo
         $_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
         $storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface');
@@ -19,7 +20,8 @@ class MyPdfX extends MyPdf
         $this->Cell(0, 10, ' Warranty Claim Report ', 0, false, 'C', 0, '', 0, false, 'M', 'M');
     }
 
-    public function Footer() {
+    public function Footer()
+    {
         // Position at 15 mm from bottom
         $this->SetY(-15);
         // Set font

@@ -19,16 +19,14 @@ class Newtransfer extends \Variux\Warranty\Controller\AbstractAction
      * @param \Variux\Warranty\Helper\Data $helperData
      * @param SuggestHelper $suggestHelper
      */
-    public function __construct
-    (
+    public function __construct(
         \Magento\Framework\App\Action\Context $context,
         CompanyContext                        $companyContext,
         \Psr\Log\LoggerInterface              $logger,
         Session                               $_customerSession,
         \Variux\Warranty\Helper\Data          $helperData,
         SuggestHelper                         $suggestHelper
-    )
-    {
+    ) {
         parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
     }
 

@@ -41,8 +41,7 @@ class NewAction extends \Variux\Warranty\Controller\AbstractAction
         \Variux\Warranty\Helper\Data          $helperData,
         SuggestHelper                         $suggestHelper,
         PageFactory                           $resultPageFactory
-    )
-    {
+    ) {
         parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
         $this->resultPageFactory = $resultPageFactory;
     }

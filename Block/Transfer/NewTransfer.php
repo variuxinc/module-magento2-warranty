@@ -40,16 +40,14 @@ class NewTransfer extends \Magento\Framework\View\Element\Template
      * @param Data $dataHelper
      * @param array $data
      */
-    public function __construct
-    (
+    public function __construct(
         Context $context,
         StoreManagerInterface $storeManager,
         Date $dateElement,
         Session $customerSession,
         Data $dataHelper,
         array $data = []
-    )
-    {
+    ) {
         parent::__construct($context, $data);
         $this->storeManager = $storeManager;
         $this->dateElement = $dateElement;
@@ -89,7 +87,7 @@ class NewTransfer extends \Magento\Framework\View\Element\Template
      */
     public function getEngineSuggestConfig()
     {
-        return array(
+        return [
             'url' => $this->getUrl(
                 'warranty/autosuggest/engineforwarrantytransfer',
                 ['_secure' => $this->getRequest()->isSecure()]
@@ -99,7 +97,7 @@ class NewTransfer extends \Magento\Framework\View\Element\Template
             'storeId' => $this->storeManager->getStore()->getId(),
             'delay' => 500,
             'minSearchLength' => 1
-        );
+        ];
     }
 
     /**

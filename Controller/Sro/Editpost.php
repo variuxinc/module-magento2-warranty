@@ -29,8 +29,7 @@ class Editpost extends \Variux\Warranty\Controller\AbstractAction
         SuggestHelper $suggestHelper,
         \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
         \Variux\Warranty\Model\WarrantyFactory $warrantyFactory
-    )
-    {
+    ) {
         parent::__construct(
             $context,
             $companyContext,
@@ -49,7 +48,7 @@ class Editpost extends \Variux\Warranty\Controller\AbstractAction
         $validFormKey = $this->formKeyValidator->validate($this->getRequest());
 
         $resultRedirect = $this->resultRedirectFactory->create();
-        if($validFormKey && $this->getRequest()->isPost()) {
+        if ($validFormKey && $this->getRequest()->isPost()) {
             if (isset($data['warranty_id']) && $data['warranty_id']) {
                 $warranty = $this->warrantyFactory->create()->load($data['warranty_id']);
             } else {

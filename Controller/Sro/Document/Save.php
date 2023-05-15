@@ -71,8 +71,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         FileProcessor $fileProcessor,
         CompanyDetails $companyDetails,
         SroResourceModel $sroResourceModel
-    )
-    {
+    ) {
         parent::__construct(
             $context,
             $companyContext,
@@ -101,12 +100,12 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
             "file_path" => ""
         ];
         $response = [
-            'error' => TRUE,
+            'error' => true,
             'msg' => ''
         ];
         $data = $this->getRequest()->getParams();
         $fileData = $files = $this->getRequest()->getFiles("file");
-        if(empty($fileData)){
+        if (empty($fileData)) {
             $response['msg'] = self::ERROR_MESS_EMPTY;
             $resultJson->setData(json_encode($response));
             return $resultJson;
@@ -131,7 +130,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                     $responseData = $document->getData();
                     $responseData = array_intersect_key($responseData, $acceptedValue);
                     $response = [
-                        'error' => FALSE,
+                        'error' => false,
                         'data' => $responseData,
                         'msg' => self::SUCCESS_MESS
                     ];
@@ -142,7 +141,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                 $response['msg'] = self::ERROR_MESS_INVALID_SRO ;
             }
 
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             $response['msg'] = $e->getMessage();
         }
         $resultJson->setData(json_encode($response));

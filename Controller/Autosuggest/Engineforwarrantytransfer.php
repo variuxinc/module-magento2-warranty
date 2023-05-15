@@ -34,8 +34,7 @@ class Engineforwarrantytransfer extends \Variux\Warranty\Controller\AbstractActi
         \Magento\Customer\Model\Session $_customerSession,
         \Variux\Warranty\Helper\Data    $helperData,
         SuggestHelper                   $suggestHelper
-    )
-    {
+    ) {
         parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
     }
 
