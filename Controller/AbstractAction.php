@@ -141,7 +141,7 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
      *
      * @return bool
      */
-    protected function isAllowed(): bool
+    protected function isAllowed()
     {
         return $this->companyContext->isResourceAllowed(static::COMPANY_RESOURCE);
     }
