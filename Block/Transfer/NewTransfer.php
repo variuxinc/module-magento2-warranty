@@ -31,7 +31,6 @@ class NewTransfer extends \Magento\Framework\View\Element\Template
      */
     protected $dataHelper;
 
-
     /**
      * @param Context $context
      * @param StoreManagerInterface $storeManager
