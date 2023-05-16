@@ -111,29 +111,13 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                     $this->warrantyResourceModel->load($warranty, $sro->getWarrantyId());
                     if ($warranty->getStatus() == \Variux\Warranty\Model\Warranty::STATUS_ARRAY["INCOMP"]["key"]) {
                         $sroMisc->setTransDate($warranty->getDateOfRepair());
-                        if ($sroMisc->getMiscCode() == "FRT") {
-                            $sroMisc->setDescription("Freight");
-                            $sroMisc->setType("freight");
-                            if (!$warranty->getInvoiceNumber() && !$warranty->getOrderNumber()) {
-                                $response = [
-                                    'error' => true,
-                                    'msg' => __('Invoice and Order Number is required for freight')
-                                ];
-                                $resultJson->setData(json_encode($response));
-                                return $resultJson;
-                            }
-                        } else {
-                            $sroMisc->setDescription("Import");
-                            $sroMisc->setType("import_fee");
-                        }
+                        $this->checkMiscCode($sroMisc, $warranty, $resultJson);
                         $sroMisc->setCustomerId($customerId);
                         $sroMisc->setCompanyId($companyId);
                         $sroMisc->setPartnerId($this->helperData->getPartner()->getId());
                         $sroMisc->setPartnerNum($this->helperData->getPartner()->getPartnerNum());
-//                        $sroMisc->setUsername($this->helperData->getPartner()->getName());
                         $sroMisc->setQtyConv(1);
                         $sroMisc->setSroLine(1);
-//                        $sroMisc->setSroNum($sro->getSroNum());
                         $sroMisc->setSroOper(10);
                         $fmt = new NumberFormatter('en_US', NumberFormatter::DECIMAL);
                         $tmp = $fmt->parse($sroMisc->getAmount());
@@ -180,5 +164,24 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
 
         $resultJson->setData(json_encode($response));
         return $resultJson;
+    }
+
+    protected function checkMiscCode($sroMisc, $warranty, $resultJson)
+    {
+        if ($sroMisc->getMiscCode() == "FRT") {
+            $sroMisc->setDescription("Freight");
+            $sroMisc->setType("freight");
+            if (!$warranty->getInvoiceNumber() && !$warranty->getOrderNumber()) {
+                $response = [
+                    'error' => true,
+                    'msg' => __('Invoice and Order Number is required for freight')
+                ];
+                $resultJson->setData(json_encode($response));
+                return $resultJson;
+            }
+        } else {
+            $sroMisc->setDescription("Import");
+            $sroMisc->setType("import_fee");
+        }
     }
 }

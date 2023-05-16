@@ -97,7 +97,7 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
          *
          */
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+        $storeManager = $objectManager->create(\Magento\Store\Model\StoreManagerInterface::class);
         $pdf = new \Variux\Warranty\Helper\MyPdfX(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         // set document information
 
@@ -106,7 +106,6 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
         $pdf->SetTitle("Warranty Claim : " . $claim->getIncNum());
         $pdf->SetSubject('Warranty Claim');
         $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
-
 
         $comPa = "www.indmar.variux.com";
         // set default header data
@@ -132,10 +131,6 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
         $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
         // set some language-dependent strings (optional)
-        if (@file_exists(dirname(__FILE__) . '/lang/eng.php')) {
-            require_once(dirname(__FILE__) . '/lang/eng.php');
-            $pdf->setLanguageArray($l);
-        }
 
         // ---------------------------------------------------------
 
@@ -149,7 +144,6 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
         $pdf->SetFont('helvetica', '', 8, '', true);
         //page 1
         $pdf->AddPage();
-
 
         $sroNum = "";
         if ($this->indexBlock->getSroDetailNumber($claim)) {

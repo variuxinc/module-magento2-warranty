@@ -117,8 +117,7 @@ class NewTransfer extends \Magento\Framework\View\Element\Template
             "trans_sn" => "",
             "make_of_boat" => "",
             "boat_use" => "",
-            "cur_cust" => $customer->getData("indmar_syteline_cust_num"),
-            "cur_consumer" => "",
+            "cur_cust" => $customer->getName(),
             "hull_id" => "",
             "warr_start_date" => "",
             "warr_end_date" => "",
@@ -148,7 +147,6 @@ class NewTransfer extends \Magento\Framework\View\Element\Template
             "country" => ""
         ];
         $data["engineSuggestConfig"] = $this->getEngineSuggestConfig();
-        $data["toast"] = $this->_toastHelper->getToastMessageOptions();
         return json_encode($data);
     }
 }

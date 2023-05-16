@@ -9,17 +9,11 @@ namespace Variux\Warranty\Helper;
  */
 class MyPdf extends \TCPDF
 {
-
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    public function Header()
+    public function header()
     {
         // Logo
         $_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface');
+        $storeManager = $_objectManager->create(Magento\Store\Model\StoreManagerInterface::class);
         $currentStore = $storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
         $image_file =$currentStore.'logo/stores/1/Indmar_Marine_Engines_Logo_1.jpg';
 
@@ -31,7 +25,7 @@ class MyPdf extends \TCPDF
         $this->Cell(0, 10, ' Warranty Claim Report ', 0, false, 'C', 0, '', 0, false, 'M', 'M');
     }
 
-    public function Footer()
+    public function footer()
     {
         // Position at 15 mm from bottom
         $this->SetY(-15);

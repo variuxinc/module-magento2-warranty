@@ -169,14 +169,10 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                         if ($labor->getHourWorked() > 0) {
                             $labor->setCompanyId($companyId);
                             $labor->setLaborHourlyRate($laborRate);
-//                            $labor->setSroNum($sro->getSroNum());
                             $labor->setTransDate($warranty->getDateOfRepair());
                             $labor->setDescription($workCode->getDescription());
                             $labor->setCustomerId($customerId);
                             $labor->setPartnerId($this->helperData->getPartner()->getId());
-//                            $labor->setPartnerNum($this->helperData->getPartner()->getPartnerNum());
-//                            $labor->setUsername($this->helperData->getPartner()->getName());
-//                            $labor->setHourToBill(0.5);
                             $labor->setCostConv(null);
                             $labor->setSroOper(10);
                             $this->sroLaborRepository->save($labor);
