@@ -90,8 +90,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         UnitFactory              $unitFactory,
         UnitRegFactory           $unitRegFactory,
         UnitRegResourceModel     $unitRegResourceModel
-    )
-    {
+    ) {
         parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
         $this->userContext = $userContext;
         $this->companyDetails = $companyDetails;

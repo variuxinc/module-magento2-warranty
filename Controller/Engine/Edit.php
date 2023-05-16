@@ -44,8 +44,7 @@ class Edit extends \Variux\Warranty\Controller\AbstractAction
         SuggestHelper                              $suggestHelper,
         UnitFactory                                $unitFactory,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory
-    )
-    {
+    ) {
         parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
         $this->unitFactory = $unitFactory;
         $this->resultPageFactory = $resultPageFactory;

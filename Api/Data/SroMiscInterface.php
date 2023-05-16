@@ -28,7 +28,6 @@ interface SroMiscInterface
     const QTY_CONV = 'qty_conv';
     const TRANS_DATE = 'trans_date';
 
-
     /**
      * Get sro_id
      * @return string|null

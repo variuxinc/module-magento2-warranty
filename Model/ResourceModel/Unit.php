@@ -37,7 +37,7 @@ class Unit extends AbstractDb
             case "%like":
                 $conditionString = 'serial_no like "%'.$number.'%"';
                 break;
-            default :
+            default:
                 $conditionString = 'serial_no = "'.$number.'"';
                 break;
         }

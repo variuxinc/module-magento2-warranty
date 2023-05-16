@@ -87,8 +87,7 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
         \Variux\Warranty\Helper\Data          $helperData,
         SuggestHelper                         $suggestHelper,
         ?Url                                  $customerUrl = null
-    )
-    {
+    ) {
         parent::__construct($context);
         $this->logger = $logger;
         $this->companyContext = $companyContext;

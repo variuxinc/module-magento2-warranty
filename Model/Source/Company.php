@@ -17,7 +17,6 @@ class Company implements \Magento\Framework\Data\OptionSourceInterface
         $this->collection = $companyCollectionFactory->create();
     }
 
-
     public function toOptionArray()
     {
         $items = $this->collection->getItems();

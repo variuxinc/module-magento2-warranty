@@ -19,27 +19,6 @@ use Variux\Warranty\Helper\SuggestHelper;
 class Engineforwarrantytransfer extends \Variux\Warranty\Controller\AbstractAction
 {
     /**
-     * Engine constructor.
-     * @param Context $context
-     * @param CompanyContext $companyContext
-     * @param LoggerInterface $logger
-     * @param Session $_customerSession
-     * @param Data $helperData
-     * @param SuggestHelper $suggestHelper
-     */
-    public function __construct(
-        Context                         $context,
-        CompanyContext                  $companyContext,
-        \Psr\Log\LoggerInterface        $logger,
-        \Magento\Customer\Model\Session $_customerSession,
-        \Variux\Warranty\Helper\Data    $helperData,
-        SuggestHelper                   $suggestHelper
-    )
-    {
-        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
-    }
-
-    /**
      * @return ResponseInterface|ResultInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */

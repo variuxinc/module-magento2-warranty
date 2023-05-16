@@ -17,7 +17,6 @@ class Product implements \Magento\Framework\Data\OptionSourceInterface
         $this->collection = $productCollectionFactory->create();
     }
 
-
     public function toOptionArray()
     {
         $items = $this->collection->getItems();

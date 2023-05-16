@@ -51,8 +51,7 @@ class Edit extends \Variux\Warranty\Controller\AbstractAction
         PageFactory                           $resultPageFactory,
         WarrantyRepository                    $warrantyRepository,
         SuggestHelper                         $suggestHelper
-    )
-    {
+    ) {
         parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
         $this->resultPageFactory = $resultPageFactory;
         $this->warrantyRepository = $warrantyRepository;

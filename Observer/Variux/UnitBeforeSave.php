@@ -24,8 +24,7 @@ class UnitBeforeSave implements \Magento\Framework\Event\ObserverInterface
     public function __construct(
         Logger $logger,
         \Magento\Catalog\Model\ProductRepository $productRepository
-    )
-    {
+    ) {
         $this->logger = $logger;
         $this->productRepository = $productRepository;
     }
@@ -43,8 +42,8 @@ class UnitBeforeSave implements \Magento\Framework\Event\ObserverInterface
         $productSku = $unit->getItem();
         $product = $this->productRepository->get($productSku);
 
-        if(empty($unit->getDescription())) {
-        $unit->setDescription($product->getName());
+        if (empty($unit->getDescription())) {
+            $unit->setDescription($product->getName());
         }
     }
 }

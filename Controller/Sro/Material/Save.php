@@ -75,9 +75,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         WarrantyResourceModel $warrantyResourceModel,
         PriceHelper $priceHelper,
         CompanyDetails $companyDetails
-
-    )
-    {
+    ) {
         parent::__construct(
             $context,
             $companyContext,
@@ -85,7 +83,6 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
             $_customerSession,
             $helperData,
             $suggestHelper
-
         );
         $this->sroMaterialInterfaceFactory = $sroMaterialInterfaceFactory;
         $this->sroMaterialRepository = $sroMaterialRepository;
@@ -138,32 +135,14 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                     $tmp = $fmt->parse($material->getQtyConv());
                     $material->setQtyConv($tmp);
                     if ($material->getQtyConv() && $material->getQtyConv() > 0) {
-                        if ($material->getItem() != "NPN") {
-                            $product = $this->productFactory->create();
-                            $productId = $this->productResourceModel->getIdBySku($material->getItem());
-                            $this->productResourceModel->load($product, $productId);
-                            if ($productId) {
-                                $material->setDescription($product->getName());
-                                $material->setPrice($this->getProductPrice($product));
-                            } else {
-                                $response = [
-                                    'error' => true,
-                                    'msg' => "Invalid item"
-                                ];
-                                $resultJson->setData(json_encode($response));
-                                return $resultJson;
-                            }
-                        } else {
-                            $tmp = $fmt->parse($material->getPrice());
-                            $material->setPrice($tmp);
-                        }
+                        $this->checkItemType($material, $resultJson, $fmt);
                         $material->setSroId($sro->getId());
                         $material->setCustomerId($customerId);
                         $material->setCompanyId($companyId);
                         $material->setSroOper(10);
                         $material->setSroLine(1);
                         $material->setTransDate($warranty->getDateOfRepair());
-                        if($material->getPrice() > 0) {
+                        if ($material->getPrice() > 0) {
                             $this->sroMaterialRepository->save($material);
                             $responseData = $material->getData();
                             $responseData["total"] = $this->priceHelper->currency($responseData["price"] * $responseData["qty_conv"], true, false);
@@ -197,8 +176,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                     'msg' => "Invalid SRO ID"
                 ];
             }
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             $response = [
                 'error' => true,
                 'msg' => $e->getMessage()
@@ -207,7 +185,31 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         $resultJson->setData(json_encode($response));
         return $resultJson;
     }
-    public function getProductPrice($product){
+    public function getProductPrice($product)
+    {
         return (float)$product->getFinalPrice();
+    }
+
+    protected function checkItemType($material, $resultJson, $fmt)
+    {
+        if ($material->getItem() != "NPN") {
+            $product = $this->productFactory->create();
+            $productId = $this->productResourceModel->getIdBySku($material->getItem());
+            $this->productResourceModel->load($product, $productId);
+            if ($productId) {
+                $material->setDescription($product->getName());
+                $material->setPrice($this->getProductPrice($product));
+            } else {
+                $response = [
+                    'error' => true,
+                    'msg' => "Invalid item"
+                ];
+                $resultJson->setData(json_encode($response));
+                return $resultJson;
+            }
+        } else {
+            $tmp = $fmt->parse($material->getPrice());
+            $material->setPrice($tmp);
+        }
     }
 }

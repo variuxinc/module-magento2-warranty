@@ -79,7 +79,7 @@
 		<column name="work_code">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">work_code</label>
+				<label translate="true">Work Code</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -98,7 +98,7 @@
 		<column name="description">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">description</label>
+				<label translate="true">Description</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -113,30 +113,6 @@
 				<label translate="true">duration</label>
 				<editor>
 					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="created_at">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">created_at</label>
-				<editor>
-					<editorType>date</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="updated_at">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">updated_at</label>
-				<editor>
-					<editorType>date</editorType>
 					<validation>
 						<rule name="required-entry" xsi:type="boolean">false</rule>
 					</validation>

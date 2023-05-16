@@ -238,7 +238,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getCurrentPartner()
     {
-        if (!is_null($this->getPartner())) {
+        if ($this->getPartner() !== null) {
             return $this->partnerCache;
         }
         return null;

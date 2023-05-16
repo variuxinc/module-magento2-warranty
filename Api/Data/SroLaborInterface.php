@@ -30,7 +30,6 @@ interface SroLaborInterface
     const COMPANY_ID = 'company_id';
     const PARTNER_ID = 'partner_id';
 
-
     /**
      * Get sro_id
      * @return string|null
