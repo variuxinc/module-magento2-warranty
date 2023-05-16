@@ -135,25 +135,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                     $tmp = $fmt->parse($material->getQtyConv());
                     $material->setQtyConv($tmp);
                     if ($material->getQtyConv() && $material->getQtyConv() > 0) {
-                        if ($material->getItem() != "NPN") {
-                            $product = $this->productFactory->create();
-                            $productId = $this->productResourceModel->getIdBySku($material->getItem());
-                            $this->productResourceModel->load($product, $productId);
-                            if ($productId) {
-                                $material->setDescription($product->getName());
-                                $material->setPrice($this->getProductPrice($product));
-                            } else {
-                                $response = [
-                                    'error' => true,
-                                    'msg' => "Invalid item"
-                                ];
-                                $resultJson->setData(json_encode($response));
-                                return $resultJson;
-                            }
-                        } else {
-                            $tmp = $fmt->parse($material->getPrice());
-                            $material->setPrice($tmp);
-                        }
+                        $this->checkItemType($material, $resultJson, $fmt);
                         $material->setSroId($sro->getId());
                         $material->setCustomerId($customerId);
                         $material->setCompanyId($companyId);
@@ -206,5 +188,28 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
     public function getProductPrice($product)
     {
         return (float)$product->getFinalPrice();
+    }
+
+    protected function checkItemType($material, $resultJson, $fmt)
+    {
+        if ($material->getItem() != "NPN") {
+            $product = $this->productFactory->create();
+            $productId = $this->productResourceModel->getIdBySku($material->getItem());
+            $this->productResourceModel->load($product, $productId);
+            if ($productId) {
+                $material->setDescription($product->getName());
+                $material->setPrice($this->getProductPrice($product));
+            } else {
+                $response = [
+                    'error' => true,
+                    'msg' => "Invalid item"
+                ];
+                $resultJson->setData(json_encode($response));
+                return $resultJson;
+            }
+        } else {
+            $tmp = $fmt->parse($material->getPrice());
+            $material->setPrice($tmp);
+        }
     }
 }

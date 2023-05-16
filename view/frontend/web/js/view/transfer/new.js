@@ -7,11 +7,12 @@ define(
         'Magento_Ui/js/modal/confirm',
         'Magento_Ui/js/modal/modal',
         'Variux_Warranty/js/view/helper',
+        'Magento_Ui/js/model/messageList',
         'mage/translate',
         'mage/calendar',
         'Variux_Warranty/js/lib/ko-autosuggest',
         'mage/validation'
-    ], function ($, ko, Component, Api, Confirmation, modal, helper) {
+    ], function ($, ko, Component, Api, Confirmation, modal, helper, messageList) {
         'use strict';
 
         return Component.extend({
@@ -56,18 +57,18 @@ define(
                             let res = JSON.parse(data);
                             if (res.error) {
                                 if (res.msg) {
-                                    self.toast({type: "error", message: res.msg});
+                                    messageList.addErrorMessage({message: res.msg});
                                     $("button.claim-btn").attr("disabled", false);
                                 }
                             } else {
-                                self.toast({type: "success", message: res.msg});
+                                messageList.addSuccessMessage({message: res.msg});
                                 setTimeout(function () {
                                     location.reload();
                                 }, 5000);
                             }
                         },
                         error: function () {
-                            self.toast({type: "error", message: "Cannot submit warranty transfer, please contact administrator"});
+                            messageList.addErrorMessage({message: "Cannot submit warranty transfer, please contact administrator"});
                             $("button.claim-btn").attr("disabled", false);
                         },
                         cache: false,
@@ -87,7 +88,7 @@ define(
                     let endDate = new Date(item.warranty_end_date);
                     let todayDate = new Date(); //Today Date
                     if (todayDate > endDate) {
-                        window.warrantyTransfer.toast({type: "error", message: "This warranty is expired."});
+                        messageList.addErrorMessage({message:'This warranty is expired.'});
                     }
                 }
             },
@@ -120,162 +121,6 @@ define(
                     reader.onerror = error => reject(error);
                 });
                 return documentFile;
-            },
-            toast : function(message){
-
-                switch(message.type)
-                {
-                    case 'success':
-                        if (window.InitData.toast.success.icon == 1) {
-                            $.toast({
-                                text: message.message,
-                                showHideTransition: 'slide',
-                                icon: 'success',
-                                position: window.InitData.toast.success.position,
-                                hideAfter: 20000,
-                                bgColor: window.InitData.toast.success.background,
-                                textColor: window.InitData.toast.success.font,
-                                loader: false
-                            });
-                        }else {
-                            $.toast({
-                                text: message.message,
-                                showHideTransition: 'slide',
-                                position: window.InitData.toast.success.position,
-                                hideAfter: 20000,
-                                bgColor: window.InitData.toast.success.background,
-                                textColor: window.InitData.toast.success.font,
-                                loader: false
-                            });
-                        }
-
-                        break;
-                    case 'error':
-                        if (window.InitData.toast.error.icon == 1) {
-                            $.toast({
-                                text: message.message,
-                                showHideTransition: 'slide',
-                                icon: 'error',
-                                position: window.InitData.toast.error.position,
-                                hideAfter: 20000,
-                                bgColor: window.InitData.toast.error.background,
-                                textColor: window.InitData.toast.error.font,
-                                loader: false
-                            });
-                        }else {
-                            $.toast({
-                                text: message.message,
-                                showHideTransition: 'slide',
-                                position: window.InitData.toast.error.position,
-                                hideAfter: 20000,
-                                bgColor: window.InitData.toast.error.background,
-                                textColor: window.InitData.toast.error.font,
-                                loader: false
-                            });
-                        }
-
-                        break;
-                    case 'warning':
-                        if (window.InitData.toast.warning.icon == 1) {
-                            $.toast({
-                                text: message.message,
-                                showHideTransition: 'slide',
-                                icon: 'warning',
-                                position: window.InitData.toast.warning.position,
-                                hideAfter: 20000,
-                                bgColor: window.InitData.toast.warning.background,
-                                textColor: window.InitData.toast.warning.font,
-                                loader: false
-                            });
-                        }else {
-                            $.toast({
-                                text: message.message,
-                                showHideTransition: 'slide',
-                                position: window.InitData.toast.warning.position,
-                                hideAfter: 20000,
-                                bgColor: window.InitData.toast.warning.background,
-                                textColor: window.InitData.toast.warning.font,
-                                loader: false
-                            });
-                        }
-
-                        break;
-                    case 'info':
-                        if (window.InitData.toast.info.icon == 1) {
-                            $.toast({
-                                text: message.message,
-                                showHideTransition: 'slide',
-                                icon: 'info',
-                                position: window.InitData.toast.info.position,
-                                hideAfter: 20000,
-                                bgColor: window.InitData.toast.info.background,
-                                textColor: window.InitData.toast.info.font,
-                                loader: false
-                            });
-                        }else {
-                            $.toast({
-                                text: message.message,
-                                showHideTransition: 'slide',
-                                position: window.InitData.toast.info.position,
-                                hideAfter: 20000,
-                                bgColor: window.InitData.toast.info.background,
-                                textColor: window.InitData.toast.info.font,
-                                loader: false
-                            });
-
-                        }
-
-                        break;
-                    case 'notice':
-                        if (window.InitData.toast.warning.icon == 1) {
-                            $.toast({
-                                text: message.message,
-                                showHideTransition: 'slide',
-                                icon: 'warning',
-                                position: window.InitData.toast.notice.position,
-                                hideAfter: 20000,
-                                bgColor: window.InitData.toast.notice.background,
-                                textColor: window.InitData.toast.notice.font,
-                                loader: false
-                            });
-                        }else {
-                            $.toast({
-                                text: message.message,
-                                showHideTransition: 'slide',
-                                position: window.InitData.toast.notice.position,
-                                hideAfter: 20000,
-                                bgColor: window.InitData.toast.notice.background,
-                                textColor: window.InitData.toast.notice.font,
-                                loader: false
-                            });
-                        }
-
-                        break;
-                    default :
-                        if (window.InitData.toast.info.icon == 1) {
-                            $.toast({
-                                text: message.message,
-                                showHideTransition: 'slide',
-                                icon: 'info',
-                                position: window.InitData.toast.info.position,
-                                hideAfter: 20000,
-                                bgColor: window.InitData.toast.info.background,
-                                textColor: window.InitData.toast.info.font,
-                                loader: false
-                            })
-                        }else {
-                            $.toast({
-                                text: message.message,
-                                showHideTransition: 'slide',
-                                position: window.InitData.toast.info.position,
-                                hideAfter: 20000,
-                                bgColor: window.InitData.toast.info.background,
-                                textColor: window.InitData.toast.info.font,
-                                loader: false
-                            })
-                        }
-                        break;
-                }
             }
         })
     });
