@@ -21,6 +21,7 @@ use Variux\Warranty\Model\File\FileProcessor;
 use Variux\Warranty\Model\ResourceModel\WarrantyTransfer as WarrantyTransferResourceModel;
 use Magento\Framework\Mail\Template\TransportBuilder;
 use Variux\Warranty\Helper\SuggestHelper;
+use Variux\Warranty\Logger\Logger;
 
 class Save extends \Variux\Warranty\Controller\AbstractAction
 {
@@ -56,6 +57,10 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
      * @var TransportBuilder
      */
     protected $transportBuilder;
+    /**
+     * @var Logger
+     */
+    protected $customLogger;
 
     /**
      * @param Context $context
@@ -72,6 +77,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
      * @param FileProcessor $fileProcessor
      * @param WarrantyTransferResourceModel $warrantyTransferResourceModel
      * @param TransportBuilder $transportBuilder
+     * @param Logger $customLogger
      */
     public function __construct(
         Context                       $context,
@@ -87,7 +93,8 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         CompanyDetails                $companyDetails,
         FileProcessor                 $fileProcessor,
         WarrantyTransferResourceModel $warrantyTransferResourceModel,
-        TransportBuilder              $transportBuilder
+        TransportBuilder              $transportBuilder,
+        Logger $customLogger
     ) {
         parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
         $this->jsonHelper = $jsonHelper;
@@ -98,6 +105,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         $this->fileProcessor = $fileProcessor;
         $this->warrantyTransferResourceModel = $warrantyTransferResourceModel;
         $this->transportBuilder = $transportBuilder;
+        $this->customLogger = $customLogger;
     }
 
     /**
@@ -107,7 +115,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
     {
         $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
         $acceptedValue = [
-            "engine_ser_num" => "",
+            "engine_serial_num" => "",
             "engine_hours" => "",
             "trans_sn" => "",
             "make_of_boat" => "",
@@ -141,9 +149,9 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
             $data = $this->getRequest()->getParams();
             $filesData = $files = $this->getRequest()->getFiles("files");
             $data = array_intersect_key($data, $acceptedValue);
-            if ($data["engine_ser_num"]) {
+            if ($data["engine_serial_num"]) {
                 $unit = $this->unitFactory->create();
-                $this->unitResourceModel->loadBySerial($unit, $data["engine_ser_num"]);
+                $this->unitResourceModel->loadBySerial($unit, $data["engine_serial_num"]);
                 if ($unit->getId()) {
                     /** @var $warrantyTransfer \Variux\Warranty\Model\WarrantyTransfer */
                     $warrantyTransfer = $this->warrantyTransferFactory->create();
@@ -156,10 +164,14 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                         $customerId = $customer->getId();
                         $companyId = $this->companyDetails->getInfo($customerId)->getId();
                         $partner = $this->helperData->getCurrentPartner();
-                        $warrantyTransfer->setCurrentCustomer($partner->getCustomerNum());
+//                        $warrantyTransfer->setCurrentCustomer($partner->getPartnerNum());
+//                        $this->customLogger->info('partner num: ' . $partner->getCustomerNum());
                         $warrantyTransfer->setSubmitterName($customer->getName());
+                        $this->customLogger->info('submitter name: ' . $customer->getName());
                         $warrantyTransfer->setSubmitterEmail($customer->getEmail());
+                        $this->customLogger->info('submitter email: ' . $customer->getEmail());
                         $warrantyTransfer->setEngineModel($unit->getItem());
+                        $this->customLogger->info('engine model: ' . $unit->getItem());
                         $warrantyTransfer->setWarrantyStartDate($unit->getWarrantyStartDate());
                         $warrantyTransfer->setWarrantyEndDate($unit->getWarrantyEndDate());
                         $warrantyTransfer->setCompanyId($companyId);
@@ -173,17 +185,17 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                             'msg' => __('Warranty transfer is saved successfully')
                         ];
 
-                        $transport = $this->transportBuilder
-                            ->setTemplateIdentifier('new_warranty_transfer')
-                            ->setTemplateOptions(['area' => \Magento\Framework\App\Area::AREA_ADMINHTML, 'store' => \Magento\Store\Model\Store::DEFAULT_STORE_ID])
-                            ->setTemplateVars([
-                                'serial' => $data["engine_ser_num"],
-                                'company' => $customer->getName()
-                            ])
-                            ->setFromByScope("sales")
-                            ->addTo(['warrantyapp@indmar.com'])
-                            ->getTransport();
-                        $transport->sendMessage();
+//                        $transport = $this->transportBuilder
+//                            ->setTemplateIdentifier('new_warranty_transfer')
+//                            ->setTemplateOptions(['area' => \Magento\Framework\App\Area::AREA_ADMINHTML, 'store' => \Magento\Store\Model\Store::DEFAULT_STORE_ID])
+//                            ->setTemplateVars([
+//                                'serial' => $data["engine_serial_num"],
+//                                'company' => $customer->getName()
+//                            ])
+//                            ->setFromByScope("sales")
+//                            ->addTo(['warrantyapp@indmar.com'])
+//                            ->getTransport();
+//                        $transport->sendMessage();
                     } else {
                         $response = [
                             'error' => true,

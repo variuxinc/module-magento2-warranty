@@ -108,7 +108,7 @@ class NewTransfer extends \Magento\Framework\View\Element\Template
     {
         $customer = $this->customerSession->getCustomer();
         $data["formData"] = [
-            "engine_ser_num" => "",
+            "engine_serial_num" => "",
             "submitter_name" => $customer->getName(),
             "submitter_email" => $customer->getEmail(),
             "engine_desc" => "",
