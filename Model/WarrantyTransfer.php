@@ -580,7 +580,7 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
      */
     public function setFilePathJson($filePathJson)
     {
-        return $this->setData(self::FILE_PATH_JSON, $filePathJson);
+        return $this->setData(self::FILE_PATH_JSON, json_encode($filePathJson));
     }
 
     /**

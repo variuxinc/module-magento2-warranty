@@ -8,14 +8,14 @@
     <fieldset class="fieldset">
         <legend class="legend"><span>General Information</span></legend>
         <div class="field required">
-            <label class="label" for="engine_ser_num">
+            <label class="label" for="engine_serial_num">
                 <span data-bind="i18n: 'Engine'"></span>
             </label>
             <div class="control">
                 <input
-                    data-bind="value: formData().engine_ser_num, autosuggest: {config: window.InitData.engineSuggestConfig, callback: engineSelect}"
-                    type="text" class="form-control-plaintext validate-length maximum-length-30" id="engine_ser_num"
-                    name="engine_ser_num"
+                    data-bind="value: formData().engine_serial_num, autosuggest: {config: window.InitData.engineSuggestConfig, callback: engineSelect}"
+                    type="text" class="form-control-plaintext validate-length maximum-length-30" id="engine_serial_num"
+                    name="engine_serial_num"
                     placeholder="Engine Serial Number" autocomplete="off"/>
             </div>
         </div>
