@@ -45,8 +45,7 @@ class Index extends \Variux\Warranty\Controller\AbstractAction implements HttpGe
         \Variux\Warranty\Helper\Data $helperData,
         SuggestHelper                $suggestHelper,
         CompanyManagementInterface   $companyManagement
-    )
-    {
+    ) {
         parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
         $this->companyManagement = $companyManagement;
     }

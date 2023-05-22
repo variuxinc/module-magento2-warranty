@@ -13,7 +13,7 @@ class MyPdf extends \TCPDF
     {
         // Logo
         $_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $storeManager = $_objectManager->create(Magento\Store\Model\StoreManagerInterface::class);
+        $storeManager = $_objectManager->create(\Magento\Store\Model\StoreManagerInterface::class);
         $currentStore = $storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
         $image_file =$currentStore.'logo/stores/1/Indmar_Marine_Engines_Logo_1.jpg';
 

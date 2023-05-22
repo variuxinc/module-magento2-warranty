@@ -4,9 +4,10 @@ namespace Variux\Warranty\Controller\Sro;
 
 use Magento\Company\Model\CompanyContext;
 use Magento\Customer\Model\Session;
-use Magento\Customer\Model\Url;
 use PHPUnit\Framework\Exception;
 use Variux\Warranty\Helper\SuggestHelper;
+use Magento\Framework\Escaper;
+use Variux\Warranty\Model\ResourceModel\Warranty as WarrantyResourceModel;
 
 class Editpost extends \Variux\Warranty\Controller\AbstractAction
 {
@@ -19,6 +20,14 @@ class Editpost extends \Variux\Warranty\Controller\AbstractAction
      * @var \Variux\Warranty\Model\WarrantyFactory
      */
     protected $warrantyFactory;
+    /**
+     * @var Escaper
+     */
+    protected $escaper;
+    /**
+     * @var WarrantyResourceModel
+     */
+    protected $warrantyResourceModel;
 
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
@@ -28,7 +37,9 @@ class Editpost extends \Variux\Warranty\Controller\AbstractAction
         \Variux\Warranty\Helper\Data $helperData,
         SuggestHelper $suggestHelper,
         \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
-        \Variux\Warranty\Model\WarrantyFactory $warrantyFactory
+        \Variux\Warranty\Model\WarrantyFactory $warrantyFactory,
+        Escaper $escaper,
+        WarrantyResourceModel $warrantyResourceModel
     ) {
         parent::__construct(
             $context,
@@ -40,6 +51,8 @@ class Editpost extends \Variux\Warranty\Controller\AbstractAction
         );
         $this->formKeyValidator = $formKeyValidator;
         $this->warrantyFactory = $warrantyFactory;
+        $this->escaper = $escaper;
+        $this->warrantyResourceModel = $warrantyResourceModel;
     }
 
     public function execute()
@@ -50,7 +63,8 @@ class Editpost extends \Variux\Warranty\Controller\AbstractAction
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($validFormKey && $this->getRequest()->isPost()) {
             if (isset($data['warranty_id']) && $data['warranty_id']) {
-                $warranty = $this->warrantyFactory->create()->load($data['warranty_id']);
+                $warranty = $this->warrantyFactory->create();
+                $this->warrantyResourceModel->load($warranty, $data['warranty_id']);
             } else {
                 unset($data['warranty_id']);
                 $warranty = $this->warrantyFactory->create();

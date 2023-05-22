@@ -7,10 +7,12 @@ use Magento\Customer\Model\Session;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 use Psr\Log\LoggerInterface;
+use Variux\Warranty\Block\Index\Index;
 use Variux\Warranty\Helper\Data;
 use Variux\Warranty\Helper\SuggestHelper;
 use Variux\Warranty\Helper\MyPdf;
 use Variux\Warranty\Model\WarrantyFactory;
+use Variux\Warranty\Model\ResourceModel\Warranty as WarrantyResourceModel;
 
 class Report extends \Variux\Warranty\Controller\AbstractAction
 {
@@ -27,6 +29,10 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
      * @var \Variux\Warranty\Block\Index\Index
      */
     protected $indexBlock;
+    /**
+     * @var WarrantyResourceModel
+     */
+    protected $warrantyResourceModel;
 
     /**
      * @param Context $context
@@ -35,9 +41,10 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
      * @param Session $_customerSession
      * @param Data $helperData
      * @param SuggestHelper $suggestHelper
-     * @param \Variux\Warranty\Block\Index\Index $indexBlock
+     * @param Index $indexBlock
      * @param PageFactory $resultPageFactory
      * @param WarrantyFactory $warrantyFactory
+     * @param WarrantyResourceModel $warrantyResourceModel
      */
     public function __construct(
         Context                            $context,
@@ -48,22 +55,31 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
         SuggestHelper                      $suggestHelper,
         \Variux\Warranty\Block\Index\Index $indexBlock,
         PageFactory                        $resultPageFactory,
-        WarrantyFactory                    $warrantyFactory
+        WarrantyFactory                    $warrantyFactory,
+        WarrantyResourceModel $warrantyResourceModel
     ) {
-        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
+        parent::__construct(
+            $context,
+            $companyContext,
+            $logger,
+            $_customerSession,
+            $helperData,
+            $suggestHelper
+        );
         $this->indexBlock = $indexBlock;
         $this->resultPageFactory = $resultPageFactory;
         $this->warrantyFactory = $warrantyFactory;
+        $this->warrantyResourceModel = $warrantyResourceModel;
     }
 
     public function execute()
     {
         $id = $this->getRequest()->getParam('id');
-        $model = $this->warrantyFactory->create();
+        $warranty = $this->warrantyFactory->create();
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($id) {
-            $model->load($id);
-            if (!$model->getId()) {
+            $this->warrantyResourceModel->load($warranty,$id);
+            if (!$this->warrantyResourceModel->load($warranty,$id)) {
                 $this->messageManager->addError(__('This warranty claim no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
             }
@@ -74,7 +90,7 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
              * Generate ở function này chưa có thông tin output ra đâu.
              *       A cần phải return out put là gì xử lý out put của hàm này như thế nào sau khi generate xong.
              */
-            $this->generateClaim($model);
+            $this->generateClaim($warranty);
         }
         /**
          * @Hidro-Le
@@ -102,14 +118,14 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
         // set document information
 
         $pdf->SetCreator(PDF_CREATOR);
-        $pdf->SetAuthor('Indmar');
+        $pdf->SetAuthor('Variux');
         $pdf->SetTitle("Warranty Claim : " . $claim->getIncNum());
         $pdf->SetSubject('Warranty Claim');
         $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
-        $comPa = "www.indmar.variux.com";
+        $comPa = "variux.com";
         // set default header data
-        $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, "INDMAR", $comPa, [0, 64, 255], [0, 64, 128]);
+        $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, "VARIUX", $comPa, [0, 64, 255], [0, 64, 128]);
         $pdf->setFooterData([0, 64, 0], [0, 64, 128]);
 
         // set header and footer fonts
