@@ -117,15 +117,15 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
         $pdf = new \Variux\Warranty\Helper\MyPdfX(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         // set document information
 
-        $pdf->SetCreator(PDF_CREATOR);
-        $pdf->SetAuthor('Variux');
-        $pdf->SetTitle("Warranty Claim : " . $claim->getIncNum());
-        $pdf->SetSubject('Warranty Claim');
-        $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+        $pdf->setCreator(PDF_CREATOR);
+        $pdf->setAuthor('Variux');
+        $pdf->setTitle("Warranty Claim : " . $claim->getIncNum());
+        $pdf->setSubject('Warranty Claim');
+        $pdf->setKeywords('TCPDF, PDF, example, test, guide');
 
         $comPa = "variux.com";
         // set default header data
-        $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, "VARIUX", $comPa, [0, 64, 255], [0, 64, 128]);
+        $pdf->setHeaderData('', 0, "VARIUX", $comPa, [0, 64, 255], [0, 64, 128]);
         $pdf->setFooterData([0, 64, 0], [0, 64, 128]);
 
         // set header and footer fonts
@@ -133,15 +133,15 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
         $pdf->setFooterFont([PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA]);
 
         // set default monospaced font
-        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+        $pdf->setDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
         // set margins
-        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+        $pdf->setMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+        $pdf->setHeaderMargin(PDF_MARGIN_HEADER);
+        $pdf->setFooterMargin(PDF_MARGIN_FOOTER);
 
         // set auto page breaks
-        $pdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);
+        $pdf->setAutoPageBreak(true, PDF_MARGIN_BOTTOM);
 
         // set image scale factor
         $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
@@ -157,7 +157,7 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
         // dejavusans is a UTF-8 Unicode font, if you only need to
         // print standard ASCII chars, you can use core fonts like
         // helvetica or times to reduce file size.
-        $pdf->SetFont('helvetica', '', 8, '', true);
+        $pdf->setFont('helvetica', '', 8, '', true);
         //page 1
         $pdf->AddPage();
 
