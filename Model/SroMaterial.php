@@ -137,22 +137,6 @@ class SroMaterial extends AbstractModel implements SroMaterialInterface
     /**
      * @inheritDoc
      */
-    public function getUm()
-    {
-        return $this->getData(self::UM);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function setUm($um)
-    {
-        return $this->setData(self::UM, $um);
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function getQtyConv()
     {
         return $this->getData(self::QTY_CONV);

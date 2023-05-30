@@ -5,7 +5,11 @@
 ?>
 <div class="warranty-container">
     <div class="warranty-wrapper">
-        <form id="warranty-form" class="form" method="post" action="<?= $block->escapeUrl($block->getUrl("warranty/index/save")) ?>">
+        <form
+            id="warranty-form"
+            class="form"
+            method="post"
+            action="<?= $block->escapeUrl($block->getUrl("warranty/index/save")) ?>">
             <input type="hidden" name="warranty_id">
             <fieldset class="fieldset info">
                 <legend class="legend">
@@ -18,7 +22,14 @@
                         <span><?= $block->escapeHtml(__("Engine")) ?></span>
                     </label>
                     <div class="control">
-                        <input type="text" id="engine" name="engine" value="" title="<?= $block->escapeHtml(__("Engine")) ?>" class="input-text" autocomplete="off">
+                        <input
+                            type="text"
+                            id="engine"
+                            name="engine"
+                            value=""
+                            title="<?= $block->escapeHtml(__("Engine")) ?>"
+                            class="input-text"
+                            autocomplete="off">
                     </div>
                 </div>
                 <div class="field full required">
@@ -26,7 +37,15 @@
                         <span><?= $block->escapeHtml(__("Description")) ?></span>
                     </label>
                     <div class="control">
-                        <input readonly type="text" id="description" name="description" value="" title="<?= $block->escapeHtml(__("Description")) ?>" class="input-text"  data-validate="{required: true}">
+                        <input
+                            readonly
+                            type="text"
+                            id="description"
+                            name="description"
+                            value=""
+                            title="<?= $block->escapeHtml(__("Description")) ?>"
+                            class="input-text"
+                            data-validate="{required: true}">
                     </div>
                 </div>
                 <div class="field required">
@@ -34,7 +53,16 @@
                         <span><?= $block->escapeHtml(__("Item")) ?></span>
                     </label>
                     <div class="control">
-                        <input readonly autocomplete="off" type="text" id="item_sku" name="item_sku" value="" title="<?= $block->escapeHtml(__("Item")) ?>" class="input-text"  data-validate="{required: true}">
+                        <input
+                            readonly
+                            autocomplete="off"
+                            type="text"
+                            id="item_sku"
+                            name="item_sku"
+                            value=""
+                            title="<?= $block->escapeHtml(__("Item")) ?>"
+                            class="input-text"
+                            data-validate="{required: true}">
                     </div>
                 </div>
 
@@ -43,7 +71,15 @@
                         <span><?= $block->escapeHtml(__("Engine Registered")) ?></span>
                     </label>
                     <div class="control">
-                        <input readonly autocomplete="off" type="text" id="warranty_registered" name="warranty_registered" value="" title="<?= $block->escapeHtml(__("Engine Registered")) ?>" class="input-text">
+                        <input
+                            readonly
+                            autocomplete="off"
+                            type="text"
+                            id="warranty_registered"
+                            name="warranty_registered"
+                            value=""
+                            title="<?= $block->escapeHtml(__("Engine Registered")) ?>"
+                            class="input-text">
                     </div>
                 </div>
 
@@ -52,7 +88,15 @@
                         <span><?= $block->escapeHtml(__("Warranty Start Date")) ?></span>
                     </label>
                     <div class="control">
-                        <input readonly autocomplete="off" type="text" id="warranty_start_date" name="warranty_start_date" value="" title="<?= $block->escapeHtml(__("Warranty Start Date")) ?>" class="input-text">
+                        <input
+                            readonly
+                            autocomplete="off"
+                            type="text"
+                            id="warranty_start_date"
+                            name="warranty_start_date"
+                            value=""
+                            title="<?= $block->escapeHtml(__("Warranty Start Date")) ?>"
+                            class="input-text">
                     </div>
                 </div>
 
@@ -61,7 +105,15 @@
                         <span><?= $block->escapeHtml(__("Warranty End Date")) ?></span>
                     </label>
                     <div class="control">
-                        <input readonly autocomplete="off" type="text" id="warranty_end_date" name="warranty_end_date" value="" title="<?= $block->escapeHtml(__("Warranty End Date")) ?>" class="input-text">
+                        <input
+                            readonly
+                            autocomplete="off"
+                            type="text"
+                            id="warranty_end_date"
+                            name="warranty_end_date"
+                            value=""
+                            title="<?= $block->escapeHtml(__("Warranty End Date")) ?>"
+                            class="input-text">
                     </div>
                 </div>
             </fieldset>

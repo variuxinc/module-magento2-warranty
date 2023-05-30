@@ -132,7 +132,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
          *
          */
         foreach ($acceptedValue as $key => $value) {
-            if (isset($value)) {
+            if ($value !== null) {
                 $result[$key] = $data[$key];
             } else {
                 $result[$key] = null;

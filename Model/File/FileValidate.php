@@ -55,14 +55,26 @@ class FileValidate
 
         $sourceMimeType = $fileInfo->file($fileContent["tmp_name"]);
         if (!$this->isMimeTypeValid($sourceMimeType)) {
-            return ["result" => false, "file_mime" => null, "error" => "The file MIME type \"$sourceMimeType\" is not valid or not supported."];
+            return [
+                "result" => false,
+                "file_mime" => null,
+                "error" => "The file MIME type \"$sourceMimeType\" is not valid or not supported."
+            ];
         }
         if (!$this->isNameValid($fileContent["name"])) {
-            return ["result" => false, "file_mime" => null, "error" => "Provided file name contains forbidden characters."];
+            return [
+                "result" => false,
+                "file_mime" => null,
+                "error" => "Provided file name contains forbidden characters."
+            ];
         }
 
         if (!$this->isValidSize($fileContent["size"])) {
-            return ["result" => false, "file_mime" => null, "error" => "Size of file must be less than " . $this->getMaxFileSize() . "MB"];
+            return [
+                "result" => false,
+                "file_mime" => null,
+                "error" => "Size of file must be less than " . $this->getMaxFileSize() . "MB"
+            ];
         }
         return ["result" => true, "file_mime" => $sourceMimeType, "error" => null];
     }

@@ -7,10 +7,13 @@ use Magento\Customer\Model\Session;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 use Psr\Log\LoggerInterface;
+use Variux\Warranty\Block\Index\Index;
 use Variux\Warranty\Helper\Data;
 use Variux\Warranty\Helper\SuggestHelper;
 use Variux\Warranty\Helper\MyPdf;
 use Variux\Warranty\Model\WarrantyFactory;
+use Variux\Warranty\Model\ResourceModel\Warranty as WarrantyResourceModel;
+use Variux\Warranty\Helper\MyPdfX;
 
 class Report extends \Variux\Warranty\Controller\AbstractAction
 {
@@ -27,6 +30,10 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
      * @var \Variux\Warranty\Block\Index\Index
      */
     protected $indexBlock;
+    /**
+     * @var WarrantyResourceModel
+     */
+    protected $warrantyResourceModel;
 
     /**
      * @param Context $context
@@ -35,9 +42,10 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
      * @param Session $_customerSession
      * @param Data $helperData
      * @param SuggestHelper $suggestHelper
-     * @param \Variux\Warranty\Block\Index\Index $indexBlock
+     * @param Index $indexBlock
      * @param PageFactory $resultPageFactory
      * @param WarrantyFactory $warrantyFactory
+     * @param WarrantyResourceModel $warrantyResourceModel
      */
     public function __construct(
         Context                            $context,
@@ -48,22 +56,31 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
         SuggestHelper                      $suggestHelper,
         \Variux\Warranty\Block\Index\Index $indexBlock,
         PageFactory                        $resultPageFactory,
-        WarrantyFactory                    $warrantyFactory
+        WarrantyFactory                    $warrantyFactory,
+        WarrantyResourceModel $warrantyResourceModel
     ) {
-        parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
+        parent::__construct(
+            $context,
+            $companyContext,
+            $logger,
+            $_customerSession,
+            $helperData,
+            $suggestHelper
+        );
         $this->indexBlock = $indexBlock;
         $this->resultPageFactory = $resultPageFactory;
         $this->warrantyFactory = $warrantyFactory;
+        $this->warrantyResourceModel = $warrantyResourceModel;
     }
 
     public function execute()
     {
         $id = $this->getRequest()->getParam('id');
-        $model = $this->warrantyFactory->create();
+        $warranty = $this->warrantyFactory->create();
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($id) {
-            $model->load($id);
-            if (!$model->getId()) {
+            $this->warrantyResourceModel->load($warranty, $id);
+            if (!$this->warrantyResourceModel->load($warranty, $id)) {
                 $this->messageManager->addError(__('This warranty claim no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
             }
@@ -74,7 +91,7 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
              * Generate ở function này chưa có thông tin output ra đâu.
              *       A cần phải return out put là gì xử lý out put của hàm này như thế nào sau khi generate xong.
              */
-            $this->generateClaim($model);
+            $this->generateClaim($warranty);
         }
         /**
          * @Hidro-Le
@@ -98,18 +115,18 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
          */
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
         $storeManager = $objectManager->create(\Magento\Store\Model\StoreManagerInterface::class);
-        $pdf = new \Variux\Warranty\Helper\MyPdfX(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        $pdf = new MyPdfX(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         // set document information
 
-        $pdf->SetCreator(PDF_CREATOR);
-        $pdf->SetAuthor('Indmar');
-        $pdf->SetTitle("Warranty Claim : " . $claim->getIncNum());
-        $pdf->SetSubject('Warranty Claim');
-        $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+        $pdf->setCreator(PDF_CREATOR);
+        $pdf->setAuthor('Variux');
+        $pdf->setTitle("Warranty Claim : " . $claim->getIncNum());
+        $pdf->setSubject('Warranty Claim');
+        $pdf->setKeywords('TCPDF, PDF, example, test, guide');
 
-        $comPa = "www.indmar.variux.com";
+        $comPa = "variux.com";
         // set default header data
-        $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, "INDMAR", $comPa, [0, 64, 255], [0, 64, 128]);
+        $pdf->setHeaderData('', 0, "VARIUX", $comPa, [0, 64, 255], [0, 64, 128]);
         $pdf->setFooterData([0, 64, 0], [0, 64, 128]);
 
         // set header and footer fonts
@@ -117,15 +134,15 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
         $pdf->setFooterFont([PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA]);
 
         // set default monospaced font
-        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+        $pdf->setDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
         // set margins
-        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+        $pdf->setMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+        $pdf->setHeaderMargin(PDF_MARGIN_HEADER);
+        $pdf->setFooterMargin(PDF_MARGIN_FOOTER);
 
         // set auto page breaks
-        $pdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);
+        $pdf->setAutoPageBreak(true, PDF_MARGIN_BOTTOM);
 
         // set image scale factor
         $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
@@ -141,7 +158,7 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
         // dejavusans is a UTF-8 Unicode font, if you only need to
         // print standard ASCII chars, you can use core fonts like
         // helvetica or times to reduce file size.
-        $pdf->SetFont('helvetica', '', 8, '', true);
+        $pdf->setFont('helvetica', '', 8, '', true);
         //page 1
         $pdf->AddPage();
 
@@ -276,7 +293,15 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
         $pdf->AddPage();
 
         // set text shadow effect
-        $pdf->setTextShadow(['enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => [196, 196, 196], 'opacity' => 1, 'blend_mode' => 'Normal']);
+        $pdf->setTextShadow(
+            ['enabled' => true,
+                'depth_w' => 0.2,
+                'depth_h' => 0.2,
+                'color' => [196, 196, 196],
+                'opacity' => 1,
+                'blend_mode' => 'Normal'
+            ]
+        );
 
         // Set some content to print
 
@@ -408,7 +433,12 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
 <p></p>
             <h1>Labor Items</h1>
             </br>
-            <table class=\"data table table-warranty\" cellspacing=\"1\" cellpadding=\"1\" border=\"1\" align=\"center\">
+            <table
+            class=\"data table table-warranty\"
+            cellspacing=\"1\"
+            cellpadding=\"1\"
+            border=\"1\"
+            align=\"center\">
                 <thead>
                 <tr nobr=\"true\" class=\"row\" style=\"
                 color: black;
@@ -431,7 +461,12 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
             <p></p>
             <h1>Freight Items</h1>
             </br>
-            <table class=\"data table table-warranty\" cellspacing=\"1\" cellpadding=\"1\" border=\"1\" align=\"center\">
+            <table
+            class=\"data table table-warranty\"
+            cellspacing=\"1\"
+            cellpadding=\"1\"
+            border=\"1\"
+            align=\"center\">
                 <thead>
                 <tr nobr=\"true\" class=\"row\" style=\"
                 color: black;
@@ -452,7 +487,12 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
                 <p></p>
                 <h1>Documents</h1>
             </br>
-            <table class=\"data table table-warranty\" cellspacing=\"1\" cellpadding=\"1\" border=\"1\" align=\"center\">
+            <table
+            class=\"data table table-warranty\"
+            cellspacing=\"1\"
+            cellpadding=\"1\"
+            border=\"1\"
+            align=\"center\">
                 <thead>
                 <tr nobr=\"true\" class=\"row\" style=\"
                 color: black;

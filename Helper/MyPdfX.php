@@ -8,7 +8,7 @@ class MyPdfX extends MyPdf
     {
         // Logo
         $_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $storeManager = $_objectManager->create(Magento\Store\Model\StoreManagerInterface::class);
+        $storeManager = $_objectManager->create(\Magento\Store\Model\StoreManagerInterface::class);
         $currentStore = $storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
         $image_file =$currentStore.'logo/stores/1/Indmar_Marine_Engines_Logo_1.jpg';
 
@@ -27,6 +27,6 @@ class MyPdfX extends MyPdf
         // Set font
         $this->SetFont('helvetica', 'I', 8);
         // Page number
-        $this->Cell(0, 10, 'COPYRIGHT VARIUX PRODUCTS - ALL RIGHTS RESERVED.', 0, false, 'C', 0, '', 0, false, 'T', 'M');
+        $this->Cell(0, 10, 'COPYRIGHT VARIUX - ALL RIGHTS RESERVED.', 0, false, 'C', 0, '', 0, false, 'T', 'M');
     }
 }
