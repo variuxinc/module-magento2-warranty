@@ -60,21 +60,21 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
 
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
-        CompanyContext $companyContext,
-        \Psr\Log\LoggerInterface $logger,
-        Session $_customerSession,
-        \Variux\Warranty\Helper\Data $helperData,
-        SuggestHelper $suggestHelper,
-        SroMaterialInterfaceFactory $sroMaterialInterfaceFactory,
-        SroMaterialRepository $sroMaterialRepository,
-        SroFactory $sroFactory,
-        SroResourceModel $sroResourceModel,
-        ProductFactory $productFactory,
-        ProductResourceModel  $productResourceModel,
-        WarrantyFactory $warrantyFactory,
-        WarrantyResourceModel $warrantyResourceModel,
-        PriceHelper $priceHelper,
-        CompanyDetails $companyDetails
+        CompanyContext                        $companyContext,
+        \Psr\Log\LoggerInterface              $logger,
+        Session                               $_customerSession,
+        \Variux\Warranty\Helper\Data          $helperData,
+        SuggestHelper                         $suggestHelper,
+        SroMaterialInterfaceFactory           $sroMaterialInterfaceFactory,
+        SroMaterialRepository                 $sroMaterialRepository,
+        SroFactory                            $sroFactory,
+        SroResourceModel                      $sroResourceModel,
+        ProductFactory                        $productFactory,
+        ProductResourceModel                  $productResourceModel,
+        WarrantyFactory                       $warrantyFactory,
+        WarrantyResourceModel                 $warrantyResourceModel,
+        PriceHelper                           $priceHelper,
+        CompanyDetails                        $companyDetails
     ) {
         parent::__construct(
             $context,
@@ -145,8 +145,18 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                         if ($material->getPrice() > 0) {
                             $this->sroMaterialRepository->save($material);
                             $responseData = $material->getData();
-                            $responseData["total"] = $this->priceHelper->currency($responseData["price"] * $responseData["qty_conv"], true, false);
-                            $responseData["price"] = $this->priceHelper->currency($responseData["price"], true, false);
+                            $responseData["total"] = $this->priceHelper
+                                ->currency(
+                                    $responseData["price"] * $responseData["qty_conv"],
+                                    true,
+                                    false
+                                );
+                            $responseData["price"] = $this->priceHelper
+                                ->currency(
+                                    $responseData["price"],
+                                    true,
+                                    false
+                                );
                             $responseData = array_intersect_key($responseData, $acceptedValue);
                             $response = [
                                 'data' => $responseData,
@@ -185,6 +195,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         $resultJson->setData(json_encode($response));
         return $resultJson;
     }
+
     public function getProductPrice($product)
     {
         return (float)$product->getFinalPrice();
