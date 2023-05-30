@@ -87,22 +87,22 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
      */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
-        CompanyContext $companyContext,
-        \Psr\Log\LoggerInterface $logger,
-        Session $_customerSession,
-        \Variux\Warranty\Helper\Data $helperData,
-        SuggestHelper $suggestHelper,
-        SroLaborFactory $sroLaborFactory,
-        SroLaborRepository $sroLaborRepository,
-        SroFactory $sroFactory,
-        SroResourceModel $sroResourceModel,
-        WorkcodeResourceModel $workcodeResourceModel,
-        WorkcodeFactory $workcodeFactory,
-        WarrantyFactory $warrantyFactory,
-        WarrantyResourceModel $warrantyResourceModel,
-        PriceHelper $priceHelper,
-        CompanyDetailsHelper $companyDetailsHelper,
-        CustomerRepository $customerRepository
+        CompanyContext                        $companyContext,
+        \Psr\Log\LoggerInterface              $logger,
+        Session                               $_customerSession,
+        \Variux\Warranty\Helper\Data          $helperData,
+        SuggestHelper                         $suggestHelper,
+        SroLaborFactory                       $sroLaborFactory,
+        SroLaborRepository                    $sroLaborRepository,
+        SroFactory                            $sroFactory,
+        SroResourceModel                      $sroResourceModel,
+        WorkcodeResourceModel                 $workcodeResourceModel,
+        WorkcodeFactory                       $workcodeFactory,
+        WarrantyFactory                       $warrantyFactory,
+        WarrantyResourceModel                 $warrantyResourceModel,
+        PriceHelper                           $priceHelper,
+        CompanyDetailsHelper                  $companyDetailsHelper,
+        CustomerRepository                    $customerRepository
     ) {
         parent::__construct(
             $context,
@@ -182,7 +182,12 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                                 true,
                                 false
                             );
-                            $responseData["labor_hourly_rate"] = $this->priceHelper->currency($responseData["labor_hourly_rate"], true, false);
+                            $responseData["labor_hourly_rate"] = $this->priceHelper
+                                ->currency(
+                                    $responseData["labor_hourly_rate"],
+                                    true,
+                                    false
+                                );
                             $responseData = array_intersect_key($responseData, $acceptedValue);
                             $response = [
                                 'data' => $responseData,
