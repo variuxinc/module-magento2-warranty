@@ -5,6 +5,9 @@
             <!-- Add menu to the end of the sidebar -->
             <!-- <block class="Magento\Customer\Block\Account\Delimiter" name="customer-account-navigation-delimiter-warranty" template="Magento_Customer::account/navigation-delimiter.phtml">
             </block> -->
+            <block class="Magento\Customer\Block\Account\Delimiter" name="customer-account-navigation-warranty-delimiter-top"
+                   template="Magento_Customer::account/navigation-delimiter.phtml">
+            </block>
             <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-warranty-link">
                 <arguments>
                     <argument name="path" xsi:type="string">warranty/</argument>
