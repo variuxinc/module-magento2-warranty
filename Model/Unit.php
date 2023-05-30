@@ -18,6 +18,29 @@ class Unit extends AbstractModel implements UnitInterface
     protected $_eventPrefix = 'variux_unit';
 
     /**
+     * @var ResourceModel\Unit
+     */
+    protected $_resource;
+
+    /**
+     * @param \Magento\Framework\Model\Context $context
+     * @param \Magento\Framework\Registry $registry
+     * @param ResourceModel\Unit $resource
+     * @param ResourceModel\Unit\Collection $resourceCollection
+     * @param array $data
+     */
+    public function __construct(
+        \Magento\Framework\Model\Context $context,
+        \Magento\Framework\Registry $registry,
+        \Variux\Warranty\Model\ResourceModel\Unit $resource,
+        \Variux\Warranty\Model\ResourceModel\Unit\Collection $resourceCollection,
+        array $data = []
+    ) {
+        parent::__construct($context, $registry, $resource, $resourceCollection, $data);
+        $this->_resource = $resource;
+    }
+
+    /**
      * @inheritDoc
      */
     public function _construct()
@@ -37,7 +60,7 @@ class Unit extends AbstractModel implements UnitInterface
      */
     public function loadBySerial($number, $conditionType = false)
     {
-        $this->getResource()->loadBySerial($this, $number, $conditionType = false);
+        $this->_resource->loadBySerial($this, $number, $conditionType = false);
         return $this;
     }
 

@@ -19,6 +19,12 @@ class Sro extends AbstractModel implements SroInterface
     protected $docsCollectionFactory;
 
     /**
+     * @var \Variux\Warranty\Model\ResourceModel\Sro
+     */
+    protected $_resource;
+
+
+    /**
      * @inheritDoc
      */
     public function _construct()
@@ -42,6 +48,7 @@ class Sro extends AbstractModel implements SroInterface
         $this->materialCollectionFactory = $materialCollectionFactory;
         $this->miscCollectionFactory = $miscCollectionFactory;
         $this->docsCollectionFactory = $docsCollectionFactory;
+        $this->_resource = $resource;
     }
 
         /**
@@ -51,7 +58,7 @@ class Sro extends AbstractModel implements SroInterface
          */
     public function loadByNumber($number, $conditionType = false)
     {
-        $this->getResource()->loadByNumber($this, $number, $conditionType = false);
+        $this->_resource->loadByNumber($this, $number, $conditionType = false);
         return $this;
     }
 
@@ -61,7 +68,7 @@ class Sro extends AbstractModel implements SroInterface
      */
     public function loadByWarrantyId($warId)
     {
-        $this->getResource()->loadByWarrantyId($this, $warId);
+        $this->_resource->loadByWarrantyId($this, $warId);
         return $this;
     }
 
