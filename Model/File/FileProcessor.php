@@ -86,7 +86,10 @@ class FileProcessor
                 $this->uploader->setFilenamesCaseSensitivity(false);
                 $this->uploader->setAllowRenameFiles(true);
                 $destinationFolder = $entityType;
-                $this->uploader->save($this->filesystem->getDirectoryWrite(DirectoryList::MEDIA)->getAbsolutePath($destinationFolder), $fileContent["name"]);
+                $this->uploader
+                     ->save($this->filesystem
+                                 ->getDirectoryWrite(DirectoryList::MEDIA)
+                                 ->getAbsolutePath($destinationFolder), $fileContent["name"]);
             } catch (Exception $e) {
                 $this->logger->critical($e);
                 throw $e;

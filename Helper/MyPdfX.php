@@ -27,6 +27,6 @@ class MyPdfX extends MyPdf
         // Set font
         $this->SetFont('helvetica', 'I', 8);
         // Page number
-        $this->Cell(0, 10, 'COPYRIGHT VARIUX PRODUCTS - ALL RIGHTS RESERVED.', 0, false, 'C', 0, '', 0, false, 'T', 'M');
+        $this->Cell(0, 10, 'COPYRIGHT VARIUX - ALL RIGHTS RESERVED.', 0, false, 'C', 0, '', 0, false, 'T', 'M');
     }
 }

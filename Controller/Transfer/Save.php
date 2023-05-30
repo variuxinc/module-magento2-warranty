@@ -22,6 +22,8 @@ use Variux\Warranty\Model\ResourceModel\WarrantyTransfer as WarrantyTransferReso
 use Magento\Framework\Mail\Template\TransportBuilder;
 use Variux\Warranty\Helper\SuggestHelper;
 use Variux\Warranty\Logger\Logger;
+use Magento\Framework\App\Area;
+use Magento\Store\Model\Store;
 
 class Save extends \Variux\Warranty\Controller\AbstractAction
 {
@@ -187,7 +189,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
 
 //                        $transport = $this->transportBuilder
 //                            ->setTemplateIdentifier('new_warranty_transfer')
-//                            ->setTemplateOptions(['area' => \Magento\Framework\App\Area::AREA_ADMINHTML, 'store' => \Magento\Store\Model\Store::DEFAULT_STORE_ID])
+//                            ->setTemplateOptions(['area' => Area::AREA_ADMINHTML, 'store' => Store::DEFAULT_STORE_ID])
 //                            ->setTemplateVars([
 //                                'serial' => $data["engine_serial_num"],
 //                                'company' => $customer->getName()

@@ -13,6 +13,7 @@ use Variux\Warranty\Helper\SuggestHelper;
 use Variux\Warranty\Helper\MyPdf;
 use Variux\Warranty\Model\WarrantyFactory;
 use Variux\Warranty\Model\ResourceModel\Warranty as WarrantyResourceModel;
+use Variux\Warranty\Helper\MyPdfX;
 
 class Report extends \Variux\Warranty\Controller\AbstractAction
 {
@@ -78,8 +79,8 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
         $warranty = $this->warrantyFactory->create();
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($id) {
-            $this->warrantyResourceModel->load($warranty,$id);
-            if (!$this->warrantyResourceModel->load($warranty,$id)) {
+            $this->warrantyResourceModel->load($warranty, $id);
+            if (!$this->warrantyResourceModel->load($warranty, $id)) {
                 $this->messageManager->addError(__('This warranty claim no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
             }
@@ -114,7 +115,7 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
          */
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
         $storeManager = $objectManager->create(\Magento\Store\Model\StoreManagerInterface::class);
-        $pdf = new \Variux\Warranty\Helper\MyPdfX(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        $pdf = new MyPdfX(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         // set document information
 
         $pdf->setCreator(PDF_CREATOR);
@@ -292,7 +293,15 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
         $pdf->AddPage();
 
         // set text shadow effect
-        $pdf->setTextShadow(['enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => [196, 196, 196], 'opacity' => 1, 'blend_mode' => 'Normal']);
+        $pdf->setTextShadow(
+            ['enabled' => true,
+                'depth_w' => 0.2,
+                'depth_h' => 0.2,
+                'color' => [196, 196, 196],
+                'opacity' => 1,
+                'blend_mode' => 'Normal'
+            ]
+        );
 
         // Set some content to print
 
@@ -424,7 +433,12 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
 <p></p>
             <h1>Labor Items</h1>
             </br>
-            <table class=\"data table table-warranty\" cellspacing=\"1\" cellpadding=\"1\" border=\"1\" align=\"center\">
+            <table
+            class=\"data table table-warranty\"
+            cellspacing=\"1\"
+            cellpadding=\"1\"
+            border=\"1\"
+            align=\"center\">
                 <thead>
                 <tr nobr=\"true\" class=\"row\" style=\"
                 color: black;
@@ -447,7 +461,12 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
             <p></p>
             <h1>Freight Items</h1>
             </br>
-            <table class=\"data table table-warranty\" cellspacing=\"1\" cellpadding=\"1\" border=\"1\" align=\"center\">
+            <table
+            class=\"data table table-warranty\"
+            cellspacing=\"1\"
+            cellpadding=\"1\"
+            border=\"1\"
+            align=\"center\">
                 <thead>
                 <tr nobr=\"true\" class=\"row\" style=\"
                 color: black;
@@ -468,7 +487,12 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
                 <p></p>
                 <h1>Documents</h1>
             </br>
-            <table class=\"data table table-warranty\" cellspacing=\"1\" cellpadding=\"1\" border=\"1\" align=\"center\">
+            <table
+            class=\"data table table-warranty\"
+            cellspacing=\"1\"
+            cellpadding=\"1\"
+            border=\"1\"
+            align=\"center\">
                 <thead>
                 <tr nobr=\"true\" class=\"row\" style=\"
                 color: black;

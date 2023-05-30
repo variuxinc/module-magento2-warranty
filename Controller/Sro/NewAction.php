@@ -24,8 +24,7 @@ class NewAction extends \Variux\Warranty\Controller\AbstractAction
         \Variux\Warranty\Helper\Data $helperData,
         SuggestHelper $suggestHelper,
         ForwardFactory $forwardFactory
-    )
-    {
+    ) {
         parent::__construct(
             $context,
             $companyContext,

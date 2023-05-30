@@ -177,7 +177,11 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                             $labor->setSroOper(10);
                             $this->sroLaborRepository->save($labor);
                             $responseData = $labor->getData();
-                            $responseData["total"] = $this->priceHelper->currency($responseData["labor_hourly_rate"] * $responseData["hour_worked"], true, false);
+                            $responseData["total"] = $this->priceHelper->currency(
+                                $responseData["labor_hourly_rate"] * $responseData["hour_worked"],
+                                true,
+                                false
+                            );
                             $responseData["labor_hourly_rate"] = $this->priceHelper->currency($responseData["labor_hourly_rate"], true, false);
                             $responseData = array_intersect_key($responseData, $acceptedValue);
                             $response = [
