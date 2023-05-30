@@ -88,13 +88,6 @@
 				</editor>
 			</settings>
 		</column>
-		<actionsColumn name="actions" class="Variux\Warranty\Ui\Component\Listing\Column\WorkcodeActions">
-			<settings>
-				<indexField>workcode_id</indexField>
-				<resizeEnabled>false</resizeEnabled>
-				<resizeDefaultWidth>107</resizeDefaultWidth>
-			</settings>
-		</actionsColumn>
 		<column name="description">
 			<settings>
 				<filter>text</filter>
@@ -119,5 +112,12 @@
 				</editor>
 			</settings>
 		</column>
+        <actionsColumn name="actions" class="Variux\Warranty\Ui\Component\Listing\Column\WorkcodeActions">
+            <settings>
+                <indexField>workcode_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
 	</columns>
 </listing>

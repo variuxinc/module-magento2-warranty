@@ -88,13 +88,6 @@
 				</editor>
 			</settings>
 		</column>
-		<actionsColumn name="actions" class="Variux\Warranty\Ui\Component\Listing\Column\UnitActions">
-			<settings>
-				<indexField>unit_id</indexField>
-				<resizeEnabled>false</resizeEnabled>
-				<resizeDefaultWidth>107</resizeDefaultWidth>
-			</settings>
-		</actionsColumn>
 		<column name="item">
 			<settings>
 				<filter>text</filter>
@@ -237,7 +230,7 @@
 		<column name="unit_registable">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">Unit registrable</label>
+				<label translate="true">Unit Registrable</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -258,29 +251,12 @@
 				</editor>
 			</settings>
 		</column>
-		<column name="created_at">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Created At</label>
-				<editor>
-					<editorType>date</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="updated_at">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Updated At</label>
-				<editor>
-					<editorType>date</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
+        <actionsColumn name="actions" class="Variux\Warranty\Ui\Component\Listing\Column\UnitActions">
+            <settings>
+                <indexField>unit_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
 	</columns>
 </listing>

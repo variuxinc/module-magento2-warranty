@@ -79,7 +79,7 @@
 		<column name="partner_num">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">partner_num</label>
+				<label translate="true">Partner Num</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -88,17 +88,10 @@
 				</editor>
 			</settings>
 		</column>
-		<actionsColumn name="actions" class="Variux\Warranty\Ui\Component\Listing\Column\PartnerActions">
-			<settings>
-				<indexField>partner_id</indexField>
-				<resizeEnabled>false</resizeEnabled>
-				<resizeDefaultWidth>107</resizeDefaultWidth>
-			</settings>
-		</actionsColumn>
 		<column name="company_id">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">company_id</label>
+				<label translate="true">Company Id</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -110,7 +103,7 @@
 		<column name="name">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">name</label>
+				<label translate="true">Name</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -122,7 +115,7 @@
 		<column name="labor_rate">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">labor_rate</label>
+				<label translate="true">Labor Rate</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -131,29 +124,12 @@
 				</editor>
 			</settings>
 		</column>
-		<column name="created_at">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">created_at</label>
-				<editor>
-					<editorType>date</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="updated_at">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">updated_at</label>
-				<editor>
-					<editorType>date</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
+        <actionsColumn name="actions" class="Variux\Warranty\Ui\Component\Listing\Column\PartnerActions">
+            <settings>
+                <indexField>partner_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
 	</columns>
 </listing>

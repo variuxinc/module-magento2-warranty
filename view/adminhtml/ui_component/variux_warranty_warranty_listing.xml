@@ -10,13 +10,6 @@
 		<deps>
 			<dep>variux_warranty_warranty_listing.variux_warranty_warranty_listing_data_source</dep>
 		</deps>
-		<buttons>
-			<button name="add">
-				<url path="*/*/new"/>
-				<class>primary</class>
-				<label translate="true">Add new Warranty</label>
-			</button>
-		</buttons>
 	</settings>
 	<dataSource name="variux_warranty_warranty_listing_data_source" component="Magento_Ui/js/grid/provider">
 		<settings>
@@ -79,7 +72,7 @@
 		<column name="description">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">description</label>
+				<label translate="true">Description</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -88,17 +81,10 @@
 				</editor>
 			</settings>
 		</column>
-		<actionsColumn name="actions" class="Variux\Warranty\Ui\Component\Listing\Column\WarrantyActions">
-			<settings>
-				<indexField>warranty_id</indexField>
-				<resizeEnabled>false</resizeEnabled>
-				<resizeDefaultWidth>107</resizeDefaultWidth>
-			</settings>
-		</actionsColumn>
 		<column name="customer_id">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">customer_id</label>
+				<label translate="true">Customer Id</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -110,7 +96,7 @@
 		<column name="engine">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">engine</label>
+				<label translate="true">Engine</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -122,7 +108,7 @@
 		<column name="engine_hour">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">engine_hour</label>
+				<label translate="true">Engine Hour</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -134,7 +120,7 @@
 		<column name="invoice_number">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">invoice_number</label>
+				<label translate="true">Invoice Number</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -146,7 +132,7 @@
 		<column name="order_number">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">order_number</label>
+				<label translate="true">Order Number</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -158,7 +144,7 @@
 		<column name="item_sku">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">item_sku</label>
+				<label translate="true">Item Sku</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -170,7 +156,7 @@
 		<column name="boat_owner_name">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">boat_owner_name</label>
+				<label translate="true">Boat Owner Name</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -182,7 +168,7 @@
 		<column name="reference_number">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">reference_number</label>
+				<label translate="true">Reference Number</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -194,7 +180,7 @@
 		<column name="date_of_failure">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">date_of_failure</label>
+				<label translate="true">Date Of Failure</label>
 				<editor>
 					<editorType>date</editorType>
 					<validation>
@@ -206,7 +192,7 @@
 		<column name="date_of_repair">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">date_of_repair</label>
+				<label translate="true">Date Of Repair</label>
 				<editor>
 					<editorType>date</editorType>
 					<validation>
@@ -218,7 +204,7 @@
 		<column name="claim_processor_email">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">claim_processor_email</label>
+				<label translate="true">Claim Processor Email</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -230,7 +216,7 @@
 		<column name="brief_description">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">brief_description</label>
+				<label translate="true">Brief Description</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -242,7 +228,7 @@
 		<column name="reason_note">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">reason_note</label>
+				<label translate="true">Reason Note</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -254,7 +240,7 @@
 		<column name="resolution_note">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">resolution_note</label>
+				<label translate="true">Resolution Note</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -266,7 +252,7 @@
 		<column name="status">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">status</label>
+				<label translate="true">Status</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -278,7 +264,7 @@
 		<column name="store_id">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">store_id</label>
+				<label translate="true">Store Id</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -290,7 +276,7 @@
 		<column name="incident_number">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">incident_number</label>
+				<label translate="true">Incident Number</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -302,7 +288,7 @@
 		<column name="first_sro_number">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">first_sro_number</label>
+				<label translate="true">First Sro Number</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -314,7 +300,7 @@
 		<column name="dealer_name">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">dealer_name</label>
+				<label translate="true">Dealer Name</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -326,7 +312,7 @@
 		<column name="dealer_phone_number">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">dealer_phone_number</label>
+				<label translate="true">Dealer Phone Number</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -338,7 +324,7 @@
 		<column name="is_sro_details_fully_synced">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">is_sro_details_fully_synced</label>
+				<label translate="true">Is Sro Details Fully Synced</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -350,7 +336,7 @@
 		<column name="has_error">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">has_error</label>
+				<label translate="true">Has Error</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -362,7 +348,7 @@
 		<column name="error_reason">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">error_reason</label>
+				<label translate="true">Error Reason</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -374,7 +360,7 @@
 		<column name="first_sro_id">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">first_sro_id</label>
+				<label translate="true">First Sro Id</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -386,7 +372,7 @@
 		<column name="warranty_registered">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">warranty_registered</label>
+				<label translate="true">Warranty Registered</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -398,7 +384,7 @@
 		<column name="consumer_name">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">consumer_name</label>
+				<label translate="true">Consumer Name</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -410,7 +396,7 @@
 		<column name="warranty_start_date">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">warranty_start_date</label>
+				<label translate="true">Warranty Start Date</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -422,7 +408,7 @@
 		<column name="warranty_end_date">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">warranty_end_date</label>
+				<label translate="true">Warranty End Date</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -434,7 +420,7 @@
 		<column name="company_id">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">company_id</label>
+				<label translate="true">Company Id</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -446,7 +432,7 @@
 		<column name="admin_customer_id">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">admin_customer_id</label>
+				<label translate="true">Admin Customer Id</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -455,27 +441,12 @@
 				</editor>
 			</settings>
 		</column>
-		<column name="created_at">
-			<settings>
-				<editor>
-					<editorType>date</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="updated_at">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">updated_at</label>
-				<editor>
-					<editorType>date</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
+        <actionsColumn name="actions" class="Variux\Warranty\Ui\Component\Listing\Column\WarrantyActions">
+            <settings>
+                <indexField>warranty_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
 	</columns>
 </listing>
