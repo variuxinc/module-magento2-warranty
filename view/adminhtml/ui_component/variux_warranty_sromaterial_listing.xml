@@ -10,13 +10,6 @@
 		<deps>
 			<dep>variux_warranty_sromaterial_listing.variux_warranty_sromaterial_listing_data_source</dep>
 		</deps>
-		<buttons>
-			<button name="add">
-				<url path="*/*/new"/>
-				<class>primary</class>
-				<label translate="true">Add new SroMaterial</label>
-			</button>
-		</buttons>
 	</settings>
 	<dataSource name="variux_warranty_sromaterial_listing_data_source" component="Magento_Ui/js/grid/provider">
 		<settings>
@@ -88,13 +81,6 @@
 				</editor>
 			</settings>
 		</column>
-		<actionsColumn name="actions" class="Variux\Warranty\Ui\Component\Listing\Column\SroMaterialActions">
-			<settings>
-				<indexField>item_id</indexField>
-				<resizeEnabled>false</resizeEnabled>
-				<resizeDefaultWidth>107</resizeDefaultWidth>
-			</settings>
-		</actionsColumn>
 		<column name="sro_line">
 			<settings>
 				<filter>text</filter>
@@ -215,5 +201,12 @@
 				</editor>
 			</settings>
 		</column>
+        <actionsColumn name="actions" class="Variux\Warranty\Ui\Component\Listing\Column\SroMaterialActions">
+            <settings>
+                <indexField>item_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
 	</columns>
 </listing>

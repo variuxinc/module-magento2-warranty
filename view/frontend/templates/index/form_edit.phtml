@@ -273,7 +273,7 @@ $invoiceConfig = $block->getInvoiceSuggestConfig();
              * @TODO - fixed
              * Sử dung if(...):  endif; thay vì if(...){...}
              */
-            <?php if (!$block->isWarrantySubmitted()): ?>
+            <?php if (!$block->isWarrantySubmitted()) : ?>
                 var itemSuggest = new autosuggest($('input#engine'), function (item, $input, event) {
                     $input.val(item.serial_no).trigger("change");
                     var $form = $input.closest("form");

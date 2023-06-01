@@ -10,13 +10,6 @@
 		<deps>
 			<dep>variux_warranty_sro_listing.variux_warranty_sro_listing_data_source</dep>
 		</deps>
-		<buttons>
-			<button name="add">
-				<url path="*/*/new"/>
-				<class>primary</class>
-				<label translate="true">Add new Sro</label>
-			</button>
-		</buttons>
 	</settings>
 	<dataSource name="variux_warranty_sro_listing_data_source" component="Magento_Ui/js/grid/provider">
 		<settings>
@@ -88,13 +81,6 @@
 				</editor>
 			</settings>
 		</column>
-		<actionsColumn name="actions" class="Variux\Warranty\Ui\Component\Listing\Column\SroActions">
-			<settings>
-				<indexField>sro_id</indexField>
-				<resizeEnabled>false</resizeEnabled>
-				<resizeDefaultWidth>107</resizeDefaultWidth>
-			</settings>
-		</actionsColumn>
 		<column name="sro_number">
 			<settings>
 				<filter>text</filter>
@@ -143,29 +129,12 @@
 				</editor>
 			</settings>
 		</column>
-		<column name="created_at">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Created At</label>
-				<editor>
-					<editorType>date</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="updated_at">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Updated At</label>
-				<editor>
-					<editorType>date</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
+        <actionsColumn name="actions" class="Variux\Warranty\Ui\Component\Listing\Column\SroActions">
+            <settings>
+                <indexField>sro_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
 	</columns>
 </listing>

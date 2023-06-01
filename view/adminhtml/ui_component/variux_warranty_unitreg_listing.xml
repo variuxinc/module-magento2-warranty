@@ -10,13 +10,6 @@
 		<deps>
 			<dep>variux_warranty_unitreg_listing.variux_warranty_unitreg_listing_data_source</dep>
 		</deps>
-		<buttons>
-			<button name="add">
-				<url path="*/*/new"/>
-				<class>primary</class>
-				<label translate="true">Add new UnitReg</label>
-			</button>
-		</buttons>
 	</settings>
 	<dataSource name="variux_warranty_unitreg_listing_data_source" component="Magento_Ui/js/grid/provider">
 		<settings>
@@ -79,7 +72,7 @@
 		<column name="hull_id">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">hull_id</label>
+				<label translate="true">Hull Id</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -88,17 +81,10 @@
 				</editor>
 			</settings>
 		</column>
-		<actionsColumn name="actions" class="Variux\Warranty\Ui\Component\Listing\Column\UnitRegActions">
-			<settings>
-				<indexField>unitreg_id</indexField>
-				<resizeEnabled>false</resizeEnabled>
-				<resizeDefaultWidth>107</resizeDefaultWidth>
-			</settings>
-		</actionsColumn>
 		<column name="reg_notes">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">reg_notes</label>
+				<label translate="true">Reg Notes</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -110,7 +96,7 @@
 		<column name="engine_hour">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">engine_hour</label>
+				<label translate="true">Engine Hour</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -122,13 +108,13 @@
 		<column name="trans_num">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">trans_num</label>
+				<label translate="true">Trans num</label>
 			</settings>
 		</column>
 		<column name="serial_no">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">serial_no</label>
+				<label translate="true">Serial No</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -140,7 +126,7 @@
 		<column name="item">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">item</label>
+				<label translate="true">Item</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -152,7 +138,7 @@
 		<column name="posted">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">posted</label>
+				<label translate="true">Posted</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -164,7 +150,7 @@
 		<column name="rejected">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">rejected</label>
+				<label translate="true">Rejected</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -176,7 +162,7 @@
 		<column name="post_date">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">post_date</label>
+				<label translate="true">Post Date</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -188,7 +174,7 @@
 		<column name="err_msg">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">err_msg</label>
+				<label translate="true">Error message</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -200,7 +186,7 @@
 		<column name="name">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">name</label>
+				<label translate="true">Name</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -212,7 +198,7 @@
 		<column name="address1">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">address1</label>
+				<label translate="true">Address1</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -224,7 +210,7 @@
 		<column name="address2">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">address2</label>
+				<label translate="true">Address2</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -236,7 +222,7 @@
 		<column name="address3">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">address3</label>
+				<label translate="true">Address3</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -248,7 +234,7 @@
 		<column name="address4">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">address4</label>
+				<label translate="true">Address4</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -260,7 +246,7 @@
 		<column name="city">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">city</label>
+				<label translate="true">City</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -272,7 +258,7 @@
 		<column name="state">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">state</label>
+				<label translate="true">State</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -284,7 +270,7 @@
 		<column name="zip">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">zip</label>
+				<label translate="true">Zip</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -296,7 +282,7 @@
 		<column name="country">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">country</label>
+				<label translate="true">Country</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -308,7 +294,7 @@
 		<column name="email">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">email</label>
+				<label translate="true">Email</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -320,7 +306,7 @@
 		<column name="phone">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">phone</label>
+				<label translate="true">Phone</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -332,7 +318,7 @@
 		<column name="is_commercial_use">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">is_commercial_use</label>
+				<label translate="true">Is Commercial Use</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -344,7 +330,7 @@
 		<column name="dealer_name">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">dealer_name</label>
+				<label translate="true">Dealer Name</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -353,29 +339,12 @@
 				</editor>
 			</settings>
 		</column>
-		<column name="created_at">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">created_at</label>
-				<editor>
-					<editorType>date</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="updated_at">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">updated_at</label>
-				<editor>
-					<editorType>date</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
+        <actionsColumn name="actions" class="Variux\Warranty\Ui\Component\Listing\Column\UnitRegActions">
+            <settings>
+                <indexField>unitreg_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
 	</columns>
 </listing>

@@ -10,13 +10,6 @@
 		<deps>
 			<dep>variux_warranty_sromisc_listing.variux_warranty_sromisc_listing_data_source</dep>
 		</deps>
-		<buttons>
-			<button name="add">
-				<url path="*/*/new"/>
-				<class>primary</class>
-				<label translate="true">Add new SroMisc</label>
-			</button>
-		</buttons>
 	</settings>
 	<dataSource name="variux_warranty_sromisc_listing_data_source" component="Magento_Ui/js/grid/provider">
 		<settings>
@@ -79,7 +72,7 @@
 		<column name="sro_id">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">sro_id</label>
+				<label translate="true">Sro Id</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -88,17 +81,10 @@
 				</editor>
 			</settings>
 		</column>
-		<actionsColumn name="actions" class="Variux\Warranty\Ui\Component\Listing\Column\SroMiscActions">
-			<settings>
-				<indexField>item_id</indexField>
-				<resizeEnabled>false</resizeEnabled>
-				<resizeDefaultWidth>107</resizeDefaultWidth>
-			</settings>
-		</actionsColumn>
 		<column name="sro_line">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">sro_line</label>
+				<label translate="true">Sro Line</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -110,7 +96,7 @@
 		<column name="sro_oper">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">sro_oper</label>
+				<label translate="true">Sro Oper</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -122,7 +108,7 @@
 		<column name="trans_date">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">trans_date</label>
+				<label translate="true">Trans Date</label>
 				<editor>
 					<editorType>date</editorType>
 					<validation>
@@ -134,7 +120,7 @@
 		<column name="company_id">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">company_id</label>
+				<label translate="true">Company Id</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -146,7 +132,7 @@
 		<column name="customer_id">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">customer_id</label>
+				<label translate="true">Customer Id</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -158,7 +144,7 @@
 		<column name="misc_code">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">misc_code</label>
+				<label translate="true">Misc Code</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -170,7 +156,7 @@
 		<column name="description">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">description</label>
+				<label translate="true">Description</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -182,7 +168,7 @@
 		<column name="qty_conv">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">qty_conv</label>
+				<label translate="true">Qty Conv</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -194,7 +180,7 @@
 		<column name="amount">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">amount</label>
+				<label translate="true">Amount</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -203,29 +189,12 @@
 				</editor>
 			</settings>
 		</column>
-		<column name="created_at">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">created_at</label>
-				<editor>
-					<editorType>date</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="updated_at">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">updated_at</label>
-				<editor>
-					<editorType>date</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
+        <actionsColumn name="actions" class="Variux\Warranty\Ui\Component\Listing\Column\SroMiscActions">
+            <settings>
+                <indexField>item_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
 	</columns>
 </listing>

@@ -71,7 +71,7 @@ class Index extends \Magento\Framework\View\Element\Template
     {
         /**
          * @Hidro-Le
-         * @TODO - Review
+         * @TODO - Fixed
          * Chỗ này a cần kiểm tra lại, hàm getWarranties mỗi lần gọi lại tạo 1 collection.
          */
         if ($this->getWarranties()) {
