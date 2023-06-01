@@ -65,7 +65,7 @@
             <?= $block->getBlockHtml('formkey') ?>
             <input type="hidden" name="serial_no" value="<?= $block->escapeHtml($block->getSerialNo()) ?>">
             <input type="hidden" name="item" value="<?= $block->escapeHtml($block->getUnitItem()) ?>">
-            <?php if ($block->isUnRegistered()): ?>
+            <?php if ($block->isUnRegistered()) : ?>
                 <fieldset class="fieldset info">
                     <legend class="legend">
                         <span><?= $block->escapeHtml(__("Contact Information")) ?></span>
@@ -309,7 +309,7 @@
                 </fieldset>
             <?php endif; ?>
             <div class="actions-toolbar">
-                <?php if ($block->isUnRegistered()): ?>
+                <?php if ($block->isUnRegistered()) : ?>
                     <div class="primary">
                         <button type="submit" class="action save primary"
                                 title="<?= $block->escapeHtml(__("Submit")) ?>">
@@ -372,7 +372,7 @@
         });
     });
 </script>
-<?php if ($block->isUnRegistered()): ?>
+<?php if ($block->isUnRegistered()) : ?>
     <script type="text/javascript">
         /**
          * @Hidro-Le

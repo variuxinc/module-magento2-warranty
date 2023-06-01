@@ -8,7 +8,7 @@ use Variux\Warranty\Block\Index\Index;
 $needUpdateIncAndSro = false;
 ?>
 <div class="warranty-container">
-    <?php if ($block->getFilterHtml()): ?>
+    <?php if ($block->getFilterHtml()) : ?>
         <?= $block->getFilterHtml() ?>
     <?php endif; ?>
     <div class="warranty-list-wrapper">
@@ -39,11 +39,11 @@ $needUpdateIncAndSro = false;
                         class="col-md-1 text-center action"><?= $block->escapeHtml(__('Actions')) ?></th>
                 </tr>
                 </thead>
-                <?php if ($block->getWarranties() && count($block->getWarranties())): ?>
+                <?php if ($block->getWarranties() && count($block->getWarranties())) : ?>
                     <tbody>
                     <?php
                     /** @var \Variux\Warranty\Model\Warranty $warranty */
-                    foreach ($block->getWarranties() as $warranty):
+                    foreach ($block->getWarranties() as $warranty) :
                         if (empty($warranty->getIncNum()) || empty($warranty->getFirstSroNum())) {
                             $needUpdateIncAndSro = true;
                         } ?>
@@ -61,13 +61,13 @@ $needUpdateIncAndSro = false;
                             </td>
                             <td data-th="<?= $block->escapeHtml(__('SRO Detail')) ?>"
                                 class="col-md-2 text-center sro-detail">
-                                <?php if ($block->hasSroDetail($warranty)): ?>
+                                <?php if ($block->hasSroDetail($warranty)) : ?>
                                     <a href="<?= $block->escapeUrl($block->getSroDetailUrl($warranty)) ?>">
                                         <?= (($sroNum = $block->getSroDetailNumber($warranty)) ?
                                             $block->escapeHtml($sroNum) :
                                             $block->escapeHtml("Details")) ?>
                                     </a>
-                                <?php else: ?>
+                                <?php else : ?>
                                     <a href="<?= $block->escapeUrl($block->getUrl(
                                         "warranty/sro/new",
                                         ['war_id' => $warranty->getId()]
@@ -106,7 +106,7 @@ $needUpdateIncAndSro = false;
                         </tr>
                     <?php endforeach; ?>
                     </tbody>
-                <?php else: ?>
+                <?php else : ?>
                     <tbody>
                     <tr>
                         <td colspan="100">
@@ -127,7 +127,7 @@ $needUpdateIncAndSro = false;
         </div>
     </div>
 
-    <?php if ($block->getToolbarHtml()): ?>
+    <?php if ($block->getToolbarHtml()) : ?>
         <div class="toolbar warranty-toolbar bottom">
             <?= $block->getToolbarHtml() ?>
         </div>
