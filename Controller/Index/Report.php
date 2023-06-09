@@ -463,7 +463,7 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
             </br>
             <table
             class=\"data table table-warranty\"
-            cellspacing=\"1\"
+                cellspacing=\"1\"
             cellpadding=\"1\"
             border=\"1\"
             align=\"center\">
