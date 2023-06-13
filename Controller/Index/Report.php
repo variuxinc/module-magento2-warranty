@@ -14,6 +14,7 @@ use Variux\Warranty\Helper\MyPdf;
 use Variux\Warranty\Model\WarrantyFactory;
 use Variux\Warranty\Model\ResourceModel\Warranty as WarrantyResourceModel;
 use Variux\Warranty\Helper\MyPdfX;
+use Variux\Warranty\Helper\GeneratePdf as PdfHelper;
 
 class Report extends \Variux\Warranty\Controller\AbstractAction
 {
@@ -34,6 +35,10 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
      * @var WarrantyResourceModel
      */
     protected $warrantyResourceModel;
+    /**
+     * @var PdfHelper
+     */
+    protected $pdfHelper;
 
     /**
      * @param Context $context
@@ -46,6 +51,7 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
      * @param PageFactory $resultPageFactory
      * @param WarrantyFactory $warrantyFactory
      * @param WarrantyResourceModel $warrantyResourceModel
+     * @param PdfHelper $pdfHelper
      */
     public function __construct(
         Context                            $context,
@@ -57,7 +63,8 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
         \Variux\Warranty\Block\Index\Index $indexBlock,
         PageFactory                        $resultPageFactory,
         WarrantyFactory                    $warrantyFactory,
-        WarrantyResourceModel $warrantyResourceModel
+        WarrantyResourceModel $warrantyResourceModel,
+        PdfHelper $pdfHelper
     ) {
         parent::__construct(
             $context,
@@ -71,6 +78,7 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
         $this->resultPageFactory = $resultPageFactory;
         $this->warrantyFactory = $warrantyFactory;
         $this->warrantyResourceModel = $warrantyResourceModel;
+        $this->pdfHelper = $pdfHelper;
     }
 
     public function execute()
@@ -91,7 +99,8 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
              * Generate ở function này chưa có thông tin output ra đâu.
              *       A cần phải return out put là gì xử lý out put của hàm này như thế nào sau khi generate xong.
              */
-            $this->generateClaim($warranty);
+//            $this->generateClaim($warranty);
+            $this->pdfHelper->generateClaim($warranty);
         }
         /**
          * @Hidro-Le
