@@ -3,24 +3,34 @@
 namespace Variux\Warranty\Helper;
 
 use Magento\Framework\App\Helper\Context;
+use Magento\Framework\Exception\FileSystemException;
+use Magento\Framework\Filesystem;
 use Variux\Warranty\Helper\MyPdfX;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Zend_Validate_File_Exists;
+use Magento\Framework\Filesystem\Io\File;
 
 class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
 {
     const WARRANTY_FOLDER = "warranty/";
 
     protected $mediaDirectory;
+    /**
+     * @var File
+     */
+    protected $file;
 
     /**
      * @param Context $context
-     * @param \Magento\Framework\Filesystem $filesystem
-     * @throws \Magento\Framework\Exception\FileSystemException
+     * @param Filesystem $filesystem
+     * @param File $file
+     * @throws FileSystemException
      */
-    public function __construct(Context $context, \Magento\Framework\Filesystem $filesystem)
+    public function __construct(Context $context, \Magento\Framework\Filesystem $filesystem, File $file)
     {
         parent::__construct($context);
         $this->mediaDirectory = $filesystem->getDirectoryWrite(DirectoryList::MEDIA);
+        $this->file = $file;
     }
 
     /**
@@ -88,7 +98,8 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
                 </div>
                 <div class=\"childContent\">
                     <span>
-                        Dealer Claim/Reference #  : <span class=\"claimprop\">" . $claim->getReferenceNumber() . "</span>
+                        Dealer Claim/Reference #  :
+                        <span class=\"claimprop\">" . $claim->getReferenceNumber() . "</span>
                     </span>
                 </div>
                 <div class=\"childContent\">
@@ -123,12 +134,14 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
                 </div>
                 <div class=\"childContent\">
                     <span>
-                        Dealership Phone Number : <span class=\"claimprop\">" . $claim->getDealerPhoneNumber() . "</span>
+                        Dealership Phone Number :
+                        <span class=\"claimprop\">" . $claim->getDealerPhoneNumber() . "</span>
                     </span>
                 </div>
                 <div class=\"childContent\">
                     <span>
-                        Claim Processors Email : <span class=\"claimprop\">" . $claim->getClaimProcessorEmail() . "</span>
+                        Claim Processors Email :
+                        <span class=\"claimprop\">" . $claim->getClaimProcessorEmail() . "</span>
                     </span>
                 </div>
                 <div class=\"childContent\">
@@ -163,7 +176,11 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
                 <h2 style=\"text-align: center;\">SRO Detail</h2>
                 <h1>Material Items</h1>
                 </br>
-                <table class=\"data table table-warranty\" cellspacing=\"1\" cellpadding=\"1\" border=\"1\" align=\"center\">
+                <table class=\"data table table-warranty\"
+                       cellspacing=\"1\"
+                       cellpadding=\"1\"
+                       border=\"1\"
+                       align=\"center\">
                     <thead>
                         <tr nobr=\"true\"
                             class=\"row\"
@@ -253,7 +270,7 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
                     </tbody>
                 </table>
             ";
-        }
+    }
 
     /**
      * @param $sro
@@ -495,10 +512,10 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
     private function createFolderPDF(): string
     {
         $path = $this->getWarrantyPath().'pdf/';
-        if (!file_exists($path)) {
+        if (!$this->file->fileExists($path)) {
             try {
-                mkdir($path, 0777, true);
-            }catch (\Throwable $e){
+                $this->file->mkdir($path);
+            } catch (\Throwable $e) {
                 $path = $this->getWarrantyPath().'pdf/';
             }
         }
@@ -521,7 +538,7 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
     {
         $path = $this->getWarrantyPath().'pdf/';
         $fileName = $path . 'Claim_' . $claim->getId() . '.pdf';
-        if (!file_exists($fileName)) {
+        if (!$this->file->fileExists($fileName)) {
             return false;
         }
         return true;
@@ -536,5 +553,4 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
         $path = $this->getWarrantyPath().'pdf/';
         return $path . 'Claim_' . $claim->getId() . '.pdf';
     }
-
 }
