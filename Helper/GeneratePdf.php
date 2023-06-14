@@ -4,28 +4,43 @@ namespace Variux\Warranty\Helper;
 
 use Magento\Framework\App\Helper\Context;
 use Variux\Warranty\Helper\MyPdfX;
+use Magento\Framework\App\Filesystem\DirectoryList;
 
 class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
 {
-    public function __construct(Context $context)
+    const WARRANTY_FOLDER = "warranty/";
+
+    protected $mediaDirectory;
+
+    /**
+     * @param Context $context
+     * @param \Magento\Framework\Filesystem $filesystem
+     * @throws \Magento\Framework\Exception\FileSystemException
+     */
+    public function __construct(Context $context, \Magento\Framework\Filesystem $filesystem)
     {
         parent::__construct($context);
+        $this->mediaDirectory = $filesystem->getDirectoryWrite(DirectoryList::MEDIA);
     }
 
-    public function generateClaimHtml($claim)
+    /**
+     * @param $claim
+     * @return string
+     */
+    public function generateClaimHtml($claim): string
     {
-        $html = "
+        return "
             <style>
                 .xContent span {
                     color: black;
                     font-size: large;
                     font-weight: bold;
                 }
-                .xContent .nDung{
+                .xContent .childContent{
                     display: block;
                     margin: 10px 0;
                 }
-                .xContent .kohieu {
+                .xContent .claimprop {
                     font-weight: normal;
                 }
             </style>
@@ -61,84 +76,90 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
              </table>
              </br>
              <div class=\"xContent\">
-                <div class=\"nDung\">
+                <div class=\"childContent\">
                     <span>
-                        Item  : <span class=\"kohieu\">" . $claim->getItemSku() . "</span>
+                        Item  : <span class=\"claimprop\">" . $claim->getItemSku() . "</span>
                     </span>
                 </div>
-                <div class=\"nDung\">
+                <div class=\"childContent\">
                     <span>
-                        Boat Owner Name  : <span class=\"kohieu\">" . $claim->getBoatOwnerName() . "</span>
+                        Boat Owner Name  : <span class=\"claimprop\">" . $claim->getBoatOwnerName() . "</span>
                     </span>
                 </div>
-                <div class=\"nDung\">
+                <div class=\"childContent\">
                     <span>
-                        Dealer Claim/Reference #  : <span class=\"kohieu\">" . $claim->getReferenceNumber() . "</span>
+                        Dealer Claim/Reference #  : <span class=\"claimprop\">" . $claim->getReferenceNumber() . "</span>
                     </span>
                 </div>
-                <div class=\"nDung\">
+                <div class=\"childContent\">
                      <span>
-                        Date of Failure  #  : <span class=\"kohieu\">" . $claim->getDateOfFailure() . "</span>
+                        Date of Failure  #  : <span class=\"claimprop\">" . $claim->getDateOfFailure() . "</span>
                      </span>
                 </div>
-                <div class=\"nDung\">
+                <div class=\"childContent\">
                     <span>
-                        Date of Repair   : <span class=\"kohieu\">" . $claim->getDateOfRepair() . "</span>
+                        Date of Repair   : <span class=\"claimprop\">" . $claim->getDateOfRepair() . "</span>
                     </span>
                 </div>
-                <div class=\"nDung\">
+                <div class=\"childContent\">
                     <span>
-                        Engine Hours   : <span class=\"kohieu\">" . $claim->getEngineHour() . "</span>
+                        Engine Hours   : <span class=\"claimprop\">" . $claim->getEngineHour() . "</span>
                     </span>
                 </div>
-                <div class=\"nDung\">
+                <div class=\"childContent\">
                     <span>
-                        Invoice Number  : <span class=\"kohieu\">" . $claim->getInvoiceNumber() . "</span>
+                        Invoice Number  : <span class=\"claimprop\">" . $claim->getInvoiceNumber() . "</span>
                     </span>
                 </div>
-                <div class=\"nDung\">
+                <div class=\"childContent\">
                     <span>
-                        Order Number  : <span class=\"kohieu\">" . $claim->getOrderNumber() . "</span>
+                        Order Number  : <span class=\"claimprop\">" . $claim->getOrderNumber() . "</span>
                     </span>
                 </div>
-                <div class=\"nDung\">
+                <div class=\"childContent\">
                     <span>
-                        Dealer Contact Name : <span class=\"kohieu\">" . $claim->getDealerName() . "</span>
+                        Dealer Contact Name : <span class=\"claimprop\">" . $claim->getDealerName() . "</span>
                     </span>
                 </div>
-                <div class=\"nDung\">
+                <div class=\"childContent\">
                     <span>
-                        Dealership Phone Number : <span class=\"kohieu\">" . $claim->getDealerPhoneNumber() . "</span>
+                        Dealership Phone Number : <span class=\"claimprop\">" . $claim->getDealerPhoneNumber() . "</span>
                     </span>
                 </div>
-                <div class=\"nDung\">
+                <div class=\"childContent\">
                     <span>
-                        Claim Processors Email : <span class=\"kohieu\">" . $claim->getClaimProcessorEmail() . "</span>
+                        Claim Processors Email : <span class=\"claimprop\">" . $claim->getClaimProcessorEmail() . "</span>
                     </span>
                 </div>
-                <div class=\"nDung\">
+                <div class=\"childContent\">
                     <span>
-                        Brief Description : <span class=\"kohieu\">" . $claim->getBriefDescription() . "</span>
+                        Brief Description : <span class=\"claimprop\">" . $claim->getBriefDescription() . "</span>
                     </span>
                 </div>
-                <div class=\"nDung\">
+                <div class=\"childContent\">
                     <span>
-                        Reason Note : <span class=\"kohieu\">" . $claim->getReasonNote() . "</span>
+                        Reason Note : <span class=\"claimprop\">" . $claim->getReasonNote() . "</span>
                     </span>
                 </div>
-                <div class=\"nDung\">
+                <div class=\"childContent\">
                     <span>
-                        Resolution Note : <span class=\"kohieu\">" . $claim->getResolutionNote() . "</span>
+                        Resolution Note : <span class=\"claimprop\">" . $claim->getResolutionNote() . "</span>
                     </span>
                 </div>
              </div>
         ";
-        return $html;
     }
 
-    public function generateSroDetailsHtml($materialHtml, $laborHtml, $miscHtml, $docHtml)
-        {
-            $html = "
+    /**
+     * @param $materialHtml
+     * @param $laborHtml
+     * @param $miscHtml
+     * @param $docHtml
+     * @return string
+     */
+    public function generateSroDetailsHtml($materialHtml, $laborHtml, $miscHtml, $docHtml): string
+    {
+            return "
                 <h2 style=\"text-align: center;\">SRO Detail</h2>
                 <h1>Material Items</h1>
                 </br>
@@ -232,10 +253,13 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
                     </tbody>
                 </table>
             ";
-            return $html;
         }
 
-    public function getMaterialHtml($sro)
+    /**
+     * @param $sro
+     * @return string
+     */
+    public function getMaterialHtml($sro): string
     {
         $materialHtml = "";
         $totalQty = 0;
@@ -273,7 +297,11 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
         return $materialHtml;
     }
 
-    public function getLaborHtml($sro)
+    /**
+     * @param $sro
+     * @return string
+     */
+    public function getLaborHtml($sro): string
     {
         $laborHtml = "";
         $totalQty = 0;
@@ -310,7 +338,11 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
         return $laborHtml;
     }
 
-    public function getMiscHtml($sro)
+    /**
+     * @param $sro
+     * @return string
+     */
+    public function getMiscHtml($sro): string
     {
         $miscHtml = "";
         $totalQty = 0;
@@ -339,7 +371,12 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
         return $miscHtml;
     }
 
-    public function getDocumentsHtml($sro, $storeManager)
+    /**
+     * @param $sro
+     * @param $storeManager
+     * @return string
+     */
+    public function getDocumentsHtml($sro, $storeManager): string
     {
         $baseUrl = $storeManager->getStore()->getBaseUrl() . 'media/warranty/document';
         $docHtml = "";
@@ -358,8 +395,13 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
         return $docHtml;
     }
 
+    /**
+     * @param $claim
+     * @return void
+     */
     public function generateClaim($claim)
     {
+        $path = $this->createFolderPDF();
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
         $storeManager = $objectManager->create(\Magento\Store\Model\StoreManagerInterface::class);
         $pdf = new MyPdfX(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -444,7 +486,55 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
         // ---------------------------------------------------------
         // Close and output PDF document
         // This method has several options, check the source code documentation for more information.
-        $pdf->Output('Claim_' . $claim->getId() . '.pdf', 'I');
+        $pdf->Output($path.'Claim_' . $claim->getId() . '.pdf', 'F');
+    }
+
+    /**
+     * @return string
+     */
+    private function createFolderPDF(): string
+    {
+        $path = $this->getWarrantyPath().'pdf/';
+        if (!file_exists($path)) {
+            try {
+                mkdir($path, 0777, true);
+            }catch (\Throwable $e){
+                $path = $this->getWarrantyPath().'pdf/';
+            }
+        }
+        return $path;
+    }
+
+    /**
+     * @return string
+     */
+    private function getWarrantyPath(): string
+    {
+        return $this->mediaDirectory->getAbsolutePath(self::WARRANTY_FOLDER);
+    }
+
+    /**
+     * @param $claim
+     * @return bool
+     */
+    public function isPdfGenerated($claim): bool
+    {
+        $path = $this->getWarrantyPath().'pdf/';
+        $fileName = $path . 'Claim_' . $claim->getId() . '.pdf';
+        if (!file_exists($fileName)) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * @param $claim
+     * @return string
+     */
+    public function getWarrantyFileName($claim): string
+    {
+        $path = $this->getWarrantyPath().'pdf/';
+        return $path . 'Claim_' . $claim->getId() . '.pdf';
     }
 
 }
