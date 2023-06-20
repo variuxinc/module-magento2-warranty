@@ -1,0 +1,44 @@
+<div class="searchautosuggest__autosuggest">
+    <div class="searchautosuggest__spinner">
+        <div class="spinner-item spinner-item-1"></div>
+        <div class="spinner-item spinner-item-2"></div>
+        <div class="spinner-item spinner-item-3"></div>
+        <div class="spinner-item spinner-item-4"></div>
+        <div class="spinner-item spinner-item-5"></div>
+        <div class="spinner-item spinner-item-6"></div>
+        <div class="spinner-item spinner-item-7"></div>
+        <div class="spinner-item spinner-item-8"></div>
+    </div>
+
+    <div class="searchautosuggest__close">
+        &times;
+    </div>
+</div>
+
+
+<div class="searchautosuggest__wrapper">
+    <div data-bind="visible: result">
+        <div class="searchautosuggest__index-title">
+            <span data-bind="i18n: result.title ? result.title : 'Result'"></span>
+            <!--ko if: result.totalItems-->
+            (<span data-bind="text: result.totalItems"></span>)
+            <!-- /ko-->
+        </div>
+
+        <div data-bind="visible: result.noResults === false">
+            <!-- ko if: result.items.length > 0-->
+            <ul data-bind="foreach: result.items">
+                <li data-bind="
+                            event: { mouseover: $parent.onMouseOver, mouseout: $parent.onMouseOut, click: $parent.onClick }">
+                    <strong data-bind="text: $data.serial_no"></strong> -
+                    <span data-bind="text: $data.description"></span>
+                </li>
+            </ul>
+            <!-- /ko-->
+        </div>
+        <div class="searchautosuggest__empty-result" data-bind="visible: result.noResults == true && !loading">
+            <span data-bind="i18n: 'Sorry, nothing found', visible: !result.is_default"></span>
+            <span data-bind="i18n: 'Enter the text to search', visible: result.is_default"></span>
+        </div>
+    </div>
+</div>
