@@ -244,11 +244,10 @@ $engineConfig = $block->getEngineSuggestConfig();
 $invoiceConfig = $block->getInvoiceSuggestConfig();
 ?>
 
-<script type="text/javascript">
+<script>
     /**
      * @Hidro-Le
      * @TODO - fixed
-     * Cần define đúng <script type="text/javascript">
      */
     require([
             'jquery',
@@ -266,26 +265,26 @@ $invoiceConfig = $block->getInvoiceSuggestConfig();
                 }
             }
 
-            passDataToForm(<?=\Zend_Json::encode($block->getFormData())?>);
+            passDataToForm(<?=\Magento\Framework\Serialize\Serializer\Json::serialize($block->getFormData())?>);
             $("#warranty-submit-btn").show();
             /**
              * @Hidro-Le
              * @TODO - fixed
              * Sử dung if(...):  endif; thay vì if(...){...}
              */
-            <?php if (!$block->isWarrantySubmitted()) : ?>
+            <?php if (!$block->isWarrantySubmitted()): ?>
                 var itemSuggest = new autosuggest($('input#engine'), function (item, $input, event) {
                     $input.val(item.serial_no).trigger("change");
                     var $form = $input.closest("form");
                     $form.find("input[name=description]").val(item.description).trigger("change");
                     $form.find("input[name=item_sku]").val(item.item).trigger("change");
-                }).init(<?=\Zend_Json::encode($engineConfig)?>);
+                }).init(<?=\Magento\Framework\Serialize\Serializer\Json::serialize($engineConfig)?>);
 
                 var invoiceSuggest = new autosuggest($('input#invoice_number'), function (item, $input, event) {
                     $input.val(item.inv_num).trigger("change");
                     var $form = $input.closest("form");
                     $form.find("input[name=order_number]").val(item.co_num).trigger("change");
-                }).init(<?=\Zend_Json::encode($invoiceConfig)?>);
+                }).init(<?=\Magento\Framework\Serialize\Serializer\Json::serialize($invoiceConfig)?>);
             <?php endif; ?>
         }
     );

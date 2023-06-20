@@ -9,35 +9,36 @@ namespace Variux\Warranty\Api\Data;
 
 interface SroLaborInterface
 {
-
-    const ITEM_ID = 'item_id';
-    const CUSTOMER_ID = 'customer_id';
-    const HOUR_WORKED = 'hour_worked';
-    const LABOR_HOURLY_RATE = 'labor_hourly_rate';
-    const WORK_CODE = 'work_code';
-    const SRO_ID = 'sro_id';
-    const UPDATED_AT = 'updated_at';
-    const DESCRIPTION = 'description';
-    const SRO_LINE = 'sro_line';
-    const NOTE = 'note';
-    const COST_CONV = 'cost_conv';
-    const TRANS_DATE = 'trans_date';
-    const CREATED_AT = 'created_at';
-    const COMPANY_NAME = 'company_name';
-    const SRO_NUMBER = 'sro_number';
-    const SRO_OPER = 'sro_oper';
-    const VALIDATE = 'validate';
-    const COMPANY_ID = 'company_id';
-    const PARTNER_ID = 'partner_id';
+    public const ITEM_ID = 'item_id';
+    public const CUSTOMER_ID = 'customer_id';
+    public const HOUR_WORKED = 'hour_worked';
+    public const LABOR_HOURLY_RATE = 'labor_hourly_rate';
+    public const WORK_CODE = 'work_code';
+    public const SRO_ID = 'sro_id';
+    public const UPDATED_AT = 'updated_at';
+    public const DESCRIPTION = 'description';
+    public const SRO_LINE = 'sro_line';
+    public const NOTE = 'note';
+    public const COST_CONV = 'cost_conv';
+    public const TRANS_DATE = 'trans_date';
+    public const CREATED_AT = 'created_at';
+    public const COMPANY_NAME = 'company_name';
+    public const SRO_NUMBER = 'sro_number';
+    public const SRO_OPER = 'sro_oper';
+    public const VALIDATE = 'validate';
+    public const COMPANY_ID = 'company_id';
+    public const PARTNER_ID = 'partner_id';
 
     /**
      * Get sro_id
+     *
      * @return string|null
      */
     public function getSroId();
 
     /**
      * Set sro_id
+     *
      * @param string $sroId
      * @return \Variux\Warranty\SroLabor\Api\Data\SroLaborInterface
      */
@@ -45,12 +46,14 @@ interface SroLaborInterface
 
     /**
      * Get sro_line
+     *
      * @return string|null
      */
     public function getSroLine();
 
     /**
      * Set sro_line
+     *
      * @param string $sroLine
      * @return \Variux\Warranty\SroLabor\Api\Data\SroLaborInterface
      */
@@ -58,12 +61,14 @@ interface SroLaborInterface
 
     /**
      * Get sro_oper
+     *
      * @return string|null
      */
     public function getSroOper();
 
     /**
      * Set sro_oper
+     *
      * @param string $sroOper
      * @return \Variux\Warranty\SroLabor\Api\Data\SroLaborInterface
      */
@@ -71,12 +76,14 @@ interface SroLaborInterface
 
     /**
      * Get trans_date
+     *
      * @return string|null
      */
     public function getTransDate();
 
     /**
      * Set trans_date
+     *
      * @param string $transDate
      * @return \Variux\Warranty\SroLabor\Api\Data\SroLaborInterface
      */
@@ -84,12 +91,14 @@ interface SroLaborInterface
 
     /**
      * Get company_id
+     *
      * @return string|null
      */
     public function getCompanyId();
 
     /**
      * Set company_id
+     *
      * @param string $companyId
      * @return \Variux\Warranty\SroLabor\Api\Data\SroLaborInterface
      */
@@ -97,12 +106,14 @@ interface SroLaborInterface
 
     /**
      * Get company_name
+     *
      * @return string|null
      */
     public function getCompanyName();
 
     /**
      * Set company_name
+     *
      * @param string $companyName
      * @return \Variux\Warranty\SroLabor\Api\Data\SroLaborInterface
      */
@@ -110,12 +121,14 @@ interface SroLaborInterface
 
     /**
      * Get customer_id
+     *
      * @return string|null
      */
     public function getCustomerId();
 
     /**
      * Set customer_id
+     *
      * @param string $customerId
      * @return \Variux\Warranty\SroLabor\Api\Data\SroLaborInterface
      */
@@ -123,12 +136,14 @@ interface SroLaborInterface
 
     /**
      * Get work_code
+     *
      * @return string|null
      */
     public function getWorkCode();
 
     /**
      * Set work_code
+     *
      * @param string $workCode
      * @return \Variux\Warranty\SroLabor\Api\Data\SroLaborInterface
      */
@@ -136,12 +151,14 @@ interface SroLaborInterface
 
     /**
      * Get hour_worked
+     *
      * @return string|null
      */
     public function getHourWorked();
 
     /**
      * Set hour_worked
+     *
      * @param string $hourWorked
      * @return \Variux\Warranty\SroLabor\Api\Data\SroLaborInterface
      */
@@ -149,12 +166,14 @@ interface SroLaborInterface
 
     /**
      * Get validate
+     *
      * @return string|null
      */
     public function getValidate();
 
     /**
      * Set validate
+     *
      * @param string $validate
      * @return \Variux\Warranty\SroLabor\Api\Data\SroLaborInterface
      */
@@ -162,12 +181,14 @@ interface SroLaborInterface
 
     /**
      * Get cost_conv
+     *
      * @return string|null
      */
     public function getCostConv();
 
     /**
      * Set cost_conv
+     *
      * @param string $costConv
      * @return \Variux\Warranty\SroLabor\Api\Data\SroLaborInterface
      */
@@ -175,12 +196,14 @@ interface SroLaborInterface
 
     /**
      * Get note
+     *
      * @return string|null
      */
     public function getNote();
 
     /**
      * Set note
+     *
      * @param string $note
      * @return \Variux\Warranty\SroLabor\Api\Data\SroLaborInterface
      */
@@ -188,12 +211,14 @@ interface SroLaborInterface
 
     /**
      * Get description
+     *
      * @return string|null
      */
     public function getDescription();
 
     /**
      * Set description
+     *
      * @param string $description
      * @return \Variux\Warranty\SroLabor\Api\Data\SroLaborInterface
      */
@@ -201,12 +226,14 @@ interface SroLaborInterface
 
     /**
      * Get labor_hourly_rate
+     *
      * @return string|null
      */
     public function getLaborHourlyRate();
 
     /**
      * Set labor_hourly_rate
+     *
      * @param string $laborHourlyRate
      * @return \Variux\Warranty\SroLabor\Api\Data\SroLaborInterface
      */
@@ -214,36 +241,44 @@ interface SroLaborInterface
 
     /**
      * Get sro_number
+     *
      * @return string|null
      */
     public function getSroNumber();
 
     /**
      * Set sro_number
+     *
      * @param string $sroNumber
      * @return \Variux\Warranty\SroLabor\Api\Data\SroLaborInterface
      */
     public function setSroNumber($sroNumber);
 
     /**
+     * Get Partner Id
+     *
      * @return mixed
      */
     public function getPartnerId();
 
     /**
-     * @param $partnerId
+     * Set Partner Id
+     *
+     * @param string $partnerId
      * @return mixed
      */
     public function setPartnerId($partnerId);
 
     /**
      * Get created_at
+     *
      * @return string|null
      */
     public function getCreatedAt();
 
     /**
      * Set created_at
+     *
      * @param string $createdAt
      * @return \Variux\Warranty\SroLabor\Api\Data\SroLaborInterface
      */
@@ -251,12 +286,14 @@ interface SroLaborInterface
 
     /**
      * Get updated_at
+     *
      * @return string|null
      */
     public function getUpdatedAt();
 
     /**
      * Set updated_at
+     *
      * @param string $updatedAt
      * @return \Variux\Warranty\SroLabor\Api\Data\SroLaborInterface
      */

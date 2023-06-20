@@ -16,6 +16,7 @@ interface WarrantyTransferRepositoryInterface
 
     /**
      * Save WarrantyTransfer
+     *
      * @param WarrantyTransferInterface $warrantyTransfer
      * @return WarrantyTransferInterface
      * @throws LocalizedException
@@ -26,6 +27,7 @@ interface WarrantyTransferRepositoryInterface
 
     /**
      * Retrieve WarrantyTransfer
+     *
      * @param string $warrantytransferId
      * @return WarrantyTransferInterface
      * @throws LocalizedException
@@ -34,6 +36,7 @@ interface WarrantyTransferRepositoryInterface
 
     /**
      * Retrieve WarrantyTransfer matching the specified criteria.
+     *
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
      * @return \Variux\Warranty\Api\Data\WarrantyTransferSearchResultsInterface
      * @throws LocalizedException
@@ -44,6 +47,7 @@ interface WarrantyTransferRepositoryInterface
 
     /**
      * Delete WarrantyTransfer
+     *
      * @param WarrantyTransferInterface $warrantyTransfer
      * @return bool true on success
      * @throws LocalizedException
@@ -54,6 +58,7 @@ interface WarrantyTransferRepositoryInterface
 
     /**
      * Delete WarrantyTransfer by ID
+     *
      * @param string $warrantytransferId
      * @return bool true on success
      * @throws \Magento\Framework\Exception\NoSuchEntityException

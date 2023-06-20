@@ -12,12 +12,14 @@ interface SroMiscSearchResultsInterface extends \Magento\Framework\Api\SearchRes
 
     /**
      * Get SroMisc list.
+     *
      * @return \Variux\Warranty\Api\Data\SroMiscInterface[]
      */
     public function getItems();
 
     /**
      * Set sro_id list.
+     *
      * @param \Variux\Warranty\Api\Data\SroMiscInterface[] $items
      * @return $this
      */

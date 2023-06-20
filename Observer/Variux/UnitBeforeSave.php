@@ -16,11 +16,16 @@ class UnitBeforeSave implements \Magento\Framework\Event\ObserverInterface
      * @var Logger
      */
     protected $logger;
+
     /**
      * @var \Magento\Catalog\Model\ProductRepository
      */
     protected $productRepository;
 
+    /**
+     * @param Logger $logger
+     * @param \Magento\Catalog\Model\ProductRepository $productRepository
+     */
     public function __construct(
         Logger $logger,
         \Magento\Catalog\Model\ProductRepository $productRepository

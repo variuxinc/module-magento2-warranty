@@ -14,6 +14,7 @@ interface UnitRepositoryInterface
 
     /**
      * Save Unit
+     *
      * @param \Variux\Warranty\Api\Data\UnitInterface $unit
      * @return \Variux\Warranty\Api\Data\UnitInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -24,6 +25,7 @@ interface UnitRepositoryInterface
 
     /**
      * Retrieve Unit
+     *
      * @param string $unitId
      * @return \Variux\Warranty\Api\Data\UnitInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -32,6 +34,7 @@ interface UnitRepositoryInterface
 
     /**
      * Retrieve Unit matching the specified criteria.
+     *
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
      * @return \Variux\Warranty\Api\Data\UnitSearchResultsInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -42,6 +45,7 @@ interface UnitRepositoryInterface
 
     /**
      * Delete Unit
+     *
      * @param \Variux\Warranty\Api\Data\UnitInterface $unit
      * @return bool true on success
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -52,6 +56,7 @@ interface UnitRepositoryInterface
 
     /**
      * Delete Unit by ID
+     *
      * @param string $unitId
      * @return bool true on success
      * @throws \Magento\Framework\Exception\NoSuchEntityException

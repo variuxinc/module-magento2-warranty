@@ -14,6 +14,7 @@ interface SroMiscRepositoryInterface
 
     /**
      * Save SroMisc
+     *
      * @param \Variux\Warranty\Api\Data\SroMiscInterface $sroMisc
      * @return \Variux\Warranty\Api\Data\SroMiscInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -24,6 +25,7 @@ interface SroMiscRepositoryInterface
 
     /**
      * Retrieve SroMisc
+     *
      * @param string $sromiscId
      * @return \Variux\Warranty\Api\Data\SroMiscInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -32,6 +34,7 @@ interface SroMiscRepositoryInterface
 
     /**
      * Retrieve SroMisc matching the specified criteria.
+     *
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
      * @return \Variux\Warranty\Api\Data\SroMiscSearchResultsInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -42,6 +45,7 @@ interface SroMiscRepositoryInterface
 
     /**
      * Delete SroMisc
+     *
      * @param \Variux\Warranty\Api\Data\SroMiscInterface $sroMisc
      * @return bool true on success
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -52,6 +56,7 @@ interface SroMiscRepositoryInterface
 
     /**
      * Delete SroMisc by ID
+     *
      * @param string $sromiscId
      * @return bool true on success
      * @throws \Magento\Framework\Exception\NoSuchEntityException

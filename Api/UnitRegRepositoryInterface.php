@@ -14,6 +14,7 @@ interface UnitRegRepositoryInterface
 
     /**
      * Save UnitReg
+     *
      * @param \Variux\Warranty\Api\Data\UnitRegInterface $unitReg
      * @return \Variux\Warranty\Api\Data\UnitRegInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -24,6 +25,7 @@ interface UnitRegRepositoryInterface
 
     /**
      * Retrieve UnitReg
+     *
      * @param string $unitregId
      * @return \Variux\Warranty\Api\Data\UnitRegInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -32,6 +34,7 @@ interface UnitRegRepositoryInterface
 
     /**
      * Retrieve UnitReg matching the specified criteria.
+     *
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
      * @return \Variux\Warranty\Api\Data\UnitRegSearchResultsInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -42,6 +45,7 @@ interface UnitRegRepositoryInterface
 
     /**
      * Delete UnitReg
+     *
      * @param \Variux\Warranty\Api\Data\UnitRegInterface $unitReg
      * @return bool true on success
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -52,6 +56,7 @@ interface UnitRegRepositoryInterface
 
     /**
      * Delete UnitReg by ID
+     *
      * @param string $unitregId
      * @return bool true on success
      * @throws \Magento\Framework\Exception\NoSuchEntityException

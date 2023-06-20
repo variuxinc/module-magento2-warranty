@@ -35,10 +35,14 @@ class Index extends \Magento\Framework\View\Element\Template
      */
     protected $messageManager;
 
+    /**
+     * @var
+     */
     protected $warranties;
 
     /**
      * Index constructor.
+     *
      * @param Context $context
      * @param CustomerSession $customerSession
      * @param WarrantyCollectionFactory $warrantyCollectionFactory
@@ -82,6 +86,8 @@ class Index extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Add Filter
+     *
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function addFilterBlock()
@@ -102,6 +108,8 @@ class Index extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Add Toolbar
+     *
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function addToolbarBlock()
@@ -117,6 +125,8 @@ class Index extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get Filter Data
+     *
      * @return mixed
      */
     public function getFilterData()
@@ -125,6 +135,8 @@ class Index extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get Page
+     *
      * @return mixed
      */
     public function getPage()
@@ -133,6 +145,8 @@ class Index extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get Page Size
+     *
      * @return mixed
      */
     public function getPageSize()
@@ -141,6 +155,8 @@ class Index extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get Warranties
+     *
      * @return false|Collection
      */
     public function getWarranties()
@@ -168,7 +184,9 @@ class Index extends \Magento\Framework\View\Element\Template
     }
 
     /**
-     * @param $warranty
+     * Sro Detail
+     *
+     * @param object $warranty
      * @return bool
      */
     public function hasSroDetail($warranty)
@@ -182,7 +200,9 @@ class Index extends \Magento\Framework\View\Element\Template
     }
 
     /**
-     * @param $warranty
+     * Get Sro Detail Url
+     *
+     * @param object $warranty
      * @return string
      */
     public function getSroDetailUrl($warranty)
@@ -203,7 +223,9 @@ class Index extends \Magento\Framework\View\Element\Template
     }
 
     /**
-     * @param $warranty
+     * Get Sro Detail Number
+     *
+     * @param object $warranty
      * @return string
      */
     public function getSroDetailNumber($warranty)
@@ -216,7 +238,9 @@ class Index extends \Magento\Framework\View\Element\Template
     }
 
     /**
-     * @param $dateString
+     * Data Format
+     *
+     * @param object $dateString
      * @return false|string
      */
     public function dateFormat($dateString)

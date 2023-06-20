@@ -14,6 +14,7 @@ interface WarrantyRepositoryInterface
 
     /**
      * Save Warranty
+     *
      * @param \Variux\Warranty\Api\Data\WarrantyInterface $warranty
      * @return \Variux\Warranty\Api\Data\WarrantyInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -24,6 +25,7 @@ interface WarrantyRepositoryInterface
 
     /**
      * Retrieve Warranty
+     *
      * @param string $warrantyId
      * @return \Variux\Warranty\Api\Data\WarrantyInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -32,6 +34,7 @@ interface WarrantyRepositoryInterface
 
     /**
      * Retrieve Warranty matching the specified criteria.
+     *
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
      * @return \Variux\Warranty\Api\Data\WarrantySearchResultsInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -42,6 +45,7 @@ interface WarrantyRepositoryInterface
 
     /**
      * Delete Warranty
+     *
      * @param \Variux\Warranty\Api\Data\WarrantyInterface $warranty
      * @return bool true on success
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -52,6 +56,7 @@ interface WarrantyRepositoryInterface
 
     /**
      * Delete Warranty by ID
+     *
      * @param string $warrantyId
      * @return bool true on success
      * @throws \Magento\Framework\Exception\NoSuchEntityException

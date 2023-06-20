@@ -12,12 +12,14 @@ interface SroLaborSearchResultsInterface extends \Magento\Framework\Api\SearchRe
 
     /**
      * Get SroLabor list.
+     *
      * @return \Variux\Warranty\Api\Data\SroLaborInterface[]
      */
     public function getItems();
 
     /**
      * Set sro_id list.
+     *
      * @param \Variux\Warranty\Api\Data\SroLaborInterface[] $items
      * @return $this
      */

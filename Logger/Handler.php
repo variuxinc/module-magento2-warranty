@@ -12,7 +12,7 @@ class Handler extends \Magento\Framework\Logger\Handler\Base
     protected $loggerType = Logger::INFO;
 
     /**
-     * File name
+     * Logging File name
      * @var string
      */
     protected $fileName = '/var/log/warranty.log';

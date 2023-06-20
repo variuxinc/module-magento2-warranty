@@ -17,6 +17,7 @@ interface WorkcodeRepositoryInterface
 
     /**
      * Save Workcode
+     *
      * @param WorkcodeInterface $workcode
      * @return WorkcodeInterface
      * @throws LocalizedException
@@ -27,7 +28,8 @@ interface WorkcodeRepositoryInterface
 
     /**
      * Retrieve Workcode
-     * @param $workcodeId
+     *
+     * @param string $workcodeId
      * @return WorkcodeInterface
      * @throws LocalizedException
      */
@@ -35,6 +37,7 @@ interface WorkcodeRepositoryInterface
 
     /**
      * Retrieve Workcode matching the specified criteria.
+     *
      * @param SearchCriteriaInterface $searchCriteria
      * @return WorkcodeSearchResultsInterface
      * @throws LocalizedException
@@ -45,6 +48,7 @@ interface WorkcodeRepositoryInterface
 
     /**
      * Delete Workcode
+     *
      * @param WorkcodeInterface $workcode
      * @return bool true on success
      * @throws LocalizedException
@@ -55,8 +59,9 @@ interface WorkcodeRepositoryInterface
 
     /**
      * Delete Workcode by ID
+     *
      * @param string $workcodeId
-     * @return bool true on success
+     * @return bool
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      * @throws LocalizedException
      */

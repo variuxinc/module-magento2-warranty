@@ -10,10 +10,14 @@ namespace Variux\Warranty\Ui\Component\Listing\Column;
 class SroLaborActions extends \Magento\Ui\Component\Listing\Columns\Column
 {
 
-    const URL_PATH_EDIT = 'variux_warranty/srolabor/edit';
-    const URL_PATH_DETAILS = 'variux_warranty/srolabor/details';
+    public const URL_PATH_EDIT = 'variux_warranty/srolabor/edit';
+    public const URL_PATH_DETAILS = 'variux_warranty/srolabor/details';
+
+    /**
+     * @var \Magento\Framework\UrlInterface
+     */
     protected $urlBuilder;
-    const URL_PATH_DELETE = 'variux_warranty/srolabor/delete';
+    public const URL_PATH_DELETE = 'variux_warranty/srolabor/delete';
 
     /**
      * @param \Magento\Framework\View\Element\UiComponent\ContextInterface $context

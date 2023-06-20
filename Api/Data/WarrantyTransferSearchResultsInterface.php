@@ -12,12 +12,14 @@ interface WarrantyTransferSearchResultsInterface extends \Magento\Framework\Api\
 
     /**
      * Get WarrantyTransfer list.
+     *
      * @return \Variux\Warranty\Api\Data\WarrantyTransferInterface[]
      */
     public function getItems();
 
     /**
      * Set engine_serial_num list.
+     *
      * @param \Variux\Warranty\Api\Data\WarrantyTransferInterface[] $items
      * @return $this
      */

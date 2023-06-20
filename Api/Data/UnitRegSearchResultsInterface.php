@@ -12,12 +12,14 @@ interface UnitRegSearchResultsInterface extends \Magento\Framework\Api\SearchRes
 
     /**
      * Get UnitReg list.
+     *
      * @return \Variux\Warranty\Api\Data\UnitRegInterface[]
      */
     public function getItems();
 
     /**
      * Set hull_id list.
+     *
      * @param \Variux\Warranty\Api\Data\UnitRegInterface[] $items
      * @return $this
      */

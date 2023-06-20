@@ -9,50 +9,51 @@ namespace Variux\Warranty\Api\Data;
 
 interface WarrantyInterface
 {
-
-    const ITEM_SKU = 'item_sku';
-    const WARRANTY_START_DATE = 'warranty_start_date';
-    const INVOICE_NUMBER = 'invoice_number';
-    const CREATED_AT = 'created_at';
-    const WARRANTY_END_DATE = 'warranty_end_date';
-    const FIRST_SRO_ID = 'first_sro_id';
-    const ENGINE = 'engine';
-    const COMPANY_ID = 'company_id';
-    const WARRANTY_REGISTERED = 'warranty_registered';
-    const STORE_ID = 'store_id';
-    const ORDER_NUMBER = 'order_number';
-    const DATE_OF_REPAIR = 'date_of_repair';
-    const FIRST_SRO_NUMBER = 'first_sro_number';
-    const ADMIN_CUSTOMER_ID = 'admin_customer_id';
-    const DESCRIPTION = 'description';
-    const INCIDENT_NUMBER = 'incident_number';
-    const ENGINE_HOUR = 'engine_hour';
-    const DEALER_PHONE_NUMBER = 'dealer_phone_number';
-    const IS_SRO_DETAILS_FULLY_SYNCED = 'is_sro_details_fully_synced';
-    const BRIEF_DESCRIPTION = 'brief_description';
-    const BOAT_OWNER_NAME = 'boat_owner_name';
-    const CUSTOMER_ID = 'customer_id';
-    const WARRANTY_ID = 'warranty_id';
-    const CONSUMER_NAME = 'consumer_name';
-    const STATUS = 'status';
-    const RESOLUTION_NOTE = 'resolution_note';
-    const REFERENCE_NUMBER = 'reference_number';
-    const DEALER_NAME = 'dealer_name';
-    const UPDATED_AT = 'updated_at';
-    const ERROR_REASON = 'error_reason';
-    const HAS_ERROR = 'has_error';
-    const DATE_OF_FAILURE = 'date_of_failure';
-    const REASON_NOTE = 'reason_note';
-    const CLAIM_PROCESSOR_EMAIL = 'claim_processor_email';
+    public const ITEM_SKU = 'item_sku';
+    public const WARRANTY_START_DATE = 'warranty_start_date';
+    public const INVOICE_NUMBER = 'invoice_number';
+    public const CREATED_AT = 'created_at';
+    public const WARRANTY_END_DATE = 'warranty_end_date';
+    public const FIRST_SRO_ID = 'first_sro_id';
+    public const ENGINE = 'engine';
+    public const COMPANY_ID = 'company_id';
+    public const WARRANTY_REGISTERED = 'warranty_registered';
+    public const STORE_ID = 'store_id';
+    public const ORDER_NUMBER = 'order_number';
+    public const DATE_OF_REPAIR = 'date_of_repair';
+    public const FIRST_SRO_NUMBER = 'first_sro_number';
+    public const ADMIN_CUSTOMER_ID = 'admin_customer_id';
+    public const DESCRIPTION = 'description';
+    public const INCIDENT_NUMBER = 'incident_number';
+    public const ENGINE_HOUR = 'engine_hour';
+    public const DEALER_PHONE_NUMBER = 'dealer_phone_number';
+    public const IS_SRO_DETAILS_FULLY_SYNCED = 'is_sro_details_fully_synced';
+    public const BRIEF_DESCRIPTION = 'brief_description';
+    public const BOAT_OWNER_NAME = 'boat_owner_name';
+    public const CUSTOMER_ID = 'customer_id';
+    public const WARRANTY_ID = 'warranty_id';
+    public const CONSUMER_NAME = 'consumer_name';
+    public const STATUS = 'status';
+    public const RESOLUTION_NOTE = 'resolution_note';
+    public const REFERENCE_NUMBER = 'reference_number';
+    public const DEALER_NAME = 'dealer_name';
+    public const UPDATED_AT = 'updated_at';
+    public const ERROR_REASON = 'error_reason';
+    public const HAS_ERROR = 'has_error';
+    public const DATE_OF_FAILURE = 'date_of_failure';
+    public const REASON_NOTE = 'reason_note';
+    public const CLAIM_PROCESSOR_EMAIL = 'claim_processor_email';
 
     /**
      * Get warranty_id
+     *
      * @return string|null
      */
     public function getWarrantyId();
 
     /**
      * Set warranty_id
+     *
      * @param string $warrantyId
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -60,12 +61,14 @@ interface WarrantyInterface
 
     /**
      * Get description
+     *
      * @return string|null
      */
     public function getDescription();
 
     /**
      * Set description
+     *
      * @param string $description
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -73,12 +76,14 @@ interface WarrantyInterface
 
     /**
      * Get customer_id
+     *
      * @return string|null
      */
     public function getCustomerId();
 
     /**
      * Set customer_id
+     *
      * @param string $customerId
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -86,12 +91,14 @@ interface WarrantyInterface
 
     /**
      * Get engine
+     *
      * @return string|null
      */
     public function getEngine();
 
     /**
      * Set engine
+     *
      * @param string $engine
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -99,12 +106,14 @@ interface WarrantyInterface
 
     /**
      * Get engine_hour
+     *
      * @return string|null
      */
     public function getEngineHour();
 
     /**
      * Set engine_hour
+     *
      * @param string $engineHour
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -112,12 +121,14 @@ interface WarrantyInterface
 
     /**
      * Get invoice_number
+     *
      * @return string|null
      */
     public function getInvoiceNumber();
 
     /**
      * Set invoice_number
+     *
      * @param string $invoiceNumber
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -125,12 +136,14 @@ interface WarrantyInterface
 
     /**
      * Get order_number
+     *
      * @return string|null
      */
     public function getOrderNumber();
 
     /**
      * Set order_number
+     *
      * @param string $orderNumber
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -138,12 +151,14 @@ interface WarrantyInterface
 
     /**
      * Get item_sku
+     *
      * @return string|null
      */
     public function getItemSku();
 
     /**
      * Set item_sku
+     *
      * @param string $itemSku
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -151,12 +166,14 @@ interface WarrantyInterface
 
     /**
      * Get boat_owner_name
+     *
      * @return string|null
      */
     public function getBoatOwnerName();
 
     /**
      * Set boat_owner_name
+     *
      * @param string $boatOwnerName
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -164,12 +181,14 @@ interface WarrantyInterface
 
     /**
      * Get reference_number
+     *
      * @return string|null
      */
     public function getReferenceNumber();
 
     /**
      * Set reference_number
+     *
      * @param string $referenceNumber
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -177,12 +196,14 @@ interface WarrantyInterface
 
     /**
      * Get date_of_failure
+     *
      * @return string|null
      */
     public function getDateOfFailure();
 
     /**
      * Set date_of_failure
+     *
      * @param string $dateOfFailure
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -190,12 +211,14 @@ interface WarrantyInterface
 
     /**
      * Get date_of_repair
+     *
      * @return string|null
      */
     public function getDateOfRepair();
 
     /**
      * Set date_of_repair
+     *
      * @param string $dateOfRepair
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -203,12 +226,14 @@ interface WarrantyInterface
 
     /**
      * Get claim_processor_email
+     *
      * @return string|null
      */
     public function getClaimProcessorEmail();
 
     /**
      * Set claim_processor_email
+     *
      * @param string $claimProcessorEmail
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -216,12 +241,14 @@ interface WarrantyInterface
 
     /**
      * Get brief_description
+     *
      * @return string|null
      */
     public function getBriefDescription();
 
     /**
      * Set brief_description
+     *
      * @param string $briefDescription
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -229,12 +256,14 @@ interface WarrantyInterface
 
     /**
      * Get reason_note
+     *
      * @return string|null
      */
     public function getReasonNote();
 
     /**
      * Set reason_note
+     *
      * @param string $reasonNote
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -242,12 +271,14 @@ interface WarrantyInterface
 
     /**
      * Get resolution_note
+     *
      * @return string|null
      */
     public function getResolutionNote();
 
     /**
      * Set resolution_note
+     *
      * @param string $resolutionNote
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -255,12 +286,14 @@ interface WarrantyInterface
 
     /**
      * Get status
+     *
      * @return string|null
      */
     public function getStatus();
 
     /**
      * Set status
+     *
      * @param string $status
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -268,12 +301,14 @@ interface WarrantyInterface
 
     /**
      * Get store_id
+     *
      * @return string|null
      */
     public function getStoreId();
 
     /**
      * Set store_id
+     *
      * @param string $storeId
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -281,12 +316,14 @@ interface WarrantyInterface
 
     /**
      * Get incident_number
+     *
      * @return string|null
      */
     public function getIncidentNumber();
 
     /**
      * Set incident_number
+     *
      * @param string $incidentNumber
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -294,12 +331,14 @@ interface WarrantyInterface
 
     /**
      * Get first_sro_number
+     *
      * @return string|null
      */
     public function getFirstSroNumber();
 
     /**
      * Set first_sro_number
+     *
      * @param string $firstSroNumber
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -307,12 +346,14 @@ interface WarrantyInterface
 
     /**
      * Get dealer_name
+     *
      * @return string|null
      */
     public function getDealerName();
 
     /**
      * Set dealer_name
+     *
      * @param string $dealerName
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -320,12 +361,14 @@ interface WarrantyInterface
 
     /**
      * Get dealer_phone_number
+     *
      * @return string|null
      */
     public function getDealerPhoneNumber();
 
     /**
      * Set dealer_phone_number
+     *
      * @param string $dealerPhoneNumber
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -333,12 +376,14 @@ interface WarrantyInterface
 
     /**
      * Get is_sro_details_fully_synced
+     *
      * @return string|null
      */
     public function getIsSroDetailsFullySynced();
 
     /**
      * Set is_sro_details_fully_synced
+     *
      * @param string $isSroDetailsFullySynced
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -346,12 +391,14 @@ interface WarrantyInterface
 
     /**
      * Get has_error
+     *
      * @return string|null
      */
     public function getHasError();
 
     /**
      * Set has_error
+     *
      * @param string $hasError
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -359,12 +406,14 @@ interface WarrantyInterface
 
     /**
      * Get error_reason
+     *
      * @return string|null
      */
     public function getErrorReason();
 
     /**
      * Set error_reason
+     *
      * @param string $errorReason
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -372,12 +421,14 @@ interface WarrantyInterface
 
     /**
      * Get first_sro_id
+     *
      * @return string|null
      */
     public function getFirstSroId();
 
     /**
      * Set first_sro_id
+     *
      * @param string $firstSroId
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -385,12 +436,14 @@ interface WarrantyInterface
 
     /**
      * Get warranty_registered
+     *
      * @return string|null
      */
     public function getWarrantyRegistered();
 
     /**
      * Set warranty_registered
+     *
      * @param string $warrantyRegistered
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -398,12 +451,14 @@ interface WarrantyInterface
 
     /**
      * Get consumer_name
+     *
      * @return string|null
      */
     public function getConsumerName();
 
     /**
      * Set consumer_name
+     *
      * @param string $consumerName
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -411,12 +466,14 @@ interface WarrantyInterface
 
     /**
      * Get warranty_start_date
+     *
      * @return string|null
      */
     public function getWarrantyStartDate();
 
     /**
      * Set warranty_start_date
+     *
      * @param string $warrantyStartDate
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -424,12 +481,14 @@ interface WarrantyInterface
 
     /**
      * Get warranty_end_date
+     *
      * @return string|null
      */
     public function getWarrantyEndDate();
 
     /**
      * Set warranty_end_date
+     *
      * @param string $warrantyEndDate
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -437,12 +496,14 @@ interface WarrantyInterface
 
     /**
      * Get company_id
+     *
      * @return string|null
      */
     public function getCompanyId();
 
     /**
      * Set company_id
+     *
      * @param string $companyId
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -450,12 +511,14 @@ interface WarrantyInterface
 
     /**
      * Get admin_customer_id
+     *
      * @return string|null
      */
     public function getAdminCustomerId();
 
     /**
      * Set admin_customer_id
+     *
      * @param string $adminCustomerId
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -463,12 +526,14 @@ interface WarrantyInterface
 
     /**
      * Get created_at
+     *
      * @return string|null
      */
     public function getCreatedAt();
 
     /**
      * Set created_at
+     *
      * @param string $createdAt
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */
@@ -476,12 +541,14 @@ interface WarrantyInterface
 
     /**
      * Get updated_at
+     *
      * @return string|null
      */
     public function getUpdatedAt();
 
     /**
      * Set updated_at
+     *
      * @param string $updatedAt
      * @return \Variux\Warranty\Warranty\Api\Data\WarrantyInterface
      */

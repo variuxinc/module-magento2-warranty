@@ -257,11 +257,10 @@ $engineConfig = $block->getEngineSuggestConfig();
 $invoiceConfig = $block->getInvoiceSuggestConfig();
 ?>
 
-<script type="text/javascript">
+<script>
     /**
      * @Hidro-Le
      * @TODO - fixed
-     * Cần define đúng <script type="text/javascript">
      */
     require([
             'jquery',
@@ -284,13 +283,13 @@ $invoiceConfig = $block->getInvoiceSuggestConfig();
                 $form.find("input[name=consumer_name]").val(item.consumer_name).trigger("change");
                 $form.find("input[name=warranty_start_date]").val(item.warranty_start_date).trigger("change");
                 $form.find("input[name=warranty_end_date]").val(item.warranty_end_date).trigger("change");
-            }).init(<?=\Zend_Json::encode($engineConfig)?>);
+            }).init(<?=\Magento\Framework\Serialize\Serializer\Json::serialize($engineConfig)?>);
 
             var invoiceSuggest = new autosuggest($('input#invoice_number'), function (item, $input, event) {
                 $input.val(item.inv_num).trigger("change");
                 var $form = $input.closest("form");
                 $form.find("input[name=order_number]").val(item.co_num).trigger("change");
-            }).init(<?=\Zend_Json::encode($invoiceConfig)?>);
+            }).init(<?=\Magento\Framework\Serialize\Serializer\Json::serialize($invoiceConfig)?>);
         }
     );
 </script>

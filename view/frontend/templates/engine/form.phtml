@@ -65,7 +65,7 @@
             <?= $block->getBlockHtml('formkey') ?>
             <input type="hidden" name="serial_no" value="<?= $block->escapeHtml($block->getSerialNo()) ?>">
             <input type="hidden" name="item" value="<?= $block->escapeHtml($block->getUnitItem()) ?>">
-            <?php if ($block->isUnRegistered()) : ?>
+            <?php if ($block->isUnRegistered()): ?>
                 <fieldset class="fieldset info">
                     <legend class="legend">
                         <span><?= $block->escapeHtml(__("Contact Information")) ?></span>
@@ -309,7 +309,7 @@
                 </fieldset>
             <?php endif; ?>
             <div class="actions-toolbar">
-                <?php if ($block->isUnRegistered()) : ?>
+                <?php if ($block->isUnRegistered()): ?>
                     <div class="primary">
                         <button type="submit" class="action save primary"
                                 title="<?= $block->escapeHtml(__("Submit")) ?>">
@@ -338,11 +338,10 @@
         text-align: center !important;
     }
 </style>
-<script type="text/javascript">
+<script>
     /**
      * @Hidro-Le
      * @TODO - fixed
-     * Cần define đúng <script type="text/javascript">
      */
     require([
         'jquery',
@@ -358,11 +357,10 @@
 
     });
 </script>
-<script type="text/javascript">
+<script>
     /**
      * @Hidro-Le
      * @TODO - fixed
-     * Cần define đúng <script type="text/javascript">
      */
     require([
         'jquery'
@@ -372,12 +370,11 @@
         });
     });
 </script>
-<?php if ($block->isUnRegistered()) : ?>
-    <script type="text/javascript">
+<?php if ($block->isUnRegistered()): ?>
+    <script>
         /**
          * @Hidro-Le
          * @TODO - fixed
-         * Cần define đúng <script type="text/javascript">
          */
         require([
             'jquery',

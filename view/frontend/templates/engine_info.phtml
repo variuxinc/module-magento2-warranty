@@ -160,7 +160,7 @@ $engineConfig = $block->getEngineSuggestConfig();
                     $form.find("input[name=description]").val(item.description).trigger("change");
                     $form.find("input[name=engine]").val(item.serial_no);
                     $form.find("input[name=warranty_registered]").val(item.warranty_registered).trigger("change");
-                }).init(<?=\Zend_Json::encode($engineConfig)?>);
+                }).init(<?=\Magento\Framework\Serialize\Serializer\Json::serialize($engineConfig)?>);
             });
         }
     );

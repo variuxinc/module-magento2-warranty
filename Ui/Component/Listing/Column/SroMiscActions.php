@@ -10,10 +10,13 @@ namespace Variux\Warranty\Ui\Component\Listing\Column;
 class SroMiscActions extends \Magento\Ui\Component\Listing\Columns\Column
 {
 
-    const URL_PATH_DELETE = 'variux_warranty/sromisc/delete';
-    const URL_PATH_DETAILS = 'variux_warranty/sromisc/details';
+    public const URL_PATH_DELETE = 'variux_warranty/sromisc/delete';
+    public const URL_PATH_DETAILS = 'variux_warranty/sromisc/details';
+    /**
+     * @var \Magento\Framework\UrlInterface
+     */
     protected $urlBuilder;
-    const URL_PATH_EDIT = 'variux_warranty/sromisc/edit';
+    public const URL_PATH_EDIT = 'variux_warranty/sromisc/edit';
 
     /**
      * @param \Magento\Framework\View\Element\UiComponent\ContextInterface $context

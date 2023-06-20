@@ -12,12 +12,14 @@ interface PartnerSearchResultsInterface extends \Magento\Framework\Api\SearchRes
 
     /**
      * Get Partner list.
+     *
      * @return \Variux\Warranty\Api\Data\PartnerInterface[]
      */
     public function getItems();
 
     /**
      * Set partner_num list.
+     *
      * @param \Variux\Warranty\Api\Data\PartnerInterface[] $items
      * @return $this
      */

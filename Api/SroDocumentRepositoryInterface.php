@@ -14,6 +14,7 @@ interface SroDocumentRepositoryInterface
 
     /**
      * Save SroDocument
+     *
      * @param \Variux\Warranty\Api\Data\SroDocumentInterface $sroDocument
      * @return \Variux\Warranty\Api\Data\SroDocumentInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -24,6 +25,7 @@ interface SroDocumentRepositoryInterface
 
     /**
      * Retrieve SroDocument
+     *
      * @param string $srodocumentId
      * @return \Variux\Warranty\Api\Data\SroDocumentInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -32,6 +34,7 @@ interface SroDocumentRepositoryInterface
 
     /**
      * Retrieve SroDocument matching the specified criteria.
+     *
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
      * @return \Variux\Warranty\Api\Data\SroDocumentSearchResultsInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -42,6 +45,7 @@ interface SroDocumentRepositoryInterface
 
     /**
      * Delete SroDocument
+     *
      * @param \Variux\Warranty\Api\Data\SroDocumentInterface $sroDocument
      * @return bool true on success
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -52,6 +56,7 @@ interface SroDocumentRepositoryInterface
 
     /**
      * Delete SroDocument by ID
+     *
      * @param string $srodocumentId
      * @return bool true on success
      * @throws \Magento\Framework\Exception\NoSuchEntityException

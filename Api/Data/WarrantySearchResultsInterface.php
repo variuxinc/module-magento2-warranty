@@ -12,12 +12,14 @@ interface WarrantySearchResultsInterface extends \Magento\Framework\Api\SearchRe
 
     /**
      * Get Warranty list.
+     *
      * @return \Variux\Warranty\Api\Data\WarrantyInterface[]
      */
     public function getItems();
 
     /**
      * Set description list.
+     *
      * @param \Variux\Warranty\Api\Data\WarrantyInterface[] $items
      * @return $this
      */

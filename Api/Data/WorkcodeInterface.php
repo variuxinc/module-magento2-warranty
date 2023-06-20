@@ -9,22 +9,23 @@ namespace Variux\Warranty\Api\Data;
 
 interface WorkcodeInterface
 {
-
-    const WORKCODE_ID = 'workcode_id';
-    const WORK_CODE = 'work_code';
-    const UPDATED_AT = 'updated_at';
-    const DESCRIPTION = 'description';
-    const DURATION = 'duration';
-    const CREATED_AT = 'created_at';
+    public const WORKCODE_ID = 'workcode_id';
+    public const WORK_CODE = 'work_code';
+    public const UPDATED_AT = 'updated_at';
+    public const DESCRIPTION = 'description';
+    public const DURATION = 'duration';
+    public const CREATED_AT = 'created_at';
 
     /**
      * Get workcode_id
+     *
      * @return string|null
      */
     public function getWorkcodeId();
 
     /**
      * Set workcode_id
+     *
      * @param string $workcodeId
      * @return \Variux\Warranty\Workcode\Api\Data\WorkcodeInterface
      */
@@ -32,12 +33,14 @@ interface WorkcodeInterface
 
     /**
      * Get work_code
+     *
      * @return string|null
      */
     public function getWorkCode();
 
     /**
      * Set work_code
+     *
      * @param string $workCode
      * @return \Variux\Warranty\Workcode\Api\Data\WorkcodeInterface
      */
@@ -45,12 +48,14 @@ interface WorkcodeInterface
 
     /**
      * Get description
+     *
      * @return string|null
      */
     public function getDescription();
 
     /**
      * Set description
+     *
      * @param string $description
      * @return \Variux\Warranty\Workcode\Api\Data\WorkcodeInterface
      */
@@ -58,12 +63,14 @@ interface WorkcodeInterface
 
     /**
      * Get duration
+     *
      * @return string|null
      */
     public function getDuration();
 
     /**
      * Set duration
+     *
      * @param string $duration
      * @return \Variux\Warranty\Workcode\Api\Data\WorkcodeInterface
      */
@@ -71,12 +78,14 @@ interface WorkcodeInterface
 
     /**
      * Get created_at
+     *
      * @return string|null
      */
     public function getCreatedAt();
 
     /**
      * Set created_at
+     *
      * @param string $createdAt
      * @return \Variux\Warranty\Workcode\Api\Data\WorkcodeInterface
      */
@@ -84,12 +93,14 @@ interface WorkcodeInterface
 
     /**
      * Get updated_at
+     *
      * @return string|null
      */
     public function getUpdatedAt();
 
     /**
      * Set updated_at
+     *
      * @param string $updatedAt
      * @return \Variux\Warranty\Workcode\Api\Data\WorkcodeInterface
      */

@@ -10,10 +10,13 @@ namespace Variux\Warranty\Ui\Component\Listing\Column;
 class SroMaterialActions extends \Magento\Ui\Component\Listing\Columns\Column
 {
 
-    const URL_PATH_EDIT = 'variux_warranty/sromaterial/edit';
-    const URL_PATH_DELETE = 'variux_warranty/sromaterial/delete';
+    public const URL_PATH_EDIT = 'variux_warranty/sromaterial/edit';
+    public const URL_PATH_DELETE = 'variux_warranty/sromaterial/delete';
+    /**
+     * @var \Magento\Framework\UrlInterface
+     */
     protected $urlBuilder;
-    const URL_PATH_DETAILS = 'variux_warranty/sromaterial/details';
+    public const URL_PATH_DETAILS = 'variux_warranty/sromaterial/details';
 
     /**
      * @param \Magento\Framework\View\Element\UiComponent\ContextInterface $context

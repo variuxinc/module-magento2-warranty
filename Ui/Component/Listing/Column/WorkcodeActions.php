@@ -14,10 +14,13 @@ use Magento\Framework\View\Element\UiComponentFactory;
 class WorkcodeActions extends \Magento\Ui\Component\Listing\Columns\Column
 {
 
-    const URL_PATH_EDIT = 'variux_warranty/workcode/edit';
-    const URL_PATH_DELETE = 'variux_warranty/workcode/delete';
+    public const URL_PATH_EDIT = 'variux_warranty/workcode/edit';
+    public const URL_PATH_DELETE = 'variux_warranty/workcode/delete';
+    /**
+     * @var UrlInterface
+     */
     protected $urlBuilder;
-    const URL_PATH_DETAILS = 'variux_warranty/workcode/details';
+    public const URL_PATH_DETAILS = 'variux_warranty/workcode/details';
 
     /**
      * @param ContextInterface $context

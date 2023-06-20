@@ -12,12 +12,14 @@ interface SroDocumentSearchResultsInterface extends \Magento\Framework\Api\Searc
 
     /**
      * Get SroDocument list.
+     *
      * @return \Variux\Warranty\Api\Data\SroDocumentInterface[]
      */
     public function getItems();
 
     /**
      * Set sro_id list.
+     *
      * @param \Variux\Warranty\Api\Data\SroDocumentInterface[] $items
      * @return $this
      */

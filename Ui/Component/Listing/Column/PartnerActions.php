@@ -10,9 +10,12 @@ namespace Variux\Warranty\Ui\Component\Listing\Column;
 class PartnerActions extends \Magento\Ui\Component\Listing\Columns\Column
 {
 
-    const URL_PATH_EDIT = 'variux_warranty/partner/edit';
-    const URL_PATH_DETAILS = 'variux_warranty/partner/details';
-    const URL_PATH_DELETE = 'variux_warranty/partner/delete';
+    public const URL_PATH_EDIT = 'variux_warranty/partner/edit';
+    public const URL_PATH_DETAILS = 'variux_warranty/partner/details';
+    public const URL_PATH_DELETE = 'variux_warranty/partner/delete';
+    /**
+     * @var \Magento\Framework\UrlInterface
+     */
     protected $urlBuilder;
 
     /**
@@ -71,7 +74,7 @@ class PartnerActions extends \Magento\Ui\Component\Listing\Columns\Column
                 }
             }
         }
-        
+
         return $dataSource;
     }
 }

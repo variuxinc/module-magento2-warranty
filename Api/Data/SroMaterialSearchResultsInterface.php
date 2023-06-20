@@ -12,12 +12,14 @@ interface SroMaterialSearchResultsInterface extends \Magento\Framework\Api\Searc
 
     /**
      * Get SroMaterial list.
+     *
      * @return \Variux\Warranty\Api\Data\SroMaterialInterface[]
      */
     public function getItems();
 
     /**
      * Set sro_id list.
+     *
      * @param \Variux\Warranty\Api\Data\SroMaterialInterface[] $items
      * @return $this
      */

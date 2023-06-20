@@ -14,6 +14,7 @@ interface SroMaterialRepositoryInterface
 
     /**
      * Save SroMaterial
+     *
      * @param \Variux\Warranty\Api\Data\SroMaterialInterface $sroMaterial
      * @return \Variux\Warranty\Api\Data\SroMaterialInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -24,6 +25,7 @@ interface SroMaterialRepositoryInterface
 
     /**
      * Retrieve SroMaterial
+     *
      * @param string $sromaterialId
      * @return \Variux\Warranty\Api\Data\SroMaterialInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -32,6 +34,7 @@ interface SroMaterialRepositoryInterface
 
     /**
      * Retrieve SroMaterial matching the specified criteria.
+     *
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
      * @return \Variux\Warranty\Api\Data\SroMaterialSearchResultsInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -42,6 +45,7 @@ interface SroMaterialRepositoryInterface
 
     /**
      * Delete SroMaterial
+     *
      * @param \Variux\Warranty\Api\Data\SroMaterialInterface $sroMaterial
      * @return bool true on success
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -52,6 +56,7 @@ interface SroMaterialRepositoryInterface
 
     /**
      * Delete SroMaterial by ID
+     *
      * @param string $sromaterialId
      * @return bool true on success
      * @throws \Magento\Framework\Exception\NoSuchEntityException

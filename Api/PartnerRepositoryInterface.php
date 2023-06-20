@@ -14,6 +14,7 @@ interface PartnerRepositoryInterface
 
     /**
      * Save Partner
+     *
      * @param \Variux\Warranty\Api\Data\PartnerInterface $partner
      * @return \Variux\Warranty\Api\Data\PartnerInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -24,6 +25,7 @@ interface PartnerRepositoryInterface
 
     /**
      * Retrieve Partner
+     *
      * @param string $partnerId
      * @return \Variux\Warranty\Api\Data\PartnerInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -32,6 +34,7 @@ interface PartnerRepositoryInterface
 
     /**
      * Retrieve Partner matching the specified criteria.
+     *
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
      * @return \Variux\Warranty\Api\Data\PartnerSearchResultsInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -42,6 +45,7 @@ interface PartnerRepositoryInterface
 
     /**
      * Delete Partner
+     *
      * @param \Variux\Warranty\Api\Data\PartnerInterface $partner
      * @return bool true on success
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -52,6 +56,7 @@ interface PartnerRepositoryInterface
 
     /**
      * Delete Partner by ID
+     *
      * @param string $partnerId
      * @return bool true on success
      * @throws \Magento\Framework\Exception\NoSuchEntityException

@@ -12,12 +12,14 @@ interface SroSearchResultsInterface extends \Magento\Framework\Api\SearchResults
 
     /**
      * Get Sro list.
+     *
      * @return \Variux\Warranty\Api\Data\SroInterface[]
      */
     public function getItems();
 
     /**
      * Set warranty_id list.
+     *
      * @param \Variux\Warranty\Api\Data\SroInterface[] $items
      * @return $this
      */

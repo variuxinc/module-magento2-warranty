@@ -10,10 +10,13 @@ namespace Variux\Warranty\Ui\Component\Listing\Column;
 class WarrantyActions extends \Magento\Ui\Component\Listing\Columns\Column
 {
 
-    const URL_PATH_EDIT = 'variux_warranty/warranty/edit';
-    const URL_PATH_DELETE = 'variux_warranty/warranty/delete';
+    public const URL_PATH_EDIT = 'variux_warranty/warranty/edit';
+    public const URL_PATH_DELETE = 'variux_warranty/warranty/delete';
+    /**
+     * @var \Magento\Framework\UrlInterface
+     */
     protected $urlBuilder;
-    const URL_PATH_DETAILS = 'variux_warranty/warranty/details';
+    public const URL_PATH_DETAILS = 'variux_warranty/warranty/details';
 
     /**
      * @param \Magento\Framework\View\Element\UiComponent\ContextInterface $context
@@ -71,7 +74,7 @@ class WarrantyActions extends \Magento\Ui\Component\Listing\Columns\Column
                 }
             }
         }
-        
+
         return $dataSource;
     }
 }

@@ -10,10 +10,13 @@ namespace Variux\Warranty\Ui\Component\Listing\Column;
 class SroActions extends \Magento\Ui\Component\Listing\Columns\Column
 {
 
-    const URL_PATH_DETAILS = 'variux_warranty/sro/details';
-    const URL_PATH_EDIT = 'variux_warranty/sro/edit';
+    public const URL_PATH_DETAILS = 'variux_warranty/sro/details';
+    public const URL_PATH_EDIT = 'variux_warranty/sro/edit';
+    /**
+     * @var \Magento\Framework\UrlInterface
+     */
     protected $urlBuilder;
-    const URL_PATH_DELETE = 'variux_warranty/sro/delete';
+    public const URL_PATH_DELETE = 'variux_warranty/sro/delete';
 
     /**
      * @param \Magento\Framework\View\Element\UiComponent\ContextInterface $context
@@ -71,7 +74,7 @@ class SroActions extends \Magento\Ui\Component\Listing\Columns\Column
                 }
             }
         }
-        
+
         return $dataSource;
     }
 }

@@ -10,10 +10,13 @@ namespace Variux\Warranty\Ui\Component\Listing\Column;
 class UnitRegActions extends \Magento\Ui\Component\Listing\Columns\Column
 {
 
-    const URL_PATH_EDIT = 'variux_warranty/unitreg/edit';
-    const URL_PATH_DETAILS = 'variux_warranty/unitreg/details';
+    public const URL_PATH_EDIT = 'variux_warranty/unitreg/edit';
+    public const URL_PATH_DETAILS = 'variux_warranty/unitreg/details';
+    /**
+     * @var \Magento\Framework\UrlInterface
+     */
     protected $urlBuilder;
-    const URL_PATH_DELETE = 'variux_warranty/unitreg/delete';
+    public const URL_PATH_DELETE = 'variux_warranty/unitreg/delete';
 
     /**
      * @param \Magento\Framework\View\Element\UiComponent\ContextInterface $context
@@ -71,7 +74,7 @@ class UnitRegActions extends \Magento\Ui\Component\Listing\Columns\Column
                 }
             }
         }
-        
+
         return $dataSource;
     }
 }

@@ -59,8 +59,14 @@ class Edit extends \Magento\Framework\View\Element\Template
      */
     protected $sroRepository;
 
+    /**
+     * @var Data
+     */
     protected $dataHelper;
 
+    /**
+     * @var null
+     */
     protected $isWarrantySubmitted = null;
 
     /**
@@ -100,6 +106,8 @@ class Edit extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get Form Data
+     *
      * @return array|mixed|null
      * @throws LocalizedException
      * @throws NoSuchEntityException
@@ -116,6 +124,8 @@ class Edit extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get Customer
+     *
      * @return Customer
      */
     public function getCustomer()
@@ -124,6 +134,8 @@ class Edit extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get Warranty Submiited
+     *
      * @return bool
      * @throws LocalizedException
      * @throws NoSuchEntityException
@@ -138,6 +150,8 @@ class Edit extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get Warranty
+     *
      * @return WarrantyInterface|Warranty
      * @throws NoSuchEntityException
      * @throws LocalizedException
@@ -155,6 +169,8 @@ class Edit extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Generate New Warranty Ticket
+     *
      * @return WarrantyInterface|\Variux\Warranty\Model\Warranty
      * @throws LocalizedException
      */
@@ -185,6 +201,9 @@ class Edit extends \Magento\Framework\View\Element\Template
 
     /**
      * Return data-validate rules
+     *
+     * @param string $name
+     * @param boolean $value
      * @return string
      */
     public function getDateHtml($name, $value = false)
@@ -212,6 +231,7 @@ class Edit extends \Magento\Framework\View\Element\Template
 
     /**
      * Return data-validate rules
+     *
      * @return string
      */
     public function getHtmlExtraParams()
@@ -227,6 +247,7 @@ class Edit extends \Magento\Framework\View\Element\Template
 
     /**
      * Returns format which will be applied for DOB in javascript
+     *
      * @return string
      */
     public function getDateFormat()
@@ -236,6 +257,7 @@ class Edit extends \Magento\Framework\View\Element\Template
 
     /**
      * Return first day of the week
+     *
      * @return int
      */
     public function getFirstDay()
@@ -247,6 +269,8 @@ class Edit extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get Engine Suggest Configuration
+     *
      * @return array
      * @throws NoSuchEntityException
      */
@@ -266,6 +290,8 @@ class Edit extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get Dealer Suggest Configuration
+     *
      * @return array
      * @throws NoSuchEntityException
      */
