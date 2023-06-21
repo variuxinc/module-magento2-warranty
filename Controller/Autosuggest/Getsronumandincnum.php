@@ -46,12 +46,6 @@ class Getsronumandincnum extends \Variux\Warranty\Controller\AbstractAction
     {
         $warrantyId = $this->getRequest()->getParam("warranty_id");
         $response = $this->suggestHelper->getSroNumAndIncNumByWarrantyId($warrantyId);
-        /**
-         * @Hidro-Le
-         * @TODO - Fixed
-         * Chỗ này a cần tìm hiểu cách response JSON thay vì set response kiểu vầy.
-         *       Sample: $this->resultFactory->create(ResultFactory::TYPE_JSON);
-         */
         $resultJson = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_JSON);
         $resultJson->setData(json_encode($response));
         return $resultJson;

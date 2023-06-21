@@ -9,34 +9,20 @@ use Magento\Framework\Exception\NoSuchEntityException;
 class CompanyDetails
 {
     /**
-     * @var CompanyRepositoryInterface
-     */
-    private $companyRepository;
-
-    /**
      * @var CompanyManagementInterface
      */
     private $companyManagement;
 
     /**
      * CompanyDetails constructor.
-     * @param CompanyRepositoryInterface $companyRepository
      * @param CompanyManagementInterface $companyManagement
      */
     public function __construct(
-        CompanyRepositoryInterface $companyRepository,
         CompanyManagementInterface $companyManagement
     ) {
-        $this->companyRepository = $companyRepository;
         $this->companyManagement = $companyManagement;
     }
 
-    /**
-     * @Hidro-Le
-     * @TODO - fixed
-     * paramater không rõ ngữ nghĩa.
-     *       $id này không thể hiện là ID gì.
-     */
     /**
      * @param $customerId
      * @return \Magento\Company\Api\Data\CompanyInterface|null
@@ -44,18 +30,6 @@ class CompanyDetails
     public function getInfo($customerId)
     {
         try {
-            /**
-             * @Hidro-Le
-             * @TODO - fixed
-             * $this->companyManagement->getByCustomerId($id) return Company, không cần thiết load lại bằng Repository
-             */
-
-            /**
-             * @Hidro-Le
-             * @TODO - Fixed
-             * Chỗ này chưa đúng concept, return 2 type khác nhau hoàn toàn về interface.
-             *       Throw excetion hoặc return null instead.
-             */
             return $this->companyManagement->getByCustomerId($customerId);
         } catch (NoSuchEntityException $noSuchEntityException) {
             return null;

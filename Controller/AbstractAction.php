@@ -20,12 +20,6 @@ use Variux\Warranty\Helper\Data;
 use Variux\Warranty\Helper\SuggestHelper;
 
 /**
- * @Hidro-Le
- * @TODO - Fixed
- * Những class con của class này không sử dụng những hàm jsonSuccess, jsonError...
- */
-
-/**
  * Class AbstractAction.
  *
  * @SuppressWarnings(PHPMD.NumberOfChildren)
@@ -42,11 +36,6 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
      */
     protected $logger;
 
-    /**
-     * @Hidro-Le
-     * @TODO - Fixed
-     * Biến này là protected không cần phải implement ở class con.
-     */
     /**
      * @var CompanyContext
      */
@@ -93,13 +82,6 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
         $this->companyContext = $companyContext;
         $this->_customerSession = $_customerSession;
         $this->helperData = $helperData;
-        /**
-         * @Hidro-Le
-         * @TODO - Fixed
-         * JsonFactory $resultJsonFactory ở đây không cần thiết
-         *       Controller đã có ResultFactory
-         *       Sử dụng $this->resultFactory->create(ResultFactory::TYPE_JSON); instead.
-         */
         $this->suggestHelper = $suggestHelper;
         $this->customerUrl = $customerUrl ?: ObjectManager::getInstance()->get(Url::class);
     }

@@ -17,11 +17,6 @@ use Variux\Warranty\Model\WarrantyFactory;
 use Variux\Warranty\Model\Warranty;
 use Variux\Warranty\Model\WarrantyRepository;
 
-/**
- * @Hidro-Le
- * @TODO - Fixed
- * Class này PHPDOC của các function,properties chưa define đúng.
- */
 class Edit extends \Magento\Framework\View\Element\Template
 {
     /**
@@ -164,12 +159,6 @@ class Edit extends \Magento\Framework\View\Element\Template
         $warranty = $this->warrantyFactory->create();
         $customerId = $this->getCustomer()->getId();
         $warranty->setCustomerId($customerId);
-        /**
-         * @Hidro-Le
-         * @TODO - Fixed
-         * isPartner có trường hợp return false. không phải object
-         * Sẽ xảy ra trường hợp call a function of boolean variable.
-         */
         $warranty->setPartnerId($this->dataHelper->getPartner()->getId());
         $warranty = $this->warrantyRepository->save($warranty);
 
