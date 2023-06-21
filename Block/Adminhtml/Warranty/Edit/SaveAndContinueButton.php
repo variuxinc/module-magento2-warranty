@@ -13,6 +13,8 @@ class SaveAndContinueButton extends GenericButton implements ButtonProviderInter
 {
 
     /**
+     * Get Button Data
+     *
      * @return array
      */
     public function getButtonData()

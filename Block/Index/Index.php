@@ -36,7 +36,7 @@ class Index extends \Magento\Framework\View\Element\Template
     protected $messageManager;
 
     /**
-     * @var
+     * @var Collection
      */
     protected $warranties;
 

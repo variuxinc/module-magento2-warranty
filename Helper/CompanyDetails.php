@@ -38,7 +38,9 @@ class CompanyDetails
      *       $id này không thể hiện là ID gì.
      */
     /**
-     * @param $customerId
+     * Get Infor
+     *
+     * @param string|int $customerId
      * @return \Magento\Company\Api\Data\CompanyInterface|null
      */
     public function getInfo($customerId)

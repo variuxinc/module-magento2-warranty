@@ -4,6 +4,12 @@ namespace Variux\Warranty\Helper;
 
 class MyPdfX extends MyPdf
 {
+    /**
+     * Set Header
+     *
+     * @return void
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
     public function header()
     {
         // Logo
@@ -20,6 +26,11 @@ class MyPdfX extends MyPdf
         $this->Cell(0, 10, ' Warranty Claim Report ', 0, false, 'C', 0, '', 0, false, 'M', 'M');
     }
 
+    /**
+     * Set Footer
+     *
+     * @return void
+     */
     public function footer()
     {
         // Position at 15 mm from bottom

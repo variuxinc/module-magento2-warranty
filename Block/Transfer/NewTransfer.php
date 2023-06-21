@@ -55,6 +55,8 @@ class NewTransfer extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get JsLayout
+     *
      * @return false|string
      */
     public function getJsLayout()
@@ -73,6 +75,8 @@ class NewTransfer extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get Path
+     *
      * @return string
      */
     public function getLoadingPath()
@@ -81,6 +85,8 @@ class NewTransfer extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get Engine Suggest Config
+     *
      * @return array
      * @throws NoSuchEntityException
      */
@@ -100,6 +106,8 @@ class NewTransfer extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get Init Data
+     *
      * @return false|string
      * @throws NoSuchEntityException
      * @throws \Magento\Framework\Exception\LocalizedException

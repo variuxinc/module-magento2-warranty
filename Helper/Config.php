@@ -7,7 +7,9 @@ class Config extends \Magento\Framework\App\Helper\AbstractHelper
     protected $configSection = "warranty";
 
     /**
-     * @param $path
+     * Get Config
+     *
+     * @param string $path
      * @return mixed
      */
     public function getConfig($path)
@@ -19,6 +21,8 @@ class Config extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
+     * Get Um List
+     *
      * @return mixed
      */
     public function getUmList()
@@ -27,6 +31,8 @@ class Config extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
+     * Get Engine Expired
+     *
      * @return mixed
      */
     public function getEngineExpired()
@@ -35,6 +41,8 @@ class Config extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
+     * Get Max File Size
+     *
      * @return number
      */
     public function getMaxFileSize()

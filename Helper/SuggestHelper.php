@@ -111,6 +111,26 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
      */
     protected $warrantyResourceModel;
 
+    /**
+     * @param \Magento\Framework\App\Helper\Context $context
+     * @param CollectionFactory $productCollectionFactory
+     * @param CollectionProcessorInterface $collectionProcessor
+     * @param OrderRepository $orderRepository
+     * @param OrderFactory $orderFactory
+     * @param SearchCriteriaBuilder $searchCriteriaBuilder
+     * @param FilterBuilder $filterBuilder
+     * @param FilterGroupBuilder $filterGroupBuilder
+     * @param StoreManagerInterface $storeManager
+     * @param WorkcodeRepository $workcodeRepository
+     * @param UnitRepository $unitRepository
+     * @param \Magento\Customer\Model\CustomerFactory $customerFactory
+     * @param CustomerResourceModel $customerResourceModel
+     * @param customerSession $customerSession
+     * @param \Magento\Catalog\Api\ProductRepositoryInterface $productRepository
+     * @param \Magento\Framework\Pricing\Helper\Data $priceHelper
+     * @param WarrantyResourceModel $warrantyResourceModel
+     * @param WarrantyFactory $warrantyFactory
+     */
     public function __construct(
         \Magento\Framework\App\Helper\Context           $context,
         CollectionFactory                               $productCollectionFactory,
@@ -152,7 +172,9 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @param $query
+     * Get Item
+     *
+     * @param string $query
      * @param bool $customerId
      * @return array
      * @throws NoSuchEntityException
@@ -204,7 +226,9 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @param $query
+     * Get Dealer
+     *
+     * @param string $query
      * @param bool $customerId
      * @return array
      */
@@ -227,7 +251,9 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @param $query
+     * Get WordCode
+     *
+     * @param string $query
      * @param bool $customerId
      * @return array
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -272,7 +298,9 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @param $query
+     * Get Engine
+     *
+     * @param string $query
      * @return array
      * @throws \Magento\Framework\Exception\LocalizedException
      */
@@ -306,7 +334,9 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @param $query
+     * Get Engine Warranty Transfer
+     *
+     * @param string $query
      * @return array
      * @throws \Magento\Framework\Exception\LocalizedException
      */
@@ -339,13 +369,9 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @param $query
-     * @param bool $customerId
-     * @return array
-     */
-
-    /**
-     * @param $warrantyId
+     * Get Sro Number Increment Number Warranty
+     *
+     * @param int|string $warrantyId
      * @return array|null[]
      */
     public function getSroNumAndIncNumByWarrantyId($warrantyId): array

@@ -12,8 +12,11 @@ use Magento\Framework\Filesystem\Io\File;
 
 class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
 {
-    const WARRANTY_FOLDER = "warranty/";
+    public const WARRANTY_FOLDER = "warranty/";
 
+    /**
+     * @var Filesystem\Directory\WriteInterface
+     */
     protected $mediaDirectory;
     /**
      * @var File
@@ -34,7 +37,9 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @param $claim
+     * Generate Claim
+     *
+     * @param object $claim
      * @return string
      */
     public function generateClaimHtml($claim): string
@@ -164,10 +169,12 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @param $materialHtml
-     * @param $laborHtml
-     * @param $miscHtml
-     * @param $docHtml
+     * Generate Sro Details
+     *
+     * @param string $materialHtml
+     * @param string $laborHtml
+     * @param string $miscHtml
+     * @param string $docHtml
      * @return string
      */
     public function generateSroDetailsHtml($materialHtml, $laborHtml, $miscHtml, $docHtml): string
@@ -273,7 +280,9 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @param $sro
+     * Get Material
+     *
+     * @param object $sro
      * @return string
      */
     public function getMaterialHtml($sro): string
@@ -315,7 +324,9 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @param $sro
+     * Get Labor
+     *
+     * @param object $sro
      * @return string
      */
     public function getLaborHtml($sro): string
@@ -356,7 +367,9 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @param $sro
+     * Get Misc
+     *
+     * @param object $sro
      * @return string
      */
     public function getMiscHtml($sro): string
@@ -389,8 +402,10 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @param $sro
-     * @param $storeManager
+     * Get Document
+     *
+     * @param object $sro
+     * @param object $storeManager
      * @return string
      */
     public function getDocumentsHtml($sro, $storeManager): string
@@ -413,7 +428,9 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @param $claim
+     * Generate
+     *
+     * @param object $claim
      * @return void
      */
     public function generateClaim($claim)
@@ -507,6 +524,8 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
+     * Create folder
+     *
      * @return string
      */
     private function createFolderPDF(): string
@@ -523,6 +542,8 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
+     * Get Warranty
+     *
      * @return string
      */
     private function getWarrantyPath(): string
@@ -531,7 +552,9 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @param $claim
+     * Pdf Generated
+     *
+     * @param object $claim
      * @return bool
      */
     public function isPdfGenerated($claim): bool
@@ -545,7 +568,9 @@ class GeneratePdf extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @param $claim
+     * Get Warranty File Name
+     *
+     * @param object $claim
      * @return string
      */
     public function getWarrantyFileName($claim): string

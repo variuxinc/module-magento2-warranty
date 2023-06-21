@@ -86,6 +86,8 @@ class Edit extends \Magento\Directory\Block\Data
     }
 
     /**
+     * Get Serial Number
+     *
      * @return string
      */
     public function getSerialNo()
@@ -94,6 +96,8 @@ class Edit extends \Magento\Directory\Block\Data
     }
 
     /**
+     * Get Unit Description
+     *
      * @return string|null
      */
     public function getUnitDescription()
@@ -102,6 +106,8 @@ class Edit extends \Magento\Directory\Block\Data
     }
 
     /**
+     * Get Unit Item
+     *
      * @return string|null
      */
     public function getUnitItem()
@@ -110,6 +116,8 @@ class Edit extends \Magento\Directory\Block\Data
     }
 
     /**
+     * Engine Exist
+     *
      * @return bool
      */
     public function isEngineNotExist()
@@ -118,6 +126,8 @@ class Edit extends \Magento\Directory\Block\Data
     }
 
     /**
+     * Registered
+     *
      * @return bool
      */
     public function isRegistered()
@@ -126,6 +136,8 @@ class Edit extends \Magento\Directory\Block\Data
     }
 
     /**
+     * Un Registered
+     *
      * @return bool
      */
     public function isUnRegistered()
@@ -134,6 +146,8 @@ class Edit extends \Magento\Directory\Block\Data
     }
 
     /**
+     * Expired
+     *
      * @return bool
      */
     public function isExpired()
@@ -142,6 +156,8 @@ class Edit extends \Magento\Directory\Block\Data
     }
 
     /**
+     * Get Engine Status
+     *
      * @return bool|string
      */
     public function getEngineStatus()
@@ -155,6 +171,8 @@ class Edit extends \Magento\Directory\Block\Data
     }
 
     /**
+     * Get Unit
+     *
      * @return bool|\Variux\Warranty\Model\Unit
      */
     public function getUnit()
@@ -170,6 +188,8 @@ class Edit extends \Magento\Directory\Block\Data
     }
 
     /**
+     * Get Engine Number
+     *
      * @return mixed
      */
     public function getEngineNumber()
@@ -178,6 +198,9 @@ class Edit extends \Magento\Directory\Block\Data
     }
 
     /**
+     * Get Attribute Validate
+     *
+     * @param string $attributeCode
      * @throws LocalizedException
      */
     public function getAttributeValidationClass($attributeCode): string
@@ -186,6 +209,8 @@ class Edit extends \Magento\Directory\Block\Data
     }
 
     /**
+     * Get Region Json
+     *
      * @throws NoSuchEntityException
      */
     public function getRegionJson(): string
@@ -193,6 +218,12 @@ class Edit extends \Magento\Directory\Block\Data
         return $this->magentoDirectoryHelper->getRegionJson();
     }
 
+    /**
+     * Get Countries option
+     *
+     * @param boolean $asJson
+     * @return array|string
+     */
     public function getCountriesWithOptionalZip($asJson = false)
     {
         return $this->magentoDirectoryHelper->getCountriesWithOptionalZip($asJson);

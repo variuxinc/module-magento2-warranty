@@ -69,12 +69,29 @@ class Edit extends \Magento\Framework\View\Element\Template
      */
     protected $warranty = false;
 
+    /**
+     * @var \Magento\Framework\Pricing\Helper\Data
+     */
     protected $_priceHelper;
     /**
      * @var WorkcodeCollectionFactory
      */
     protected $workcodeCollectionFactory;
 
+    /**
+     * @param \Magento\Framework\View\Element\Template\Context $context
+     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
+     * @param \Magento\Framework\View\Element\Html\Date $dateElement
+     * @param Session $customerSession
+     * @param WarrantyFactory $warrantyFactory
+     * @param \Variux\Warranty\Helper\Data $dataHelper
+     * @param SroFactory $sroFactory
+     * @param SroResourceModel $sroResourceModel
+     * @param WarrantyResourceModel $warrantyResourceModel
+     * @param \Magento\Framework\Pricing\Helper\Data $priceHelper
+     * @param WorkcodeCollectionFactory $workcodeCollectionFactory
+     * @param array $data
+     */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
@@ -103,6 +120,8 @@ class Edit extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get JsLayout
+     *
      * @return mixed|string
      */
     public function getJsLayout()
@@ -123,6 +142,8 @@ class Edit extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get Json Data
+     *
      * @return mixed|string
      * @throws NoSuchEntityException
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -228,6 +249,11 @@ class Edit extends \Magento\Framework\View\Element\Template
         return json_encode($data);
     }
 
+    /**
+     * Get Data Config
+     *
+     * @return array
+     */
     public function getDataConfig()
     {
         $config = [];
@@ -239,12 +265,19 @@ class Edit extends \Magento\Framework\View\Element\Template
         return $config;
     }
 
+    /**
+     * Get Sro Id
+     *
+     * @return bool|int|mixed
+     */
     public function getSroId()
     {
         return $this->sroId ? $this->sroId : $this->getRequest()->getParam("id", false);
     }
 
     /**
+     * Get Sro
+     *
      * @return Sro
      */
     public function getSro()
@@ -259,6 +292,8 @@ class Edit extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get Warranty
+     *
      * @return Warranty
      */
     public function getWarranty()
@@ -272,6 +307,11 @@ class Edit extends \Magento\Framework\View\Element\Template
         return $this->warranty;
     }
 
+    /**
+     * Get Work Code Collection
+     *
+     * @return array
+     */
     public function getWorkCodeCollection()
     {
         $data = [];
@@ -284,6 +324,8 @@ class Edit extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get Item Suggest Config
+     *
      * @return array
      * @throws NoSuchEntityException
      */
@@ -303,6 +345,8 @@ class Edit extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get Work Code Suggest Config
+     *
      * @return array
      * @throws NoSuchEntityException
      */
@@ -322,6 +366,8 @@ class Edit extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get Url Data
+     *
      * @return array
      */
     public function getUrlData()
@@ -345,6 +391,8 @@ class Edit extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get Loading Path
+     *
      * @return string
      */
     public function getLoadingPath()
@@ -353,6 +401,8 @@ class Edit extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get Max File Size
+     *
      * @return number
      */
     public function getMaxFileSize()

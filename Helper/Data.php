@@ -16,7 +16,7 @@ use Variux\Warranty\Api\Data\UnitRegInterface;
 
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
-    const DENY_ACCESS_URL = 'warranty/index/accessdeny';
+    public const DENY_ACCESS_URL = 'warranty/index/accessdeny';
 
     /**
      * @var Config
@@ -43,6 +43,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     protected $serialize;
 
+    /**
+     * @var null
+     */
     protected $partnerCache = null;
     /**
      * @var Partner
@@ -98,6 +101,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
+     * Get Engine Status
+     *
      * @param Unit $unit
      * @return string
      * @throws LocalizedException
@@ -130,7 +135,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @param $serialNo
+     * Get Unit By Serial Number
+     *
+     * @param int|string $serialNo
      * @return UnitRegInterface[]
      * @throws \Magento\Framework\Exception\LocalizedException
      */
@@ -146,6 +153,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
+     * Get Options
+     *
      * @return array|array[]
      */
     public function getUmOptions()
@@ -197,6 +206,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
+     * Get Max File Size
+     *
      * @return int
      */
     public function getMaxFileSize()
@@ -205,6 +216,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
+     * Get Partner
+     *
      * @return mixed|null
      * @throws LocalizedException
      */
@@ -233,6 +246,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
+     * Get Current Partner
+     *
      * @return mixed|null
      * @throws LocalizedException
      */
