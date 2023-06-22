@@ -125,12 +125,6 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
             "resolution_note" => ["required" => true]
         ];
         $result = [];
-        /**
-         * @Hidro-Le
-         * @TODO - fixed
-         * Không nên format number trước khi lưu vào DB, lúc echo mới cần format number.
-         *
-         */
         foreach ($acceptedValue as $key => $value) {
             if ($value !== null) {
                 $result[$key] = $data[$key];

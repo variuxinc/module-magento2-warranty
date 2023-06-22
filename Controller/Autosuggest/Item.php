@@ -28,12 +28,6 @@ class Item extends \Variux\Warranty\Controller\AbstractAction
         $search = $this->getRequest()->getParam("q");
         $customerId = $this->_customerSession->getCustomer()->getId();
         $response = $this->suggestHelper->findItem($search, $customerId);
-        /**
-         * @Hidro-Le
-         * @TODO - Fixed
-         * Chỗ này a cần tìm hiểu cách response JSON thay vì set response kiểu vầy.
-         *       Sample: $this->resultFactory->create(ResultFactory::TYPE_JSON);
-         */
         $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
         $resultJson->setData($response);
         return $resultJson;

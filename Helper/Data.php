@@ -115,12 +115,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         if ($shipDate && strtotime($shipDate . " +" . $expiredMonths . " months") < strtotime($now)) {
             return Unit::STATUS_EXPIRED;
         }
-        /**
-         * @Hidro-Le
-         * @TODO - Fixed
-         * Đây là class helper không sử dụng resource field to filter ở
-         *       đây chuyển logic này xuống repository. getBySerialNo hoặc xài getList sử dụng $searchCriteria
-         */
         $unitRegs = $this->getUnitRegBySerialNo($unit->getSerialNo());
         $unitRegCount = count($unitRegs);
         if ($unitRegCount > 0) {
@@ -210,12 +204,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getPartner()
     {
-        /**
-         * @Hidro-Le
-         * @TODO - fixed
-         * Nội dung hàm không đúng với tên hàm (Is partner nhưng lại return partner)
-         *   Return type không consistency
-         */
         if ($this->customerSession->isLoggedIn()) {
             if ($this->partnerCache !== null) {
                 return $this->partnerCache;

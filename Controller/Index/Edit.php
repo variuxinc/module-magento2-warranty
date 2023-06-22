@@ -65,11 +65,6 @@ class Edit extends \Variux\Warranty\Controller\AbstractAction
         $id = $this->getRequest()->getParam('id');
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($id) {
-            /**
-             * @Hidro-Le
-             * @TODO - fixed
-             * Chỗ này hàm getById đã catch vụ không có ID, sử dụng try-catch thay vì if.
-             */
             try {
                 $warranty = $this->warrantyRepository->getById($id);
             } catch (NoSuchEntityException $e) {

@@ -69,11 +69,6 @@ class Index extends \Magento\Framework\View\Element\Template
      */
     protected function _prepareLayout()
     {
-        /**
-         * @Hidro-Le
-         * @TODO - Fixed
-         * Chỗ này a cần kiểm tra lại, hàm getWarranties mỗi lần gọi lại tạo 1 collection.
-         */
         if ($this->getWarranties()) {
             $this->addFilterBlock();
             $this->addToolbarBlock();
@@ -158,13 +153,6 @@ class Index extends \Magento\Framework\View\Element\Template
             $this->warranties = $collection;
         }
         return $this->warranties;
-        /**
-         * @Hidro-Le
-         * @TODO - Fixed
-         * Chỗ này nên sử dụng customer là một param thay vì get trong session với lại
-         *       collection chỗ này mỗi lần gọi thì lại tạo mới, nên tìm cách để không tạo mới mỗi lần gọi.
-         *
-         */
     }
 
     /**
@@ -173,11 +161,6 @@ class Index extends \Magento\Framework\View\Element\Template
      */
     public function hasSroDetail($warranty)
     {
-        /**
-         * @Hidro-Le
-         * @TODO - fixed
-         * Chỗ này tên hàm chưa phù hợp với nội dung của hàm.
-         */
         return $warranty->hasSroDetails();
     }
 
@@ -188,11 +171,6 @@ class Index extends \Magento\Framework\View\Element\Template
     public function getSroDetailUrl($warranty)
     {
         $sro = $warranty->hasSroDetails();
-        /**
-         * @Hidro-Le
-         * @TODO - Fixed
-         * Chỗ này nếu $syro == null thì xử lý như thế nào, có trường hợp nào $sro == null ko?
-         */
         if ($sro) {
             return $this->getUrl(
                 "warranty/sro/edit",
@@ -221,11 +199,6 @@ class Index extends \Magento\Framework\View\Element\Template
      */
     public function dateFormat($dateString)
     {
-        /**
-         * @Hidro-Le
-         * @TODO - fixed
-         * Cần sử dụng DateTime default của Magento a kiếm chỗ nào xử lý vụ datetime giống vầy trong vendor
-         */
         return date('Y-m-d H:i:s', strtotime($dateString));
     }
 

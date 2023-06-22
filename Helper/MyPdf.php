@@ -2,11 +2,6 @@
 
 namespace Variux\Warranty\Helper;
 
-/**
- * @Hidro-Le
- * @TODO - fixed
- * TCPDF là một lib ngoài PHP a cần coi require cái TCPDF vào trong composer.json (tecnickcom/tcpdf)
- */
 class MyPdf extends \TCPDF
 {
     public function header()

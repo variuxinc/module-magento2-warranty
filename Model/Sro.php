@@ -23,7 +23,6 @@ class Sro extends AbstractModel implements SroInterface
      */
     protected $_resource;
 
-
     /**
      * @inheritDoc
      */

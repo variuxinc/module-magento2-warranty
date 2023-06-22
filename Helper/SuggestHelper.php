@@ -19,11 +19,6 @@ use Magento\Sales\Model\OrderRepository;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Customer\Model\Session as customerSession;
 
-/**
- * @Hidro-Le
- * @TODO - fixed
- * Các hàm ở trong class này chưa được define document
- */
 class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
 {
     /**
@@ -190,12 +185,6 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
                 'price' => $item->getFinalPrice()
             ];
         }
-        /**
-         * @Hidro-Le
-         * @TODO - Fixed
-         * sử dụng ->count() thay cho ->getSize(). Thiếu trường hợp cho no result thật sự lúc nào cũng trả về
-         *       'noResults' => false
-         */
         return [
             'totalItems' => $collection->count(),
             'items' => $products,
@@ -337,12 +326,6 @@ class SuggestHelper extends \Magento\Framework\App\Helper\AbstractHelper
 
         return $response;
     }
-
-    /**
-     * @param $query
-     * @param bool $customerId
-     * @return array
-     */
 
     /**
      * @param $warrantyId

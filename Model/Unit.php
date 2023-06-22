@@ -49,14 +49,10 @@ class Unit extends AbstractModel implements UnitInterface
     }
 
     /**
-     * @Hidro-Le
-     * @TODO - Fixed
-     * Thiếu document
-     */
-    /**
      * @param $number
      * @param $conditionType
      * @return $this
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function loadBySerial($number, $conditionType = false)
     {

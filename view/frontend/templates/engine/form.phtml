@@ -326,29 +326,13 @@
         </form>
     </div>
 </div>
-<style type="text/css">
-    /**
-     * @Hidro-Le
-     * @TODO - Fixed
-     * Cần define đúng <script type="text/css">
-     */
-    .messages .message {
-        font-size: 30px !important;
-        font-weight: bold !important;
-        text-align: center !important;
-    }
-</style>
 <script type="text/javascript">
-    /**
-     * @Hidro-Le
-     * @TODO - fixed
-     * Cần define đúng <script type="text/javascript">
-     */
     require([
         'jquery',
-        'mage/mage'
+        'mage/mage',
+        'domReady!'
     ], function ($) {
-
+        $("#warranty-container").show();
         var dataForm = $('#engine-form,#engine-validate-form');
         var ignore = <?= /* @noEscape */ 'null' ?>;
 
@@ -358,38 +342,14 @@
 
     });
 </script>
-<script type="text/javascript">
-    /**
-     * @Hidro-Le
-     * @TODO - fixed
-     * Cần define đúng <script type="text/javascript">
-     */
-    require([
-        'jquery'
-    ], function ($) {
-        $(document).ready(function () {
-            $("#warranty-container").show();
-        });
-    });
-</script>
 <?php if ($block->isUnRegistered()) : ?>
     <script type="text/javascript">
-        /**
-         * @Hidro-Le
-         * @TODO - fixed
-         * Cần define đúng <script type="text/javascript">
-         */
         require([
             'jquery',
             'mage/translate',
             'mage/calendar',
             'domReady!'
         ], function ($) {
-            /**
-             * @Hidro-Le
-             * @TODO - fixed
-             * Remove document ready
-             */
             $("#purchased_date").calendar({
                 changeMonth: true,
                 changeYear: true,
