@@ -13,7 +13,7 @@ class Collection extends AbstractCollection
 {
 
     /**
-     * @inheritDoc
+     * @var string
      */
     protected $_idFieldName = 'warranty_id';
 
@@ -28,10 +28,13 @@ class Collection extends AbstractCollection
         );
     }
 
-        /**
-         * @param $data
-         * @return $this
-         */
+    /**
+     * Apply filter data
+     *
+     * @param array $data
+     * @param string $type
+     * @return $this
+     */
     public function applyFilterData($data, $type = "like")
     {
         if ($data && is_array($data)) {
@@ -58,7 +61,9 @@ class Collection extends AbstractCollection
     }
 
     /**
-     * @param $number
+     * Get Filter Ticket id
+     *
+     * @param string $number
      * @return array
      */
     public function getFilterTicketIds($number)

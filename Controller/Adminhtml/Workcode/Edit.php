@@ -9,7 +9,9 @@ namespace Variux\Warranty\Controller\Adminhtml\Workcode;
 
 class Edit extends \Variux\Warranty\Controller\Adminhtml\Workcode
 {
-
+    /**
+     * @var \Magento\Framework\View\Result\PageFactory
+     */
     protected $resultPageFactory;
 
     /**

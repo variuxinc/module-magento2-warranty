@@ -11,7 +11,9 @@ use Magento\Framework\Exception\LocalizedException;
 
 class Save extends \Magento\Backend\App\Action
 {
-
+    /**
+     * @var \Magento\Framework\App\Request\DataPersistorInterface
+     */
     protected $dataPersistor;
 
     /**
@@ -38,20 +40,20 @@ class Save extends \Magento\Backend\App\Action
         $data = $this->getRequest()->getPostValue();
         if ($data) {
             $id = $this->getRequest()->getParam('partner_id');
-        
+
             $model = $this->_objectManager->create(\Variux\Warranty\Model\Partner::class)->load($id);
             if (!$model->getId() && $id) {
                 $this->messageManager->addErrorMessage(__('This Partner no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
             }
-        
+
             $model->setData($data);
-        
+
             try {
                 $model->save();
                 $this->messageManager->addSuccessMessage(__('You saved the Partner.'));
                 $this->dataPersistor->clear('variux_warranty_partner');
-        
+
                 if ($this->getRequest()->getParam('back')) {
                     return $resultRedirect->setPath('*/*/edit', ['partner_id' => $model->getId()]);
                 }
@@ -61,7 +63,7 @@ class Save extends \Magento\Backend\App\Action
             } catch (\Exception $e) {
                 $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the Partner.'));
             }
-        
+
             $this->dataPersistor->set('variux_warranty_partner', $data);
             return $resultRedirect->setPath('*/*/edit', ['partner_id' => $this->getRequest()->getParam('partner_id')]);
         }

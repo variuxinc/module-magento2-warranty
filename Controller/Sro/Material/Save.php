@@ -52,12 +52,33 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
      * @var WarrantyResourceModel
      */
     protected $warrantyResourceModel;
+    /**
+     * @var PriceHelper
+     */
     protected $priceHelper;
     /**
      * @var CompanyDetails
      */
     protected $companyDetails;
 
+    /**
+     * @param \Magento\Framework\App\Action\Context $context
+     * @param CompanyContext $companyContext
+     * @param \Psr\Log\LoggerInterface $logger
+     * @param Session $_customerSession
+     * @param \Variux\Warranty\Helper\Data $helperData
+     * @param SuggestHelper $suggestHelper
+     * @param SroMaterialInterfaceFactory $sroMaterialInterfaceFactory
+     * @param SroMaterialRepository $sroMaterialRepository
+     * @param SroFactory $sroFactory
+     * @param SroResourceModel $sroResourceModel
+     * @param ProductFactory $productFactory
+     * @param ProductResourceModel $productResourceModel
+     * @param WarrantyFactory $warrantyFactory
+     * @param WarrantyResourceModel $warrantyResourceModel
+     * @param PriceHelper $priceHelper
+     * @param CompanyDetails $companyDetails
+     */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         CompanyContext                        $companyContext,
@@ -96,6 +117,11 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         $this->companyDetails = $companyDetails;
     }
 
+    /**
+     * Execute
+     *
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Json|(\Magento\Framework\Controller\Result\Json&\Magento\Framework\Controller\ResultInterface)|\Magento\Framework\Controller\ResultInterface
+     */
     public function execute()
     {
         $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
@@ -196,11 +222,25 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         return $resultJson;
     }
 
+    /**
+     * Get Product Price
+     *
+     * @param object $product
+     * @return float
+     */
     public function getProductPrice($product)
     {
         return (float)$product->getFinalPrice();
     }
 
+    /**
+     * Check Item
+     *
+     * @param object $material
+     * @param object $resultJson
+     * @param object $fmt
+     * @return void
+     */
     protected function checkItemType($material, $resultJson, $fmt)
     {
         if ($material->getItem() != "NPN") {

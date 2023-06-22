@@ -7,16 +7,24 @@ use Magento\Company\Model\ResourceModel\Company\CollectionFactory;
 class Company implements \Magento\Framework\Data\OptionSourceInterface
 {
     /**
-     * @var Collection
+     * @var \Magento\Company\Model\ResourceModel\Company\Collection
      */
     protected $collection;
 
+    /**
+     * @param CollectionFactory $companyCollectionFactory
+     */
     public function __construct(
         CollectionFactory $companyCollectionFactory
     ) {
         $this->collection = $companyCollectionFactory->create();
     }
 
+    /**
+     * Option Array
+     *
+     * @return array
+     */
     public function toOptionArray()
     {
         $items = $this->collection->getItems();

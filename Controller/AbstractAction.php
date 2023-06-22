@@ -32,10 +32,7 @@ use Variux\Warranty\Helper\SuggestHelper;
  */
 abstract class AbstractAction extends \Magento\Framework\App\Action\Action
 {
-    /**
-     * Authorization level of a company session.
-     */
-    const COMPANY_RESOURCE = 'Magento_Company::index';
+    public const COMPANY_RESOURCE = 'Magento_Company::index';
 
     /**
      * @var LoggerInterface
@@ -105,6 +102,8 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
     }
 
     /**
+     * Dispatch
+     *
      * @param RequestInterface $request
      * @return ResponseInterface|Interceptor
      * @throws NotFoundException

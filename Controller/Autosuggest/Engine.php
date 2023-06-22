@@ -19,7 +19,9 @@ use Variux\Warranty\Helper\SuggestHelper;
 class Engine extends \Variux\Warranty\Controller\AbstractAction
 {
     /**
-     * @return ResponseInterface|\Magento\Framework\Controller\Result\Json|ResultInterface
+     * Execute
+     *
+     * @return ResponseInterface|\Magento\Framework\Controller\Result\Json|(\Magento\Framework\Controller\Result\Json&ResultInterface)|ResultInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function execute()

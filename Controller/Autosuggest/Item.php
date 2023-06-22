@@ -20,6 +20,8 @@ use Variux\Warranty\Helper\SuggestHelper;
 class Item extends \Variux\Warranty\Controller\AbstractAction
 {
     /**
+     * Execute
+     *
      * @return ResponseInterface|ResultInterface
      * @throws NoSuchEntityException
      */

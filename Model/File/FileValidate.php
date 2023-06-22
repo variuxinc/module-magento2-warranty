@@ -11,6 +11,9 @@ use Magento\Framework\Phrase;
  */
 class FileValidate
 {
+    /**
+     * @var \Variux\Warranty\Helper\Data
+     */
     protected $_helperData;
     /**
      * @var array
@@ -32,6 +35,7 @@ class FileValidate
     private $allowedMimeTypes;
 
     /**
+     * @param \Variux\Warranty\Helper\Data $helperData
      * @param array $allowedMimeTypes
      */
     public function __construct(
@@ -106,7 +110,10 @@ class FileValidate
     }
 
     /**
-     * @return boolean
+     * Validate Size
+     *
+     * @param int $size
+     * @return bool
      */
     private function isValidSize($size)
     {
@@ -114,6 +121,8 @@ class FileValidate
     }
 
     /**
+     * Get Max File Size
+     *
      * @return number
      */
     public function getMaxFileSize()

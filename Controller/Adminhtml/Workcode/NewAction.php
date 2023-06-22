@@ -9,7 +9,9 @@ namespace Variux\Warranty\Controller\Adminhtml\Workcode;
 
 class NewAction extends \Variux\Warranty\Controller\Adminhtml\Workcode
 {
-
+    /**
+     * @var \Magento\Backend\Model\View\Result\ForwardFactory
+     */
     protected $resultForwardFactory;
 
     /**

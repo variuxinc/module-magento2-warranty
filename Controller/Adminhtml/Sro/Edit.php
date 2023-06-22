@@ -9,7 +9,9 @@ namespace Variux\Warranty\Controller\Adminhtml\Sro;
 
 class Edit extends \Variux\Warranty\Controller\Adminhtml\Sro
 {
-
+    /**
+     * @var \Magento\Framework\View\Result\PageFactory
+     */
     protected $resultPageFactory;
 
     /**

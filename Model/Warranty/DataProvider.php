@@ -23,8 +23,9 @@ class DataProvider extends AbstractDataProvider
      * @var array
      */
     protected $loadedData;
+
     /**
-     * @inheritDoc
+     * @var \Variux\Warranty\Model\ResourceModel\Warranty\Collection
      */
     protected $collection;
 

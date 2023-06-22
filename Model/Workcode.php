@@ -12,6 +12,9 @@ use Variux\Warranty\Api\Data\WorkcodeInterface;
 
 class Workcode extends AbstractModel implements WorkcodeInterface
 {
+    /**
+     * @var string
+     */
     protected $_eventPrefix = 'variux_workcode';
 
     /**

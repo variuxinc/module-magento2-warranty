@@ -9,7 +9,9 @@ namespace Variux\Warranty\Controller\Adminhtml\WarrantyTransfer;
 
 class Edit extends \Variux\Warranty\Controller\Adminhtml\WarrantyTransfer
 {
-
+    /**
+     * @var \Magento\Framework\View\Result\PageFactory
+     */
     protected $resultPageFactory;
 
     /**

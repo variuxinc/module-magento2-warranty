@@ -16,6 +16,15 @@ class Remove extends \Variux\Warranty\Controller\AbstractAction
      */
     protected $sroLaborRepository;
 
+    /**
+     * @param \Magento\Framework\App\Action\Context $context
+     * @param CompanyContext $companyContext
+     * @param \Psr\Log\LoggerInterface $logger
+     * @param Session $_customerSession
+     * @param \Variux\Warranty\Helper\Data $helperData
+     * @param SuggestHelper $suggestHelper
+     * @param SroLaborRepository $sroLaborRepository
+     */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         CompanyContext $companyContext,
@@ -36,6 +45,11 @@ class Remove extends \Variux\Warranty\Controller\AbstractAction
         $this->sroLaborRepository = $sroLaborRepository;
     }
 
+    /**
+     * Execute
+     *
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Json|(\Magento\Framework\Controller\Result\Json&\Magento\Framework\Controller\ResultInterface)|\Magento\Framework\Controller\ResultInterface
+     */
     public function execute()
     {
 

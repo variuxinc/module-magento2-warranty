@@ -40,6 +40,8 @@ class Getsronumandincnum extends \Variux\Warranty\Controller\AbstractAction
     }
 
     /**
+     * Execute
+     *
      * @return ResponseInterface|ResultInterface
      */
     public function execute()

@@ -12,6 +12,9 @@ use Variux\Warranty\Api\Data\PartnerInterface;
 
 class Partner extends AbstractModel implements PartnerInterface
 {
+    /**
+     * @var string
+     */
     protected $_eventPrefix = 'variux_partner';
 
     /**

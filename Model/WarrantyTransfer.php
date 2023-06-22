@@ -12,9 +12,14 @@ use Variux\Warranty\Api\Data\WarrantyTransferInterface;
 
 class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterface
 {
+    /**
+     * @var string
+     */
     protected $_eventPrefix = 'variux_warranty_transfer';
 
     /**
+     * Overwirte __construct class
+     *
      * @return void
      */
     public function _construct()
@@ -23,6 +28,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get warranty transfer id
+     *
      * @return array|mixed|string|null
      */
     public function getWarrantytransferId()
@@ -31,7 +38,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $warrantytransferId
+     * Set warrenty transfer id
+     *
+     * @param int $warrantytransferId
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setWarrantytransferId($warrantytransferId)
@@ -40,6 +49,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Engine Serial Number
+     *
      * @return array|mixed|string|null
      */
     public function getEngineSerialNum()
@@ -48,7 +59,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $engineSerialNum
+     * Set Engine Serial Number
+     *
+     * @param string $engineSerialNum
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setEngineSerialNum($engineSerialNum)
@@ -57,6 +70,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Set Submit Email
+     *
      * @return array|mixed|string|null
      */
     public function getSubmitterEmail()
@@ -65,7 +80,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $submitterEmail
+     * Set Submit Email
+     *
+     * @param string $submitterEmail
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setSubmitterEmail($submitterEmail)
@@ -74,6 +91,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Submit Name
+     *
      * @return array|mixed|string|null
      */
     public function getSubmitterName()
@@ -82,7 +101,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $submitterName
+     * Set Submit Name
+     *
+     * @param string $submitterName
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setSubmitterName($submitterName)
@@ -91,6 +112,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Engine Hours
+     *
      * @return array|mixed|string|null
      */
     public function getEngineHours()
@@ -99,7 +122,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $engineHours
+     * Set Engine Hours
+     *
+     * @param string $engineHours
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setEngineHours($engineHours)
@@ -108,6 +133,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Engine Model
+     *
      * @return array|mixed|string|null
      */
     public function getEngineModel()
@@ -116,7 +143,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $engineModel
+     * Set Engine Model
+     *
+     * @param string $engineModel
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setEngineModel($engineModel)
@@ -125,6 +154,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get TransSn
+     *
      * @return array|mixed|string|null
      */
     public function getTransSn()
@@ -133,7 +164,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $transSn
+     * Set TransSn
+     *
+     * @param string $transSn
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setTransSn($transSn)
@@ -142,6 +175,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Make of boat
+     *
      * @return array|mixed|string|null
      */
     public function getMakeOfBoat()
@@ -150,7 +185,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $makeOfBoat
+     * Set Make of boat
+     *
+     * @param string $makeOfBoat
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setMakeOfBoat($makeOfBoat)
@@ -159,6 +196,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Boat use
+     *
      * @return array|mixed|string|null
      */
     public function getBoatUse()
@@ -167,7 +206,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $boatUse
+     * Set Boat use
+     *
+     * @param string $boatUse
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setBoatUse($boatUse)
@@ -176,6 +217,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Current Customer
+     *
      * @return array|mixed|string|null
      */
     public function getCurrentCustomer()
@@ -184,7 +227,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $currentCustomer
+     * Set Current Customer
+     *
+     * @param string $currentCustomer
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setCurrentCustomer($currentCustomer)
@@ -193,6 +238,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Warranty Start Date
+     *
      * @return array|mixed|string|null
      */
     public function getWarrantyStartDate()
@@ -201,7 +248,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $warrantyStartDate
+     * Set Warranty Start Date
+     *
+     * @param string $warrantyStartDate
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setWarrantyStartDate($warrantyStartDate)
@@ -210,6 +259,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Warranty End Date
+     *
      * @return array|mixed|string|null
      */
     public function getWarrantyEndDate()
@@ -218,7 +269,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $warrantyEndDate
+     * Set Warranty End Date
+     *
+     * @param string $warrantyEndDate
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setWarrantyEndDate($warrantyEndDate)
@@ -227,6 +280,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Submit Date
+     *
      * @return array|mixed|string|null
      */
     public function getSubmitDate()
@@ -235,7 +290,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $submitDate
+     * Set Submit Date
+     *
+     * @param string $submitDate
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setSubmitDate($submitDate)
@@ -244,6 +301,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Inspection Date
+     *
      * @return array|mixed|string|null
      */
     public function getInspectionDate()
@@ -252,7 +311,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $inspectionDate
+     * Set Inspection Date
+     *
+     * @param string $inspectionDate
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setInspectionDate($inspectionDate)
@@ -261,6 +322,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Hull Id
+     *
      * @return array|mixed|string|null
      */
     public function getHullId()
@@ -269,7 +332,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $hullId
+     * Set Hull Id
+     *
+     * @param int $hullId
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setHullId($hullId)
@@ -278,6 +343,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Eng Comp1
+     *
      * @return array|mixed|string|null
      */
     public function getEngComp1()
@@ -286,7 +353,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $engComp1
+     * Set Eng Comp1
+     *
+     * @param string $engComp1
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setEngComp1($engComp1)
@@ -295,6 +364,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Eng Comp2
+     *
      * @return array|mixed|string|null
      */
     public function getEngComp2()
@@ -303,7 +374,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $engComp2
+     * Set Eng Comp2
+     *
+     * @param string $engComp2
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setEngComp2($engComp2)
@@ -312,6 +385,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Eng Comp3
+     *
      * @return array|mixed|string|null
      */
     public function getEngComp3()
@@ -320,7 +395,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $engComp3
+     * Set Eng Comp2
+     *
+     * @param string $engComp3
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setEngComp3($engComp3)
@@ -329,6 +406,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Eng Comp4
+     *
      * @return array|mixed|string|null
      */
     public function getEngComp4()
@@ -337,7 +416,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $engComp4
+     * Set Eng Comp4
+     *
+     * @param string $engComp4
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setEngComp4($engComp4)
@@ -346,6 +427,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Name
+     *
      * @return array|mixed|string|null
      */
     public function getName()
@@ -354,7 +437,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $name
+     * Set Name
+     *
+     * @param string $name
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setName($name)
@@ -363,6 +448,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Email
+     *
      * @return array|mixed|string|null
      */
     public function getEmail()
@@ -371,7 +458,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $email
+     * Set Email
+     *
+     * @param string $email
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setEmail($email)
@@ -380,6 +469,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Phone
+     *
      * @return array|mixed|string|null
      */
     public function getPhone()
@@ -388,7 +479,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $phone
+     * Set Phone
+     *
+     * @param string $phone
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setPhone($phone)
@@ -397,6 +490,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Phone Ext
+     *
      * @return array|mixed|string|null
      */
     public function getPhoneExt()
@@ -405,7 +500,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $phoneExt
+     * Set Phone Ext
+     *
+     * @param string $phoneExt
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setPhoneExt($phoneExt)
@@ -414,6 +511,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Sale Date
+     *
      * @return array|mixed|string|null
      */
     public function getSaleDate()
@@ -422,7 +521,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $saleDate
+     * Set Sale Date
+     *
+     * @param string $saleDate
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setSaleDate($saleDate)
@@ -431,6 +532,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Address 1
+     *
      * @return array|mixed|string|null
      */
     public function getAddress1()
@@ -439,7 +542,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $address1
+     * Set Address 1
+     *
+     * @param string $address1
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setAddress1($address1)
@@ -448,6 +553,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Address 2
+     *
      * @return array|mixed|string|null
      */
     public function getAddress2()
@@ -456,7 +563,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $address2
+     * Set Address 2
+     *
+     * @param string $address2
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setAddress2($address2)
@@ -465,6 +574,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get City
+     *
      * @return array|mixed|string|null
      */
     public function getCity()
@@ -473,7 +584,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $city
+     * Set City
+     *
+     * @param string $city
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setCity($city)
@@ -482,6 +595,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get State
+     *
      * @return array|mixed|string|null
      */
     public function getState()
@@ -490,7 +605,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $state
+     * Set State
+     *
+     * @param string $state
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setState($state)
@@ -499,6 +616,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Zip
+     *
      * @return array|mixed|string|null
      */
     public function getZip()
@@ -507,7 +626,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $zip
+     * Set Zip
+     *
+     * @param string $zip
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setZip($zip)
@@ -516,6 +637,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Country
+     *
      * @return array|mixed|string|null
      */
     public function getCountry()
@@ -524,7 +647,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $country
+     * Set Country
+     *
+     * @param string $country
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setCountry($country)
@@ -533,6 +658,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Status
+     *
      * @return array|mixed|string|null
      */
     public function getStatus()
@@ -541,7 +668,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $status
+     * Set Status
+     *
+     * @param string $status
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setStatus($status)
@@ -550,6 +679,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Row Pointer
+     *
      * @return array|mixed|string|null
      */
     public function getRowPointer()
@@ -558,7 +689,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $rowPointer
+     * Set Row Pointer
+     *
+     * @param string $rowPointer
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setRowPointer($rowPointer)
@@ -567,6 +700,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get File Path Json
+     *
      * @return array|mixed|string|null
      */
     public function getFilePathJson()
@@ -575,6 +710,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Set File Path Json
+     *
      * @param array $filePathJson
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
@@ -584,6 +721,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Company id
+     *
      * @return array|mixed|string|null
      */
     public function getCompanyId()
@@ -592,7 +731,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $companyId
+     * Set Company id
+     *
+     * @param string $companyId
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setCompanyId($companyId)
@@ -601,6 +742,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Create at
+     *
      * @return array|mixed|string|null
      */
     public function getCreatedAt()
@@ -609,7 +752,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $createdAt
+     * Set Create at
+     *
+     * @param string $createdAt
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setCreatedAt($createdAt)
@@ -618,6 +763,8 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
+     * Get Update at
+     *
      * @return array|mixed|string|null
      */
     public function getUpdatedAt()
@@ -626,7 +773,9 @@ class WarrantyTransfer extends AbstractModel implements WarrantyTransferInterfac
     }
 
     /**
-     * @param $updatedAt
+     * Set Update at
+     *
+     * @param string $updatedAt
      * @return WarrantyTransfer|\Variux\Warranty\WarrantyTransfer\Api\Data\WarrantyTransferInterface
      */
     public function setUpdatedAt($updatedAt)

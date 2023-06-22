@@ -9,7 +9,9 @@ namespace Variux\Warranty\Controller\Adminhtml\SroMisc;
 
 class NewAction extends \Variux\Warranty\Controller\Adminhtml\SroMisc
 {
-
+    /**
+     * @var \Magento\Backend\Model\View\Result\ForwardFactory
+     */
     protected $resultForwardFactory;
 
     /**

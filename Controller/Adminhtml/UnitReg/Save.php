@@ -11,7 +11,9 @@ use Magento\Framework\Exception\LocalizedException;
 
 class Save extends \Magento\Backend\App\Action
 {
-
+    /**
+     * @var \Magento\Framework\App\Request\DataPersistorInterface
+     */
     protected $dataPersistor;
 
     /**
@@ -38,20 +40,20 @@ class Save extends \Magento\Backend\App\Action
         $data = $this->getRequest()->getPostValue();
         if ($data) {
             $id = $this->getRequest()->getParam('unitreg_id');
-        
+
             $model = $this->_objectManager->create(\Variux\Warranty\Model\UnitReg::class)->load($id);
             if (!$model->getId() && $id) {
                 $this->messageManager->addErrorMessage(__('This Unitreg no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
             }
-        
+
             $model->setData($data);
-        
+
             try {
                 $model->save();
                 $this->messageManager->addSuccessMessage(__('You saved the Unitreg.'));
                 $this->dataPersistor->clear('variux_warranty_unitreg');
-        
+
                 if ($this->getRequest()->getParam('back')) {
                     return $resultRedirect->setPath('*/*/edit', ['unitreg_id' => $model->getId()]);
                 }
@@ -61,7 +63,7 @@ class Save extends \Magento\Backend\App\Action
             } catch (\Exception $e) {
                 $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the Unitreg.'));
             }
-        
+
             $this->dataPersistor->set('variux_warranty_unitreg', $data);
             return $resultRedirect->setPath('*/*/edit', ['unitreg_id' => $this->getRequest()->getParam('unitreg_id')]);
         }

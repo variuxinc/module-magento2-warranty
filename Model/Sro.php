@@ -12,10 +12,29 @@ use Variux\Warranty\Api\Data\SroInterface;
 
 class Sro extends AbstractModel implements SroInterface
 {
+    /**
+     * @var string
+     */
     protected $_eventPrefix = 'variux_sro';
+
+    /**
+     * @var ResourceModel\SroLabor\CollectionFactory
+     */
     protected $laborCollectionFactory;
+
+    /**
+     * @var ResourceModel\SroMaterial\CollectionFactory
+     */
     protected $materialCollectionFactory;
+
+    /**
+     * @var ResourceModel\SroMisc\CollectionFactory
+     */
     protected $miscCollectionFactory;
+
+    /**
+     * @var ResourceModel\SroDocument\CollectionFactory
+     */
     protected $docsCollectionFactory;
 
     /**
@@ -23,15 +42,27 @@ class Sro extends AbstractModel implements SroInterface
      */
     protected $_resource;
 
-
     /**
-     * @inheritDoc
+     * Overwirte Class
+     *
+     * @return void
      */
     public function _construct()
     {
         $this->_init(\Variux\Warranty\Model\ResourceModel\Sro::class);
     }
 
+    /**
+     * @param \Magento\Framework\Model\Context $context
+     * @param \Magento\Framework\Registry $registry
+     * @param ResourceModel\Sro $resource
+     * @param ResourceModel\Sro\Collection $resourceCollection
+     * @param ResourceModel\SroLabor\CollectionFactory $laborCollectionFactory
+     * @param ResourceModel\SroMaterial\CollectionFactory $materialCollectionFactory
+     * @param ResourceModel\SroMisc\CollectionFactory $miscCollectionFactory
+     * @param ResourceModel\SroDocument\CollectionFactory $docsCollectionFactory
+     * @param array $data
+     */
     public function __construct(
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
@@ -51,11 +82,13 @@ class Sro extends AbstractModel implements SroInterface
         $this->_resource = $resource;
     }
 
-        /**
-         * @param $number
-         * @param bool $conditionType
-         * @return $this
-         */
+    /**
+     * Load By Number
+     *
+     * @param string $number
+     * @param bool $conditionType
+     * @return $this
+     */
     public function loadByNumber($number, $conditionType = false)
     {
         $this->_resource->loadByNumber($this, $number, $conditionType = false);
@@ -63,7 +96,9 @@ class Sro extends AbstractModel implements SroInterface
     }
 
     /**
-     * @param $warId
+     * Load by warranty id
+     *
+     * @param string $warId
      * @return $this
      */
     public function loadByWarrantyId($warId)
@@ -73,6 +108,8 @@ class Sro extends AbstractModel implements SroInterface
     }
 
     /**
+     * Get Material Collection
+     *
      * @return ResourceModel\SroMaterial\Collection
      */
     public function getMaterialCollection()
@@ -82,6 +119,8 @@ class Sro extends AbstractModel implements SroInterface
     }
 
     /**
+     * Get Labor Collection
+     *
      * @return ResourceModel\SroLabor\Collection
      */
     public function getLaborCollection()
@@ -91,6 +130,8 @@ class Sro extends AbstractModel implements SroInterface
     }
 
     /**
+     * Get Misc Collection
+     *
      * @return ResourceModel\SroMisc\Collection
      */
     public function getMiscCollection()
@@ -100,6 +141,8 @@ class Sro extends AbstractModel implements SroInterface
     }
 
     /**
+     * Get Document Collection
+     *
      * @return ResourceModel\SroDocument\Collection
      */
     public function getDocumentCollection()
@@ -109,6 +152,8 @@ class Sro extends AbstractModel implements SroInterface
     }
 
     /**
+     * Get Labors Data
+     *
      * @return array
      */
     public function getLaborsData()
@@ -121,6 +166,8 @@ class Sro extends AbstractModel implements SroInterface
     }
 
     /**
+     * Get Material Data
+     *
      * @return array
      */
     public function getMaterialsData()
@@ -133,6 +180,8 @@ class Sro extends AbstractModel implements SroInterface
     }
 
     /**
+     * Get Misc Data
+     *
      * @return array
      */
     public function getMiscsData()
@@ -146,6 +195,8 @@ class Sro extends AbstractModel implements SroInterface
     }
 
     /**
+     * Get Docs Data
+     *
      * @return array
      */
     public function getDocsData()

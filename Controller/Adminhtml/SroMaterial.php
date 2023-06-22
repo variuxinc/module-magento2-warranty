@@ -9,9 +9,11 @@ namespace Variux\Warranty\Controller\Adminhtml;
 
 abstract class SroMaterial extends \Magento\Backend\App\Action
 {
-
+    /**
+     * @var \Magento\Framework\Registry
+     */
     protected $_coreRegistry;
-    const ADMIN_RESOURCE = 'Variux_Warranty::top_level';
+    public const ADMIN_RESOURCE = 'Variux_Warranty::top_level';
 
     /**
      * @param \Magento\Backend\App\Action\Context $context

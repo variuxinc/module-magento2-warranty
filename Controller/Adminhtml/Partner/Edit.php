@@ -11,7 +11,9 @@ use Magento\Backend\Model\View\Result\Redirect;
 
 class Edit extends \Variux\Warranty\Controller\Adminhtml\Partner
 {
-
+    /**
+     * @var \Magento\Framework\View\Result\PageFactory
+     */
     protected $resultPageFactory;
 
     /**

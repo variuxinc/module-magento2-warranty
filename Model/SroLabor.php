@@ -12,6 +12,9 @@ use Variux\Warranty\Api\Data\SroLaborInterface;
 
 class SroLabor extends AbstractModel implements SroLaborInterface
 {
+    /**
+     * @var string
+     */
     protected $_eventPrefix = 'variux_sro_labor';
 
     /**
@@ -295,6 +298,8 @@ class SroLabor extends AbstractModel implements SroLaborInterface
     }
 
     /**
+     * Get Partner id
+     *
      * @return array|mixed|null
      */
     public function getPartnerId()
@@ -303,7 +308,9 @@ class SroLabor extends AbstractModel implements SroLaborInterface
     }
 
     /**
-     * @param $partnerId
+     * Set Partner id
+     *
+     * @param string $partnerId
      * @return mixed|SroLabor
      */
     public function setPartnerId($partnerId)

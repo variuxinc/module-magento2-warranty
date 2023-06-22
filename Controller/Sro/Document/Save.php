@@ -18,10 +18,10 @@ use Variux\Warranty\Model\Warranty;
 
 class Save extends \Variux\Warranty\Controller\AbstractAction
 {
-    const ERROR_MESS_EMPTY = 'Document file is required.';
-    const SUCCESS_MESS = 'The document is added.';
-    const ERROR_MESS_WARRANTY_SUBMITTED = 'Warranty was submitted.';
-    const ERROR_MESS_INVALID_SRO = 'Invalid SRO ID.';
+    public const ERROR_MESS_EMPTY = 'Document file is required.';
+    public const SUCCESS_MESS = 'The document is added.';
+    public const ERROR_MESS_WARRANTY_SUBMITTED = 'Warranty was submitted.';
+    public const ERROR_MESS_INVALID_SRO = 'Invalid SRO ID.';
 
     /**
      * @var SroDocumentFactory
@@ -56,6 +56,22 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
      */
     protected $sroResourceModel;
 
+    /**
+     * @param \Magento\Framework\App\Action\Context $context
+     * @param CompanyContext $companyContext
+     * @param \Psr\Log\LoggerInterface $logger
+     * @param Session $_customerSession
+     * @param \Variux\Warranty\Helper\Data $helperData
+     * @param SuggestHelper $suggestHelper
+     * @param SroDocumentFactory $sroDocumentFactory
+     * @param SroDocumentRepository $sroDocumentRepository
+     * @param SroFactory $sroFactory
+     * @param WarrantyFactory $warrantyFactory
+     * @param WarrantyResourceModel $warrantyResourceModel
+     * @param FileProcessor $fileProcessor
+     * @param CompanyDetails $companyDetails
+     * @param SroResourceModel $sroResourceModel
+     */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         CompanyContext $companyContext,
@@ -90,6 +106,11 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         $this->sroResourceModel = $sroResourceModel;
     }
 
+    /**
+     * Execute
+     *
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Json|(\Magento\Framework\Controller\Result\Json&\Magento\Framework\Controller\ResultInterface)|\Magento\Framework\Controller\ResultInterface
+     */
     public function execute()
     {
         $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
@@ -148,6 +169,13 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         return $resultJson;
     }
 
+    /**
+     * Process File
+     *
+     * @param array $fileData
+     * @return array
+     * @throws \Magento\Framework\Exception\InputException
+     */
     protected function processFile($fileData)
     {
         $result = $this->fileProcessor->processFileContent("warranty/document", $fileData);

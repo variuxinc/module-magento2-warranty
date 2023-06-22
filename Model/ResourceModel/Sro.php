@@ -20,12 +20,15 @@ class Sro extends AbstractDb
         $this->_init('variux_warranty_sro', 'sro_id');
     }
 
-     /**
-      * @param \Variux\Warranty\Model\Sro $model
-      * @param $number
-      * @return $this
-      * @throws \Magento\Framework\Exception\LocalizedException
-      */
+    /**
+     * Load by Number
+     *
+     * @param \Variux\Warranty\Model\Sro $model
+     * @param string $number
+     * @param boolean $conditionType
+     * @return $this
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
     public function loadByNumber(\Variux\Warranty\Model\Sro $model, $number, $conditionType = false)
     {
         $conditionString = "";
@@ -56,8 +59,10 @@ class Sro extends AbstractDb
     }
 
     /**
+     * Load warranty id
+     *
      * @param \Variux\Warranty\Model\Sro $model
-     * @param $warId
+     * @param string $warId
      * @return $this
      * @throws \Magento\Framework\Exception\LocalizedException
      */

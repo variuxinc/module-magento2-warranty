@@ -29,6 +29,20 @@ class Editpost extends \Variux\Warranty\Controller\AbstractAction
      */
     protected $warrantyResourceModel;
 
+    /**
+     * Construct
+     *
+     * @param \Magento\Framework\App\Action\Context $context
+     * @param CompanyContext $companyContext
+     * @param \Psr\Log\LoggerInterface $logger
+     * @param Session $_customerSession
+     * @param \Variux\Warranty\Helper\Data $helperData
+     * @param SuggestHelper $suggestHelper
+     * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
+     * @param \Variux\Warranty\Model\WarrantyFactory $warrantyFactory
+     * @param Escaper $escaper
+     * @param WarrantyResourceModel $warrantyResourceModel
+     */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         CompanyContext $companyContext,
@@ -55,6 +69,11 @@ class Editpost extends \Variux\Warranty\Controller\AbstractAction
         $this->warrantyResourceModel = $warrantyResourceModel;
     }
 
+    /**
+     * Execute
+     *
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
+     */
     public function execute()
     {
         $data = $this->getRequest()->getPostValue();

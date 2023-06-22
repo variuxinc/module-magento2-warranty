@@ -12,9 +12,13 @@ use Variux\Warranty\Api\Data\UnitInterface;
 
 class Unit extends AbstractModel implements UnitInterface
 {
-    const STATUS_EXPIRED = "expired";
-    const STATUS_REGISTERED = "registered";
-    const STATUS_UNREGISTERED = "unregistered";
+    public const STATUS_EXPIRED = "expired";
+    public const STATUS_REGISTERED = "registered";
+    public const STATUS_UNREGISTERED = "unregistered";
+
+    /**
+     * @var string
+     */
     protected $_eventPrefix = 'variux_unit';
 
     /**
@@ -54,8 +58,10 @@ class Unit extends AbstractModel implements UnitInterface
      * Thiếu document
      */
     /**
-     * @param $number
-     * @param $conditionType
+     * Get Serial
+     *
+     * @param string|int $number
+     * @param boolean $conditionType
      * @return $this
      */
     public function loadBySerial($number, $conditionType = false)

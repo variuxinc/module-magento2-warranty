@@ -22,8 +22,10 @@ class Partner extends AbstractDb
     }
 
     /**
+     * Load by company id
+     *
      * @param \Variux\Warranty\Model\Partner $model
-     * @param $companyId
+     * @param string $companyId
      * @return $this
      * @throws LocalizedException
      */

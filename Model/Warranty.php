@@ -13,9 +13,15 @@ use Variux\Warranty\Api\Data\WarrantyInterface;
 
 class Warranty extends AbstractModel implements WarrantyInterface
 {
+    /**
+     * @var string
+     */
     protected $_eventPrefix = 'variux_warranty';
 
-    const STATUS_ARRAY = [
+    /**
+     * @var array
+     */
+    public const STATUS_ARRAY = [
         'CD' =>
             [
                 'key' => 'CD',
@@ -146,8 +152,20 @@ class Warranty extends AbstractModel implements WarrantyInterface
      */
     protected $storeManager;
 
+    /**
+     * @var SroFactory
+     */
     protected $sroFactory;
 
+    /**
+     * @param \Magento\Framework\Model\Context $context
+     * @param \Magento\Framework\Registry $registry
+     * @param ResourceModel\Warranty $resource
+     * @param ResourceModel\Warranty\Collection $resourceCollection
+     * @param StoreManagerInterface $storeManager
+     * @param SroFactory $sroFactory
+     * @param array $data
+     */
     public function __construct(
         \Magento\Framework\Model\Context                         $context,
         \Magento\Framework\Registry                              $registry,
@@ -163,6 +181,8 @@ class Warranty extends AbstractModel implements WarrantyInterface
     }
 
     /**
+     * Get Status Option
+     *
      * @return array[]
      */
     public function getStatusOptionArray()
@@ -170,12 +190,19 @@ class Warranty extends AbstractModel implements WarrantyInterface
         return $this::STATUS_ARRAY;
     }
 
+    /**
+     * Get Status String
+     *
+     * @return mixed
+     */
     public function getStatusString()
     {
         return $this->getStatusOptionArray()[$this->getStatus()]["value"];
     }
 
     /**
+     * Submmited
+     *
      * @return bool
      */
     public function isSubmitted()
@@ -184,6 +211,8 @@ class Warranty extends AbstractModel implements WarrantyInterface
     }
 
     /**
+     * Process Save
+     *
      * @return void
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
@@ -201,6 +230,8 @@ class Warranty extends AbstractModel implements WarrantyInterface
     }
 
     /**
+     * Create New
+     *
      * @return bool
      */
     public function isCreateNew()
@@ -209,6 +240,8 @@ class Warranty extends AbstractModel implements WarrantyInterface
     }
 
     /**
+     * Get Sro
+     *
      * @return Sro
      */
     public function getSro()
@@ -217,6 +250,8 @@ class Warranty extends AbstractModel implements WarrantyInterface
     }
 
     /**
+     * Has Sro Detail
+     *
      * @return bool|\Magento\Framework\DataObject
      */
     public function hasSroDetails()

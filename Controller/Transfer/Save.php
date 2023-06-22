@@ -111,6 +111,8 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
     }
 
     /**
+     * Execute
+     *
      * @return ResponseInterface|ResultInterface
      */
     public function execute()
@@ -227,7 +229,9 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
     }
 
     /**
-     * @param $fileData
+     * Process File
+     *
+     * @param array $fileData
      * @return array
      * @throws InputException
      */
@@ -241,6 +245,14 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         ];
     }
 
+    /**
+     * Process Files
+     *
+     * @param array $filesData
+     * @param string $filePath
+     * @return void
+     * @throws InputException
+     */
     protected function processFiles($filesData, $filePath)
     {
         if ($filesData) {

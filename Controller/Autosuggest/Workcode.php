@@ -20,6 +20,8 @@ use Variux\Warranty\Helper\SuggestHelper;
 class Workcode extends \Variux\Warranty\Controller\AbstractAction
 {
     /**
+     * Execute
+     *
      * @return ResponseInterface|ResultInterface
      * @throws LocalizedException
      */

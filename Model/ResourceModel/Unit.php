@@ -21,9 +21,11 @@ class Unit extends AbstractDb
     }
 
     /**
+     * Load by serial
+     *
      * @param \Variux\Warranty\Model\Unit $model
-     * @param $number
-     * @param $conditionType
+     * @param string $number
+     * @param boolean $conditionType
      * @return \Variux\Warranty\Model\Unit
      * @throws \Magento\Framework\Exception\LocalizedException
      */

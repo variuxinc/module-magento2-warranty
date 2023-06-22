@@ -20,6 +20,8 @@ use Magento\Framework\Controller\ResultFactory;
 class Dealer extends \Variux\Warranty\Controller\AbstractAction
 {
     /**
+     * Execute
+     *
      * @return ResponseInterface|ResultInterface
      */
     public function execute()

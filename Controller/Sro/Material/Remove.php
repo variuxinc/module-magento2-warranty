@@ -15,6 +15,15 @@ class Remove extends \Variux\Warranty\Controller\AbstractAction
      */
     protected $sroMaterialRepository;
 
+    /**
+     * @param \Magento\Framework\App\Action\Context $context
+     * @param CompanyContext $companyContext
+     * @param \Psr\Log\LoggerInterface $logger
+     * @param Session $_customerSession
+     * @param \Variux\Warranty\Helper\Data $helperData
+     * @param SuggestHelper $suggestHelper
+     * @param SroMaterialRepository $sroMaterialRepository
+     */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         CompanyContext $companyContext,
@@ -35,6 +44,11 @@ class Remove extends \Variux\Warranty\Controller\AbstractAction
         $this->sroMaterialRepository = $sroMaterialRepository;
     }
 
+    /**
+     * Execute
+     *
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Json|(\Magento\Framework\Controller\Result\Json&\Magento\Framework\Controller\ResultInterface)|\Magento\Framework\Controller\ResultInterface
+     */
     public function execute()
     {
         $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);

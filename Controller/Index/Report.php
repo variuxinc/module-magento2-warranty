@@ -87,6 +87,12 @@ class Report extends \Variux\Warranty\Controller\AbstractAction
         $this->fileFactory = $fileFactory;
     }
 
+    /**
+     * Execute
+     *
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
+     * @throws \Exception
+     */
     public function execute()
     {
         $id = $this->getRequest()->getParam('id');

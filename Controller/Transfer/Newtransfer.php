@@ -12,6 +12,8 @@ use Variux\Warranty\Helper\SuggestHelper;
 class Newtransfer extends \Variux\Warranty\Controller\AbstractAction
 {
     /**
+     * Execute
+     *
      * @return ResponseInterface|ResultInterface|Page|(Page&ResultInterface)
      */
     public function execute()

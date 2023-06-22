@@ -12,8 +12,6 @@ use Magento\Framework\Api\Uploader;
 class FileProcessor
 {
     /**
-     * MIME type/extension map
-     *
      * @var array
      */
     protected $mimeTypeExtensionMap = [
@@ -66,6 +64,8 @@ class FileProcessor
     }
 
     /**
+     * Proccess File Content
+     *
      * @param string $entityType
      * @param array $fileContent
      * @return array

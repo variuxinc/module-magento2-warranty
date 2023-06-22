@@ -4,6 +4,9 @@ namespace Variux\Warranty\Helper;
 
 class Config extends \Magento\Framework\App\Helper\AbstractHelper
 {
+    /**
+     * @var string
+     */
     protected $configSection = "warranty";
 
     /**

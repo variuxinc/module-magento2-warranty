@@ -9,7 +9,9 @@ namespace Variux\Warranty\Controller\Adminhtml\UnitReg;
 
 class NewAction extends \Variux\Warranty\Controller\Adminhtml\UnitReg
 {
-
+    /**
+     * @var \Magento\Backend\Model\View\Result\ForwardFactory
+     */
     protected $resultForwardFactory;
 
     /**

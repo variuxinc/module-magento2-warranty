@@ -21,7 +21,7 @@ class Index extends \Variux\Warranty\Controller\AbstractAction implements HttpGe
     /**
      * Authorization level of a company session.
      */
-    const COMPANY_RESOURCE = 'Variux_Warranty::warranty_view';
+    public const COMPANY_RESOURCE = 'Variux_Warranty::warranty_view';
 
     /**
      * @var CompanyManagementInterface
@@ -51,6 +51,8 @@ class Index extends \Variux\Warranty\Controller\AbstractAction implements HttpGe
     }
 
     /**
+     * Execute
+     *
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface|Page
      */
     public function execute()

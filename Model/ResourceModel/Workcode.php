@@ -20,6 +20,15 @@ class Workcode extends AbstractDb
         $this->_init('variux_warranty_workcode', 'workcode_id');
     }
 
+    /**
+     * Load by code
+     *
+     * @param \Variux\Warranty\Model\Workcode $model
+     * @param string $number
+     * @param boolean $conditionType
+     * @return $this
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
     public function loadByCode(\Variux\Warranty\Model\Workcode $model, $number, $conditionType = false)
     {
         $conditionString = "";

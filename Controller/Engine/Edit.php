@@ -51,6 +51,8 @@ class Edit extends \Variux\Warranty\Controller\AbstractAction
     }
 
     /**
+     * Execute
+     *
      * @return \Magento\Framework\App\ResponseInterface|ResultInterface|Page
      * @throws \Magento\Framework\Exception\LocalizedException
      */

@@ -44,6 +44,11 @@ class Submit extends \Variux\Warranty\Controller\AbstractAction
         $this->warrantyRepository = $warrantyRepository;
     }
 
+    /**
+     * Execute
+     *
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Json|(\Magento\Framework\Controller\Result\Json&\Magento\Framework\Controller\ResultInterface)|\Magento\Framework\Controller\ResultInterface
+     */
     public function execute()
     {
         $warrantyData = $this->getRequest()->getParam("warranty");

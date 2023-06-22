@@ -164,6 +164,12 @@ class WarrantyRepository implements WarrantyRepositoryInterface
         return $this->delete($this->get($warrantyId));
     }
 
+    /**
+     * Process Status
+     *
+     * @param Warranty $warranty
+     * @return void
+     */
     public function processStatus(\Variux\Warranty\Model\Warranty $warranty)
     {
         if (!$warranty->getId()) {
@@ -171,6 +177,13 @@ class WarrantyRepository implements WarrantyRepositoryInterface
         }
     }
 
+    /**
+     * Process Customer Data
+     *
+     * @param Warranty $warranty
+     * @return void
+     * @throws NoSuchEntityException
+     */
     public function processCustomerData(\Variux\Warranty\Model\Warranty $warranty)
     {
         $customerId = $this->customerSession->getCustomerId();

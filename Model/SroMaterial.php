@@ -12,6 +12,9 @@ use Variux\Warranty\Api\Data\SroMaterialInterface;
 
 class SroMaterial extends AbstractModel implements SroMaterialInterface
 {
+    /**
+     * @var string
+     */
     protected $_eventPrefix = 'variux_sro_material';
 
     /**

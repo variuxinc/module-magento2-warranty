@@ -104,6 +104,8 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
     }
 
     /**
+     * Execute
+     *
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
@@ -159,6 +161,8 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
     }
 
     /**
+     * Able Register Engine
+     *
      * @return false|string
      * @throws \Magento\Framework\Exception\LocalizedException
      */
@@ -176,7 +180,9 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
     }
 
     /**
-     * @param $data
+     * Resolve State
+     *
+     * @param array $data
      * @return \Magento\Framework\Controller\Result\Redirect|void
      */
     protected function resolveWhenStateIsset($data)
