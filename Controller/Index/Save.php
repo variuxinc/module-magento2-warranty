@@ -66,6 +66,8 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
      * @param CompanyContext $companyContext
      * @param LoggerInterface $logger
      * @param Session $_customerSession
+     * @param \Variux\Warranty\Helper\Data $helperData
+     * @param SuggestHelper $suggestHelper
      * @param PageFactory $resultPageFactory
      * @param Validator $formKeyValidator
      * @param WarrantyFactory $warrantyFactory
@@ -229,7 +231,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
     /**
      * Convert Date String
      *
-     * @param $data
+     * @param array $data
      * @return mixed
      * @throws \Exception
      */
