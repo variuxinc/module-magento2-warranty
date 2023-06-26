@@ -45,19 +45,14 @@ class WarrantySaveBefore implements \Magento\Framework\Event\ObserverInterface
         $warranty = $observer->getEvent()->getDataObject();
         if ($warranty->getId()) {
             try {
-                $this->logger->info("Warranty status updated" . $warranty->getStatus());
                 $emailTo = $this->customerRepository->getById($warranty->getCustomerId())->getEmail();
-                $this->logger->info("email To: ". $emailTo);
                 $senderEmail = $this->config->getEmailIdentity();
                 $storeId = 1;
                 $template = 'claim_status_change_template';
                 $warrantyId = $warranty->getId();
-                $this->logger->info("warrantyId: ". $warrantyId);
                 $customerName = $this->customerRepository->getById($warranty->getCustomerId())->getLastname();
-                $this->logger->info("Csutomer name: ". $customerName);
                 $status = $warranty->getStatus();
                 $this->warrantyEmailSender->sendMail($emailTo, $senderEmail, $storeId, $template, $warrantyId, $customerName, $status);
-                $this->logger->info('Hello');
             }
             catch (\Exception $e) {
                 $this->logger->critical($e);
