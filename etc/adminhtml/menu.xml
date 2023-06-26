@@ -7,6 +7,10 @@
         <!--Warranty-->
         <add id="Variux_Warranty::warranty_management" title="Warranty Management" module="Variux_Warranty"
              sortOrder="100" parent="Variux_Warranty::top_level" resource="Variux_Warranty::warranty_management"/>
+            <add action="admin/system_config/edit/section/warranty_settings"
+                 id="Variux_Warranty::configuration" title="Settings"
+                 module="Variux_Warranty" sortOrder="100" resource="Magento_Backend::content"
+                 parent="Variux_Warranty::warranty_management"/>
         <add id="Variux_Warranty::variux_warranty_warranty" title="Warranties" module="Variux_Warranty" sortOrder="10"
              resource="Magento_Backend::content" parent="Variux_Warranty::warranty_management"
              action="variux_warranty/warranty/index"/>
