@@ -9,6 +9,12 @@
 					<resource id="Variux_Warranty::Warranty_update" title="Update Warranty" sortOrder="30"/>
 					<resource id="Variux_Warranty::Warranty_view" title="View Warranty" sortOrder="40"/>
 				</resource>
+                <resource id="Variux_Warranty::Status" title="Status" sortOrder="10">
+                    <resource id="Variux_Warranty::Status_save" title="Save Status" sortOrder="10"/>
+                    <resource id="Variux_Warranty::Status_delete" title="Delete Status" sortOrder="20"/>
+                    <resource id="Variux_Warranty::Status_update" title="Update Status" sortOrder="30"/>
+                    <resource id="Variux_Warranty::Status_view" title="View Status" sortOrder="40"/>
+                </resource>
 				<resource id="Variux_Warranty::Sro" title="Sro" sortOrder="10">
 					<resource id="Variux_Warranty::Sro_save" title="Save Sro" sortOrder="10"/>
 					<resource id="Variux_Warranty::Sro_delete" title="Delete Sro" sortOrder="20"/>

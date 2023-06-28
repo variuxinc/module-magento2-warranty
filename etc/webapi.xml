@@ -330,4 +330,34 @@
 			<resource ref="Variux_Warranty::Partner_delete"/>
 		</resources>
 	</route>
+    <route url="/V1/variux-warranty/status" method="POST">
+        <service class="Variux\Warranty\Api\StatusRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Variux_Warranty::Status_save"/>
+        </resources>
+    </route>
+    <route url="/V1/variux-warranty/status/search" method="GET">
+        <service class="Variux\Warranty\Api\StatusRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Variux_Warranty::Status_view"/>
+        </resources>
+    </route>
+    <route url="/V1/variux-warranty/status/:statusId" method="GET">
+        <service class="Variux\Warranty\Api\StatusRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="Variux_Warranty::Status_view"/>
+        </resources>
+    </route>
+    <route url="/V1/variux-warranty/status/:statusId" method="PUT">
+        <service class="Variux\Warranty\Api\StatusRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Variux_Warranty::Status_update"/>
+        </resources>
+    </route>
+    <route url="/V1/variux-warranty/status/:statusId" method="DELETE">
+        <service class="Variux\Warranty\Api\StatusRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Variux_Warranty::Status_delete"/>
+        </resources>
+    </route>
 </routes>

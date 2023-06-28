@@ -23,9 +23,19 @@
 				<item name="variux_warranty_unitreg_listing_data_source" xsi:type="string">Variux\Warranty\Model\ResourceModel\UnitReg\Grid\Collection</item>
 				<item name="variux_warranty_warrantytransfer_listing_data_source" xsi:type="string">Variux\Warranty\Model\ResourceModel\WarrantyTransfer\Grid\Collection</item>
 				<item name="variux_warranty_partner_listing_data_source" xsi:type="string">Variux\Warranty\Model\ResourceModel\Partner\Grid\Collection</item>
+                <item name="variux_warranty_status_listing_data_source" xsi:type="string">Variux\Warranty\Model\ResourceModel\Status\Grid\Collection</item>
 			</argument>
 		</arguments>
 	</type>
+    <preference for="Variux\Warranty\Api\StatusRepositoryInterface" type="Variux\Warranty\Model\StatusRepository"/>
+    <preference for="Variux\Warranty\Api\Data\StatusInterface" type="Variux\Warranty\Model\Status"/>
+    <preference for="Variux\Warranty\Api\Data\StatusSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <virtualType name="Variux\Warranty\Model\ResourceModel\Status\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">variux_warranty_status</argument>
+            <argument name="resourceModel" xsi:type="string">Variux\Warranty\Model\ResourceModel\Status\Collection</argument>
+        </arguments>
+    </virtualType>
 	<preference for="Variux\Warranty\Api\SroRepositoryInterface" type="Variux\Warranty\Model\SroRepository"/>
 	<preference for="Variux\Warranty\Api\Data\SroInterface" type="Variux\Warranty\Model\Sro"/>
 	<preference for="Variux\Warranty\Api\Data\SroSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
