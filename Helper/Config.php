@@ -2,9 +2,22 @@
 
 namespace Variux\Warranty\Helper;
 
+use Magento\Store\Model\ScopeInterface;
+
 class Config extends \Magento\Framework\App\Helper\AbstractHelper
 {
+    const MODULE_PATH = 'warranty_settings/';
+    const XML_PATH_EMAIL_IDENTITY = 'email/identity';
     protected $configSection = "warranty";
+
+    public function getModuleConfig($path, $storeId = null)
+    {
+        return $this->scopeConfig->getValue(
+            self::MODULE_PATH . $path,
+            ScopeInterface::SCOPE_STORE,
+            $storeId
+        );
+    }
 
     /**
      * @param $path
@@ -40,5 +53,10 @@ class Config extends \Magento\Framework\App\Helper\AbstractHelper
     public function getMaxFileSize()
     {
         return $this->getConfig("material/max_file_size") ? : 20;
+    }
+
+    public function getEmailIdentity()
+    {
+        return $this->getModuleConfig(self::XML_PATH_EMAIL_IDENTITY);
     }
 }

@@ -3,4 +3,7 @@
     <event name="variux_unit_save_before">
         <observer name="variux_warranty_observer_variux_unit_save_before" instance="Variux\Warranty\Observer\Variux\UnitBeforeSave"/>
     </event>
+    <event name="variux_warranty_save_before">
+        <observer name="variux_warranty_observer_variux_warranty_save_before" instance="Variux\Warranty\Observer\Variux\WarrantySaveBefore"/>
+    </event>
 </config>

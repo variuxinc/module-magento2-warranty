@@ -5,4 +5,5 @@
               file="new_warranty_transfer.html" type="html"
               module="Variux_Warranty" area="adminhtml"/>
     <template id="warranty_material_template" label="Material Submitted" file="material_submitted.html" type="html" module="Variux_Warranty" area="frontend"/>
+    <template id="claim_status_change_template" label="Claim Status: Change" file="status_change_claim.html" type="html" module="Variux_Warranty" area="frontend"/>
 </config>

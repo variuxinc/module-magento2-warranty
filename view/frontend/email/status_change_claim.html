@@ -1,0 +1,30 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject {{trans "Warranty Status Updating"}} @-->
+<!--@vars
+{
+"var warranty_id":"Warranty Number",
+"var customer_name":"Customer Name",
+"var status":"status"
+}
+@-->
+{{template config_path="design/email/header_template"}}
+
+<p>{{trans "Hello, <span style="font-weight: bold;">%customer_name</span>" customer_name=$customer_name |raw}}</p>
+<p>{{trans "This is an automatic notification about your warranty claim.}}</p>
+<p>{{trans "Your warranty claim with id <span style="font-weight: bold;">#%warranty_id</span> has been changed the
+    status." warranty_id=$warranty_id |raw}}</p>
+<p> {{trans
+    'The status of your warranty claim has been changed into %status.'
+    status=$status
+    |raw}}</p>
+<br>
+<p>{{trans "You may contact our customer support for more information. Thank you!"}}</p>
+
+{{template config_path="design/email/footer_template"}}
+
+
