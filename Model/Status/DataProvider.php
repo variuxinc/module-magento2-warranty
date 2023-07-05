@@ -28,7 +28,6 @@ class DataProvider extends AbstractDataProvider
      */
     protected $collection;
 
-
     /**
      * @param string $name
      * @param string $primaryFieldName

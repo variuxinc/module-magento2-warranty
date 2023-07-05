@@ -21,7 +21,7 @@ class Sender
     public function __construct(
         TransportBuilder $transportBuilder,
         Logger $logger
-    ){
+    ) {
         $this->transportBuilder = $transportBuilder;
         $this->logger = $logger;
     }
@@ -29,7 +29,6 @@ class Sender
     public function sendMail($emailTo, $sender, $storeId, $template, $warrantyId, $customerName, $status)
     {
         try {
-            $this->logger->info('Start the sending email process');
             $transport = $this->transportBuilder->setTemplateIdentifier(
                 $template
             )->setTemplateOptions(
@@ -47,7 +46,5 @@ class Sender
         } catch (\Exception $e) {
             $this->logger->critical($e);
         }
-
     }
-
 }

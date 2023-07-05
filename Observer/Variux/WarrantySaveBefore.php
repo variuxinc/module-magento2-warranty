@@ -7,6 +7,8 @@ use Variux\Warranty\Logger\Logger;
 use Variux\Warranty\Model\Email\Warranty\Sender as WarrantyEmailSender;
 use Magento\Customer\Api\CustomerRepositoryInterface as CustomerRepository;
 use Variux\Warranty\Helper\Config as Config;
+use Variux\Warranty\Api\WarrantyRepositoryInterface;
+use Variux\Warranty\Api\StatusRepositoryInterface;
 
 class WarrantySaveBefore implements \Magento\Framework\Event\ObserverInterface
 {
@@ -22,40 +24,73 @@ class WarrantySaveBefore implements \Magento\Framework\Event\ObserverInterface
      * @var CustomerRepository
      */
     protected $customerRepository;
+    /**
+     * @var Config
+     */
+    protected $config;
+    /**
+     * @var WarrantyRepositoryInterface
+     */
+    protected $warrantyRepository;
+    /**
+     * @var StatusRepositoryInterface
+     */
+    protected $statusRepository;
 
     /**
      * @param Logger $logger
      * @param WarrantyEmailSender $warrantyEmailSender
      * @param CustomerRepository $customerRepository
+     * @param Config $config
+     * @param WarrantyRepositoryInterface $warrantyRepository
+     * @param StatusRepositoryInterface $statusRepository
      */
     public function __construct(
         Logger $logger,
         WarrantyEmailSender $warrantyEmailSender,
         CustomerRepository $customerRepository,
-        Config $config
+        Config $config,
+        WarrantyRepositoryInterface $warrantyRepository,
+        StatusRepositoryInterface $statusRepository
     ) {
         $this->logger = $logger;
         $this->warrantyEmailSender = $warrantyEmailSender;
         $this->customerRepository = $customerRepository;
         $this->config = $config;
+        $this->warrantyRepository = $warrantyRepository;
+        $this->statusRepository = $statusRepository;
     }
 
     public function execute(Observer $observer)
     {
         $warranty = $observer->getEvent()->getDataObject();
         if ($warranty->getId()) {
-            try {
-                $emailTo = $this->customerRepository->getById($warranty->getCustomerId())->getEmail();
-                $senderEmail = $this->config->getEmailIdentity();
-                $storeId = 1;
-                $template = 'claim_status_change_template';
-                $warrantyId = $warranty->getId();
-                $customerName = $this->customerRepository->getById($warranty->getCustomerId())->getLastname();
-                $status = $warranty->getStatus();
-                $this->warrantyEmailSender->sendMail($emailTo, $senderEmail, $storeId, $template, $warrantyId, $customerName, $status);
-            }
-            catch (\Exception $e) {
-                $this->logger->critical($e);
+            $status = $warranty->getStatus();
+            $warrantyInDb = $this->warrantyRepository->getById($warranty->getId());
+            $statusInDb = $warrantyInDb->getStatus();
+            $statusObj = $this->statusRepository->getByCode($status);
+            $statusName = $statusObj->getName();
+            if ($status != $statusInDb) {
+                try {
+                    $emailTo = $this->customerRepository->getById($warranty->getCustomerId())->getEmail();
+                    $senderEmail = $this->config->getEmailIdentity();
+                    $storeId = 1;
+                    $template = $this->config->getEmailTemplate();
+                    $warrantyId = $warranty->getId();
+                    $customerName = $this->customerRepository->getById($warranty->getCustomerId())->getLastname();
+                    $this->warrantyEmailSender
+                          ->sendMail(
+                              $emailTo,
+                              $senderEmail,
+                              $storeId,
+                              $template,
+                              $warrantyId,
+                              $customerName,
+                              $statusName
+                          );
+                } catch (\Exception $e) {
+                    $this->logger->critical($e);
+                }
             }
         }
     }

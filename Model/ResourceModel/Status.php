@@ -19,4 +19,16 @@ class Status extends AbstractDb
     {
         $this->_init('variux_warranty_status', 'status_id');
     }
+
+    /**
+     * @param $code
+     * @return string
+     */
+    public function getIdByCode($code)
+    {
+        $connection = $this->getConnection();
+        $select = $connection->select()->from('variux_warranty_status', 'status_id')->where('code = :code');
+        $bind = [':code' => (string)$code];
+        return $connection->fetchOne($select, $bind);
+    }
 }

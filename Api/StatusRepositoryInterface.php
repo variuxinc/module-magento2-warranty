@@ -31,6 +31,14 @@ interface StatusRepositoryInterface
     public function get($statusId);
 
     /**
+     * Retrieve Status
+     * @param string $statusCode
+     * @return \Variux\Warranty\Api\Data\StatusInterface
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function getbyCode($statusCode);
+
+    /**
      * Retrieve Status matching the specified criteria.
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
      * @return \Variux\Warranty\Api\Data\StatusSearchResultsInterface
