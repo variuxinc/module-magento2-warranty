@@ -8,6 +8,7 @@ class Config extends \Magento\Framework\App\Helper\AbstractHelper
 {
     const MODULE_PATH = 'warranty_settings/';
     const XML_PATH_EMAIL_IDENTITY = 'email/identity';
+    const XML_PATH_EMAIL_TEMPLATE = 'email/claim_status_update_template';
     protected $configSection = "warranty";
 
     public function getModuleConfig($path, $storeId = null)
@@ -58,5 +59,10 @@ class Config extends \Magento\Framework\App\Helper\AbstractHelper
     public function getEmailIdentity()
     {
         return $this->getModuleConfig(self::XML_PATH_EMAIL_IDENTITY);
+    }
+
+    public function getEmailTemplate()
+    {
+        return $this->getModuleConfig(self::XML_PATH_EMAIL_TEMPLATE);
     }
 }

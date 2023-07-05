@@ -46,7 +46,6 @@ class StatusRepository implements StatusRepositoryInterface
      */
     protected $statusCollectionFactory;
 
-
     /**
      * @param ResourceStatus $resource
      * @param StatusInterfaceFactory $statusFactory
@@ -94,6 +93,24 @@ class StatusRepository implements StatusRepositoryInterface
         if (!$status->getId()) {
             throw new NoSuchEntityException(__('Status with id "%1" does not exist.', $statusId));
         }
+        return $status;
+    }
+
+    /**
+     * @param $statusCode
+     * @return StatusInterface
+     * @throws NoSuchEntityException
+     */
+    public function getByCode($statusCode): StatusInterface
+    {
+        $status = $this->statusFactory->create();
+        $statusId = $this->resource->getIdByCode($statusCode);
+        if (!$statusId) {
+            throw new NoSuchEntityException(
+                __("The status that was requested doesn't exist. Verify the product and try again.")
+            );
+        }
+        $status->load($statusId);
         return $status;
     }
 

@@ -2,8 +2,23 @@
 
 namespace Variux\Warranty\Model\Warranty\Source;
 
+use Variux\Warranty\Model\ResourceModel\Status\CollectionFactory;
+
 class Status implements \Magento\Framework\Option\ArrayInterface
 {
+
+    /**
+     * @var CollectionFactory
+     */
+    protected $statusCollectionFactory;
+
+    /**
+     * @param CollectionFactory $statusCollectionFactory
+     */
+    public function __construct(CollectionFactory $statusCollectionFactory)
+    {
+        $this->statusCollectionFactory = $statusCollectionFactory;
+    }
 
     /**
      * @return array[]
@@ -14,31 +29,24 @@ class Status implements \Magento\Framework\Option\ArrayInterface
     }
 
     /**
+     * @return \Variux\Warranty\Model\ResourceModel\Status\Collection
+     */
+    private function getStatusCollection()
+    {
+        return $this->statusCollectionFactory->create()
+                              ->addFieldToSelect("*");
+    }
+
+    /**
      * @return array[]
      */
     private function getStatusArray(): array
     {
-        return array(
-            ['value' => 'CD', 'label' => 'Claim Denied'],
-            ['value' => 'CMIssued', 'label' => 'Credit Memo Issued'],
-            ['value' => 'CSAprv', 'label' => 'Customer Service Approval'],
-            ['value' => 'CSREVIEW', 'label' => 'CUSTOMER SERVICE REVIEW'],
-            ['value' => 'EngInpt', 'label' => 'Engineering  Input'],
-            ['value' => 'INCOMP', 'label' => 'Incomplete Claim'],
-            ['value' => 'Info', 'label' => 'Memo Info Only'],
-            ['value' => 'InProc', 'label' => 'In Process'],
-            ['value' => 'MgmtAprv', 'label' => 'Management Approval'],
-            ['value' => 'NewCont', 'label' => 'Submitted'],
-            ['value' => 'PrtsInsptd', 'label' => 'Parts Inspected'],
-            ['value' => 'PrtsRtnd', 'label' => 'Parts Returned'],
-            ['value' => 'SOEntered', 'label' => 'Sales Order Entered'],
-            ['value' => 'TRBLRESOLV', 'label' => 'Trouble Resolved'],
-            ['value' => 'TRBLSHOOT', 'label' => 'Trouble Shooting'],
-            ['value' => 'VS-CMPLT', 'label' => 'VENDOR SHIP COMPLETED'],
-            ['value' => 'VS-Denied', 'label' => 'Vendor Ship Denied'],
-            ['value' => 'VS-INPROC', 'label' => 'VENDOR SHIP IN PROCESS'],
-            ['value' => 'VS-Ship', 'label' => 'Vendor Return Shipped'],
-            ['value' => 'WtngPrts', 'label' => 'Waiting for Parts']
-        );
+        $statusArr = [];
+        $statuses = $this->getStatusCollection();
+        foreach ($statuses as $status) {
+            $statusArr[] = ['value' => $status->getCode(), 'label' => $status->getName()];
+        }
+        return $statusArr;
     }
 }
