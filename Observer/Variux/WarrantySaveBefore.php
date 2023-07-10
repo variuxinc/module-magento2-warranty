@@ -66,30 +66,32 @@ class WarrantySaveBefore implements \Magento\Framework\Event\ObserverInterface
         $warranty = $observer->getEvent()->getDataObject();
         if ($warranty->getId()) {
             $status = $warranty->getStatus();
-            $warrantyInDb = $this->warrantyRepository->getById($warranty->getId());
-            $statusInDb = $warrantyInDb->getStatus();
-            $statusObj = $this->statusRepository->getByCode($status);
-            $statusName = $statusObj->getName();
-            if ($status != $statusInDb) {
-                try {
-                    $emailTo = $this->customerRepository->getById($warranty->getCustomerId())->getEmail();
-                    $senderEmail = $this->config->getEmailIdentity();
-                    $storeId = 1;
-                    $template = $this->config->getEmailTemplate();
-                    $warrantyId = $warranty->getId();
-                    $customerName = $this->customerRepository->getById($warranty->getCustomerId())->getLastname();
-                    $this->warrantyEmailSender
-                          ->sendMail(
-                              $emailTo,
-                              $senderEmail,
-                              $storeId,
-                              $template,
-                              $warrantyId,
-                              $customerName,
-                              $statusName
-                          );
-                } catch (\Exception $e) {
-                    $this->logger->critical($e);
+            if ($status != 'INCOMP' && $status != 'NewCont') {
+                $warrantyInDb = $this->warrantyRepository->getById($warranty->getId());
+                $statusInDb = $warrantyInDb->getStatus();
+                $statusObj = $this->statusRepository->getByCode($status);
+                $statusName = $statusObj->getName();
+                if ($status != $statusInDb) {
+                    try {
+                        $emailTo = $this->customerRepository->getById($warranty->getCustomerId())->getEmail();
+                        $senderEmail = $this->config->getEmailIdentity();
+                        $storeId = 1;
+                        $template = $this->config->getEmailTemplate();
+                        $warrantyId = $warranty->getId();
+                        $customerName = $this->customerRepository->getById($warranty->getCustomerId())->getLastname();
+                        $this->warrantyEmailSender
+                            ->sendMail(
+                                $emailTo,
+                                $senderEmail,
+                                $storeId,
+                                $template,
+                                $warrantyId,
+                                $customerName,
+                                $statusName
+                            );
+                    } catch (\Exception $e) {
+                        $this->logger->critical($e);
+                    }
                 }
             }
         }

@@ -7,7 +7,7 @@
             </general>
             <email>
                 <identity>general</identity>
-                <claim_status_update_template>email_claim_status_update_template</claim_status_update_template>
+                <claim_status_update_template>warranty_settings_email_claim_status_update_template</claim_status_update_template>
             </email>
         </warranty_settings>
     </default>
