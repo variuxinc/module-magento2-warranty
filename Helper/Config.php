@@ -6,9 +6,10 @@ use Magento\Store\Model\ScopeInterface;
 
 class Config extends \Magento\Framework\App\Helper\AbstractHelper
 {
-    const MODULE_PATH = 'warranty_settings/';
-    const XML_PATH_EMAIL_IDENTITY = 'email/identity';
-    const XML_PATH_EMAIL_TEMPLATE = 'email/claim_status_update_template';
+    const MODULE_PATH = 'btob/website_configuration/warranty';
+    const XML_PATH_IS_ACTIVE = "general/warranty_active";
+    const XML_PATH_EMAIL_IDENTITY = 'notification/email_identity';
+    const XML_PATH_EMAIL_TEMPLATE = 'notification/template';
     protected $configSection = "warranty";
 
     public function getModuleConfig($path, $storeId = null)
@@ -64,5 +65,10 @@ class Config extends \Magento\Framework\App\Helper\AbstractHelper
     public function getEmailTemplate()
     {
         return $this->getModuleConfig(self::XML_PATH_EMAIL_TEMPLATE);
+    }
+
+    public function getIsModuleActive()
+    {
+        return $this->getModuleConfig(self::XML_PATH_IS_ACTIVE);
     }
 }

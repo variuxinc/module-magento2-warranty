@@ -1,33 +1,82 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <section id="warranty_settings" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="5" translate="label">
-            <label>Warranty Management Settings</label>
-            <tab>variux</tab>
-            <resource>Variux_Warranty::config_variux_email_warranty_management</resource>
-            <group id="general" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>General Configuration</label>
-                <field id="enabled_notification" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Enable Email Warranty Notification</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Enable the Warranty Notification.]]>
-                    </comment>
-                </field>
-            </group>
-            <group id="email" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="20" translate="label">
-                <label>Email Configurations</label>
-                <field id="identity" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Email Sender</label>
-                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
-                </field>
-                <field id="claim_status_update_template" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Template</label>
-                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
-                    <comment>Template for updating Claim status notification</comment>
+<!--        <section id="warranty_settings" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="5" translate="label">-->
+<!--            <label>Warranty Management Settings</label>-->
+<!--            <tab>variux</tab>-->
+<!--            <resource>Variux_Warranty::config_variux_email_warranty_management</resource>-->
+<!--            <group id="general" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">-->
+<!--                <label>General Configuration</label>-->
+<!--                <field id="enabled_notification" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">-->
+<!--                    <label>Enable Email Warranty Notification</label>-->
+<!--                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>-->
+<!--                    <comment><![CDATA[Enable the Warranty Notification.]]></comment>-->
+<!--                </field>-->
+<!--            </group>-->
+<!--            <group id="email" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="20" translate="label">-->
+<!--                <label>Email Configurations</label>-->
+<!--                <field id="identity" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">-->
+<!--                    <label>Email Sender</label>-->
+<!--                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>-->
+<!--                </field>-->
+<!--                <field id="claim_status_update_template" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">-->
+<!--                    <label>Template</label>-->
+<!--                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>-->
+<!--                    <comment>Template for updating Claim status notification</comment>-->
+<!--                    <depends>-->
+<!--                        <field id="enabled">1</field>-->
+<!--                    </depends>-->
+<!--                </field>-->
+<!--            </group>-->
+<!--        </section>-->
+        <section id="btob">
+            <group id="website_configuration">
+                <group id="warranty" translate="label" type="text" sortOrder="55" showInDefault="1" showInWebsite="0" showInStore="0">
                     <depends>
-                        <field id="enabled">1</field>
+                        <field id="company_active">1</field>
                     </depends>
-                </field>
+                    <frontend_model>Magento\CompanyPayment\Block\System\Config\Form\PaymentMethodsFieldset</frontend_model>
+                    <fieldset_css>payment-methods</fieldset_css>
+                    <label>Warranty Features</label>
+                    <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <frontend_model>Magento\CompanyPayment\Block\System\Config\Form\PaymentMethodsFieldset</frontend_model>
+                        <fieldset_css>payment-methods</fieldset_css>
+                        <label>General Settings</label>
+                        <field id="warranty_active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Enable Warranty Feature</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <comment><![CDATA[Enable the Warranty Feature.]]></comment>
+                        </field>
+                    </group>
+                    <group id="notification" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <frontend_model>Magento\CompanyPayment\Block\System\Config\Form\PaymentMethodsFieldset</frontend_model>
+                        <fieldset_css>payment-methods</fieldset_css>
+                        <label>Notification Settings</label>
+                        <depends>
+                            <field id="btob/website_configuration/warranty/general/warranty_active">1</field>
+                        </depends>
+                        <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Enable Email Warranty Notification</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <comment><![CDATA[Enable the Warranty Notification.]]></comment>
+                        </field>
+                        <field id="email_identity" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Email Sender</label>
+                            <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                            <depends>
+                                <field id="enabled">1</field>
+                            </depends>
+                        </field>
+                        <field id="template" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                            <label>Notification Template</label>
+                            <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                            <comment>Template for updating Claim status notification</comment>
+                            <depends>
+                                <field id="enabled">1</field>
+                            </depends>
+                        </field>
+                    </group>
+                </group>
             </group>
         </section>
     </system>
