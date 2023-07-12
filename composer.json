@@ -4,19 +4,24 @@
     "description": "Variux Warranty allows creating, checking, and managing the Warranty information. This module also helps the Indmar Authorized Dealers make most determinations about their end customers' warranties immediately",
     "type": "magento2-module",
     "license": "GPL-3.0",
+    "keywords": [
+        "variux",
+        "module-magento2-warranty",
+        "magento2-module"
+    ],
     "authors": [
         {
             "name": "Variux",
             "email": "tung.nguyen@beehexa.com"
         }
     ],
+    "homepage": "https://www.variux.com/",
     "minimum-stability": "dev",
     "require": {
         "php": "~7.4 || ~8.0 || ~8.1",
         "magento/framework": ">=102.0",
         "magento/module-company": "*",
-        "tecnickcom/tcpdf": "*",
-        "variuxinc/module-base": "*"
+        "tecnickcom/tcpdf": "*"
     },
     "autoload": {
         "files": [
