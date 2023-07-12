@@ -1,5 +1,5 @@
 {
-    "name": "variuxinc/module-warranty",
+    "name": "variuxinc/module-magento2-warranty",
     "version": "1.0.0",
     "description": "Variux Warranty allows creating, checking, and managing the Warranty information. This module also helps the Indmar Authorized Dealers make most determinations about their end customers' warranties immediately",
     "type": "magento2-module",
@@ -14,6 +14,7 @@
     "require": {
         "php": "~7.4 || ~8.0 || ~8.1",
         "magento/framework": ">=102.0",
+        "magento/module-company": "*",
         "tecnickcom/tcpdf": "*",
         "variuxinc/module-base": "*"
     },
