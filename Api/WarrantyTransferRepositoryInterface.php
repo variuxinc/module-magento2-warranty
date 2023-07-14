@@ -9,6 +9,7 @@ namespace Variux\Warranty\Api;
 
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Variux\Warranty\Api\Data\WarrantyTransferInterface;
 
 interface WarrantyTransferRepositoryInterface
@@ -60,4 +61,24 @@ interface WarrantyTransferRepositoryInterface
      * @throws LocalizedException
      */
     public function deleteById($warrantytransferId);
+
+    /**
+     * Approve warranty transfer by ID.
+     *
+     * @param int $warrantyTransferId
+     * @return bool true on success
+     * @throws NoSuchEntityException
+     * @throws LocalizedException
+     */
+    public function approveById($warrantyTransferId);
+
+    /**
+     * Approve warranty transfer by ID.
+     *
+     * @param int $warrantyTransferId
+     * @return bool true on success
+     * @throws NoSuchEntityException
+     * @throws LocalizedException
+     */
+    public function rejectById($warrantyTransferId);
 }

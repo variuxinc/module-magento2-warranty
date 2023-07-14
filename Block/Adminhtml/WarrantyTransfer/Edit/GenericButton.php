@@ -8,6 +8,7 @@ declare(strict_types=1);
 namespace Variux\Warranty\Block\Adminhtml\WarrantyTransfer\Edit;
 
 use Magento\Backend\Block\Widget\Context;
+use Magento\Framework\Exception\NoSuchEntityException;
 
 abstract class GenericButton
 {
@@ -42,5 +43,15 @@ abstract class GenericButton
     public function getUrl($route = '', $params = [])
     {
         return $this->context->getUrlBuilder()->getUrl($route, $params);
+    }
+
+    public function getId()
+    {
+        try {
+            return $this->context->getRequest()->getParam('id');
+
+        } catch (NoSuchEntityException $e) {
+        }
+        return null;
     }
 }

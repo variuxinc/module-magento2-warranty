@@ -146,4 +146,31 @@ class WarrantyTransferRepository implements WarrantyTransferRepositoryInterface
     {
         return $this->delete($this->get($warrantyTransferId));
     }
+
+    public function approveById($warrantyTransferId)
+    {
+        $warrantyTransfer = $this->get($warrantyTransferId);
+        if($warrantyTransfer->getStatus() != \Variux\Warranty\Api\Data\WarrantyTransferInterface::STATUS_APPROVED && $warrantyTransfer->getStatus() != \Variux\Warranty\Api\Data\WarrantyTransferInterface::STATUS_REJECTED) {
+            $warrantyTransfer->setStatus(\Variux\Warranty\Api\Data\WarrantyTransferInterface::STATUS_APPROVED);
+            $this->save($warrantyTransfer);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function rejectById($warrantyTransferId)
+    {
+        $warrantyTransfer = $this->get($warrantyTransferId);
+        if($warrantyTransfer->getStatus() != \Variux\Warranty\Api\Data\WarrantyTransferInterface::STATUS_APPROVED && $warrantyTransfer->getStatus() != \Variux\Warranty\Api\Data\WarrantyTransferInterface::STATUS_REJECTED) {
+            $warrantyTransfer->setStatus(\Variux\Warranty\Api\Data\WarrantyTransferInterface::STATUS_REJECTED);
+            $this->save($warrantyTransfer);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

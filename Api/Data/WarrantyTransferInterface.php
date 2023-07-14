@@ -47,6 +47,10 @@ interface WarrantyTransferInterface
     const ROW_POINTER = 'row_pointer';
     const ENGINE_MODEL = 'engine_model';
 
+    const STATUS_APPROVED = "1";
+    const STATUS_REJECTED = "2";
+    const STATUS_DEFAULT = "0";
+
     /**
      * Get warrantytransfer_id
      * @return string|null

@@ -62,146 +62,38 @@
 				<indexField>warrantytransfer_id</indexField>
 			</settings>
 		</selectionsColumn>
-		<column name="warrantytransfer_id">
+		<column name="warrantytransfer_id" sortOrder="10">
 			<settings>
 				<filter>text</filter>
 				<sorting>asc</sorting>
 				<label translate="true">ID</label>
 			</settings>
 		</column>
-		<column name="engine_serial_num">
+		<column name="engine_serial_num" sortOrder="20">
 			<settings>
 				<filter>text</filter>
 				<label translate="true">Engine Serial Num</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
 			</settings>
 		</column>
-		<column name="submitter_email">
+        <column name="engine_model" sortOrder="30">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Engine Model</label>
+            </settings>
+        </column>
+		<column name="submitter_email" sortOrder="40">
 			<settings>
 				<filter>text</filter>
 				<label translate="true">Submitter Email</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
 			</settings>
 		</column>
-		<column name="submitter_name">
+		<column name="submitter_name" sortOrder="50">
 			<settings>
 				<filter>text</filter>
 				<label translate="true">Submitter Name</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
 			</settings>
 		</column>
-		<column name="engine_hours">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Engine Hours</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="engine_model">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Engine Model</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="trans_sn">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Trans Sn</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="make_of_boat">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Make Of Boat</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="boat_use">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Boat Use</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="current_customer">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Current Customer</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="warranty_start_date">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Warranty Start Date</label>
-				<editor>
-					<editorType>date</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="warranty_end_date">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Warranty End Date</label>
-				<editor>
-					<editorType>date</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="submit_date">
+		<column name="submit_date" sortOrder="60">
 			<settings>
 				<filter>text</filter>
 				<label translate="true">Submit Date</label>
@@ -213,241 +105,16 @@
 				</editor>
 			</settings>
 		</column>
-		<column name="inspection_date">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Inspection Date</label>
-				<editor>
-					<editorType>date</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="hull_id">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Hull Id</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="eng_comp_1">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Eng Comp 1</label>
-			</settings>
-		</column>
-		<column name="eng_comp_2">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Eng Comp 2</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="eng_comp_4">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Eng comp 4</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="name">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Name</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="email">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Email</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="phone">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Phone</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="phone_ext">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Phone Ext</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="sale_date">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Sale Date</label>
-				<editor>
-					<editorType>date</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="address_1">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Address 1</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="address_2">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Address 2</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="city">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">City</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="state">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">State</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="zip">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Zip</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="country">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Country</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="status">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Status</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="row_pointer">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Row Pointer</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="file_path_json">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">File Path Json</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="company_id">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Company Id</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-        <actionsColumn name="actions" class="Variux\Warranty\Ui\Component\Listing\Column\WarrantyTransferActions">
+        <column name="status" class="Variux\Warranty\Ui\Component\Listing\Column\WarrantyTransferStatus" sortOrder="70">
+            <settings>
+                <filter>select</filter>
+                <label translate="true">Status</label>
+                <dataType>select</dataType>
+                <options class="Variux\Warranty\Model\Source\WarantyTranferStatus" />
+            </settings>
+        </column>
+
+        <actionsColumn name="actions" class="Variux\Warranty\Ui\Component\Listing\Column\WarrantyTransferActions" sortOrder="80">
             <settings>
                 <indexField>warrantytransfer_id</indexField>
                 <resizeEnabled>false</resizeEnabled>

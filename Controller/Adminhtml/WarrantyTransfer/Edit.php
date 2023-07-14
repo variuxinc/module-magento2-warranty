@@ -33,37 +33,8 @@ class Edit extends \Variux\Warranty\Controller\Adminhtml\WarrantyTransfer
      */
     public function execute()
     {
-        // 1. Get ID and create model
-        $id = $this->getRequest()->getParam('warrantytransfer_id');
-        $model = $this->_objectManager->create(\Variux\Warranty\Model\WarrantyTransfer::class);
-
-        // 2. Initial checking
-        if ($id) {
-            $model->load($id);
-            if (!$model->getId()) {
-                $this->messageManager->addErrorMessage(__('This Warrantytransfer no longer exists.'));
-                /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
-                $resultRedirect = $this->resultRedirectFactory->create();
-                return $resultRedirect->setPath('*/*/');
-            }
-        }
-        $this->_coreRegistry->register('variux_warranty_warrantytransfer', $model);
-
-        // 3. Build edit form
-        /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
-        $this->initPage($resultPage)->addBreadcrumb(
-            $id ? __('Edit Warrantytransfer') : __('New Warrantytransfer'),
-            $id ? __('Edit Warrantytransfer') : __('New Warrantytransfer')
-        );
-        $resultPage->getConfig()->getTitle()->prepend(__('Warrantytransfers'));
-        $resultPage->getConfig()
-                   ->getTitle()
-                   ->prepend(
-                       $model->getId() ?
-                       __('Edit Warrantytransfer %1', $model->getId()) :
-                       __('New Warrantytransfer')
-                   );
+        $resultPage->getConfig()->getTitle()->prepend(__('Warranty Transfer Details'));
         return $resultPage;
     }
 }

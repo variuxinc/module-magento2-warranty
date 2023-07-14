@@ -49,29 +49,17 @@ class WarrantyTransferActions extends \Magento\Ui\Component\Listing\Columns\Colu
                             'href' => $this->urlBuilder->getUrl(
                                 static::URL_PATH_EDIT,
                                 [
-                                    'warrantytransfer_id' => $item['warrantytransfer_id']
+                                    'id' => $item['warrantytransfer_id']
                                 ]
                             ),
-                            'label' => __('Edit')
-                        ],
-                        'delete' => [
-                            'href' => $this->urlBuilder->getUrl(
-                                static::URL_PATH_DELETE,
-                                [
-                                    'warrantytransfer_id' => $item['warrantytransfer_id']
-                                ]
-                            ),
-                            'label' => __('Delete'),
-                            'confirm' => [
-                                'title' => __('Delete "${ $.$data.title }"'),
-                                'message' => __('Are you sure you wan\'t to delete a "${ $.$data.title }" record?')
-                            ]
+                            'label' => __('Detail')
                         ]
+
                     ];
                 }
             }
         }
-        
+
         return $dataSource;
     }
 }
