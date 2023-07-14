@@ -28,6 +28,4 @@ class WarantyTranferStatus implements \Magento\Framework\Option\ArrayInterface
     {
         return [0 => __('Waiting for approval'), 1 => __('Approved'), 2 => __('Rejected')];
     }
-
-
 }

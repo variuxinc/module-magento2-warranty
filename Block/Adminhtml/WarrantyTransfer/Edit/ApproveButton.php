@@ -17,8 +17,8 @@ class ApproveButton extends GenericButton implements ButtonProviderInterface
                 'label' => __('Approve'),
                 'class' => 'delete',
                 'on_click' => 'deleteConfirm(\'' . __(
-                        'Are you sure you want to do this?'
-                    ) . '\', \'' . $this->getApproveUrl() . '\')',
+                    'Are you sure you want to do this?'
+                ) . '\', \'' . $this->getApproveUrl() . '\')',
                 'sort_order' => 20,
             ];
         }

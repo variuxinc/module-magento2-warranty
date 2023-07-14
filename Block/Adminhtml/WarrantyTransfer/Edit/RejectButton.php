@@ -17,8 +17,8 @@ class RejectButton extends GenericButton implements ButtonProviderInterface
                 'label' => __('Reject'),
                 'class' => 'delete',
                 'on_click' => 'deleteConfirm(\'' . __(
-                        'Are you sure you want to do this?'
-                    ) . '\', \'' . $this->getRejectUrl() . '\')',
+                    'Are you sure you want to do this?'
+                ) . '\', \'' . $this->getRejectUrl() . '\')',
                 'sort_order' => 20,
             ];
         }

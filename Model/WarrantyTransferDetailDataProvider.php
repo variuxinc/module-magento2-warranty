@@ -28,8 +28,7 @@ class WarrantyTransferDetailDataProvider extends \Magento\Ui\DataProvider\Abstra
         CollectionFactory $warrantyTransferCollectionFactory,
         array $meta = [],
         array $data = []
-    )
-    {
+    ) {
         $this->collection = $warrantyTransferCollectionFactory->create();
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
@@ -46,12 +45,18 @@ class WarrantyTransferDetailDataProvider extends \Magento\Ui\DataProvider\Abstra
         }
         $items = $this->collection->getItems();
         foreach ($items as $warrantyTransfer) {
-            if(!empty($warrantyTransfer->getData("file_path_json"))) {
+            if (!empty($warrantyTransfer->getData("file_path_json"))) {
                 $filePathJson = json_decode($warrantyTransfer->getData("file_path_json"), true);
-                if(is_array($filePathJson)) {
+                if (is_array($filePathJson)) {
                     $result = "<ul>";
                     foreach ($filePathJson as $fileData) {
-                        $result .= "<li><a href='/media/warranty/transfer/" . $fileData["file_path"] . "' target='_blank'>" . $fileData["file_name"] . "</a></li>";
+                        $result .= "
+                                <li><a href='/media/warranty/transfer/" .
+                                $fileData["file_path"] .
+                                "' target='_blank'>" .
+                                $fileData["file_name"] .
+                                "</a></li>
+                                ";
                     }
                     $result .= "</ul>";
                     $warrantyTransfer->setData("file_path_json", $result);

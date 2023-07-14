@@ -150,8 +150,9 @@ class WarrantyTransferRepository implements WarrantyTransferRepositoryInterface
     public function approveById($warrantyTransferId)
     {
         $warrantyTransfer = $this->get($warrantyTransferId);
-        if($warrantyTransfer->getStatus() != \Variux\Warranty\Api\Data\WarrantyTransferInterface::STATUS_APPROVED && $warrantyTransfer->getStatus() != \Variux\Warranty\Api\Data\WarrantyTransferInterface::STATUS_REJECTED) {
-            $warrantyTransfer->setStatus(\Variux\Warranty\Api\Data\WarrantyTransferInterface::STATUS_APPROVED);
+        if ($warrantyTransfer->getStatus() != WarrantyTransferInterface::STATUS_APPROVED
+            && $warrantyTransfer->getStatus() != WarrantyTransferInterface::STATUS_REJECTED) {
+            $warrantyTransfer->setStatus(WarrantyTransferInterface::STATUS_APPROVED);
             $this->save($warrantyTransfer);
             return true;
         } else {
@@ -165,8 +166,9 @@ class WarrantyTransferRepository implements WarrantyTransferRepositoryInterface
     public function rejectById($warrantyTransferId)
     {
         $warrantyTransfer = $this->get($warrantyTransferId);
-        if($warrantyTransfer->getStatus() != \Variux\Warranty\Api\Data\WarrantyTransferInterface::STATUS_APPROVED && $warrantyTransfer->getStatus() != \Variux\Warranty\Api\Data\WarrantyTransferInterface::STATUS_REJECTED) {
-            $warrantyTransfer->setStatus(\Variux\Warranty\Api\Data\WarrantyTransferInterface::STATUS_REJECTED);
+        if ($warrantyTransfer->getStatus() != WarrantyTransferInterface::STATUS_APPROVED
+            && $warrantyTransfer->getStatus() != WarrantyTransferInterface::STATUS_REJECTED) {
+            $warrantyTransfer->setStatus(WarrantyTransferInterface::STATUS_REJECTED);
             $this->save($warrantyTransfer);
             return true;
         } else {

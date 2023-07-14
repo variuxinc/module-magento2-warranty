@@ -9,18 +9,25 @@ namespace Variux\Warranty\Block\Adminhtml\WarrantyTransfer\Edit;
 
 use Magento\Backend\Block\Widget\Context;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Variux\Warranty\Logger\Logger;
 
 abstract class GenericButton
 {
 
     protected $context;
+    /**
+     * @var Logger
+     */
+    protected $logger;
 
     /**
-     * @param \Magento\Backend\Block\Widget\Context $context
+     * @param Context $context
+     * @param Logger $logger
      */
-    public function __construct(Context $context)
+    public function __construct(Context $context, Logger $logger)
     {
         $this->context = $context;
+        $this->logger = $logger;
     }
 
     /**
@@ -51,6 +58,7 @@ abstract class GenericButton
             return $this->context->getRequest()->getParam('id');
 
         } catch (NoSuchEntityException $e) {
+            $this->logger->error($e);
         }
         return null;
     }

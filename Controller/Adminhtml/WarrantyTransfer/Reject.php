@@ -28,8 +28,7 @@ class Reject extends Action
         Context                             $context,
         PageFactory                         $resultPageFactory,
         WarrantyTransferRepositoryInterface $warrantyTransferRepositoryInterface
-    )
-    {
+    ) {
         parent::__construct($context);
         $this->resultPageFactory = $resultPageFactory;
         $this->warrantyTransferRepositoryInterface = $warrantyTransferRepositoryInterface;

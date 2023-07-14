@@ -178,8 +178,7 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                         $warrantyTransfer->setWarrantyEndDate($unit->getWarrantyEndDate());
                         $warrantyTransfer->setCompanyId($companyId);
                         $warrantyTransfer->setStatus(0);
-                        $filePath = [];
-                        $this->processFiles($filesData, $filePath);
+                        $filePath = $this->processFiles($filesData);
                         $warrantyTransfer->setFilePathJson($filePath);
                         $this->warrantyTransferResourceModel->save($warrantyTransfer);
                         $response = [
@@ -241,8 +240,9 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         ];
     }
 
-    protected function processFiles($filesData, $filePath)
+    protected function processFiles($filesData)
     {
+        $filePath = [];
         if ($filesData) {
             foreach ($filesData as $fileData) {
                 if ($fileData["error"] == 0) {
@@ -250,5 +250,6 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                 }
             }
         }
+        return $filePath;
     }
 }
