@@ -15,13 +15,9 @@
 {{template config_path="design/email/header_template"}}
 
 <p>{{trans "Hello, <span style="font-weight: bold;">%customer_name</span>" customer_name=$customer_name |raw}}</p>
-<p>{{trans "This is an automatic notification about your warranty claim.}}</p>
+<p>{{trans "This is an automatic notification about your warranty claim."}}</p>
 <p>{{trans "Your warranty claim with id <span style="font-weight: bold;">#%warranty_id</span> has been changed the
-    status." warranty_id=$warranty_id |raw}}</p>
-<p> {{trans
-    'The status of your warranty claim has been changed into %status.'
-    status=$status
-    |raw}}</p>
+    status to <span style="font-weight: bold;">%status</span>." warranty_id=$warranty_id status=$status |raw}}</p>
 <br>
 <p>{{trans "You may contact our customer support for more information. Thank you!"}}</p>
 

@@ -74,9 +74,12 @@ class WarrantySaveBefore implements \Magento\Framework\Event\ObserverInterface
                 if ($status != $statusInDb) {
                     try {
                         $emailTo = $this->customerRepository->getById($warranty->getCustomerId())->getEmail();
-                        $senderEmail = $this->config->getEmailIdentity();
+                        $this->logger->info('Email to : ' . $emailTo);
+                        $senderEmail = $this->config->getWarrantyEmailIdentity();
+                        $this->logger->info('Email sender : ' . $senderEmail);
                         $storeId = 1;
-                        $template = $this->config->getEmailTemplate();
+                        $template = $this->config->getWarrantyEmailTemplate();
+                        $this->logger->info('Email Template : ' . $template);
                         $warrantyId = $warranty->getId();
                         $customerName = $this->customerRepository->getById($warranty->getCustomerId())->getLastname();
                         $this->warrantyEmailSender

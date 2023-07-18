@@ -1,14 +1,27 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
-        <warranty_settings>
-            <general>
-                <enabled_notification>1</enabled_notification>
-            </general>
-            <email>
-                <identity>general</identity>
-                <claim_status_update_template>warranty_settings_email_claim_status_update_template</claim_status_update_template>
-            </email>
-        </warranty_settings>
+        <btob>
+            <website_configuration>
+                <warranty>
+                    <general>
+                        <warranty_active>0</warranty_active>
+                    </general>
+                </warranty>
+                <notification>
+                    <warranty>
+                        <enabled>0</enabled>
+                        <email_identity>general</email_identity>
+                        <template>btob_website_configuration_warranty_notification_warranty_template</template>
+                    </warranty>
+                    <transfer>
+                        <enabled>0</enabled>
+                        <email_identity>sales</email_identity>
+                        <template>btob_website_configuration_warranty_notification_transfer_template</template>
+                        <mailTo>testemail@gmail.com</mailTo>
+                    </transfer>
+                </notification>
+            </website_configuration>
+        </btob>
     </default>
 </config>

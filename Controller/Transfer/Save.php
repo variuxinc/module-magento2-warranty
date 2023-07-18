@@ -22,6 +22,8 @@ use Variux\Warranty\Model\ResourceModel\WarrantyTransfer as WarrantyTransferReso
 use Magento\Framework\Mail\Template\TransportBuilder;
 use Variux\Warranty\Helper\SuggestHelper;
 use Variux\Warranty\Logger\Logger;
+use Variux\Warranty\Model\Email\WarrantyTransfer\Sender as WarrantyTransferSender;
+use Variux\Warranty\Helper\Config as Config;
 use Magento\Framework\App\Area;
 use Magento\Store\Model\Store;
 
@@ -63,6 +65,14 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
      * @var Logger
      */
     protected $customLogger;
+    /**
+     * @var WarrantyTransferSender
+     */
+    protected $warrantyTransferSender;
+    /**
+     * @var Config
+     */
+    protected $config;
 
     /**
      * @param Context $context
@@ -80,6 +90,8 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
      * @param WarrantyTransferResourceModel $warrantyTransferResourceModel
      * @param TransportBuilder $transportBuilder
      * @param Logger $customLogger
+     * @param WarrantyTransferSender $warrantyTransferSender
+     * @param Config $config
      */
     public function __construct(
         Context                       $context,
@@ -96,7 +108,9 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         FileProcessor                 $fileProcessor,
         WarrantyTransferResourceModel $warrantyTransferResourceModel,
         TransportBuilder              $transportBuilder,
-        Logger $customLogger
+        Logger $customLogger,
+        WarrantyTransferSender $warrantyTransferSender,
+        Config $config
     ) {
         parent::__construct($context, $companyContext, $logger, $_customerSession, $helperData, $suggestHelper);
         $this->jsonHelper = $jsonHelper;
@@ -108,6 +122,8 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
         $this->warrantyTransferResourceModel = $warrantyTransferResourceModel;
         $this->transportBuilder = $transportBuilder;
         $this->customLogger = $customLogger;
+        $this->warrantyTransferSender = $warrantyTransferSender;
+        $this->config = $config;
     }
 
     /**
@@ -166,8 +182,6 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                         $customerId = $customer->getId();
                         $companyId = $this->companyDetails->getInfo($customerId)->getId();
                         $partner = $this->helperData->getCurrentPartner();
-//                        $warrantyTransfer->setCurrentCustomer($partner->getPartnerNum());
-//                        $this->customLogger->info('partner num: ' . $partner->getCustomerNum());
                         $warrantyTransfer->setSubmitterName($customer->getName());
                         $this->customLogger->info('submitter name: ' . $customer->getName());
                         $warrantyTransfer->setSubmitterEmail($customer->getEmail());
@@ -185,18 +199,13 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                             'error' => false,
                             'msg' => __('Warranty transfer is saved successfully')
                         ];
-
-//                        $transport = $this->transportBuilder
-//                            ->setTemplateIdentifier('new_warranty_transfer')
-//                            ->setTemplateOptions(['area' => Area::AREA_ADMINHTML, 'store' => Store::DEFAULT_STORE_ID])
-//                            ->setTemplateVars([
-//                                'serial' => $data["engine_serial_num"],
-//                                'company' => $customer->getName()
-//                            ])
-//                            ->setFromByScope("sales")
-//                            ->addTo(['warrantyapp@indmar.com'])
-//                            ->getTransport();
-//                        $transport->sendMessage();
+                        $senderEmail = $this->config->getTransferEmailIdentity();
+                        $storeId = 1;
+                        $template = $this->config->getTransferEmailTemplate();
+                        $emailTo = $this->config->getTransferMailTo();
+                        $customerName = $customer->getName();
+                        $serial = $data['engine_serial_num'];
+                        $this->warrantyTransferSender->sendMail($emailTo, $senderEmail, $storeId, $template, $customerName, $serial);
                     } else {
                         $response = [
                             'error' => true,
