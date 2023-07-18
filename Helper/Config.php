@@ -88,7 +88,7 @@ class Config extends \Magento\Framework\App\Helper\AbstractHelper
     public function getTransferMailTo()
     {
         $emails =  $this->getModuleConfig(self::XML_PATH_TRANSFER_EMAIL_TO);
-        if(!empty($emails)) {
+        if (!empty($emails)) {
             return array_map('trim', explode(',', $emails));
         }
         return null;

@@ -45,5 +45,4 @@ class Sender
             $this->logger->critical($e);
         }
     }
-
 }

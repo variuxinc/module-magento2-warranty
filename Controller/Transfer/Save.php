@@ -205,7 +205,8 @@ class Save extends \Variux\Warranty\Controller\AbstractAction
                         $emailTo = $this->config->getTransferMailTo();
                         $customerName = $customer->getName();
                         $serial = $data['engine_serial_num'];
-                        $this->warrantyTransferSender->sendMail($emailTo, $senderEmail, $storeId, $template, $customerName, $serial);
+                        $this->warrantyTransferSender
+                            ->sendMail($emailTo, $senderEmail, $storeId, $template, $customerName, $serial);
                     } else {
                         $response = [
                             'error' => true,
